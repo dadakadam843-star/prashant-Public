@@ -50,8 +50,15 @@
 
 <div class="card">
   <p>
-    गरीब, कामगार आणि वंचितांसाठी
-    रात्र-दिवस सेवा करत आहे.
+    <p id="publicMsg">Welcome to My Website</p>
+
+<script>
+  const savedMsg = localStorage.getItem("publicMessage");
+  if (savedMsg) {
+    document.getElementById("publicMsg").innerText = savedMsg;
+  }
+</script>
+  
   </p>
 
   <a href="admin.html">Admin Login</a>
