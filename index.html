@@ -63,6 +63,12 @@
 
   <a href="admin.html">Admin Login</a>
 </div>
-
+<script>
+  const savedMsg = localStorage.getItem("publicMessage");
+  if (savedMsg) {
+    document.getElementById("publicMsg").innerText = savedMsg;
+  }
+</script>
+  
 </body>
 </html>
