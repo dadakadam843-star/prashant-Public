@@ -1,17 +1,20 @@
-
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Admin Dashboard</title>
+  <title>Admin Panel</title>
 </head>
 <body>
 
-<h2>✅ Admin Dashboard Open</h2>
+<h2>✅ Admin Dashboard</h2>
 
-<textarea id="msg" placeholder="इथे message लिहा" rows="5" cols="50"></textarea><br><br>
+<input id="name" placeholder="उमेदवार नाव" style="width:300px"><br><br>
+<input id="area" placeholder="भाग क्रमांक / क्षेत्र" style="width:300px"><br><br>
+
+<textarea id="msg" placeholder="संदेश लिहा" rows="5" cols="50"></textarea><br><br>
+
 <input id="photo" placeholder="Photo URL टाका" style="width:350px"><br><br>
 
-<button onclick="save()">Save</button>
+<button onclick="save()">Save Info</button>
 
 <p id="status"></p>
 
@@ -21,9 +24,11 @@ if(localStorage.getItem("admin")!=="yes"){
 }
 
 function save(){
-  localStorage.setItem("publicMessage", document.getElementById("msg").value);
-  localStorage.setItem("publicPhoto", document.getElementById("photo").value);
-  document.getElementById("status").innerText="✅ Saved Successfully";
+  localStorage.setItem("p_name",document.getElementById("name").value);
+  localStorage.setItem("p_area",document.getElementById("area").value);
+  localStorage.setItem("p_msg",document.getElementById("msg").value);
+  localStorage.setItem("p_photo",document.getElementById("photo").value);
+  document.getElementById("status").innerText="✅ माहिती जतन झाली";
 }
 </script>
 
