@@ -2,96 +2,40 @@
 <html lang="mr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Admin Dashboard</title>
-
 <style>
-body{
-  margin:0;
-  background:#f2f2f2;
-  font-family: Arial;
-}
-.card{
-  max-width:360px;
-  background:#fff;
-  margin:20px auto;
-  padding:15px;
-  border-radius:12px;
-  box-shadow:0 0 10px rgba(0,0,0,.1);
-}
-h2{text-align:center;}
-input,textarea{
-  width:100%;
-  padding:10px;
-  margin:6px 0;
-  border-radius:8px;
-  border:1px solid #ccc;
-  font-size:16px;
-}
-button{
-  width:100%;
-  padding:12px;
-  background:#28a745;
-  color:#fff;
-  border:none;
-  border-radius:8px;
-  font-size:17px;
-}
-img{
-  width:120px;
-  height:120px;
-  border-radius:50%;
-  display:block;
-  margin:auto;
-}
-.preview{text-align:center;}
+body { font-family: Arial; background:#eef2f5; }
+.box { background:#fff; padding:20px; max-width:600px; margin:40px auto; border-radius:8px; }
+textarea, input { width:100%; margin-top:10px; padding:10px; }
+button { margin-top:10px; padding:10px; background:green; color:white; border:none; }
 </style>
 </head>
-
 <body>
 
-<div class="card">
-<h2>✅ Admin Panel</h2>
+<div class="box">
+  <h2>✅ Admin Dashboard Open</h2>
 
-<input id="name" placeholder="नाव">
-<input id="ward" placeholder="प्रभाग क्रमांक">
+  <label>Public Message</label>
+  <textarea id="msg" rows="4"></textarea>
 
-<textarea id="message" rows="4" placeholder="सार्वजनिक संदेश"></textarea>
+  <label>Photo URL</label>
+  <input id="photo" placeholder="Photo link paste करा">
 
-<input type="file" id="photo" accept="image/*">
+  <button onclick="save()">Save</button>
 
-<button onclick="saveData()">Save</button>
-</div>
-
-<div class="card preview">
-<img id="previewPhoto">
-<p id="previewText"></p>
+  <p id="status"></p>
 </div>
 
 <script>
-function saveData(){
-localStorage.setItem("name",name.value);
-localStorage.setItem("ward",ward.value);
-localStorage.setItem("message",message.value);
+function save(){
+  const m = document.getElementById("msg").value;
+  const p = document.getElementById("photo").value;
 
-let file=photo.files[0];
-if(file){
- let r=new FileReader();
- r.onload=()=>{localStorage.setItem("photo",r.result);show();}
- r.readAsDataURL(file);
-}else show();
+  localStorage.setItem("publicMessage", m);
+  localStorage.setItem("publicPhoto", p);
 
-alert("✅ Saved Successfully");
+  document.getElementById("status").innerText = "✅ Saved Successfully";
 }
-
-function show(){
-previewPhoto.src=localStorage.getItem("photo");
-previewText.innerHTML=
-localStorage.getItem("name")+"<br>"+
-localStorage.getItem("ward")+"<br>"+
-localStorage.getItem("message");
-}
-show();
 </script>
 
 </body>
