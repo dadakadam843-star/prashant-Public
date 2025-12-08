@@ -4,31 +4,31 @@
   <meta charset="UTF-8">
   <title>Admin Panel</title>
 </head>
-<body>
 
-<h2>🔐 Admin Login</h2>
+<body style="text-align:center;font-family:Arial">
 
-<form onsubmit="login(event)">
-  <input type="text" id="user" placeholder="Username" required><br><br>
-  <input type="password" id="pass" placeholder="Password" required><br><br>
-  <button type="submit">Login</button>
-</form>
+  <h2>🔐 Admin Login</h2>
 
-<script>
-function login(e) {
-  e.preventDefault();
+  <form onsubmit="login(event)">
+    <input type="text" id="user" placeholder="Username" required><br><br>
+    <input type="password" id="pass" placeholder="Password" required><br><br>
+    <button type="submit">Login</button>
+  </form>
 
-  let u = document.getElementById("user").value;
-  let p = document.getElementById("pass").value;
+  <script>
+    function login(e) {
+      e.preventDefault();
 
-  if (u === "Prashant" && p === "Prashant@27") {
-    alert("Login Successful ✅");
-    window.location.href = "dashboard.html";
-  } else {
-    alert("Wrong Username or Password ❌");
-  }
-}
-</script>
+      let u = document.getElementById("user").value;
+      let p = document.getElementById("pass").value;
+
+      if (u === "Prashant" && p === "Prashant@27") {
+        window.location.href = "dashboard.html";
+      } else {
+        alert("Wrong Username or Password ❌");
+      }
+    }
+  </script>
 
 </body>
 </html>
