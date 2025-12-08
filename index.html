@@ -1,37 +1,21 @@
 <!DOCTYPE html>
-<html lang="mr">
+<html>
 <head>
-<meta charset="UTF-8">
-<title>Prashant Public</title>
-<style>
-body { font-family: Arial; background:#f4f4f4; }
-.card { background:#fff; padding:20px; max-width:600px; margin:40px auto; border-radius:8px; text-align:center; }
-img { max-width:150px; border-radius:50%; }
-button { padding:10px 20px; background:#007bff; color:#fff; border:none; border-radius:5px; }
-</style>
+  <title>Public Page</title>
 </head>
-<body>
+<body style="text-align:center;">
 
-<div class="card">
-  <img id="publicPhoto" src="https://via.placeholder.com/150">
-  <h2>प्रशांत कदम</h2>
+<h2>📢 Public Message</h2>
 
-  <p id="publicMsg">संदेश लोड होत आहे...</p>
-
-  <button onclick="location.href='dashboard.html'">Admin Login</button>
-</div>
+<img id="img" width="200"><br><br>
+<p id="text"></p>
 
 <script>
-  const msg = localStorage.getItem("publicMessage");
-  const photo = localStorage.getItem("publicPhoto");
+document.getElementById("text").innerText =
+  localStorage.getItem("publicMessage") || "No Message";
 
-  if(msg){
-    document.getElementById("publicMsg").innerText = msg;
-  }
-
-  if(photo){
-    document.getElementById("publicPhoto").src = photo;
-  }
+document.getElementById("img").src =
+  localStorage.getItem("publicPhoto") || "";
 </script>
 
 </body>
