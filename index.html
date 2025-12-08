@@ -1,30 +1,42 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="mr">
 <head>
-  <title>Public Page</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Prashant Public — Home</title>
+  <link rel="stylesheet" href="assets/styles.css">
 </head>
-<body style="text-align:center;">
+<body>
+  <header style="background:#f59e0b;padding:16px;color:#fff;">
+    <div style="max-width:900px;margin:0 auto;">
+      <h1 style="margin:0">Prashant Public</h1>
+      <p style="margin:0;font-size:14px">जनतेसाठी सेवा • संपर्क: 8484087016</p>
+    </div>
+  </header>
 
-<h1 id="name"></h1>
-<h3 id="area"></h3>
+  <main style="max-width:900px;margin:24px auto;padding:0 16px;">
+    <section>
+      <h2>आमच्याबद्दल</h2>
+      <p>प्रशांत पब्लिक — समाजकारण व लोकसेवा. येथे तुमची माहिती, कार्यक्रम आणि संपर्क मिळेल.</p>
+    </section>
 
-<img id="photo" width="220"><br><br>
+    <section>
+      <h2>गॅलरी</h2>
+      <div>
+        <img src="/uploads/photo1.jpg" alt="photo" style="max-width:200px;margin:8px;">
+        <img src="/uploads/photo2.jpg" alt="photo" style="max-width:200px;margin:8px;">
+      </div>
+    </section>
 
-<p id="msg"></p>
+    <section>
+      <h2>संपर्क</h2>
+      <p>फोन: <a href="tel:+918484087016">8484087016</a></p>
+      <p>Email: info@prashantpublic.in (set up later)</p>
+    </section>
 
-<script>
-document.getElementById("name").innerText =
-  localStorage.getItem("p_name") || "उमेदवार नाव";
-
-document.getElementById("area").innerText =
-  localStorage.getItem("p_area") || "भाग क्रमांक";
-
-document.getElementById("msg").innerText =
-  localStorage.getItem("p_msg") || "संदेश";
-
-document.getElementById("photo").src =
-  localStorage.getItem("p_photo") || "";
-</script>
-
+    <footer style="margin-top:32px;border-top:1px solid #eee;padding-top:12px;color:#666;">
+      © Prashant Public
+    </footer>
+  </main>
 </body>
-</html>
+</html> 
