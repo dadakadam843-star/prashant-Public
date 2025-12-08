@@ -1,60 +1,28 @@
 <!DOCTYPE html>
-<html lang="mr">
+<html>
 <head>
-<meta charset="UTF-8">
-<title>Admin Panel</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<style>
-body{
-  font-family: Arial, sans-serif;
-  background:#f2f2f2;
-  padding:40px;
-}
-.box{
-  max-width:400px;
-  margin:auto;
-  background:white;
-  padding:20px;
-  border-radius:10px;
-  box-shadow:0 0 10px rgba(0,0,0,0.2);
-}
-textarea{
-  width:100%;
-  height:120px;
-  font-size:16px;
-}
-button{
-  width:100%;
-  padding:12px;
-  margin-top:10px;
-  font-size:16px;
-  background:green;
-  color:white;
-  border:none;
-  border-radius:5px;
-}
-</style>
+  <title>Admin Login</title>
 </head>
+<body style="text-align:center;">
+  <h2>🔐 Admin Login</h2>
 
-<body>
+  <input id="user" placeholder="Username"><br><br>
+  <input id="pass" type="password" placeholder="Password"><br><br>
 
-<div class="box">
-<h2>✅ Admin Dashboard Open</h2>
+  <button onclick="login()">Login</button>
 
-<textarea id="msg" placeholder="इथे संदेश लिहा"></textarea>
-
-<button onclick="saveMessage()">Save Message</button>
-</div>
-
-<script>
-function saveMessage(){
-  const msg = document.getElementById("msg").value;
-  localStorage.setItem("publicMessage", msg);
-  alert("✅ Message Save झाला");
-}
-</script>
-
+  <script>
+    function login(){
+      if(
+        document.getElementById("user").value==="Prashant" &&
+        document.getElementById("pass").value==="Prashant@27"
+      ){
+        localStorage.setItem("admin","yes");
+        location.href="dashboard.html";
+      } else {
+        alert("Wrong Login");
+      }
+    }
+  </script>
 </body>
 </html>
-
