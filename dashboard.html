@@ -1,40 +1,38 @@
-<script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prashant Public - Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Prashant Public - Dashboard</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="admin.html">Admin</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+            </ul>
+        </nav>
+    </header>
 
-/* ✅ Admin check */
-if (localStorage.getItem("admin") !== "yes") {
-  location.href="admin.html";
-}
+    <main>
+        <section>
+            <h2>Dashboard Overview</h2>
+            <p>येथे तुम्हाला Admin किंवा User चे सर्व अपडेट्स दिसतील.</p>
+            <ul>
+                <li>नवीन पोस्ट्स पहा</li>
+                <li>User डेटा व्यवस्थापित करा</li>
+                <li>सामान्य सेटिंग्ज बदला</li>
+            </ul>
+        </section>
+    </main>
 
-/* ✅ Firebase config */
-const firebaseConfig = {
-  apiKey: "AIzaSyDW9Au99PFKyMz7kBKyIKPIOex_ZkJ3uY",
-  authDomain: "public-working.firebaseapp.com",
-  projectId: "public-working",
-  storageBucket: "public-working.appspot.com",
-  messagingSenderId: "266169229854",
-  appId: "1:266169229854:web:87218d1d726fb50714840f"
-};
-
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-
-/* ✅ SAVE MESSAGE */
-window.save = async function () {
-  const msg = document.getElementById("publicMessage").value;
-  await setDoc(doc(db, "public", "message"), { text: msg });
-  document.getElementById("status").innerText = "✅ Message Saved";
-};
-
-/* ✅ LOAD MESSAGE */
-window.onload = async function () {
-  const snap = await getDoc(doc(db, "public", "message"));
-  if (snap.exists()) {
-    document.getElementById("savedMessage").innerText =
-      snap.data().text;
-  }
-};
-  <button onclick="save()">Save</button>
-  
-</script>
+    <footer>
+        <p>&copy; 2025 Prashant Public. सर्व हक्क राखीव.</p>
+    </footer>
+</body>
+</html>
