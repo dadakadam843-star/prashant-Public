@@ -1,42 +1,105 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="mr">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Prashant Public — Home</title>
-  <link rel="stylesheet" href="assets/styles.css">
+    <meta charset="UTF-8">
+    <title>Prashant Public</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background: #ff6600;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        .container {
+            width: 90%;
+            max-width: 900px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            margin-top: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .profile {
+            text-align: center;
+        }
+        .profile img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 3px solid #ff6600;
+        }
+        .info {
+            margin-top: 20px;
+            line-height: 1.8;
+        }
+        .login {
+            margin-top: 40px;
+            padding: 20px;
+            border-top: 2px solid #eee;
+        }
+        .login input {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+        }
+        .login button {
+            background: #ff6600;
+            color: white;
+            border: none;
+            padding: 10px;
+            width: 100%;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            font-size: 14px;
+            color: #555;
+        }
+    </style>
 </head>
 <body>
-  <header style="background:#f59e0b;padding:16px;color:#fff;">
-    <div style="max-width:900px;margin:0 auto;">
-      <h1 style="margin:0">Prashant Public</h1>
-      <p style="margin:0;font-size:14px">जनतेसाठी सेवा • संपर्क: 8484087016</p>
+
+<header>
+    <h1>Prashant Public</h1>
+    <p>Public Page</p>
+</header>
+
+<div class="container">
+
+    <div class="profile">
+        <!-- तुमचा फोटो येथे ठेवा -->
+        <img src="candidate.jpg" alt="उमेदवार फोटो">
+        <h2>उमेदवार : श्री. प्रशांत</h2>
     </div>
-  </header>
 
-  <main style="max-width:900px;margin:24px auto;padding:0 16px;">
-    <section>
-      <h2>आमच्याबद्दल</h2>
-      <p>प्रशांत पब्लिक — समाजकारण व लोकसेवा. येथे तुमची माहिती, कार्यक्रम आणि संपर्क मिळेल.</p>
-    </section>
+    <div class="info">
+        <p><strong>क्षेत्र:</strong> समाजसेवा व सार्वजनिक कार्य</p>
+        <p><strong>ध्येय:</strong> सर्वसामान्य जनतेसाठी प्रामाणिक व पारदर्शक प्रशासन</p>
+        <p><strong>माहिती:</strong> युवक, महिला व शेतकरी यांच्या प्रश्नांसाठी सक्रिय काम करणारा उमेदवार.</p>
+    </div>
 
-    <section>
-      <h2>गॅलरी</h2>
-      <div>
-        <img src="/uploads/photo1.jpg" alt="photo" style="max-width:200px;margin:8px;">
-        <img src="/uploads/photo2.jpg" alt="photo" style="max-width:200px;margin:8px;">
-      </div>
-    </section>
+    <div class="login">
+        <h3>Admin Login</h3>
+        <form>
+            <input type="text" placeholder="Username">
+            <input type="password" placeholder="Password">
+            <button type="submit">Login</button>
+        </form>
+    </div>
 
-    <section>
-      <h2>संपर्क</h2>
-      <p>फोन: <a href="tel:+918484087016">8484087016</a></p>
-      <p>Email: info@prashantpublic.in (set up later)</p>
-    </section>
+</div>
 
-    <footer style="margin-top:32px;border-top:1px solid #eee;padding-top:12px;color:#666;">
-      © Prashant Public
-    </footer>
-  </main>
+<footer>
+    © 2025 Prashant Public | All Rights Reserved
+</footer>
+
 </body>
-</html> 
+</html>
