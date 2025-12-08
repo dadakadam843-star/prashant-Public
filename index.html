@@ -20,9 +20,9 @@
     }
 
     img {
-      width: 180px;
-      border-radius: 10px;
+      width: 200px;
       margin-top: 20px;
+      border-radius: 10px;
     }
 
     .card {
@@ -30,12 +30,14 @@
       margin: 20px;
       padding: 20px;
       border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
 
-    #publicMsg {
-      font-size: 18px;
-      color: #222;
+    .msg-box {
+      margin-top: 15px;
+      padding: 15px;
+      background: #e8f5e9;
+      border-left: 5px solid green;
+      text-align: left;
       white-space: pre-line;
     }
 
@@ -53,27 +55,32 @@
 
 <body>
 
-<header>
-  <h1>🟠 प्रशांत राऊत</h1>
-  <p>प्रभाग क्रमांक 3 (SC)</p>
-</header>
+  <header>
+    <h1>मा. प्रशांत राजू कदम</h1>
+    <p>प्रभाग क्रमांक 3 (SC)</p>
+  </header>
 
-<img src="photo.png" alt="Prashant">
+  <img src="photo.png" alt="Prashant">
 
-<div class="card">
-  <h3>📢 सार्वजनिक संदेश</h3>
-  <p id="publicMsg">संदेश उपलब्ध नाही</p>
+  <div class="card">
+    <h3>जनतेसाठी संदेश</h3>
 
-  <a href="admin.html">Admin Login</a>
-</div>
+    <div id="publicMsg" class="msg-box">
+      संदेश लोड होत आहे...
+    </div>
 
-<script>
-  const savedMsg = localStorage.getItem("publicMessage");
+    <a href="admin.html">Admin Login</a>
+  </div>
 
-  if (savedMsg) {
-    document.getElementById("publicMsg").innerText = savedMsg;
-  }
-</script>
+  <script>
+    const savedMsg = localStorage.getItem("publicMessage");
+    if (savedMsg) {
+      document.getElementById("publicMsg").innerText = savedMsg;
+    } else {
+      document.getElementById("publicMsg").innerText =
+        "अजून कोणताही संदेश उपलब्ध नाही.";
+    }
+  </script>
 
 </body>
 </html>
