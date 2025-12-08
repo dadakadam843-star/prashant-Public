@@ -3,24 +3,70 @@
 <head>
   <meta charset="UTF-8">
   <title>Admin Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      margin: 0;
+      text-align: center;
+    }
+    header {
+      background: green;
+      color: white;
+      padding: 15px;
+      font-size: 22px;
+    }
+    .card {
+      background: white;
+      margin: 20px;
+      padding: 20px;
+      border-radius: 10px;
+    }
+    textarea {
+      width: 90%;
+      height: 80px;
+      margin-top: 10px;
+    }
+    button {
+      padding: 10px 20px;
+      margin-top: 10px;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+    }
+    img {
+      width: 180px;
+      border-radius: 10px;
+      margin-top: 10px;
+    }
+  </style>
 </head>
 
-<body style="text-align:center;font-family:Arial">
+<body>
 
-  <h2>✅ Admin Dashboard</h2>
+<header>✅ Admin Dashboard Open</header>
 
-  <textarea id="msg" rows="4" cols="30"
-    placeholder="Public message लिहा"></textarea><br><br>
+<div class="card">
+  <h3>तुमचा फोटो</h3>
+  <img src="photo.png" alt="Admin Photo">
+</div>
 
+<div class="card">
+  <h3>Public Message बदला</h3>
+  <textarea id="msg" placeholder="इथे message टाका"></textarea><br>
   <button onclick="saveMsg()">Save Message</button>
+</div>
 
-  <script>
-    function saveMsg() {
-      const msg = document.getElementById("msg").value;
-      localStorage.setItem("publicMessage", msg);
-      alert("Message Saved ✅");
-    }
-  </script>
+<script>
+  function saveMsg() {
+    const text = document.getElementById("msg").value;
+    localStorage.setItem("publicMessage", text);
+    alert("✅ Message Saved Successfully");
+  }
+</script>
 
 </body>
 </html>
