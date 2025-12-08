@@ -1,15 +1,30 @@
-<script>
-document.getElementById("publicName").innerText =
-  localStorage.getItem("name") || "";
-
-document.getElementById("publicWard").innerText =
-  localStorage.getItem("ward") || "";
-
-document.getElementById("publicMsg").innerText =
-  localStorage.getItem("message") || "";
-
-let photo = localStorage.getItem("photo");
-if(photo){
-  document.getElementById("publicPhoto").src = photo;
+<style>
+.public-card{
+ max-width:360px;
+ margin:20px auto;
+ background:#fff;
+ padding:15px;
+ text-align:center;
+ border-radius:14px;
+ box-shadow:0 0 10px #ccc;
 }
+.public-card img{
+ width:120px;
+ height:120px;
+ border-radius:50%;
+}
+</style>
+
+<div class="public-card">
+<img id="publicPhoto">
+<h3 id="publicName"></h3>
+<p id="publicWard"></p>
+<p id="publicMsg"></p>
+</div>
+
+<script>
+publicName.innerText = localStorage.getItem("name") || "";
+publicWard.innerText = localStorage.getItem("ward") || "";
+publicMsg.innerText = localStorage.getItem("message") || "";
+publicPhoto.src = localStorage.getItem("photo") || "";
 </script>
