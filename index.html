@@ -1,86 +1,15 @@
-<!DOCTYPE html>
-<html lang="mr">
-<head>
-  <meta charset="UTF-8">
-  <title>Prashant Public</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>
+document.getElementById("publicName").innerText =
+  localStorage.getItem("name") || "";
 
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f4f4f4;
-      text-align: center;
-    }
+document.getElementById("publicWard").innerText =
+  localStorage.getItem("ward") || "";
 
-    header {
-      background: #ff6a00;
-      color: white;
-      padding: 20px;
-    }
+document.getElementById("publicMsg").innerText =
+  localStorage.getItem("message") || "";
 
-    img {
-      width: 200px;
-      margin-top: 20px;
-      border-radius: 10px;
-    }
-
-    .card {
-      background: white;
-      margin: 20px;
-      padding: 20px;
-      border-radius: 10px;
-    }
-
-    .msg-box {
-      margin-top: 15px;
-      padding: 15px;
-      background: #e8f5e9;
-      border-left: 5px solid green;
-      text-align: left;
-      white-space: pre-line;
-    }
-
-    a {
-      display: inline-block;
-      margin-top: 15px;
-      padding: 10px 20px;
-      background: #007bff;
-      color: white;
-      text-decoration: none;
-      border-radius: 5px;
-    }
-  </style>
-</head>
-
-<body>
-
-  <header>
-    <h1>मा. प्रशांत राजू कदम</h1>
-    <p>प्रभाग क्रमांक 3 (SC)</p>
-  </header>
-
-  <img src="photo.png" alt="Prashant">
-
-  <div class="card">
-    <h3>जनतेसाठी संदेश</h3>
-
-    <div id="publicMsg" class="msg-box">
-      संदेश लोड होत आहे...
-    </div>
-
-    <a href="admin.html">Admin Login</a>
-  </div>
-
-  <script>
-    const savedMsg = localStorage.getItem("publicMessage");
-    if (savedMsg) {
-      document.getElementById("publicMsg").innerText = savedMsg;
-    } else {
-      document.getElementById("publicMsg").innerText =
-        "अजून कोणताही संदेश उपलब्ध नाही.";
-    }
-  </script>
-
-</body>
-</html>
+let photo = localStorage.getItem("photo");
+if(photo){
+  document.getElementById("publicPhoto").src = photo;
+}
+</script>
