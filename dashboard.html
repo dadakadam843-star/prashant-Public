@@ -2,71 +2,97 @@
 <html lang="mr">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Admin Dashboard</title>
+
+<style>
+body{
+  margin:0;
+  background:#f2f2f2;
+  font-family: Arial;
+}
+.card{
+  max-width:360px;
+  background:#fff;
+  margin:20px auto;
+  padding:15px;
+  border-radius:12px;
+  box-shadow:0 0 10px rgba(0,0,0,.1);
+}
+h2{text-align:center;}
+input,textarea{
+  width:100%;
+  padding:10px;
+  margin:6px 0;
+  border-radius:8px;
+  border:1px solid #ccc;
+  font-size:16px;
+}
+button{
+  width:100%;
+  padding:12px;
+  background:#28a745;
+  color:#fff;
+  border:none;
+  border-radius:8px;
+  font-size:17px;
+}
+img{
+  width:120px;
+  height:120px;
+  border-radius:50%;
+  display:block;
+  margin:auto;
+}
+.preview{text-align:center;}
+</style>
 </head>
 
-<body style="font-family:Arial; padding:20px">
+<body>
 
-<h2>✅ Admin Dashboard</h2>
+<div class="card">
+<h2>✅ Admin Panel</h2>
 
-<!-- NAME -->
-<p>नाव:</p>
-<input id="name" placeholder="नाव टाका"><br><br>
+<input id="name" placeholder="नाव">
+<input id="ward" placeholder="प्रभाग क्रमांक">
 
-<!-- WARD -->
-<p>प्रभाग:</p>
-<input id="ward" placeholder="प्रभाग क्रमांक"><br><br>
+<textarea id="message" rows="4" placeholder="सार्वजनिक संदेश"></textarea>
 
-<!-- MESSAGE -->
-<p>सार्वजनिक संदेश:</p>
-<textarea id="message" rows="4" cols="50"></textarea><br><br>
-
-<!-- PHOTO -->
-<p>फोटो Upload करा:</p>
-<input type="file" id="photo" accept="image/*"><br><br>
+<input type="file" id="photo" accept="image/*">
 
 <button onclick="saveData()">Save</button>
+</div>
 
-<hr>
-
-<h3>Saved Preview:</h3>
-<img id="previewPhoto" width="120"><br>
+<div class="card preview">
+<img id="previewPhoto">
 <p id="previewText"></p>
+</div>
 
 <script>
 function saveData(){
-  let name = document.getElementById("name").value;
-  let ward = document.getElementById("ward").value;
-  let msg = document.getElementById("message").value;
-  let photo = document.getElementById("photo").files[0];
+localStorage.setItem("name",name.value);
+localStorage.setItem("ward",ward.value);
+localStorage.setItem("message",message.value);
 
-  localStorage.setItem("name", name);
-  localStorage.setItem("ward", ward);
-  localStorage.setItem("message", msg);
+let file=photo.files[0];
+if(file){
+ let r=new FileReader();
+ r.onload=()=>{localStorage.setItem("photo",r.result);show();}
+ r.readAsDataURL(file);
+}else show();
 
-  // PHOTO convert to base64
-  let reader = new FileReader();
-  reader.onload = function(){
-    localStorage.setItem("photo", reader.result);
-    showPreview();
-  }
-  if(photo) reader.readAsDataURL(photo);
-  else showPreview();
-
-  alert("✅ Data Saved");
+alert("✅ Saved Successfully");
 }
 
-function showPreview(){
-  document.getElementById("previewPhoto").src = localStorage.getItem("photo");
-  document.getElementById("previewText").innerHTML =
-    localStorage.getItem("name")+"<br>"
-    +localStorage.getItem("ward")+"<br>"
-    +localStorage.getItem("message");
+function show(){
+previewPhoto.src=localStorage.getItem("photo");
+previewText.innerHTML=
+localStorage.getItem("name")+"<br>"+
+localStorage.getItem("ward")+"<br>"+
+localStorage.getItem("message");
 }
-
-showPreview();
+show();
 </script>
 
 </body>
 </html>
-
