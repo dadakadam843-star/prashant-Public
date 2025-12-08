@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="mr">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>Prashant Public</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -39,38 +39,28 @@
     }
   </style>
 </head>
+
 <body>
 
-<header>
-  <h1>मा. प्रशांत राजू कदम</h1>
-  <p>प्रभाग क्रमांक ३ (SC)</p>
-</header>
+  <header>
+    <h1>मा. प्रशांत राजू कदम</h1>
+    <p>प्रभाग क्रमांक ३ (SC)</p>
+  </header>
 
-<img src="photo.png" alt="Prashant">
+  <!-- फोटो असेल तर photo.png नावाची image add कर -->
+  <img src="photo.png" alt="Prashant">
 
-<div class="card">
-  <p>
+  <div class="card">
     <p id="publicMsg">Welcome to My Website</p>
+    <a href="admin.html">Admin Login</a>
+  </div>
 
-<script>
+  <script>
+    const savedMsg = localStorage.getItem("publicMessage");
+    if (savedMsg) {
+      document.getElementById("publicMsg").innerText = savedMsg;
+    }
+  </script>
 
-  const savedMsg = localStorage.getItem("publicMessage");
-  if (savedMsg) {
-    document.getElementById("publicMsg").innerText = savedMsg;
-  }
-
-</script>
-  
-  </p>
-
-  <a href="admin.html">Admin Login</a>
-</div>
-<script>
-  const savedMsg = localStorage.getItem("publicMessage");
-  if (savedMsg) {
-    document.getElementById("publicMsg").innerText = savedMsg;
-  }
-</script>
-  
 </body>
 </html>
