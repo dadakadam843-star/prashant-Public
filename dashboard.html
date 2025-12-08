@@ -2,38 +2,102 @@
 <html lang="mr">
 <head>
     <meta charset="UTF-8">
+    <title>Admin Dashboard - Prashant Public</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prashant Public - Dashboard</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        body{
+            margin:0;
+            font-family: Arial, sans-serif;
+            background:#f4f4f4;
+        }
+        header{
+            background:#ff6600;
+            color:#fff;
+            padding:15px;
+            text-align:center;
+        }
+        .container{
+            padding:20px;
+        }
+        .card{
+            background:#fff;
+            padding:20px;
+            margin-bottom:20px;
+            box-shadow:0 0 10px rgba(0,0,0,0.1);
+            border-radius:5px;
+        }
+        button{
+            padding:10px 15px;
+            background:#ff6600;
+            color:white;
+            border:none;
+            cursor:pointer;
+            border-radius:4px;
+            font-size:15px;
+        }
+        input, textarea{
+            width:100%;
+            padding:10px;
+            margin-top:8px;
+            margin-bottom:15px;
+            border:1px solid #ccc;
+            border-radius:4px;
+        }
+        .logout{
+            background:red;
+        }
+        footer{
+            text-align:center;
+            font-size:14px;
+            color:#555;
+            padding:10px;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <h1>Prashant Public - Dashboard</h1>
-        <p>जनतेसाठी सेवा • संपर्क: 8484087016</p>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="admin.html">Admin</a></li>
-                <li><a href="dashboard.html">Dashboard</a></li>
-            </ul>
-        </nav>
-    </header>
 
-    <main>
-        <section>
-            <h2>Dashboard Overview</h2>
-            <p>येथे तुम्हाला Admin किंवा User चे सर्व अपडेट्स दिसतील.</p>
-            <ul>
-                <li>नवीन पोस्ट्स पहा</li>
-                <li>User डेटा व्यवस्थापित करा</li>
-                <li>सामान्य सेटिंग्ज बदला</li>
-            </ul>
-        </section>
-    </main>
+<header>
+    <h2>Admin Dashboard</h2>
+    <p>Prashant Public</p>
+</header>
 
-    <footer>
-        <p>&copy; 2025 Prashant Public. सर्व हक्क राखीव.</p>
-    </footer>
+<div class="container">
+
+    <div class="card">
+        <h3>👤 Admin माहिती</h3>
+        <p><strong>Name:</strong> Admin</p>
+        <p><strong>Status:</strong> Logged In</p>
+    </div>
+
+    <div class="card">
+        <h3>✏️ उमेदवार माहिती Update</h3>
+        <input type="text" placeholder="उमेदवार नाव">
+        <textarea rows="4" placeholder="उमेदवार माहिती"></textarea>
+        <button>Save Changes</button>
+    </div>
+
+    <div class="card">
+        <h3>📢 Notice / Message</h3>
+        <textarea rows="3" placeholder="जनतेसाठी संदेश"></textarea>
+        <button>Publish</button>
+    </div>
+
+    <div class="card">
+        <button class="logout" onclick="logout()">Logout</button>
+    </div>
+
+</div>
+
+<footer>
+    © 2025 Prashant Public | Admin Panel
+</footer>
+
+<script>
+    function logout(){
+        alert("Logout Successful");
+        window.location.href = "index.html"; 
+    }
+</script>
+
 </body>
 </html>
