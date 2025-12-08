@@ -1,40 +1,29 @@
+
 <!DOCTYPE html>
-<html lang="mr">
+<html>
 <head>
-<meta charset="UTF-8">
-<title>Admin Dashboard</title>
-<style>
-body { font-family: Arial; background:#eef2f5; }
-.box { background:#fff; padding:20px; max-width:600px; margin:40px auto; border-radius:8px; }
-textarea, input { width:100%; margin-top:10px; padding:10px; }
-button { margin-top:10px; padding:10px; background:green; color:white; border:none; }
-</style>
+  <title>Admin Dashboard</title>
 </head>
 <body>
 
-<div class="box">
-  <h2>✅ Admin Dashboard Open</h2>
+<h2>✅ Admin Dashboard Open</h2>
 
-  <label>Public Message</label>
-  <textarea id="msg" rows="4"></textarea>
+<textarea id="msg" placeholder="इथे message लिहा" rows="5" cols="50"></textarea><br><br>
+<input id="photo" placeholder="Photo URL टाका" style="width:350px"><br><br>
 
-  <label>Photo URL</label>
-  <input id="photo" placeholder="Photo link paste करा">
+<button onclick="save()">Save</button>
 
-  <button onclick="save()">Save</button>
-
-  <p id="status"></p>
-</div>
+<p id="status"></p>
 
 <script>
+if(localStorage.getItem("admin")!=="yes"){
+  location.href="admin.html";
+}
+
 function save(){
-  const m = document.getElementById("msg").value;
-  const p = document.getElementById("photo").value;
-
-  localStorage.setItem("publicMessage", m);
-  localStorage.setItem("publicPhoto", p);
-
-  document.getElementById("status").innerText = "✅ Saved Successfully";
+  localStorage.setItem("publicMessage", document.getElementById("msg").value);
+  localStorage.setItem("publicPhoto", document.getElementById("photo").value);
+  document.getElementById("status").innerText="✅ Saved Successfully";
 }
 </script>
 
