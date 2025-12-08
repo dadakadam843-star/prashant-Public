@@ -4,13 +4,23 @@
   <meta charset="UTF-8">
   <title>Admin Dashboard</title>
 </head>
-<body>
-  <h2>✅ Admin Dashboard Open</h2>
 
-  <textarea id="msg" placeholder="Public message लिहा"></textarea>
-  <br><br>
+<body style="text-align:center;font-family:Arial">
+
+  <h2>✅ Admin Dashboard</h2>
+
+  <textarea id="msg" rows="4" cols="30"
+    placeholder="Public message लिहा"></textarea><br><br>
+
   <button onclick="saveMsg()">Save Message</button>
 
   <script>
+    function saveMsg() {
+      const msg = document.getElementById("msg").value;
+      localStorage.setItem("publicMessage", msg);
+      alert("Message Saved ✅");
+    }
+  </script>
 
-    
+</body>
+</html>
