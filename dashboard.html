@@ -3,37 +3,80 @@
 <head>
   <meta charset="UTF-8">
   <title>Admin Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+    body {
+      font-family: Arial;
+      background: #f4f4f4;
+      padding: 20px;
+    }
+
+    textarea {
+      width: 100%;
+      height: 120px;
+      padding: 10px;
+      font-size: 16px;
+    }
+
+    button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background: green;
+      color: white;
+      border: none;
+      border-radius: 5px;
+    }
+
+    .box {
+      background: white;
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 20px;
+    }
+  </style>
 </head>
 
-<body style="font-family:Arial; padding:20px">
+<body>
 
-  <h1>✅ Admin Dashboard Open</h1>
-  <p style="color:green">Login यशस्वी झाला आहे</p>
+<h2>✅ Admin Dashboard Open</h2>
+<p style="color:green;">Login यशस्वी झाला आहे</p>
 
-  <hr>
-
+<div class="box">
   <h3>Public Message Set करा</h3>
 
-  <textarea id="msg" rows="4" cols="40" placeholder="इथे मेसेज लिहा"></textarea>
-  <br><br>
+  <textarea id="msg" placeholder="इथे संदेश लिहा..."></textarea><br>
   <button onclick="saveMsg()">Save Message</button>
+</div>
 
-  <hr>
-
+<div class="box">
   <h3>Saved Message:</h3>
-  <p id="show"></p>
+  <p id="showMsg">अद्याप कोणताही संदेश नाही</p>
+</div>
 
-  <script>
-    // Page load होताना message दाखव
-    document.getElementById("show").innerText =
-      localStorage.getItem("publicMessage") || "No message yet";
+<script>
+  function saveMsg() {
+    const message = document.getElementById("msg").value;
 
-    function saveMsg() {
-      let text = document.getElementById("msg").value;
-      localStorage.setItem("publicMessage", text);
-      document.getElementById("show").innerText = text;
+    if (message.trim() === "") {
+      alert("संदेश लिहा");
+      return;
     }
-  </script>
+
+    // ✅ हेच line तू विचारत होतास
+    localStorage.setItem("publicMessage", message);
+
+    document.getElementById("showMsg").innerText = message;
+    alert("✅ Message Saved");
+  }
+
+  // Page open होताच saved message दाखव
+  const saved = localStorage.getItem("publicMessage");
+  if (saved) {
+    document.getElementById("showMsg").innerText = saved;
+  }
+</script>
 
 </body>
 </html>
