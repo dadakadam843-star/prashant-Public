@@ -1,36 +1,40 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Admin Panel</title>
-</head>
-<body>
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
-<h2>✅ Admin Dashboard</h2>
-
-<input id="name" placeholder="उमेदवार नाव" style="width:300px"><br><br>
-<input id="area" placeholder="भाग क्रमांक / क्षेत्र" style="width:300px"><br><br>
-
-<textarea id="msg" placeholder="संदेश लिहा" rows="5" cols="50"></textarea><br><br>
-
-<input id="photo" placeholder="Photo URL टाका" style="width:350px"><br><br>
-
-<button onclick="save()">Save Info</button>
-
-<p id="status"></p>
-
-<script>
-if(localStorage.getItem("admin")!=="yes"){
+/* ✅ Admin check */
+if (localStorage.getItem("admin") !== "yes") {
   location.href="admin.html";
 }
 
-function save(){
-  localStorage.setItem("p_name",document.getElementById("name").value);
-  localStorage.setItem("p_area",document.getElementById("area").value);
-  localStorage.setItem("p_msg",document.getElementById("msg").value);
-  localStorage.setItem("p_photo",document.getElementById("photo").value);
-  document.getElementById("status").innerText="✅ माहिती जतन झाली";
-}
-</script>
+/* ✅ Firebase config */
+const firebaseConfig = {
+  apiKey: "AIzaSyDW9Au99PFKyMz7kBKyIKPIOex_ZkJ3uY",
+  authDomain: "public-working.firebaseapp.com",
+  projectId: "public-working",
+  storageBucket: "public-working.appspot.com",
+  messagingSenderId: "266169229854",
+  appId: "1:266169229854:web:87218d1d726fb50714840f"
+};
 
-</body>
-</html>
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+/* ✅ SAVE MESSAGE */
+window.save = async function () {
+  const msg = document.getElementById("publicMessage").value;
+  await setDoc(doc(db, "public", "message"), { text: msg });
+  document.getElementById("status").innerText = "✅ Message Saved";
+};
+
+/* ✅ LOAD MESSAGE */
+window.onload = async function () {
+  const snap = await getDoc(doc(db, "public", "message"));
+  if (snap.exists()) {
+    document.getElementById("savedMessage").innerText =
+      snap.data().text;
+  }
+};
+  <button onclick="save()">Save</button>
+  
+</script>
