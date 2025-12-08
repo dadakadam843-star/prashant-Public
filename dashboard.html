@@ -1,82 +1,72 @@
 <!DOCTYPE html>
 <html lang="mr">
 <head>
-  <meta charset="UTF-8">
-  <title>Admin Dashboard</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <style>
-    body {
-      font-family: Arial;
-      background: #f4f4f4;
-      padding: 20px;
-    }
-
-    textarea {
-      width: 100%;
-      height: 120px;
-      padding: 10px;
-      font-size: 16px;
-    }
-
-    button {
-      margin-top: 10px;
-      padding: 10px 20px;
-      font-size: 16px;
-      background: green;
-      color: white;
-      border: none;
-      border-radius: 5px;
-    }
-
-    .box {
-      background: white;
-      padding: 15px;
-      border-radius: 8px;
-      margin-top: 20px;
-    }
-  </style>
+<meta charset="UTF-8">
+<title>Admin Dashboard</title>
 </head>
 
-<body>
+<body style="font-family:Arial; padding:20px">
 
-<h2>✅ Admin Dashboard Open</h2>
-<p style="color:green;">Login यशस्वी झाला आहे</p>
+<h2>✅ Admin Dashboard</h2>
 
-<div class="box">
-  <h3>Public Message Set करा</h3>
+<!-- NAME -->
+<p>नाव:</p>
+<input id="name" placeholder="नाव टाका"><br><br>
 
-  <textarea id="msg" placeholder="इथे संदेश लिहा..."></textarea><br>
-  <button onclick="saveMsg()">Save Message</button>
-</div>
+<!-- WARD -->
+<p>प्रभाग:</p>
+<input id="ward" placeholder="प्रभाग क्रमांक"><br><br>
 
-<div class="box">
-  <h3>Saved Message:</h3>
-  <p id="showMsg">अद्याप कोणताही संदेश नाही</p>
-</div>
+<!-- MESSAGE -->
+<p>सार्वजनिक संदेश:</p>
+<textarea id="message" rows="4" cols="50"></textarea><br><br>
+
+<!-- PHOTO -->
+<p>फोटो Upload करा:</p>
+<input type="file" id="photo" accept="image/*"><br><br>
+
+<button onclick="saveData()">Save</button>
+
+<hr>
+
+<h3>Saved Preview:</h3>
+<img id="previewPhoto" width="120"><br>
+<p id="previewText"></p>
 
 <script>
-  function saveMsg() {
-    const message = document.getElementById("msg").value;
+function saveData(){
+  let name = document.getElementById("name").value;
+  let ward = document.getElementById("ward").value;
+  let msg = document.getElementById("message").value;
+  let photo = document.getElementById("photo").files[0];
 
-    if (message.trim() === "") {
-      alert("संदेश लिहा");
-      return;
-    }
+  localStorage.setItem("name", name);
+  localStorage.setItem("ward", ward);
+  localStorage.setItem("message", msg);
 
-    // ✅ हेच line तू विचारत होतास
-    localStorage.setItem("publicMessage", message);
-
-    document.getElementById("showMsg").innerText = message;
-    alert("✅ Message Saved");
+  // PHOTO convert to base64
+  let reader = new FileReader();
+  reader.onload = function(){
+    localStorage.setItem("photo", reader.result);
+    showPreview();
   }
+  if(photo) reader.readAsDataURL(photo);
+  else showPreview();
 
-  // Page open होताच saved message दाखव
-  const saved = localStorage.getItem("publicMessage");
-  if (saved) {
-    document.getElementById("showMsg").innerText = saved;
-  }
+  alert("✅ Data Saved");
+}
+
+function showPreview(){
+  document.getElementById("previewPhoto").src = localStorage.getItem("photo");
+  document.getElementById("previewText").innerHTML =
+    localStorage.getItem("name")+"<br>"
+    +localStorage.getItem("ward")+"<br>"
+    +localStorage.getItem("message");
+}
+
+showPreview();
 </script>
 
 </body>
 </html>
+
