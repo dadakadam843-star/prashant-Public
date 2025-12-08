@@ -5,17 +5,25 @@
 </head>
 <body style="text-align:center;">
 
-<h2>📢 Public Message</h2>
+<h1 id="name"></h1>
+<h3 id="area"></h3>
 
-<img id="img" width="200"><br><br>
-<p id="text"></p>
+<img id="photo" width="220"><br><br>
+
+<p id="msg"></p>
 
 <script>
-document.getElementById("text").innerText =
-  localStorage.getItem("publicMessage") || "No Message";
+document.getElementById("name").innerText =
+  localStorage.getItem("p_name") || "उमेदवार नाव";
 
-document.getElementById("img").src =
-  localStorage.getItem("publicPhoto") || "";
+document.getElementById("area").innerText =
+  localStorage.getItem("p_area") || "भाग क्रमांक";
+
+document.getElementById("msg").innerText =
+  localStorage.getItem("p_msg") || "संदेश";
+
+document.getElementById("photo").src =
+  localStorage.getItem("p_photo") || "";
 </script>
 
 </body>
