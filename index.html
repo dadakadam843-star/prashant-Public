@@ -16,12 +16,10 @@ img{max-width:180px;border-radius:50%}
 <h2>Prashant Public</h2>
 
 <div class="box">
-<img id="img"><br><br>
+<img id="img">
 <p id="info"></p>
-
-<h4>📢 संदेश</h4>
+<h3>📢 संदेश</h3>
 <p id="msg"></p>
-
 <button class="whatsapp" onclick="shareWhatsApp()">📲 WhatsApp वर Share करा</button>
 </div>
 
@@ -30,32 +28,24 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/fireba
 import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
 const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_PROJECT.firebaseapp.com",
-  projectId: "YOUR_PROJECT_ID"
+  apiKey: "AIzaSyDW9Au99PFKyMz7kBKypIKPIOex_ZkJ3uY",
+  authDomain: "public-working.firebaseapp.com",
+  projectId: "public-working",
 };
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-const s = await getDoc(doc(db,"public","data"));
-if(s.exists()){
- img.src=s.data().img;
- info.innerText=s.data().info;
- msg.innerText=s.data().msg;
+const snap = await getDoc(doc(db,"public","data"));
+if(snap.exists()){
+  img.src = snap.data().img;
+  info.innerText = snap.data().info;
+  msg.innerText = snap.data().msg;
 }
 
 window.shareWhatsApp = function(){
- const text = `📢 Prashant Public
-
-🧑‍💼 माहिती:
-${info.innerText}
-
-🗳️ संदेश:
-${msg.innerText}
-
-👉 ${location.href}`;
- window.open("https://wa.me/?text="+encodeURIComponent(text));
+  const text = `📢 Prashant Public\n\n${info.innerText}\n\n🗳️ संदेश:\n${msg.innerText}\n\n👉 ${location.href}`;
+  window.open("https://wa.me/?text="+encodeURIComponent(text));
 }
 </script>
 
