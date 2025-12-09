@@ -2,60 +2,54 @@
 <html>
 <head>
   <title>Admin Panel</title>
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-storage-compat.js"></script>
 </head>
 <body>
 
 <h2>Admin Login</h2>
-<input id="email" placeholder="Email"><br><br>
-<input id="password" type="password" placeholder="Password"><br><br>
+
+<input type="password" id="pass" placeholder="Enter Admin Password">
 <button onclick="login()">Login</button>
 
 <hr>
 
-<h3>Message Update</h3>
-<textarea id="msg"></textarea><br><br>
-<button onclick="saveMsg()">Save Message</button>
+<div id="data" style="display:none;">
+  <h3>Firestore Data</h3>
+  <ul id="list"></ul>
+</div>
 
-<hr>
-
-<h3>Upload Photo</h3>
-<input type="file" id="photo"><br><br>
-<button onclick="uploadPhoto()">Upload</button>
+<!-- Firebase CDN -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
 
 <script>
-const firebaseConfig = {
-  apiKey: "AIzaSyDW9Au99PFKyMz7kBKypIKPIOex_ZkJ3uY",
-  authDomain: "public-working.firebaseapp.com",
-  projectId: "public-working",
-  storageBucket: "public-working.appspot.com",
-};
+  const firebaseConfig = {
+    apiKey: "AIzaSyDW9Au99PFKyMz7kBKypIKPIOex_ZkJ3uY",
+    authDomain: "public-working.firebaseapp.com",
+    projectId: "public-working",
+  };
 
-firebase.initializeApp(firebaseConfig);
-const auth = firebase.auth();
-const db = firebase.firestore();
-const storage = firebase.storage();
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore();
 
-function login(){
-  auth.signInWithEmailAndPassword(
-    email.value, password.value
-  ).then(()=>alert("Login Success"));
-}
+  function login() {
+    const p = document.getElementById("pass").value;
+    if (p === "admin123") {   // 👈 password change करू शकतोस
+      document.getElementById("data").style.display = "block";
+      loadData();
+    } else {
+      alert("Wrong Password");
+    }
+  }
 
-function saveMsg(){
-  db.collection("data").doc("content").set({
-    message: msg.value
-  }).then(()=>alert("Message Saved"));
-}
-
-function uploadPhoto(){
-  const file = document.getElementById('photo').files[0];
-  storage.ref("photo.jpg").put(file)
-  .then(()=>alert("Photo Uploaded"));
-}
+  function loadData() {
+    db.collection("messages").get().then((snapshot) => {
+      snapshot.forEach((doc) => {
+        const li = document.createElement("li");
+        li.innerText = JSON.stringify(doc.data());
+        document.getElementById("list").appendChild(li);
+      });
+    });
+  }
 </script>
 
 </body>
