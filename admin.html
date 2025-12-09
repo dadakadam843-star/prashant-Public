@@ -1,42 +1,62 @@
 <!DOCTYPE html>
-<html lang="mr">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prashant Public - Admin</title>
-    <link rel="stylesheet" href="style.css">
+  <title>Admin Panel</title>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-storage-compat.js"></script>
 </head>
 <body>
-    <header>
-        <h1>Prashant Public - Admin Panel</h1>
-        <p>जनतेसाठी सेवा • संपर्क: 8484087016</p>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="admin.html">Admin</a></li>
-                <li><a href="dashboard.html">Dashboard</a></li>
-            </ul>
-        </nav>
-    </header>
 
-    <main>
-        <section>
-            <h2>Admin लॉगिन</h2>
-            <form action="#" method="post">
-                <label for="username">Username:</label>
-                <input type="text" id="username" name="username" required><br><br>
+<h2>Admin Login</h2>
+<input id="email" placeholder="Email"><br><br>
+<input id="password" type="password" placeholder="Password"><br><br>
+<button onclick="login()">Login</button>
 
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required><br><br>
+<hr>
 
-                <button type="submit">लॉगिन करा</button>
-            </form>
-        </section>
-    </main>
+<h3>Message Update</h3>
+<textarea id="msg"></textarea><br><br>
+<button onclick="saveMsg()">Save Message</button>
 
-    <footer>
-        <p>&copy; 2025 Prashant Public. सर्व हक्क राखीव.</p>
-    </footer>
+<hr>
+
+<h3>Upload Photo</h3>
+<input type="file" id="photo"><br><br>
+<button onclick="uploadPhoto()">Upload</button>
+
+<script>
+const firebaseConfig = {
+  apiKey: "AIzaSyDW9Au99PFKyMz7kBKypIKPIOex_ZkJ3uY",
+  authDomain: "public-working.firebaseapp.com",
+  projectId: "public-working",
+  storageBucket: "public-working.appspot.com",
+};
+
+firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth();
+const db = firebase.firestore();
+const storage = firebase.storage();
+
+function login(){
+  auth.signInWithEmailAndPassword(
+    email.value, password.value
+  ).then(()=>alert("Login Success"));
+}
+
+function saveMsg(){
+  db.collection("data").doc("content").set({
+    message: msg.value
+  }).then(()=>alert("Message Saved"));
+}
+
+function uploadPhoto(){
+  const file = document.getElementById('photo').files[0];
+  storage.ref("photo.jpg").put(file)
+  .then(()=>alert("Photo Uploaded"));
+}
+</script>
+
 </body>
 </html>
