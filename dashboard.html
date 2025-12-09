@@ -46,6 +46,14 @@ function logout(){
     window.location.href="login.html";
   });
 }
+  <button onclick="logout()">Logout</button>
+
+function logout(){
+  localStorage.removeItem("admin");
+  window.location.href="login.html";
+}
+
+  
 </script>
 
 </body>
