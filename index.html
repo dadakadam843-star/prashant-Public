@@ -96,5 +96,43 @@
     © 2025 Prashant Public | All Rights Reserved
   </footer>
 
+<!-- Floating Contact Buttons -->
+<style>
+  .contact-buttons {
+    position: fixed;
+    bottom: 20px;
+    right: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 999;
+  }
+  .contact-buttons a {
+    text-decoration: none;
+    color: white;
+    padding: 12px 15px;
+    border-radius: 50px;
+    font-size: 14px;
+    font-weight: bold;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+  }
+  .whatsapp {
+    background: #25D366;
+  }
+  .call {
+    background: #0b5ed7;
+  }
+</style>
+
+<div class="contact-buttons">
+  <a class="whatsapp" href="https://wa.me/919999999999" target="_blank">
+    WhatsApp करा
+  </a>
+  <a class="call" href="tel:9999999999">
+    Call करा
+  </a>
+</div>
+  
+  
 </body>
 </html>
