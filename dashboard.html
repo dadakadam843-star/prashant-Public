@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Dashboard</title>
+<meta name="viewport" content="width=device-width">
+</head>
+<body>
+
+<script>
+if(localStorage.getItem("admin")!=="yes"){
+location="login.html";
+}
+</script>
+
+<h2>Admin Dashboard</h2>
+
+<input id="name" placeholder="Name">
+<textarea id="info" placeholder="Info"></textarea>
+<textarea id="msg" placeholder="Message"></textarea>
+<input type="text" id="photo" placeholder="Photo URL">
+<button onclick="save()">Save</button>
+
+<script type="module">
+import { app, db } from "./firebase.js";
+import { doc, setDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+window.save=async()=>{
+await setDoc(doc(db,"public","data"),{
+name:name.value,
+info:info.value,
+msg:msg.value,
+photo:photo.value
+});
+alert("Saved Live ✅");
+}
+</script>
+
+</body>
+</html>
