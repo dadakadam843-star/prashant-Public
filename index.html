@@ -2,125 +2,62 @@
 <html lang="mr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Prashant Public</title>
-
 <style>
-body {
- margin: 0;
- font-family: Arial, sans-serif;
- background: #f4f4f4;
-}
-
-header {
- background: orange;
- color: white;
- padding: 15px;
- text-align: center;
- font-weight: bold;
- font-size: 22px;
-}
-
-.container {
- max-width: 900px;
- margin: auto;
- background: white;
- padding: 20px;
-}
-
-.photo {
- text-align: center;
- margin-top: 20px;
-}
-
-.photo img {
- width: 150px;
- height: 150px;
- border-radius: 50%;
- border: 3px solid orange;
- object-fit: cover;
-}
-
-h2 {
- text-align: center;
- margin-top: 10px;
-}
-
-.info {
- margin-top: 25px;
- line-height: 1.8;
- font-size: 16px;
-}
-
-footer {
- margin-top: 40px;
- background: #222;
- color: white;
- text-align: center;
- padding: 10px;
- font-size: 14px;
-}
-
-.contact-buttons {
- position: fixed;
- bottom: 20px;
- right: 15px;
- display: flex;
- flex-direction: column;
- gap: 10px;
- z-index: 999;
-}
-
-.contact-buttons a {
- text-decoration: none;
- color: white;
- padding: 12px 15px;
- border-radius: 50px;
- font-size: 14px;
-}
-
-.whatsapp {
- background: green;
-}
-
-.call {
- background: #0b5ed7;
-}
+body{font-family:sans-serif;background:#f4f4f4;text-align:center}
+.box{background:#fff;margin:20px auto;padding:20px;border-radius:12px;max-width:420px}
+img{max-width:180px;border-radius:50%}
+.whatsapp{background:#25D366;color:#fff;padding:12px;border:none;border-radius:8px;width:100%;font-size:16px}
 </style>
 </head>
-
 <body>
 
-<header>
-Prashant Public
-</header>
+<h2>Prashant Public</h2>
 
-<div class="container">
+<div class="box">
+<img id="img"><br><br>
+<p id="info"></p>
 
-<div class="photo">
-<img src="something.jpg">
- 
+<h4>📢 संदेश</h4>
+<p id="msg"></p>
+
+<button class="whatsapp" onclick="shareWhatsApp()">📲 WhatsApp वर Share करा</button>
 </div>
 
-<h2>श्री. प्रशांत राजू कदम</h2>
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
-<div class="info">
-<p><b>उमेदवार :</b> श्री. प्रशांत राजू कदम</p>
-<p><b>क्षेत्र :</b> समाजसेवा व सार्वजनिक कार्य</p>
-<p><b>ध्येय :</b> सर्वसामान्य जनतेसाठी पारदर्शक, प्रामाणिक व विकासाभिमुख प्रशासन</p>
-<p><b>संदेश :</b> "आपला विश्वास आणि पाठिंबा हाच माझा खरा बळ आहे."</p>
-</div>
+const firebaseConfig = {
+  apiKey: "YOUR_API_KEY",
+  authDomain: "YOUR_PROJECT.firebaseapp.com",
+  projectId: "YOUR_PROJECT_ID"
+};
 
-</div>
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
 
-<footer>
-© 2025 Prashant Public | All Rights Reserved
-</footer>
+const s = await getDoc(doc(db,"public","data"));
+if(s.exists()){
+ img.src=s.data().img;
+ info.innerText=s.data().info;
+ msg.innerText=s.data().msg;
+}
 
-<div class="contact-buttons">
-<a href="https://wa.me/918484078016" class="whatsapp">WhatsApp करा</a>
-<a href="tel:918484078016" class="call">Call करा</a>
-</div>
+window.shareWhatsApp = function(){
+ const text = `📢 Prashant Public
+
+🧑‍💼 माहिती:
+${info.innerText}
+
+🗳️ संदेश:
+${msg.innerText}
+
+👉 ${location.href}`;
+ window.open("https://wa.me/?text="+encodeURIComponent(text));
+}
+</script>
 
 </body>
 </html>
