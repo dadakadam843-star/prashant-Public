@@ -1,59 +1,46 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Dashboard</title>
+<title>Admin Dashboard</title>
+<style>
+body{font-family:Arial;background:#f2f2f2}
+.box{max-width:600px;margin:40px auto;background:#fff;padding:20px}
+textarea,input{width:100%;padding:10px;margin-top:10px}
+button{padding:10px;background:orange;color:#fff;border:none;margin-top:10px}
+</style>
 </head>
 <body>
 
-<h2>Admin Dashboard</h2>
+<div class="box">
+<h2>Dashboard</h2>
 
-<input type="file" id="image"><br><br>
-<textarea id="info" placeholder="माहिती"></textarea><br><br>
-<textarea id="msg" placeholder="संदेश"></textarea><br><br>
+<label>उमेदवार नाव</label>
+<input id="name" placeholder="नाव">
+
+<label>माहिती</label>
+<textarea id="info" placeholder="माहिती"></textarea>
 
 <button onclick="save()">Save</button>
 <button onclick="logout()">Logout</button>
 
-<script src="firebase.js"></script>
-<script>
+<p id="status"></p>
+</div>
 
-auth.onAuthStateChanged(function(user){
-  if(!user){
-    window.location.href="login.html";
-  }
-});
+<script>
+if(localStorage.getItem("admin")!=="yes"){
+  window.location.href="login.html";
+}
 
 function save(){
-  var file = document.getElementById("image").files[0];
-  var info = document.getElementById("info").value;
-  var msg = document.getElementById("msg").value;
-
-  var ref = storage.ref("photo.jpg");
-  ref.put(file).then(function(){
-    ref.getDownloadURL().then(function(url){
-      db.collection("data").doc("public").set({
-        image:url,
-        info:info,
-        msg:msg
-      });
-      alert("Saved ✅");
-    });
-  });
+  localStorage.setItem("name",document.getElementById("name").value);
+  localStorage.setItem("info",document.getElementById("info").value);
+  document.getElementById("status").innerText="Saved Successfully";
 }
-
-function logout(){
-  auth.signOut().then(function(){
-    window.location.href="login.html";
-  });
-}
-  <button onclick="logout()">Logout</button>
 
 function logout(){
   localStorage.removeItem("admin");
   window.location.href="login.html";
 }
-
-  
 </script>
 
 </body>
