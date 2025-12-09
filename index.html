@@ -1,105 +1,46 @@
 <!DOCTYPE html>
-<html lang="mr">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Prashant Public</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #f2f2f2;
-            margin: 0;
-            padding: 0;
-        }
-        header {
-            background: #ff6600;
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
-        .container {
-            width: 90%;
-            max-width: 900px;
-            margin: auto;
-            background: white;
-            padding: 20px;
-            margin-top: 20px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-        .profile {
-            text-align: center;
-        }
-        .profile img {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            border: 3px solid #ff6600;
-        }
-        .info {
-            margin-top: 20px;
-            line-height: 1.8;
-        }
-        .login {
-            margin-top: 40px;
-            padding: 20px;
-            border-top: 2px solid #eee;
-        }
-        .login input {
-            width: 100%;
-            padding: 10px;
-            margin: 8px 0;
-        }
-        .login button {
-            background: #ff6600;
-            color: white;
-            border: none;
-            padding: 10px;
-            width: 100%;
-            font-size: 16px;
-            cursor: pointer;
-        }
-        footer {
-            text-align: center;
-            padding: 10px;
-            font-size: 14px;
-            color: #555;
-        }
-    </style>
+<meta charset="UTF-8">
+<title>Prashant Public</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body{text-align:center;font-family:sans-serif;background:#f4f4f4}
+.box{background:#fff;margin:20px;padding:20px;border-radius:10px}
+img{max-width:180px;border-radius:50%}
+</style>
 </head>
 <body>
 
-<header>
-    <h1>Prashant Public</h1>
-    <p>Public Page</p>
-</header>
+<h1>Prashant Public</h1>
 
-<div class="container">
-
-    <div class="profile">
-        <!-- तुमचा फोटो येथे ठेवा -->
-        <img src="candidate.jpg" alt="उमेदवार फोटो">
-        <h2>उमेदवार : श्री. प्रशांत</h2>
-    </div>
-
-    <div class="info">
-        <p><strong>क्षेत्र:</strong> समाजसेवा व सार्वजनिक कार्य</p>
-        <p><strong>ध्येय:</strong> सर्वसामान्य जनतेसाठी प्रामाणिक व पारदर्शक प्रशासन</p>
-        <p><strong>माहिती:</strong> युवक, महिला व शेतकरी यांच्या प्रश्नांसाठी सक्रिय काम करणारा उमेदवार.</p>
-    </div>
-
-    <div class="login">
-        <h3>Admin Login</h3>
-        <form>
-            <input type="text" placeholder="Username">
-            <input type="password" placeholder="Password">
-            <button type="submit">Login</button>
-        </form>
-    </div>
-
+<div class="box">
+<img id="img">
+<p id="info"></p>
+<h3>📢 संदेश</h3>
+<p id="msg"></p>
 </div>
 
-<footer>
-    © 2025 Prashant Public | All Rights Reserved
-</footer>
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "YOUR_API_KEY",
+  authDomain: "YOUR_PROJECT.firebaseapp.com",
+  projectId: "YOUR_PROJECT_ID"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+const s = await getDoc(doc(db,"public","data"));
+if(s.exists()){
+ img.src=s.data().img;
+ info.innerText=s.data().info;
+ msg.innerText=s.data().msg;
+}
+</script>
 
 </body>
 </html>
