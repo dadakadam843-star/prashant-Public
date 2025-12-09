@@ -1,63 +1,53 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="mr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Prashant Public</title>
-<style>
-body{font-family:sans-serif;background:#f4f4f4;text-align:center}
-.box{background:#fff;margin:20px auto;padding:20px;border-radius:12px;max-width:420px}
-img{max-width:180px;border-radius:50%}
-.whatsapp{background:#25D366;color:#fff;padding:12px;border:none;border-radius:8px;width:100%;font-size:16px}
-</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Admin - Prashant Public</title>
+  <style>
+    body{font-family:Arial;padding:20px;background:#f6f6f6}
+    .card{max-width:600px;margin:20px auto;background:#fff;padding:20px;border-radius:6px;box-shadow:0 4px 8px rgba(0,0,0,0.05)}
+    input,textarea{width:100%;padding:10px;margin:8px 0;border:1px solid #ccc;border-radius:4px}
+    button{padding:10px 14px;background:orange;border:none;color:#fff;border-radius:4px;cursor:pointer}
+  </style>
 </head>
 <body>
+  <div class="card">
+    <h2>Admin Login</h2>
+    <input id="user" placeholder="Username" />
+    <input id="pass" placeholder="Password" type="password" />
+    <button id="loginBtn">Login</button>
 
-<h2>Prashant Public</h2>
+    <div id="adminArea" style="display:none;margin-top:16px;">
+      <h3>Update Photo / Info</h3>
+      <label>Upload Photo (PNG/JPG):</label>
+      <input type="file" id="photoFile" accept="image/*" />
+      <button id="uploadBtn">Upload to GitHub / Firebase (manual)</button>
 
-<div class="box">
-<img id="img"><br><br>
-<p id="info"></p>
+      <h4 style="margin-top:12px">Quick content (only local demo)</h4>
+      <textarea id="info" rows="5">नवीन माहिती...</textarea>
+      <button id="saveContent">Save (local)</button>
+      <p id="msg" style="color:green"></p>
+    </div>
+  </div>
 
-<h4>📢 संदेश</h4>
-<p id="msg"></p>
+  <script>
+    // सोपा client-side check
+    document.getElementById('loginBtn').addEventListener('click', () => {
+      const u = document.getElementById('user').value;
+      const p = document.getElementById('pass').value;
+      // credentials user said: Login: Prashant  Password: Prashant@27
+      if(u==='Prashant' && p==='Prashant@27'){ 
+        document.getElementById('adminArea').style.display='block';
+      } else alert('Login failed');
+    });
 
-<button class="whatsapp" onclick="shareWhatsApp()">📲 WhatsApp वर Share करा</button>
-</div>
-
-<script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
-
-const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_PROJECT.firebaseapp.com",
-  projectId: "YOUR_PROJECT_ID"
-};
-
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-
-const s = await getDoc(doc(db,"public","data"));
-if(s.exists()){
- img.src=s.data().img;
- info.innerText=s.data().info;
- msg.innerText=s.data().msg;
-}
-
-window.shareWhatsApp = function(){
- const text = `📢 Prashant Public
-
-🧑‍💼 माहिती:
-${info.innerText}
-
-🗳️ संदेश:
-${msg.innerText}
-
-👉 ${location.href}`;
- window.open("https://wa.me/?text="+encodeURIComponent(text));
-}
-</script>
-
+    // Note: Uploading to GitHub via client-side is complicated (requires tokens) — recommended: upload image via GitHub web UI or use Firebase storage.
+    document.getElementById('saveContent').addEventListener('click', ()=> {
+      const info = document.getElementById('info').value;
+      localStorage.setItem('prashant_info', info);
+      document.getElementById('msg').innerText='Saved locally. (To publish: edit index.html on repo.)';
+    });
+  </script>
 </body>
 </html>
