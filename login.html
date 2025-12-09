@@ -1,43 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Admin Login</title>
-<style>
-body{font-family:sans-serif;background:#f2f2f2}
-.box{background:#fff;margin:80px 20px;padding:20px;border-radius:12px}
-input,button{width:100%;padding:12px;margin-top:10px}
-button{background:#ff6600;color:#fff;border:none;border-radius:8px}
-</style>
+<title>Login</title>
+<meta name="viewport" content="width=device-width">
 </head>
 <body>
 
-<div class="box">
-<h3>Admin Login</h3>
-<input id="email" placeholder="Admin Email">
-<input id="password" type="password" placeholder="Password">
+<h2>Admin Login</h2>
+<input id="u" placeholder="Username">
+<input id="p" type="password" placeholder="Password">
 <button onclick="login()">Login</button>
-<p id="err"></p>
-</div>
 
-<script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
-
-const firebaseConfig = {
-  apiKey: "AIzaSyDW9Au99PFKyMz7kBKypIKPIOex_ZkJ3uY",
-  authDomain: "public-working.firebaseapp.com",
-  projectId: "public-working",
-};
-
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-
-window.login = function(){
-  signInWithEmailAndPassword(auth,email.value,password.value)
-  .then(()=>location="dashboard.html")
-  .catch(e=>err.innerText=e.message);
+<script>
+function login(){
+if(u.value=="Prashant" && p.value=="Prashant@27"){
+localStorage.setItem("admin","yes");
+location="dashboard.html";
+}else{
+alert("Wrong Login");
+}
 }
 </script>
 
