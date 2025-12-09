@@ -1,24 +1,28 @@
 <!DOCTYPE html>
-<html>
+<html lang="mr">
 <head>
 <meta charset="UTF-8">
-<title>Prashant Public</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prashant Public</title>
 <style>
-body{text-align:center;font-family:sans-serif;background:#f4f4f4}
-.box{background:#fff;margin:20px;padding:20px;border-radius:10px}
+body{font-family:sans-serif;background:#f4f4f4;text-align:center}
+.box{background:#fff;margin:20px auto;padding:20px;border-radius:12px;max-width:420px}
 img{max-width:180px;border-radius:50%}
+.whatsapp{background:#25D366;color:#fff;padding:12px;border:none;border-radius:8px;width:100%;font-size:16px}
 </style>
 </head>
 <body>
 
-<h1>Prashant Public</h1>
+<h2>Prashant Public</h2>
 
 <div class="box">
-<img id="img">
+<img id="img"><br><br>
 <p id="info"></p>
-<h3>📢 संदेश</h3>
+
+<h4>📢 संदेश</h4>
 <p id="msg"></p>
+
+<button class="whatsapp" onclick="shareWhatsApp()">📲 WhatsApp वर Share करा</button>
 </div>
 
 <script type="module">
@@ -40,8 +44,19 @@ if(s.exists()){
  info.innerText=s.data().info;
  msg.innerText=s.data().msg;
 }
-  <button onclick="shareWhatsApp()">📲 WhatsApp वर Share करा</button>
-  
+
+window.shareWhatsApp = function(){
+ const text = `📢 Prashant Public
+
+🧑‍💼 माहिती:
+${info.innerText}
+
+🗳️ संदेश:
+${msg.innerText}
+
+👉 ${location.href}`;
+ window.open("https://wa.me/?text="+encodeURIComponent(text));
+}
 </script>
 
 </body>
