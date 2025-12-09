@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Login</title>
+<meta name="viewport" content="width=device-width">
+</head>
+<body>
+
+<h2>Admin Login</h2>
+<input id="u" placeholder="Username">
+<input id="p" type="password" placeholder="Password">
+<button onclick="login()">Login</button>
+
+<script>
+function login(){
+if(u.value=="Prashant" && p.value=="Prashant@27"){
+localStorage.setItem("admin","yes");
+location="dashboard.html";
+}else{
+alert("Wrong Login");
+}
+}
+</script>
+
+</body>
+</html>
