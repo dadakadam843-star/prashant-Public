@@ -1,37 +1,46 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Dashboard</title>
-<meta name="viewport" content="width=device-width">
+  <title>Admin Dashboard</title>
 </head>
 <body>
 
-<script>
-if(localStorage.getItem("admin")!=="yes"){
-location="login.html";
-}
-</script>
-
 <h2>Admin Dashboard</h2>
 
-<input id="name" placeholder="Name">
-<textarea id="info" placeholder="Info"></textarea>
-<textarea id="msg" placeholder="Message"></textarea>
-<input type="text" id="photo" placeholder="Photo URL">
-<button onclick="save()">Save</button>
+<input type="file" id="image"><br><br>
+<textarea id="info" placeholder="उमेदवार माहिती"></textarea><br><br>
+<textarea id="msg" placeholder="संदेश"></textarea><br><br>
 
-<script type="module">
-import { app, db } from "./firebase.js";
-import { doc, setDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+<button onclick="saveData()">Save</button>
+<button onclick="logout()">Logout</button>
 
-window.save=async()=>{
-await setDoc(doc(db,"public","data"),{
-name:name.value,
-info:info.value,
-msg:msg.value,
-photo:photo.value
+<script src="firebase.js"></script>
+
+<script>
+auth.onAuthStateChanged(user => {
+  if (!user) window.location.href = "login.html";
 });
-alert("Saved Live ✅");
+
+function saveData() {
+  const img = document.getElementById("image").files[0];
+  const info = document.getElementById("info").value;
+  const msg = document.getElementById("msg").value;
+
+  const ref = storage.ref("images/" + img.name);
+  ref.put(img).then(snap => {
+    snap.ref.getDownloadURL().then(url => {
+      db.collection("content").doc("main").set({
+        image: url,
+        info: info,
+        message: msg
+      });
+      alert("Saved Successfully ✅");
+    });
+  });
+}
+
+function logout() {
+  auth.signOut().then(() => location.href="login.html");
 }
 </script>
 
