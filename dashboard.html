@@ -2,31 +2,29 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Admin Dashboard</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dashboard</title>
 <style>
-body{font-family:sans-serif;background:#eee;margin:0}
-.header{background:#ff6600;color:#fff;padding:15px;text-align:center}
-.card{background:#fff;margin:15px;padding:15px;border-radius:10px}
-button{width:100%;padding:12px;background:#ff6600;color:white;border:none;border-radius:8px}
+body{font-family:sans-serif;background:#eee}
+.card{background:#fff;margin:15px;padding:15px;border-radius:12px}
+button{width:100%;padding:12px;background:#ff6600;color:#fff;border:none;border-radius:8px}
 </style>
 </head>
 <body>
 
-<div class="header">Admin Dashboard</div>
+<h3 style="text-align:center">Admin Dashboard</h3>
 
 <div class="card">
-<input type="file" id="img">
-<textarea id="info" placeholder="माहिती"></textarea>
-<textarea id="msg" placeholder="संदेश"></textarea>
-<button onclick="saveData()">Save</button>
+<input type="file" id="img"><br><br>
+<textarea id="info" placeholder="माहिती"></textarea><br><br>
+<textarea id="msg" placeholder="संदेश"></textarea><br><br>
+<button onclick="save()">Save</button>
 </div>
 
 <div class="card">
-<h3>Live Preview</h3>
-<img id="showImg" style="max-width:150px"><br>
-<p id="showInfo"></p>
-<p><b>Message:</b> <span id="showMsg"></span></p>
+<img id="pimg" style="max-width:150px"><br>
+<p id="pinfo"></p>
+<p><b>Message:</b> <span id="pmsg"></span></p>
 </div>
 
 <script type="module">
@@ -44,30 +42,28 @@ const db = getFirestore(app);
 
 let imgData="";
 
-img.onchange = ()=>{
-  const r=new FileReader();
-  r.onload=()=> imgData=r.result;
-  r.readAsDataURL(img.files[0]);
+img.onchange=()=>{
+ const r=new FileReader();
+ r.onload=()=>imgData=r.result;
+ r.readAsDataURL(img.files[0]);
 }
 
-window.saveData = async ()=>{
-  await setDoc(doc(db,"public","data"),{
-    img: imgData,
-    info: info.value,
-    msg: msg.value
-  });
-  loadData();
+window.save=async()=>{
+ await setDoc(doc(db,"public","data"),{
+  img:imgData, info:info.value, msg:msg.value
+ });
+ load();
 }
 
-async function loadData(){
- const s = await getDoc(doc(db,"public","data"));
+async function load(){
+ const s=await getDoc(doc(db,"public","data"));
  if(s.exists()){
-  showImg.src=s.data().img;
-  showInfo.innerText=s.data().info;
-  showMsg.innerText=s.data().msg;
+  pimg.src=s.data().img;
+  pinfo.innerText=s.data().info;
+  pmsg.innerText=s.data().msg;
  }
 }
-loadData();
+load();
 </script>
 
 </body>
