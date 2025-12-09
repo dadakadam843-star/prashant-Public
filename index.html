@@ -1,53 +1,24 @@
 <!DOCTYPE html>
-<html lang="mr">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width">
-<title>Prashant Public</title>
-<style>
-body{font-family:Arial;background:#f4f4f4;margin:0}
-header{background:#ff6a00;color:#fff;padding:20px;text-align:center}
-.card{background:#fff;margin:15px;padding:15px;border-radius:8px;text-align:center}
-.whatsapp{background:#25D366;color:#fff;border:none;padding:12px;width:100%;border-radius:8px}
-img{width:160px;border-radius:50%}
-</style>
+  <title>Prashant Public</title>
 </head>
 <body>
 
-<header>
-<h2>Prashant Public</h2>
-<p>Public Page</p>
-</header>
-
-<div class="card">
-<img id="photo" src="photo.png">
-<h3 id="name"></h3>
+<h2>उमेदवार : श्री. प्रशांत</h2>
+<img id="photo" width="200"><br>
 <p id="info"></p>
-<p id="msg"></p>
+<h3 id="msg"></h3>
 
-<button class="whatsapp" onclick="share()">📲 WhatsApp Share</button>
-</div>
-
-<script type="module">
-import { app, db } from "./firebase.js";
-import { doc, onSnapshot } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-
-onSnapshot(doc(db,"public","data"),(doc)=>{
-  if(doc.exists()){
-    let d=doc.data();
-    name.innerText=d.name;
-    info.innerText=d.info;
-    msg.innerText=d.msg;
-    photo.src=d.photo;
-  }
-});
-</script>
+<script src="firebase.js"></script>
 
 <script>
-function share(){
-let t=`Prashant Public\n${msg.innerText}\n${location.href}`;
-open("https://wa.me/?text="+encodeURIComponent(t));
-}
+db.collection("content").doc("main").onSnapshot(doc => {
+  const d = doc.data();
+  document.getElementById("photo").src = d.image;
+  document.getElementById("info").innerText = d.info;
+  document.getElementById("msg").innerText = d.message;
+});
 </script>
 
 </body>
