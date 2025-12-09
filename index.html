@@ -1,23 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Prashant Public</title>
+<title>Prashant Public</title>
 </head>
 <body>
 
-<h2>उमेदवार : श्री. प्रशांत</h2>
-<img id="photo" width="200"><br>
+<h2>उमेदवार : श्री. प्रशांत राजू कदम</h2>
+<img id="img" width="200">
 <p id="info"></p>
 <h3 id="msg"></h3>
 
 <script src="firebase.js"></script>
-
 <script>
-db.collection("content").doc("main").onSnapshot(doc => {
-  const d = doc.data();
-  document.getElementById("photo").src = d.image;
+db.collection("data").doc("public").onSnapshot(function(doc){
+  var d = doc.data();
+  document.getElementById("img").src = d.image;
   document.getElementById("info").innerText = d.info;
-  document.getElementById("msg").innerText = d.message;
+  document.getElementById("msg").innerText = d.msg;
 });
 </script>
 
