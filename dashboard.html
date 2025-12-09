@@ -1,46 +1,50 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Admin Dashboard</title>
+<title>Dashboard</title>
 </head>
 <body>
 
 <h2>Admin Dashboard</h2>
 
 <input type="file" id="image"><br><br>
-<textarea id="info" placeholder="उमेदवार माहिती"></textarea><br><br>
+<textarea id="info" placeholder="माहिती"></textarea><br><br>
 <textarea id="msg" placeholder="संदेश"></textarea><br><br>
 
-<button onclick="saveData()">Save</button>
+<button onclick="save()">Save</button>
 <button onclick="logout()">Logout</button>
 
 <script src="firebase.js"></script>
-
 <script>
-auth.onAuthStateChanged(user => {
-  if (!user) window.location.href = "login.html";
+
+auth.onAuthStateChanged(function(user){
+  if(!user){
+    window.location.href="login.html";
+  }
 });
 
-function saveData() {
-  const img = document.getElementById("image").files[0];
-  const info = document.getElementById("info").value;
-  const msg = document.getElementById("msg").value;
+function save(){
+  var file = document.getElementById("image").files[0];
+  var info = document.getElementById("info").value;
+  var msg = document.getElementById("msg").value;
 
-  const ref = storage.ref("images/" + img.name);
-  ref.put(img).then(snap => {
-    snap.ref.getDownloadURL().then(url => {
-      db.collection("content").doc("main").set({
-        image: url,
-        info: info,
-        message: msg
+  var ref = storage.ref("photo.jpg");
+  ref.put(file).then(function(){
+    ref.getDownloadURL().then(function(url){
+      db.collection("data").doc("public").set({
+        image:url,
+        info:info,
+        msg:msg
       });
-      alert("Saved Successfully ✅");
+      alert("Saved ✅");
     });
   });
 }
 
-function logout() {
-  auth.signOut().then(() => location.href="login.html");
+function logout(){
+  auth.signOut().then(function(){
+    window.location.href="login.html";
+  });
 }
 </script>
 
