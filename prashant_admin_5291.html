@@ -1,43 +1,44 @@
+
 <!DOCTYPE html>
 <html>
-<body style="font-family:Arial;padding:15px">
+<head>
+<title>Admin Panel</title>
 
-<h2>🔐 Admin Panel</h2>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+</head>
 
-<input id="email" placeholder="Email"><br><br>
-<input id="pass" type="password" placeholder="Password"><br><br>
-<button onclick="login()">Login</button>
+<body>
 
-<hr>
+<h2>Admin Mahiti</h2>
 
-<h3>📢 WhatsApp Message</h3>
-<textarea id="msg" style="width:100%;height:70px"></textarea><br>
-<button onclick="saveMsg()">Save Message</button>
-
-<hr>
-
-<h3>📸 Upload Photo</h3>
-<input type="file" id="photo">
-<button onclick="upload()">Upload</button>
-
-<script src="firebase.js"></script>
+<textarea id="mahiti" rows="6" style="width:100%"></textarea><br><br>
+<button onclick="saveMahiti()">Save</button>
 
 <script>
-function login(){
- auth.signInWithEmailAndPassword(email.value, pass.value)
- .then(()=>alert("Login Success ✅"))
- .catch(e=>alert(e.message));
-}
+const firebaseConfig = {
+  apiKey: "AIzaSyDW9Au99PFKyMz7kBKypIKPIOex_ZkJ3uY",
+  authDomain: "public-working.firebaseapp.com",
+  projectId: "public-working",
+  storageBucket: "public-working.firebasestorage.app",
+  messagingSenderId: "266169229854",
+  appId: "1:266169229854:web:87218d1d726fb50714840f"
+};
 
-function saveMsg(){
- db.collection("message").doc("main").set({text:msg.value});
- alert("Message Saved ✅");
-}
+firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
 
-function upload(){
- let f = photo.files[0];
- storage.ref("photos/"+Date.now()+"_"+f.name).put(f)
- .then(()=>alert("Photo Uploaded ✅"));
+function saveMahiti(){
+  const text = document.getElementById("mahiti").value;
+
+  db.collection("content").doc("mahiti").set({
+    text: text,
+    time: new Date()
+  }).then(()=>{
+    alert("Saved ✅");
+  }).catch(err=>{
+    alert(err.message);
+  });
 }
 </script>
 
