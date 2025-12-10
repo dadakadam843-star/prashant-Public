@@ -1,24 +1,18 @@
 <!DOCTYPE html>
 <html>
 <body>
+<h2>📸 Gallery</h2>
 
-<h2>📸 Photo Gallery</h2>
-
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-storage-compat.js"></script>
+<script src="firebase.js"></script>
 
 <script>
-firebase.initializeApp({
- // SAME firebaseConfig
-});
-
-firebase.storage().ref("photos").listAll().then(res=>{
-  res.items.forEach(i=>{
-    i.getDownloadURL().then(u=>{
-      document.body.innerHTML +=
-      `<img src="${u}" width="150" style="margin:10px">`;
-    });
+storage.ref("photos").listAll().then(res=>{
+ res.items.forEach(i=>{
+  i.getDownloadURL().then(u=>{
+   document.body.innerHTML +=
+    `<img src="${u}" width="150" style="margin:10px;border-radius:8px">`;
   });
+ });
 });
 </script>
 
