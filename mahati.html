@@ -1,17 +1,27 @@
 <!DOCTYPE html>
 <html>
-<body style="font-family:Arial;padding:15px">
+<head>
+<title>Mahiti</title>
+</head>
+<body>
 
-<h2>उमेदवार माहिती | Candidate Info</h2>
+<h2>📄 Mahiti</h2>
 
-<p><b>नाव:</b> __________________</p>
-<p><b>पक्ष:</b> __________________</p>
-<p><b>चिन्ह:</b> __________________</p>
+<p id="mahitiText"></p>
 
-<p>
-मी रस्ते, पाणी, शिक्षण, रोजगार यासाठी काम करेन.<br>
-I will work for road, water, education & jobs.
-</p>
+<button onclick="shareWhatsApp()">
+📲 WhatsApp Share
+</button>
+
+<script>
+let text = localStorage.getItem("mahiti") || "Mahiti Available Soon";
+document.getElementById("mahitiText").innerText = text;
+
+function shareWhatsApp(){
+  let url = "https://wa.me/?text=" + encodeURIComponent(text);
+  window.open(url, "_blank");
+}
+</script>
 
 </body>
 </html>
