@@ -2,129 +2,54 @@
 <html lang="mr">
 <head>
 <meta charset="UTF-8">
-<title>Admin Panel + WhatsApp</title>
+<title>Public Campaign</title>
+
 <style>
-body{
-  font-family: Arial;
-  background:#f4f4f4;
-  margin:0;
-}
-header{
-  background:#0a3d62;
-  color:#fff;
+body{font-family:Arial;text-align:center;padding:20px;}
+.btn{
+  display:block;
   padding:15px;
-  text-align:center;
-}
-.container{
-  padding:15px;
-}
-.card{
-  background:#fff;
-  padding:15px;
-  margin-bottom:15px;
-  border-radius:5px;
-}
-input,textarea,button{
-  width:100%;
-  padding:10px;
-  margin-top:8px;
-}
-button{
-  background:#0a3d62;
+  margin:15px 0;
+  font-size:18px;
   color:white;
-  border:none;
+  border-radius:10px;
+  text-decoration:none;
 }
-img{
-  max-width:100%;
-  margin-top:10px;
-}
-.whatsapp{
-  background:#25D366;
-}
-.hidden{display:none;}
+.wa{background:#25D366;}
+.fb{background:#1877f2;}
+.box{border:2px dashed green;padding:15px;margin-top:20px;}
 </style>
 </head>
 
 <body>
 
-<header>
-<h2>Public Information Website</h2>
-</header>
+<h2>🙏 आपला पाठिंबा आवश्यक आहे</h2>
 
-<div class="container">
+<p>
+👉 LIKE करा<br>
+👉 SHARE करा<br>
+👉 मग पूर्ण माहिती वाचा
+</p>
 
-<!-- ADMIN LOGIN -->
-<div class="card" id="loginCard">
-<h3>Admin Login</h3>
-<input type="password" id="password" placeholder="Password">
-<button onclick="login()">Login</button>
+<a class="btn wa" onclick="shareWA()">📲 WhatsApp Share</a>
+
+<div class="box">
+✅ Share केल्यानंतर खाली माहिती वाचा
 </div>
 
-<!-- ADMIN PANEL -->
-<div class="card hidden" id="adminPanel">
-<h3>Admin Panel</h3>
-
-<textarea id="infoText" placeholder="Mahiti Enter Kara"></textarea>
-<input type="file" id="photoInput">
-<button onclick="saveData()">Save</button>
-<button onclick="logout()">Logout</button>
-</div>
-
-<!-- PUBLIC VIEW -->
-<div class="card">
-<h3>Mahiti</h3>
-<p id="infoDisplay">Mahiti Soon...</p>
-<img id="photoDisplay">
-</div>
-
-<!-- WHATSAPP -->
-<div class="card">
-<h3>WhatsApp Message</h3>
-<textarea id="msg" placeholder="Message"></textarea>
-<button class="whatsapp" onclick="sendWhatsApp()">Send WhatsApp</button>
-</div>
-
-</div>
+<a href="mahiti.html" class="btn fb">📄 पूर्ण माहिती पहा</a>
 
 <script>
-let adminPassword = "1234"; // change password
-
-function login(){
-  if(password.value === adminPassword){
-    loginCard.classList.add("hidden");
-    adminPanel.classList.remove("hidden");
-  }else{
-    alert("Wrong Password");
-  }
-}
-
-function logout(){
-  loginCard.classList.remove("hidden");
-  adminPanel.classList.add("hidden");
-}
-
-function saveData(){
-  localStorage.setItem("info",infoText.value);
-
-  let file = photoInput.files[0];
-  let reader = new FileReader();
-  reader.onload = function(){
-    localStorage.setItem("photo",reader.result);
-    loadData();
-  }
-  if(file) reader.readAsDataURL(file);
-}
-
-function loadData(){
-  infoDisplay.innerText = localStorage.getItem("info") || "Mahiti Nahi";
-  let photo = localStorage.getItem("photo");
-  if(photo) photoDisplay.src = photo;
-}
-loadData();
-
-function sendWhatsApp(){
-  let text = encodeURIComponent(msg.value);
-  window.open("https://wa.me/?text="+text,"_blank");
+function shareWA(){
+  let text =
+"🙏 नमस्कार!\n" +
+"आपल्या भागाच्या विकासासाठी हा उपक्रम आहे.\n" +
+"पूर्ण माहिती येथे वाचा 👇\n" +
+window.location.origin + "/prashant-Public/";
+window.open(
+  "https://wa.me/?text="+encodeURIComponent(text),
+  "_blank"
+);
 }
 </script>
 
