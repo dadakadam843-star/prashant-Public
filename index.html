@@ -1,104 +1,61 @@
 <!DOCTYPE html>
-<html>
+<html lang="mr">
 <head>
   <meta charset="UTF-8">
-  <header>
-  <h1>Prashant Public</h1>
-  <p>आपली सेवा – आमची जबाबदारी</p>
-</header>
+  <title>Prashant Public</title>
 
-<section class="about">
-  <h2>आमच्याविषयी</h2>
-  <p>
-    नागरिकांच्या समस्या ऐकून त्यावर योग्य तोडगा काढणे,
-    हाच आमचा उद्देश आहे.
-  </p>
-</section>
-  
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      background: #f5f5f5;
+    }
+    header {
+      background: #ff6600;
+      color: white;
+      padding: 20px;
+    }
+    section {
+      padding: 20px;
+      background: white;
+      margin: 10px;
+      border-radius: 10px;
+    }
+    a.button {
+      display: inline-block;
+      padding: 12px 20px;
+      background: green;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      margin-top: 10px;
+    }
+  </style>
 </head>
+
 <body>
 
-<h2>Firestore Test</h2>
+  <header>
+    <h1>Prashant Public</h1>
+    <p>आपली सेवा – आमची जबाबदारी</p>
+  </header>
 
-<input id="name" placeholder="Name"><br><br>
-<input id="msg" placeholder="Message"><br><br>
-<button onclick="saveData()">Send</button>
+  <section>
+    <h2>आमच्याविषयी</h2>
+    <p>
+      नागरिकांच्या समस्या ऐकून त्यावर योग्य तोडगा काढणे,
+      हाच आमचा उद्देश आहे.
+    </p>
+  </section>
 
-<!-- ✅ Firebase CDN (IMPORT नाही) -->
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+  <section>
+    <h2>संपर्क</h2>
+    <a class="button" href="https://wa.me/91XXXXXXXXXX">
+      WhatsApp करा
+    </a>
+  </section>
 
-<script>
-  // ✅ तुझाच config
-  const firebaseConfig = {
-    apiKey: "AIzaSyDW9Au99PFKyMz7kBKypIKPIOex_ZkJ3uY",
-    authDomain: "public-working.firebaseapp.com",
-    projectId: "public-working",
-    storageBucket: "public-working.appspot.com",
-    messagingSenderId: "266169229854",
-    appId: "1:266169229854:web:300668fcf823e6d714840f",
-    measurementId: "G-L6CJBWYPXN"
-  };
-
-  // ✅ initialize
-  firebase.initializeApp(firebaseConfig);
-  const db = firebase.firestore();
-
-  function saveData() {
-    const name = document.getElementById("name").value;
-    const msg = document.getElementById("msg").value;
-
-    db.collection("messages").add({
-      name: name,
-      message: msg,
-      time: new Date()
-    }).then(() => {
-      alert("Firestore मध्ये data add झाला ✅");
-    }).catch(err => {
-      alert(err);
-    });
-  }
-</script>
-<!-- Floating Buttons -->
-<style>
-  .floating-buttons {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    z-index: 9999;
-  }
-  .floating-buttons a {
-    text-decoration: none;
-    padding: 12px 16px;
-    border-radius: 50px;
-    color: #fff;
-    font-weight: bold;
-    font-size: 14px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-  }
-  .whatsapp {
-    background: #25D366;
-  }
-  .call {
-    background: #007BFF;
-  }
-</style>
-
-<div class="floating-buttons">
-  <a class="whatsapp"
-     href="https://wa.me/919607023105"
-     target="_blank">
-     WhatsApp करा
-  </a>
-
-  <a class="call"
-     href="tel:918484078016">
-     कॉल करा
-  </a>
-</div>
-  
 </body>
 </html>
