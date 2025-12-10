@@ -1,0 +1,15 @@
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+
+<script>
+firebase.initializeApp({
+ // SAME firebaseConfig
+});
+
+firebase.firestore().collection("message").doc("main").get()
+.then(d=>{
+ let t=d.data().text;
+ window.location =
+ "https://wa.me/918484078019?text="+encodeURIComponent(t);
+});
+</script>
