@@ -1,108 +1,71 @@
 <!DOCTYPE html>
 <html lang="mr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prashant Public</title>
-
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: #fff3e0;
-        }
-
-        header {
-            background: #ff6f00;
-            padding: 20px;
-            text-align: center;
-            color: white;
-            font-size: 30px;
-            font-weight: bold;
-        }
-
-        .hero {
-            text-align: center;
-            padding: 30px;
-            background: #ffe0b2;
-        }
-
-        .hero img {
-            width: 260px;
-            border-radius: 10px;
-            border: 5px solid #ff6f00;
-        }
-
-        .section {
-            padding: 30px;
-        }
-
-        .contact-box {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            border-left: 5px solid #ff6f00;
-            box-shadow: 0 0 10px #ccc;
-            margin-bottom: 30px;
-        }
-
-        .poster-box {
-            background: #fff;
-            border-left: 5px solid #e65100;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px #ccc;
-        }
-
-        footer {
-            text-align: center;
-            background: #ff6f00;
-            color: white;
-            padding: 10px;
-            margin-top: 20px;
-        }
-    </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Prashant Public</title>
+  <style>
+    body { margin:0; font-family: Arial, sans-serif; background:#fff3e0; color:#333; }
+    header { background:#ff6f00; color:white; padding:18px; text-align:center; font-weight:bold; font-size:26px; }
+    .hero { text-align:center; padding:30px; background:#ffe0b2; }
+    .hero img { width:260px; max-width:80%; border-radius:10px; border:5px solid #ff6f00; display:block; margin:0 auto 12px; object-fit:cover; }
+    .section { padding:28px 16px; max-width:900px; margin:0 auto; }
+    .box { background:white; padding:18px; border-radius:10px; box-shadow:0 2px 8px rgba(0,0,0,0.08); border-left:6px solid #ff6f00; margin-bottom:18px; }
+    h2 { color:#e65100; margin-top:0; }
+    footer { text-align:center; background:#ff6f00; color:white; padding:12px; margin-top:18px; }
+  </style>
 </head>
-
 <body>
+  <header id="site-title">Prashant Public</header>
 
-<header>
-    Prashant Public
-</header>
+  <div class="hero">
+    <img id="hero-photo" src="your-photo.jpg" alt="Prashant Photo" onerror="this.style.display='none'">
+    <h2 id="hero-slogan">जनतेसाठी सेवा, आपल्या विश्वासाची साथ</h2>
+    <p id="hero-sub" style="margin:6px 0 0;color:#6b4a12"></p>
+  </div>
 
-<div class="hero">
-    <img src="your-photo.jpg" alt="Prashant Photo">
-    <h2>जनतेसाठी सेवा, आपल्या विश्वासाची साथ</h2>
-</div>
-
-<!-- Contact Section -->
-<div class="section">
-    <h2>संपर्क</h2>
-    <div class="contact-box">
-        <p><b>📞 मोबाईल:</b> 8484087016</p>
-        <p><b>📱 WhatsApp:</b> 8484087016</p>
-        <p><b>📸 Instagram:</b> https://www.instagram.com/dadakadam1?igsh=MTk2NGMwcjhlejhkcg== </p>
-        <p><b>📘 Facebook:</b> https://www.facebook.com/share/1AgmHg7cT3/ </p>
+  <div class="section">
+    <div class="box">
+      <h2>संपर्क</h2>
+      <p id="contact-phone">📞 मोबाईल: 8484087016</p>
+      <p id="contact-whatsapp">📱 WhatsApp: 8484087016</p>
+      <p id="contact-instagram">📸 Instagram: prashant_public</p>
+      <p id="contact-facebook">📘 Facebook: Prashant Public</p>
     </div>
-</div>
 
-<!-- Daily Poster Template -->
-<div class="section">
-    <h2>Daily प्रचार Poster Template</h2>
-    <div class="poster-box">
-        <h3 style="color:#e65100;">आजचा संदेश</h3>
-        <p>👉 “जनतेच्या हक्कासाठी आम्ही सदैव तत्पर”</p>
-        <p>👉 “सामान्य माणसाची लढाई – Prashant Public”</p>
-
-        <br>
-        <h4>📌 तुमचा फोटो बदलण्यासाठी:</h4>
-        <p>GitHub मध्ये <b>your-photo.jpg</b> या नावाने तुमचा नवीन फोटो टाका.</p>
+    <div class="box">
+      <h2>आजचा संदेश</h2>
+      <div id="daily-message">👉 “जनतेच्या हक्कासाठी आम्ही सदैव तत्पर”</div>
     </div>
-</div>
+  </div>
 
-<footer>
-    © 2025 Prashant Public | सर्व हक्क राखीव
-</footer>
+  <footer>© <span id="year"></span> Prashant Public | सर्व हक्क राखीव</footer>
 
+<script>
+  // Load content.json from same folder (served by GitHub Pages)
+  async function loadContent(){
+    try{
+      const res = await fetch('content.json?cachebust=' + Date.now());
+      if(!res.ok) throw new Error('content.json नाही मिळालं');
+      const data = await res.json();
+      document.getElementById('site-title').textContent = data.title || 'Prashant Public';
+      const photo = data.photo || 'your-photo.jpg';
+      const heroImg = document.getElementById('hero-photo');
+      heroImg.src = photo;
+      heroImg.style.display = data.photo ? 'block' : (photo ? 'block' : 'none');
+      document.getElementById('hero-slogan').textContent = data.slogan || 'जनतेसाठी सेवा, आपल्या विश्वासाची साथ';
+      document.getElementById('hero-sub').textContent = data.sub || '';
+      document.getElementById('contact-phone').innerHTML = '📞 मोबाईल: ' + (data.phone || '8484087016');
+      document.getElementById('contact-whatsapp').innerHTML = '📱 WhatsApp: ' + (data.whatsapp || data.phone || '8484087016');
+      document.getElementById('contact-instagram').innerHTML = '📸 Instagram: ' + (data.instagram || 'prashant_public');
+      document.getElementById('contact-facebook').innerHTML = '📘 Facebook: ' + (data.facebook || 'Prashant Public');
+      document.getElementById('daily-message').innerHTML = (data.today || '👉 “जनतेच्या हक्कासाठी आम्ही सदैव तत्पर”');
+      document.getElementById('year').textContent = new Date().getFullYear();
+    }catch(err){
+      console.warn(err);
+    }
+  }
+  loadContent();
+</script>
 </body>
 </html>
