@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Admin Panel - Prashant Public</title>
+  <style>
+    body{font-family:Arial,Helvetica,sans-serif;background:#fffaf0;color:#222;margin:0;padding:12px}
+    h1{background:#ff6f00;color:#fff;padding:12px;border-radius:6px}
+    .card{background:#fff;padding:12px;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.08);margin-top:12px}
+    label{display:block;margin:8px 0 4px;font-weight:bold}
+    input[type="text"], input[type="password"], textarea, select{width:100%;padding:8px;border-radius:6px;border:1px solid #ddd;box-sizing:border-box}
+    textarea{min-height:90px}
+    button{background:#ff6f00;color:white;padding:10px 14px;border:none;border-radius:6px;cursor:pointer;margin-top:10px}
+    .row{display:flex;gap:8px}
+    .row > * {flex:1}
+    small{color:#666}
+    .ok{color:green;font-weight:bold}
+    .err{color:red;font-weight:bold}
+  </style>
+</head>
+<body>
+
+<h1>Admin Panel — Prashant Public</h1>
+
+<div class="card">
+  <p><small>या पॅनलने GitHub रेपोमध्ये थेट फाईल्स अपडेट होतात. फक्त तूच Token वापर.</small></p>
+
+  <label>GitHub Owner (तुझं username)</label>
+  <input id="owner" placeholder="उदा. dadakadam843-star" />
+
+  <label>GitHub Repo (उदा. prashant-Public)</label>
+  <input id="repo" placeholder="उदा. prashant-Public" />
+
+  <label>Branch (साधारण: main)</label>
+  <input id="branch" value="main" />
+
+  <label>GitHub Personal Access Token (PAT)</label>
+  <input id="token" type="password" placeholder="Token इथे पेस्ट करा — Repo permissions आवश्यक" />
+
+  <hr>
+
+  <label>Site Title (शीर्षक)</label>
+  <input id="title" value="Prashant Public" />
+
+  <label>Slogan</label>
+  <input id="slogan" value="जनतेसाठी सेवा, आपल्या विश्वासाची साथ" />
+
+  <label>Sub text (छोटा संदेश)</label>
+  <input id="sub" placeholder="उदा. आपला सेवक — प्रशांत राजू कदम" />
+
+  <div class="row">
+    <div>
+      <label>Phone</label>
+      <input id="phone" placeholder="8484087016" />
+    </div>
+    <div>
+      <label>WhatsApp</label>
+      <input id="whatsapp" placeholder="8484087016" />
+    </div>
+  </div>
+
+  <div class="row">
+    <div>
+      <label>Instagram</label>
+      <input id="instagram" placeholder="prashant_public" />
+    </div>
+    <div>
+      <label>Facebook</label>
+      <input id="facebook" placeholder="Prashant Public" />
+    </div>
+  </div>
+
+  <label>आजचा संदेश (Daily Message / Poster text)</label>
+  <textarea id="today">👉 “जनतेच्या हक्कासाठी आम्ही सदैव तत्पर”</textarea>
+
+  <label>Hero Photo (upload) — छोटा फोटो</label>
+  <input id="photofile" type="file" accept="image/*" />
+
+  <p><small>नियंत्रण: पहिल्यांदा content.json फाईल तयार होईल (जर नसेल तर). फोटो `your-photo.jpg` म्हणून अपलोड होईल.</small></p>
+
+  <button id="saveBtn">Save & Publish to GitHub</button>
+  <div id="status"></div>
+</div>
+
+<script>
+  // Helper functions for GitHub REST API
+  const baseAPI = 'https://api.github.com';
+
+  function setStatus(msg, ok){
+    const el = document.getElementById('status');
+    el.innerHTML = msg ? '<p class="'+(ok? 'ok':'err')+'">'+msg+'</p>' : '';
+  }
+
+  async function apiGet(path, token){
+    const res = await fetch(path, { headers: { Authorization: 'token '+token, Accept:'application/vnd.github.v3+json' }});
+    return res;
+  }
+
+  async function getFileSha(owner, repo, path, branch, token){
+    const url = `${baseAPI}/repos/${owner}/${repo}/contents/${encodeURIComponent(path)}?ref=${branch}`;
+    const res = await apiGet(url, token);
+    if(res.status === 200){
+      const j = await res.json();
+      return j.sha;
+    }
+    return null;
+  }
+
+  async function putFile(owner, repo, path, contentBase64, message, branch, token, sha = null){
+    const url = `${baseAPI}/repos/${owner}/${repo}/contents/${encodeURIComponent(path)}`;
+    const body = { message, content: contentBase64, branch };
+    if(sha) body.sha = sha;
+    const res = await fetch(url, {
+      method: 'PUT',
+      headers: { Authorization: 'token '+token, Accept:'application/vnd.github.v3+json' },
+      body: JSON.stringify(body)
+    });
+    return res;
+  }
+
+  // Convert file to base64
+  function fileToBase64(file){
+    return new Promise((res, rej) => {
+      const reader = new FileReader();
+      reader.onload = () => {
+        const b = reader.result.split(',')[1];
+        res(b);
+      };
+      reader.onerror = rej;
+      reader.readAsDataURL(file);
+    });
+  }
+
+  document.getElementById('saveBtn').addEventListener('click', async () => {
+    setStatus('Saving...', true);
+    const owner = document.getElementById('owner').value.trim();
+    const repo = document.getElementById('repo').value.trim();
+    const branch = document.getElementById('branch').value.trim() || 'main';
+    const token = document.getElementById('token').value.trim();
+    if(!owner || !repo || !token){ setStatus('Owner, repo आणि token भरा.', false); return; }
+
+    // Prepare content object
+    const content = {
+      title: document.getElementById('title').value || 'Prashant Public',
+      slogan: document.getElementById('slogan').value || '',
+      sub: document.getElementById('sub').value || '',
+      phone: document.getElementById('phone').value || '',
+      whatsapp: document.getElementById('whatsapp').value || '',
+      instagram: document.getElementById('instagram').value || '',
+      facebook: document.getElementById('facebook').value || '',
+      today: document.getElementById('today').value || ''
+    };
+
+    try {
+      // 1) Update content.json
+      const contentPath = 'content.json';
+      const contentBase64 = btoa(unescape(encodeURIComponent(JSON.stringify(content, null, 2))));
+      const sha = await getFileSha(owner, repo, contentPath, branch, token);
+      const msg = sha ? 'Update content.json via Admin Panel' : 'Create content.json via Admin Panel';
+      const res1 = await putFile(owner, repo, contentPath, contentBase64, msg, branch, token, sha);
+      if(!res1.ok) {
+        const err = await res1.json();
+        throw new Error('content.json अपलोड त्रुटी: ' + (err.message || res1.status));
+      }
+
+      // 2) If photo selected, upload it as your-photo.jpg
+      const photoInput = document.getElementById('photofile');
+      if(photoInput.files && photoInput.files[0]){
+        setStatus('Uploading photo...', true);
+        const base64Photo = await fileToBase64(photoInput.files[0]);
+        const photoPath = 'your-photo.jpg';
+        const shaPhoto = await getFileSha(owner, repo, photoPath, branch, token);
+        const res2 = await putFile(owner, repo, photoPath, base64Photo, 'Update photo via Admin Panel', branch, token, shaPhoto);
+        if(!res2.ok){
+          const err = await res2.json();
+          throw new Error('Photo अपलोड त्रुटी: ' + (err.message || res2.status));
+        }
+      }
+
+      setStatus('Published successfully! GitHub repo मध्ये बदल झाले आहेत.', true);
+    } catch (err){
+      console.error(err);
+      setStatus('त्रुटी: ' + err.message, false);
+    }
+  });
+</script>
+
+</body>
+</html>
