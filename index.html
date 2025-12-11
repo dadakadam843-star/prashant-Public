@@ -1,72 +1,108 @@
 <!DOCTYPE html>
 <html lang="mr">
 <head>
-<meta charset="UTF-8">
-<title>Public Campaign</title>
-<!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=dadakadam@gmail.com"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'dadakadam843@gmail.com');
-</script>
-  
-<style>
-body{font-family:Arial;text-align:center;padding:20px;}
-.btn{
-  display:block;
-  padding:15px;
-  margin:15px 0;
-  font-size:18px;
-  color:white;
-  border-radius:10px;
-  text-decoration:none;
-}
-.wa{background:#25D366;}
-.fb{background:#1877f2;}
-.box{border:2px dashed green;padding:15px;margin-top:20px;}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prashant Public</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #fff3e0;
+        }
+
+        header {
+            background: #ff6f00;
+            padding: 20px;
+            text-align: center;
+            color: white;
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 30px;
+            background: #ffe0b2;
+        }
+
+        .hero img {
+            width: 260px;
+            border-radius: 10px;
+            border: 5px solid #ff6f00;
+        }
+
+        .section {
+            padding: 30px;
+        }
+
+        .contact-box {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 5px solid #ff6f00;
+            box-shadow: 0 0 10px #ccc;
+            margin-bottom: 30px;
+        }
+
+        .poster-box {
+            background: #fff;
+            border-left: 5px solid #e65100;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #ccc;
+        }
+
+        footer {
+            text-align: center;
+            background: #ff6f00;
+            color: white;
+            padding: 10px;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 
 <body>
 
-<h2>🙏 आपला पाठिंबा आवश्यक आहे</h2>
+<header>
+    Prashant Public
+</header>
 
-<p>
-👉 LIKE करा<br>
-👉 SHARE करा<br>
-👉 मग पूर्ण माहिती वाचा
-</p>
-
-<a class="btn wa" onclick="shareWA()">📲 WhatsApp Share</a>
-
-<div class="box">
-✅ Share केल्यानंतर खाली माहिती वाचा
+<div class="hero">
+    <img src="your-photo.jpg" alt="Prashant Photo">
+    <h2>जनतेसाठी सेवा, आपल्या विश्वासाची साथ</h2>
 </div>
 
-<a href="mahiti.html" class="btn fb">📄 पूर्ण माहिती पहा</a>
+<!-- Contact Section -->
+<div class="section">
+    <h2>संपर्क</h2>
+    <div class="contact-box">
+        <p><b>📞 मोबाईल:</b> 8484087016</p>
+        <p><b>📱 WhatsApp:</b> 8484087016</p>
+        <p><b>📸 Instagram:</b> prashant_public</p>
+        <p><b>📘 Facebook:</b> Prashant Public</p>
+    </div>
+</div>
 
-<script>
-function shareWA(){
-  let text =
-"🙏 नमस्कार!\n" +
-"आपल्या भागाच्या विकासासाठी हा उपक्रम आहे.\n" +
-"पूर्ण माहिती येथे वाचा 👇\n" +
-window.location.origin + "/prashant-Public/";
-window.open(
-  "https://wa.me/?text="+encodeURIComponent(text),
-  "_blank"
-);
-}
-</script>
-<body>
-  <!-- तुमची Mahiti -->
-  
-  <button>WhatsApp Share</button>
+<!-- Daily Poster Template -->
+<div class="section">
+    <h2>Daily प्रचार Poster Template</h2>
+    <div class="poster-box">
+        <h3 style="color:#e65100;">आजचा संदेश</h3>
+        <p>👉 “जनतेच्या हक्कासाठी आम्ही सदैव तत्पर”</p>
+        <p>👉 “सामान्य माणसाची लढाई – Prashant Public”</p>
 
-  <!-- ✅ फक्त public JS -->
-  <script src="public.js"></script>
+        <br>
+        <h4>📌 तुमचा फोटो बदलण्यासाठी:</h4>
+        <p>GitHub मध्ये <b>your-photo.jpg</b> या नावाने तुमचा नवीन फोटो टाका.</p>
+    </div>
+</div>
+
+<footer>
+    © 2025 Prashant Public | सर्व हक्क राखीव
+</footer>
+
 </body>
-  
 </html>
