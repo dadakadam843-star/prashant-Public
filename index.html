@@ -1,81 +1,131 @@
 <!DOCTYPE html>
 <html lang="mr">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Prashant Public</title>
-
-  <style>
-    body { margin:0; font-family: Arial, sans-serif; background:#fff3e0; color:#333; }
-    header { background:#ff6f00; color:white; padding:18px; text-align:center; font-weight:bold; font-size:26px; }
-    .hero { text-align:center; padding:30px; background:#ffe0b2; }
-    .hero img { width:260px; max-width:80%; border-radius:10px; border:5px solid #ff6f00; display:block; margin:0 auto 12px; object-fit:cover; }
-    .section { padding:28px 16px; max-width:900px; margin:0 auto; }
-    .box { background:white; padding:18px; border-radius:10px; box-shadow:0 2px 8px rgba(0,0,0,0.08); border-left:6px solid #ff6f00; margin-bottom:18px; }
-    h2 { color:#e65100; margin-top:0; }
-    footer { text-align:center; background:#ff6f00; color:white; padding:12px; margin-top:18px; }
-  </style>
+<meta charset="UTF-8">
+<title>Admin Panel + WhatsApp</title>
+<style>
+body{
+  font-family: Arial;
+  background:#f4f4f4;
+  margin:0;
+}
+header{
+  background:#0a3d62;
+  color:#fff;
+  padding:15px;
+  text-align:center;
+}
+.container{
+  padding:15px;
+}
+.card{
+  background:#fff;
+  padding:15px;
+  margin-bottom:15px;
+  border-radius:5px;
+}
+input,textarea,button{
+  width:100%;
+  padding:10px;
+  margin-top:8px;
+}
+button{
+  background:#0a3d62;
+  color:white;
+  border:none;
+}
+img{
+  max-width:100%;
+  margin-top:10px;
+}
+.whatsapp{
+  background:#25D366;
+}
+.hidden{display:none;}
+</style>
 </head>
+
 <body>
 
-<header id="site-title">Prashant Public</header>
+<header>
+<h2>Public Information Website</h2>
+</header>
 
-<div class="hero">
-  <img id="hero-photo" src="" alt="photo" onerror="this.style.display='none'">
-  <h2 id="hero-slogan"></h2>
-  <p id="hero-sub" style="margin:6px 0 0;color:#6b4a12"></p>
+<div class="container">
+
+<!-- ADMIN LOGIN -->
+<div class="card" id="loginCard">
+<h3>Admin Login</h3>
+<input type="password" id="password" placeholder="Password">
+<button onclick="login()">Login</button>
 </div>
 
-<div class="section">
-  <div class="box">
-    <h2>संपर्क</h2>
-    <p id="contact-phone"></p>
-    <p id="contact-whatsapp"></p>
-    <p id="contact-instagram"></p>
-    <p id="contact-facebook"></p>
-  </div>
+<!-- ADMIN PANEL -->
+<div class="card hidden" id="adminPanel">
+<h3>Admin Panel</h3>
 
-  <div class="box">
-    <h2>आजचा संदेश</h2>
-    <div id="daily-message"></div>
-  </div>
-
-  <div class="box" style="text-align:center">
-    <button onclick="shareSite()">🔁 Share करा</button>
-  </div>
+<textarea id="infoText" placeholder="Mahiti Enter Kara"></textarea>
+<input type="file" id="photoInput">
+<button onclick="saveData()">Save</button>
+<button onclick="logout()">Logout</button>
 </div>
 
-<footer>© <span id="year"></span> Prashant Public</footer>
+<!-- PUBLIC VIEW -->
+<div class="card">
+<h3>Mahiti</h3>
+<p id="infoDisplay">Mahiti Soon...</p>
+<img id="photoDisplay">
+</div>
+
+<!-- WHATSAPP -->
+<div class="card">
+<h3>WhatsApp Message</h3>
+<textarea id="msg" placeholder="Message"></textarea>
+<button class="whatsapp" onclick="sendWhatsApp()">Send WhatsApp</button>
+</div>
+
+</div>
 
 <script>
-async function loadContent(){
-  const res = await fetch("content.json?time="+Date.now());
-  const data = await res.json();
+let adminPassword = "1234"; // change password
 
-  document.getElementById("site-title").textContent = data.title;
-  document.getElementById("hero-photo").src = data.photo;
-  document.getElementById("hero-slogan").textContent = data.slogan;
-  document.getElementById("hero-sub").textContent = data.sub;
-  document.getElementById("contact-phone").textContent = "📞 " + data.phone;
-  document.getElementById("contact-whatsapp").textContent = "📱 " + data.whatsapp;
-  document.getElementById("contact-instagram").textContent = "📸 " + data.instagram;
-  document.getElementById("contact-facebook").textContent = "📘 " + data.facebook;
-  document.getElementById("daily-message").textContent = data.today;
-  document.getElementById("year").textContent = new Date().getFullYear();
-}
-
-function shareSite(){
-  if(navigator.share){
-    navigator.share({
-      title:"Prashant Public",
-      url:window.location.href
-    });
-  } else {
-    alert("Share option तुमच्या मोबाइलवर उपलब्ध नाही!");
+function login(){
+  if(password.value === adminPassword){
+    loginCard.classList.add("hidden");
+    adminPanel.classList.remove("hidden");
+  }else{
+    alert("Wrong Password");
   }
 }
 
-loadContent();
+function logout(){
+  loginCard.classList.remove("hidden");
+  adminPanel.classList.add("hidden");
+}
+
+function saveData(){
+  localStorage.setItem("info",infoText.value);
+
+  let file = photoInput.files[0];
+  let reader = new FileReader();
+  reader.onload = function(){
+    localStorage.setItem("photo",reader.result);
+    loadData();
+  }
+  if(file) reader.readAsDataURL(file);
+}
+
+function loadData(){
+  infoDisplay.innerText = localStorage.getItem("info") || "Mahiti Nahi";
+  let photo = localStorage.getItem("photo");
+  if(photo) photoDisplay.src = photo;
+}
+loadData();
+
+function sendWhatsApp(){
+  let text = encodeURIComponent(msg.value);
+  window.open("https://wa.me/?text="+text,"_blank");
+}
 </script>
 
 </body>
