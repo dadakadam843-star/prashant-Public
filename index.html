@@ -1,55 +1,71 @@
 <!DOCTYPE html>
-<html lang="mr">
+<html>
 <head>
 <meta charset="UTF-8">
-<title>Public Campaign</title>
+<title>प्रचार माहिती</title>
 
 <style>
-body{font-family:Arial;text-align:center;padding:20px;}
-.btn{
-  display:block;
-  padding:15px;
-  margin:15px 0;
-  font-size:18px;
-  color:white;
-  border-radius:10px;
-  text-decoration:none;
-}
-.wa{background:#25D366;}
-.fb{background:#1877f2;}
-.box{border:2px dashed green;padding:15px;margin-top:20px;}
+body { font-family: Arial; padding: 20px; }
+.card { border: 1px solid #ccc; padding: 15px; border-radius: 10px; }
+img { width: 100%; max-width: 300px; border-radius: 10px; margin-top: 10px; }
+input, textarea { width: 100%; padding: 10px; margin-top: 10px; }
+button { padding: 10px 20px; margin-top: 10px; background: green; color: white; border: none; border-radius: 5px; }
 </style>
-</head>
 
+</head>
 <body>
 
-<h2>🙏 आपला पाठिंबा आवश्यक आहे</h2>
+<h2>प्रचार माहिती भरा</h2>
 
-<p>
-👉 LIKE करा<br>
-👉 SHARE करा<br>
-👉 मग पूर्ण माहिती वाचा
-</p>
+<div class="card">
 
-<a class="btn wa" onclick="shareWA()">📲 WhatsApp Share</a>
+<label>नाव:</label>
+<input id="name" type="text" placeholder="तुमचे नाव">
 
-<div class="box">
-✅ Share केल्यानंतर खाली माहिती वाचा
+<label>मोबाईल नंबर:</label>
+<input id="mobile" type="text" placeholder="मोबाईल नंबर">
+
+<label>घोषवाक्य / संदेश:</label>
+<textarea id="msg" placeholder="तुमचा प्रचार संदेश"></textarea>
+
+<label>फोटो अपलोड:</label>
+<input type="file" id="photo">
+
+<img id="preview" style="display:none;">
+
+<button onclick="shareWhatsApp()">WhatsApp वर शेअर करा</button>
+
 </div>
 
-<a href="mahiti.html" class="btn fb">📄 पूर्ण माहिती पहा</a>
-
 <script>
-function shareWA(){
-  let text =
-"🙏 नमस्कार!\n" +
-"आपल्या भागाच्या विकासासाठी हा उपक्रम आहे.\n" +
-"पूर्ण माहिती येथे वाचा 👇\n" +
-window.location.origin + "/prashant-Public/";
-window.open(
-  "https://wa.me/?text="+encodeURIComponent(text),
-  "_blank"
-);
+let imageURL = "";
+
+// PHOTO PREVIEW
+document.getElementById("photo").addEventListener("change", function() {
+    let reader = new FileReader();
+    reader.onload = function(e) {
+        imageURL = e.target.result;
+        document.getElementById("preview").src = imageURL;
+        document.getElementById("preview").style.display = "block";
+    };
+    reader.readAsDataURL(this.files[0]);
+});
+
+// WHATSAPP SHARE
+function shareWhatsApp() {
+    let name = document.getElementById("name").value;
+    let mobile = document.getElementById("mobile").value;
+    let msg = document.getElementById("msg").value;
+
+    let text = 
+        "नाव: " + name + "%0A" +
+        "मोबाईल: " + mobile + "%0A" +
+        "संदेश: " + msg + "%0A%0A" +
+        "फोटो खाली पहा:%0A" +
+        imageURL;
+
+    let url = "https://wa.me/?text=" + text;
+    window.open(url, "_blank");
 }
 </script>
 
