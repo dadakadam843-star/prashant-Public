@@ -4,6 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Prashant Public</title>
+
   <style>
     body { margin:0; font-family: Arial, sans-serif; background:#fff3e0; color:#333; }
     header { background:#ff6f00; color:white; padding:18px; text-align:center; font-weight:bold; font-size:26px; }
@@ -16,56 +17,67 @@
   </style>
 </head>
 <body>
-  <header id="site-title">Prashant Public</header>
 
-  <div class="hero">
-    <img id="hero-photo" src="your-photo.jpg" alt="Prashant Photo" onerror="this.style.display='none'">
-    <h2 id="hero-slogan">जनतेसाठी सेवा, आपल्या विश्वासाची साथ</h2>
-    <p id="hero-sub" style="margin:6px 0 0;color:#6b4a12"></p>
+<header id="site-title">Prashant Public</header>
+
+<div class="hero">
+  <img id="hero-photo" src="" alt="photo" onerror="this.style.display='none'">
+  <h2 id="hero-slogan"></h2>
+  <p id="hero-sub" style="margin:6px 0 0;color:#6b4a12"></p>
+</div>
+
+<div class="section">
+  <div class="box">
+    <h2>संपर्क</h2>
+    <p id="contact-phone"></p>
+    <p id="contact-whatsapp"></p>
+    <p id="contact-instagram"></p>
+    <p id="contact-facebook"></p>
   </div>
 
-  <div class="section">
-    <div class="box">
-      <h2>संपर्क</h2>
-      <p id="contact-phone">📞 मोबाईल: 9607023105</p>
-      <p id="contact-whatsapp">📱 WhatsApp: 8484087016</p>
-      <p id="contact-instagram">📸 Instagram:  https://www.instagram.com/dadakadam1?igsh=MTk2NGMwcjhlejhkcg==</p>
-      <p id="contact-facebook">📘 Facebook: //www.facebook.com/share/1CmCEVsc7Z/ </p>
-    </div>
-
-    <div class="box">
-      <h2>आजचा संदेश</h2>
-      <div id="daily-message">👉 “जनतेच्या हक्कासाठी आम्ही सदैव तत्पर”</div>
-    </div>
+  <div class="box">
+    <h2>आजचा संदेश</h2>
+    <div id="daily-message"></div>
   </div>
 
-  <footer>© <span id="year"></span> Prashant Public | सर्व हक्क राखीव</footer>
+  <div class="box" style="text-align:center">
+    <button onclick="shareSite()">🔁 Share करा</button>
+  </div>
+</div>
+
+<footer>© <span id="year"></span> Prashant Public</footer>
 
 <script>
-  // Load content.json from same folder (served by GitHub Pages)
-  async function loadContent(){
-    try{
-      const res = await fetch('content.json?cachebust=' + Date.now());
-      if(!res.ok) throw new Error('content.json नाही मिळालं');
-      const data = await res.json();
-      document.getElementById('site-title').textContent = data.title || 'Prashant Public';
-      const photo = data.photo || 'your-photo.jpg';
-      const heroImg = document.getElementById('hero-photo');
-      heroImg.src = photo;
-      heroImg.style.display = data.photo ? 'block' : (photo ? 'block' : 'none');
-      document.getElementById('hero-slogan').textContent = data.slogan || 'जनतेसाठी सेवा, आपल्या विश्वासाची साथ';
-      document.getElementById('hero-sub').textContent = data.sub || '';
-      document.getElementById('contact-phone').innerHTML = '📞 मोबाईल: ' + (data.phone || '8484087016');
-      document.getElementById('contact-whatsapp').innerHTML = '📱 WhatsApp: ' + (data.whatsapp || data.phone || '8484087016');
-      document.getElementById('contact-instagram').innerHTML = '📸 Instagram: ' + (data.instagram || 'prashant_public');
-      document.getElementById('contact-facebook').innerHTML = '📘 Facebook: ' + (data.facebook || 'Prashant Public');
-      document.getElementById('daily-message').innerHTML = (data.today || '👉 “जनतेच्या हक्कासाठी आम्ही सदैव तत्पर”');
-      document.getElementById('year').textContent = new Date().getFullYear();
-    }catch(err){
-      console.warn(err);
-    }
+async function loadContent(){
+  const res = await fetch("content.json?time="+Date.now());
+  const data = await res.json();
+
+  document.getElementById("site-title").textContent = data.title;
+  document.getElementById("hero-photo").src = data.photo;
+  document.getElementById("hero-slogan").textContent = data.slogan;
+  document.getElementById("hero-sub").textContent = data.sub;
+  document.getElementById("contact-phone").textContent = "📞 " + data.phone;
+  document.getElementById("contact-whatsapp").textContent = "📱 " + data.whatsapp;
+  document.getElementById("contact-instagram").textContent = "📸 " + data.instagram;
+  document.getElementById("contact-facebook").textContent = "📘 " + data.facebook;
+  document.getElementById("daily-message").textContent = data.today;
+  document.getElementById("year").textContent = new Date().getFullYear();
+}
+
+function shareSite(){
+  if(navigator.share){
+    navigator.share({
+      title:"Prashant Public",
+      url:window.location.href
+    });
+  } else {
+    alert("Share option तुमच्या मोबाइलवर उपलब्ध नाही!");
   }
-  loadContent();
+}
+
+loadContent();
 </script>
+
 </body>
 </html>
+
