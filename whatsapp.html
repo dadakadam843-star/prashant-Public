@@ -1,9 +1,0 @@
-<script src="firebase.js"></script>
-
-<script>
-db.collection("message").doc("main").get().then(d=>{
- let msg = d.data().text;
- window.location =
- "https://wa.me/918484078016?text="+encodeURIComponent(msg);
-});
-</script>
