@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prashant Public - गरीब नेतृत्व</title>
+    <title>Prashant Public</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -11,68 +11,82 @@
 
     <!-- Header -->
     <header>
-        <h1>प्रशांत कल्पना राजू कदम</h1>
-        <p>गरीब नेतृत्व • प्रभाग 3 सांगली-मिरज-कुपवाड महानगरपालिका</p>
-        <p class="phone">📞 8484078016</p>
+        <h1>Prashant Public</h1>
+        <p>जनतेसाठी सेवा • सांगली मिरज कुपवाड महानगरपालिका</p>
     </header>
 
-    <!-- Banner Auto Slider -->
-    <section class="slider">
-        <div class="slides">
-            <img src="images/banner1.jpg">
-            <img src="images/banner2.jpg">
-            <img src="images/banner3.jpg">
-        </div>
-    </section>
-
-    <!-- Admin Photo + Message -->
+    <!-- Admin Section -->
     <section class="admin-section">
-        <img src="images/admin.jpg" class="admin-photo">
-        <div class="admin-msg">
-            <h2>नेतृत्व संदेश</h2>
-            <p id="adminMessage">लोड होत आहे...</p>
-        </div>
+        <img id="adminPhoto" src="" alt="Admin Photo">
+        <h2 id="adminName"></h2>
+        <p id="adminMessage"></p>
     </section>
 
-    <!-- Daily Post Section -->
-    <section>
-        <h2 class="title">📌 आजचा संदेश</h2>
-        <p id="dailyPost">लोड होत आहे...</p>
+    <!-- Banner Slider -->
+    <section class="banner-slider">
+        <div class="slider">
+            <img class="slide" id="banner1">
+            <img class="slide" id="banner2">
+            <img class="slide" id="banner3">
+        </div>
     </section>
 
     <!-- Gallery -->
-    <section>
-        <h2 class="title">📸 गॅलरी</h2>
-        <div id="gallery" class="gallery"></div>
+    <section class="gallery">
+        <h2>Photo Gallery</h2>
+        <div id="galleryContainer"></div>
+    </section>
+
+    <!-- Daily Update -->
+    <section class="updates">
+        <h2>Daily Updates</h2>
+        <p id="dailyUpdate"></p>
     </section>
 
     <!-- Video Section -->
-    <section>
-        <h2 class="title">🎥 व्हिडीओ</h2>
-        <div id="videos" class="videos"></div>
+    <section class="videos">
+        <h2>Videos</h2>
+        <iframe id="videoFrame" width="100%" height="250" frameborder="0" allowfullscreen></iframe>
+    </section>
+
+    <!-- Social Links -->
+    <section class="social">
+        <h2>Social Media</h2>
+        <a id="facebookLink" target="_blank">Facebook</a>
+        <a id="instagramLink" target="_blank">Instagram</a>
     </section>
 
     <script>
-        // Load data.json content
         fetch("data.json")
             .then(res => res.json())
             .then(data => {
-                document.getElementById("adminMessage").innerText = data.admin_message;
-                document.getElementById("dailyPost").innerText = data.daily_post;
 
-                // Gallery Load
-                let galleryHTML = "";
+                // Admin
+                document.getElementById("adminPhoto").src = data.admin.photo;
+                document.getElementById("adminName").innerText = data.admin.name;
+                document.getElementById("adminMessage").innerText = data.admin.message;
+
+                // Banners
+                document.getElementById("banner1").src = data.banners[0];
+                document.getElementById("banner2").src = data.banners[1];
+                document.getElementById("banner3").src = data.banners[2];
+
+                // Gallery
+                let g = "";
                 data.gallery.forEach(img => {
-                    galleryHTML += `<img src="${img}">`;
+                    g += `<img src="${img}" class="gimg">`;
                 });
-                document.getElementById("gallery").innerHTML = galleryHTML;
+                document.getElementById("galleryContainer").innerHTML = g;
 
-                // Video Load
-                let videoHTML = "";
-                data.videos.forEach(v => {
-                    videoHTML += `<iframe src="${v}" frameborder="0" allowfullscreen></iframe>`;
-                });
-                document.getElementById("videos").innerHTML = videoHTML;
+                // Update
+                document.getElementById("dailyUpdate").innerText = data.update;
+
+                // Video
+                document.getElementById("videoFrame").src = data.video;
+
+                // Social Media
+                document.getElementById("facebookLink").href = data.social.facebook;
+                document.getElementById("instagramLink").href = data.social.instagram;
             });
     </script>
 
