@@ -1,13 +1,11 @@
 {
-    "admin_message": "जनतेसाठी आम्ही सदैव उभे आहोत. गरीब नेतृत्वासाठी तुमचा विश्वास आमची ताकद!",
-    "daily_post": "आजचा विचार: सेवा हीच खरी राजनीति आहे.",
-    "gallery": [
-        "images/pic1.jpg",
-        "images/pic2.jpg",
-        "images/pic3.jpg"
-    ],
-    "videos": [
-        "https://www.youtube.com/embed/VIDEOID1",
-        "https://www.youtube.com/embed/VIDEOID2"
-    ]
+  "name":"प्रशांत कल्पना राजू कदम",
+  "title":"गरीब नेतृत्व",
+  "mobile":"8484078016",
+  "address":"भारत नगर, प्रभाग क्र.3, सांगली–मिरज–कुपवाड",
+  "message":"जनतेसाठी आम्ही सदैव तत्पर.",
+  "banners":["images/banner1.jpg","images/banner2.jpg"],
+  "posts":["आज स्वच्छता मोहीम","रक्तदान शिबिराचे आयोजन"],
+  "gallery":["images/pic1.jpg","images/pic2.jpg"],
+  "videos":["https://www.youtube.com/embed/VIDEOID"]
 }
