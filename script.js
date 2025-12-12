@@ -1,52 +1,40 @@
-// BASIC DATA
+// Auto Slider
+let images = ["images/banner1.jpg", "images/banner2.jpg", "images/banner3.jpg"];
+let i = 0;
+
+function slider() {
+    document.getElementById("slide").src = images[i];
+    i = (i + 1) % images.length;
+}
+setInterval(slider, 2500);
+
+// Load Data.json
 fetch("data.json")
-  .then(res => res.json())
-  .then(data => {
-      document.getElementById("leaderName").innerText = data.name;
-      document.getElementById("title").innerText = data.title;
-      document.getElementById("leaderPhoto").src = data.photo;
-      document.getElementById("mobile").innerText = data.mobile;
-      document.getElementById("dailyMsg").innerText = data.message;
-      document.getElementById("fbLink").href = data.facebook;
-      document.getElementById("igLink").href = data.instagram;
-  });
+    .then(res => res.json())
+    .then(data => {
+        // Gallery
+        const gallery = document.getElementById("gallery");
+        data.gallery.forEach(img => {
+            let tag = `<img src="${img}" class="gimg">`;
+            gallery.innerHTML += tag;
+        });
 
-// BANNER SLIDER
-fetch("data.json")
-  .then(r => r.json())
-  .then(d => {
-      let slider = document.getElementById("bannerSlider");
-      d.banners.forEach(b => {
-          slider.innerHTML += `<img src="${b}">`;
-      });
-  });
+        // Posts
+        const posts = document.getElementById("posts");
+        data.posts.forEach(p => {
+            let tag = `
+                <div class="post-box">
+                    <p>${p.text}</p>
+                    <small>${p.date}</small>
+                </div>
+            `;
+            posts.innerHTML += tag;
+        });
 
-// POSTS
-fetch("posts.json")
-  .then(r => r.json())
-  .then(list => {
-      let box = document.getElementById("postList");
-      list.forEach(p => {
-          box.innerHTML += `<div class='postItem'>${p}</div>`;
-      });
-  });
-
-// GALLERY
-fetch("gallery.json")
-  .then(r => r.json())
-  .then(list => {
-      let g = document.getElementById("galleryBox");
-      list.forEach(img => {
-          g.innerHTML += `<img src="${img}">`;
-      });
-  });
-
-// VIDEOS
-fetch("videos.json")
-  .then(r => r.json())
-  .then(list => {
-      let v = document.getElementById("videoList");
-      list.forEach(link => {
-          v.innerHTML += `<iframe width="100%" height="200" src="${link}" frameborder="0" allowfullscreen></iframe>`;
-      });
-  });
+        // Videos
+        const videos = document.getElementById("videos");
+        data.videos.forEach(v => {
+            let tag = `<iframe width="100%" height="200" src="${v}" allowfullscreen></iframe>`;
+            videos.innerHTML += tag;
+        });
+    });
