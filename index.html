@@ -2,7 +2,6 @@
 <html lang="mr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prashant Public</title>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -12,83 +11,41 @@
     <!-- Header -->
     <header>
         <h1>Prashant Public</h1>
-        <p>जनतेसाठी सेवा • सांगली मिरज कुपवाड महानगरपालिका</p>
+        <p>जनतेसाठी सेवा • संपर्क: 8484087016</p>
     </header>
 
+    <!-- Auto Slider -->
+    <section class="slider">
+        <img src="images/banner1.jpg" id="slide">
+    </section>
+
     <!-- Admin Section -->
-    <section class="admin-section">
-        <img id="adminPhoto" src="" alt="Admin Photo">
-        <h2 id="adminName"></h2>
-        <p id="adminMessage"></p>
+    <section class="admin-box">
+        <img src="images/admin.jpg" class="admin-photo">
+        <h2>प्रशांत दादा कदम</h2>
+        <p>गरिबांचे नेतृत्व • जनतेचा विश्वास</p>
     </section>
 
-    <!-- Banner Slider -->
-    <section class="banner-slider">
-        <div class="slider">
-            <img class="slide" id="banner1">
-            <img class="slide" id="banner2">
-            <img class="slide" id="banner3">
-        </div>
-    </section>
-
-    <!-- Gallery -->
-    <section class="gallery">
+    <!-- Photo Gallery -->
+    <section>
         <h2>Photo Gallery</h2>
-        <div id="galleryContainer"></div>
+        <div class="gallery" id="gallery"></div>
     </section>
 
-    <!-- Daily Update -->
-    <section class="updates">
-        <h2>Daily Updates</h2>
-        <p id="dailyUpdate"></p>
+    <!-- Daily Posts -->
+    <section>
+        <h2>Daily Posts</h2>
+        <div class="posts" id="posts"></div>
     </section>
 
-    <!-- Video Section -->
-    <section class="videos">
+    <!-- Videos -->
+    <section>
         <h2>Videos</h2>
-        <iframe id="videoFrame" width="100%" height="250" frameborder="0" allowfullscreen></iframe>
+        <div class="videos" id="videos"></div>
     </section>
 
-    <!-- Social Links -->
-    <section class="social">
-        <h2>Social Media</h2>
-        <a id="facebookLink" target="_blank">Facebook</a>
-        <a id="instagramLink" target="_blank">Instagram</a>
-    </section>
-
-    <script>
-        fetch("data.json")
-            .then(res => res.json())
-            .then(data => {
-
-                // Admin
-                document.getElementById("adminPhoto").src = data.admin.photo;
-                document.getElementById("adminName").innerText = data.admin.name;
-                document.getElementById("adminMessage").innerText = data.admin.message;
-
-                // Banners
-                document.getElementById("banner1").src = data.banners[0];
-                document.getElementById("banner2").src = data.banners[1];
-                document.getElementById("banner3").src = data.banners[2];
-
-                // Gallery
-                let g = "";
-                data.gallery.forEach(img => {
-                    g += `<img src="${img}" class="gimg">`;
-                });
-                document.getElementById("galleryContainer").innerHTML = g;
-
-                // Update
-                document.getElementById("dailyUpdate").innerText = data.update;
-
-                // Video
-                document.getElementById("videoFrame").src = data.video;
-
-                // Social Media
-                document.getElementById("facebookLink").href = data.social.facebook;
-                document.getElementById("instagramLink").href = data.social.instagram;
-            });
-    </script>
+    <script src="data.json"></script>
+    <script src="script.js"></script>
 
 </body>
 </html>
