@@ -1,11 +1,27 @@
 {
-  "name":"प्रशांत कल्पना राजू कदम",
-  "title":"गरीब नेतृत्व",
-  "mobile":"8484078016",
-  "address":"भारत नगर, प्रभाग क्र.3, सांगली–मिरज–कुपवाड",
-  "message":"जनतेसाठी आम्ही सदैव तत्पर.",
-  "banners":["images/banner1.jpg","images/banner2.jpg"],
-  "posts":["आज स्वच्छता मोहीम","रक्तदान शिबिराचे आयोजन"],
-  "gallery":["images/pic1.jpg","images/pic2.jpg"],
-  "videos":["https://www.youtube.com/embed/VIDEOID"]
+  "admin": {
+    "name": "प्रशांत कल्पना राजू कदम",
+    "photo": "images/admin.jpg",
+    "message": "गरीब नेतृत्व – जनतेसाठी सदैव उपलब्ध!"
+  },
+
+  "banners": [
+    "images/banner1.jpg",
+    "images/banner2.jpg",
+    "images/banner3.jpg"
+  ],
+
+  "gallery": [
+    "images/pic1.jpg",
+    "images/pic2.jpg"
+  ],
+
+  "update": "आजचा संदेश: जनतेच्या हक्कासाठी नेहमीच तत्पर!",
+
+  "video": "https://www.youtube.com/embed/VIDEO_ID",
+
+  "social": {
+    "facebook": "https://www.facebook.com/share/17ajVkgqU3/",
+    "instagram": "https://www.instagram.com/dadakadam1"
+  }
 }
