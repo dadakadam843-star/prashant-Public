@@ -1,27 +1,24 @@
 {
-  "admin": {
-    "name": "प्रशांत कल्पना राजू कदम",
-    "photo": "images/admin.jpg",
-    "message": "गरीब नेतृत्व – जनतेसाठी सदैव उपलब्ध!"
-  },
+    "gallery": [
+        "images/pic1.jpg",
+        "images/pic2.jpg",
+        "images/pic3.jpg",
+        "images/pic4.jpg"
+    ],
 
-  "banners": [
-    "images/banner1.jpg",
-    "images/banner2.jpg",
-    "images/banner3.jpg"
-  ],
+    "posts": [
+        {
+            "text": "जनतेच्या हक्कासाठी सतत लढत राहू!",
+            "date": "2025-01-10"
+        },
+        {
+            "text": "गरीब नेतृत्व – जनतेचा आवाज!",
+            "date": "2025-01-08"
+        }
+    ],
 
-  "gallery": [
-    "images/pic1.jpg",
-    "images/pic2.jpg"
-  ],
-
-  "update": "आजचा संदेश: जनतेच्या हक्कासाठी नेहमीच तत्पर!",
-
-  "video": "https://www.youtube.com/embed/XXXX",
-
-  "social": {
-    "facebook": "https://facebook.com",
-    "instagram": "https://instagram.com"
-  }
+    "videos": [
+        "https://www.youtube.com/embed/FTEtRZpRw7E",
+        "https://www.youtube.com/embed/0O2aH4XLbto"
+    ]
 }
