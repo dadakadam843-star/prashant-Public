@@ -7,14 +7,14 @@
   },
   "dailyMessage": "मी प्रशांत राजू कदम, प्रभाग क्रमांक 3 मधून निवडणूक लढत आहे. माझ्या कामाची माहिती पाहण्यासाठी ही वेबसाइट पहा.",
   "banners": [
-    "work1.jpg",
-    "work2.jpg",
-    "work3.jpg",
-    "work4.jpg"
-    
+    "images/work1.jpg",
+    "images/work2.jpg"
   ],
   "gallery": [
-    "images/photo1.jpg",
-    "images/photo2.jpg"
+    "images/work1.jpg",
+    "images/work2.jpg",
+    "images/work3.jpg",
+    "images/work4.jpg",
+    "images/work5.jpg"
   ]
 }
