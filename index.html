@@ -5,88 +5,57 @@
 <title>Prashant Public</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
-body{
-  font-family: Arial, sans-serif;
-  margin:0;
-  background:#fff3e0;
-}
-.container{
-  text-align:center;
-  padding:20px;
-}
-.profile{
-  width:140px;
-  height:140px;
-  border-radius:50%;
-  border:4px solid #ff6a00;
-}
-h2{margin:10px 0 5px}
-p{margin:5px 0;color:#333}
-.btn{
-  display:inline-block;
-  margin:10px;
-  padding:14px 26px;
-  font-size:18px;
-  color:#fff;
-  border:none;
-  border-radius:30px;
-  cursor:pointer;
-}
+body{margin:0;font-family:Arial;background:#fff}
+.header{text-align:center;padding:20px;background:#ff6a00;color:#fff}
+.profile{width:140px;height:140px;border-radius:50%;border:4px solid #fff}
+.section{padding:15px}
+.gallery img{width:100%;margin-top:10px;border-radius:10px}
+.btn{padding:14px 24px;border:none;border-radius:30px;
+font-size:17px;color:#fff;margin:10px}
 .group{background:#25D366}
 .community{background:#128C7E}
-.box{
-  background:#fff;
-  margin:15px;
-  padding:15px;
-  border-radius:12px;
-}
+.box{background:#f9f9f9;padding:15px;border-radius:12px;margin-top:15px}
 </style>
 </head>
 
 <body>
 
-<div class="container">
-
-  <!-- Profile -->
+<div class="header">
   <img src="profile.jpg" class="profile">
-  <h2>प्रशांत कल्पना राजू कदम</h2>
-  <p>
-    गरीब नेतृत्व<br>
-    भारत नगर प्रभाग क्रमांक 3<br>
-    सांगली मिरज आणि कुपवाड महानगरपालिका
-  </p>
+  <h2>प्रशांत राजू कदम</h2>
+  <p>गरीब नेतृत्व | प्रभाग क्रमांक 3<br>
+  सांगली मिरज आणि कुपवाड महानगरपालिका</p>
 
-  <!-- WhatsApp Buttons -->
-  <button class="btn group" onclick="joinGroup()">
-    📢 WhatsApp Updates (Group)
-  </button><br>
-
-  <button class="btn community" onclick="joinCommunity()">
-    🌐 WhatsApp Community
-  </button>
-
+  <button class="btn group" onclick="joinGroup()">WhatsApp Updates</button>
+  <button class="btn community" onclick="joinCommunity()">WhatsApp Community</button>
 </div>
 
-<div class="box">
-  <h3>आमचा उद्देश</h3>
-  <p>जनतेच्या हक्कासाठी सदैव तत्पर.</p>
+<div class="section box">
+  <h3>आजचा संदेश</h3>
+  <p id="dailyMsg">लोड होत आहे...</p>
+</div>
+
+<div class="section box">
+  <h3>कामाचे फोटो</h3>
+  <div class="gallery" id="gallery"></div>
 </div>
 
 <script>
-function joinGroup(){
-  // 👉 इथे तुमची WhatsApp Group Invite Link टाका
-  window.open(
-    "https://chat.whatsapp.com/YOUR_GROUP_LINK",
-    "_blank"
-  );
-}
+fetch("data.json")
+.then(res=>res.json())
+.then(data=>{
+  document.getElementById("dailyMsg").innerText = data.message;
+  let g=document.getElementById("gallery");
+  data.images.forEach(img=>{
+    g.innerHTML+=`<img src="${img}">`;
+  });
+});
 
+function joinGroup(){
+  window.open("https://chat.whatsapp.com/YOUR_GROUP_LINK","_blank");
+}
 function joinCommunity(){
-  // 👉 इथे तुमची WhatsApp Community Invite Link टाका
-  window.open(
-    "https://chat.whatsapp.com/YOUR_COMMUNITY_LINK",
-    "_blank"
-  );
+  window.open("https://chat.whatsapp.com/YOUR_COMMUNITY_LINK","_blank");
 }
 </script>
 
