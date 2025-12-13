@@ -1,127 +1,86 @@
 <!DOCTYPE html>
 <html lang="mr">
 <head>
-  <meta charset="UTF-8">
-  <title>Prashant Public</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <style>
-    body{
-      margin:0;
-      font-family: Arial, sans-serif;
-      background:#f4f4f4;
-    }
-    header{
-      background:#ff6a00;
-      color:white;
-      padding:20px;
-      text-align:center;
-    }
-    .box{
-      background:white;
-      margin:15px;
-      padding:15px;
-      border-radius:10px;
-      text-align:center;
-    }
-    .box img{
-      width:200px;
-      max-width:90%;
-      border-radius:10px;
-      border:3px solid #ff6a00;
-    }
-    button{
-      padding:14px 22px;
-      font-size:18px;
-      border:none;
-      border-radius:8px;
-      cursor:pointer;
-      margin:8px 0;
-      width:90%;
-      max-width:300px;
-    }
-    .gallery-btn{
-      background:#ff6a00;
-      color:white;
-    }
-    .whatsapp-btn{
-      background:#25D366;
-      color:white;
-    }
-    .gallery{
-      display:none;
-    }
-    .gallery img{
-      width:100%;
-      margin-top:10px;
-      border-radius:8px;
-    }
-    footer{
-      background:#222;
-      color:white;
-      text-align:center;
-      padding:12px;
-      font-size:14px;
-    }
-  </style>
+<meta charset="UTF-8">
+<title>Prashant Public</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body{font-family:Arial;margin:0;background:#fff3e0}
+header{background:#ff6a00;color:white;padding:15px;text-align:center}
+.section{padding:15px}
+button{padding:12px 18px;font-size:16px;border:none;border-radius:8px;margin:5px}
+.whatsapp{background:#25D366;color:white}
+.gallery-btn{background:#ff6a00;color:white}
+.box{background:white;padding:15px;border-radius:10px;margin-bottom:15px}
+img{width:100%;border-radius:8px;margin-top:10px}
+textarea{width:100%;height:100px}
+</style>
 </head>
+
 <body>
 
 <header>
-  <h1>Prashant Public</h1>
-  <p>जनतेसाठी सेवा • सांगली मिरज कुपवाड महानगरपालिका</p>
+<h2>प्रशांत पब्लिक</h2>
+<p>गरीब नेतृत्व – जनतेसाठी</p>
 </header>
 
+<div class="section">
+
+<!-- Daily Post -->
 <div class="box">
-  <img src="admin.jpg" alt="Admin Photo">
-  <h2>प्रशांत कल्पना राजू कदम</h2>
-  <p><b>गरीब नेतृत्व</b> – जनतेसाठी सदैव उपलब्ध</p>
-  <p>📞 8484087016</p>
+<h3>आजचा संदेश</h3>
+<p id="dailyPost">जनतेच्या हक्कासाठी सदैव तत्पर!</p>
 </div>
 
+<!-- Gallery -->
 <div class="box">
-  <button class="gallery-btn" onclick="toggleGallery()">📸 गॅलरी पहा</button>
-  <br>
-  <button class="whatsapp-btn" onclick="sendWhatsApp()">💬 WhatsApp संदेश पाठवा</button>
+<button class="gallery-btn" onclick="toggleGallery()">📷 गॅलरी पहा</button>
+<div id="gallery" style="display:none"></div>
 </div>
 
-<div class="box gallery" id="gallery">
-  <h3>फोटो गॅलरी</h3>
-  <img src="pic1.jpg">
-  <img src="pic2.jpg">
-  <img src="banner1.jpg">
-  <img src="banner2.jpg">
+<!-- Complaint -->
+<div class="box">
+<h3>तक्रार / समस्या</h3>
+<textarea id="complaint" placeholder="आपली तक्रार लिहा..."></textarea><br>
+<button class="whatsapp" onclick="sendComplaint()">📩 WhatsApp वर पाठवा</button>
 </div>
 
-<footer>
-  © Prashant Public
-</footer>
+<!-- WhatsApp Contact -->
+<div class="box">
+<button class="whatsapp" onclick="sendWhatsApp()">💬 संपर्क WhatsApp</button>
+</div>
+
+</div>
 
 <script>
-  function toggleGallery(){
-    let g = document.getElementById("gallery");
-    g.style.display = (g.style.display === "none" || g.style.display === "")
-      ? "block" : "none";
-  }
+/* Daily Post */
+document.getElementById("dailyPost").innerText =
+localStorage.getItem("dailyPost") || "जनतेच्या हक्कासाठी सदैव तत्पर!";
 
-  function sendWhatsApp(){
-    let message =
-`नमस्कार 🙏
+/* Gallery */
+const images = ["pic1.jpg","pic2.jpg","banner1.jpg","banner2.jpg"];
+const g = document.getElementById("gallery");
+images.forEach(i=>{ g.innerHTML += `<img src="${i}">`; });
+function toggleGallery(){
+g.style.display = g.style.display==="none"?"block":"none";
+}
+
+/* WhatsApp Contact */
+function sendWhatsApp(){
+let msg=`नमस्कार 🙏
 मी प्रशांत पब्लिक वेबसाइटवरून संपर्क करत आहे.
+📞 8484087016`;
+window.open("https://wa.me/918484078016?text="+encodeURIComponent(msg));
+}
 
-👤 प्रशांत कल्पना राजू कदम
-📍 भारत नगर, प्रभाग क्रमांक 3
-🏛️ सांगली मिरज आणि कुपवाड महानगरपालिका
-
-⭐ गरीब नेतृत्व – जनतेसाठी सदैव उपलब्ध
-
-📞 संपर्क: 8484087016
-कृपया मला मार्गदर्शन करा.`;
-
-    let phone = "918484078016"; // 91 + नंबर
-    let url = "https://wa.me/" + phone + "?text=" + encodeURIComponent(message);
-    window.open(url, "_blank");
-  }
+/* Complaint */
+function sendComplaint(){
+let text=document.getElementById("complaint").value;
+let msg=`तक्रार:
+${text}
+— Prashant Public`;
+window.open("https://wa.me/918484078016?text="+encodeURIComponent(msg));
+}
 </script>
 
 </body>
