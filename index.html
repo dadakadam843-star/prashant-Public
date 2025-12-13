@@ -4,61 +4,64 @@
   <meta charset="UTF-8">
   <title>Prashant Public</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+
   <style>
-    body {
-      margin: 0;
+    body{
+      margin:0;
       font-family: Arial, sans-serif;
-      background: #f5f5f5;
+      background:#f4f4f4;
     }
-    header {
-      background: #ff6a00;
-      color: #fff;
-      padding: 20px;
-      text-align: center;
+    header{
+      background:#ff6a00;
+      color:white;
+      padding:20px;
+      text-align:center;
     }
-    .admin {
-      text-align: center;
-      background: #fff;
-      padding: 20px;
-      margin: 15px;
-      border-radius: 10px;
+    .box{
+      background:white;
+      margin:15px;
+      padding:15px;
+      border-radius:10px;
+      text-align:center;
     }
-    .admin img {
-      width: 200px;
-      max-width: 90%;
-      border-radius: 10px;
-      border: 3px solid #ff6a00;
+    .box img{
+      width:200px;
+      max-width:90%;
+      border-radius:10px;
+      border:3px solid #ff6a00;
     }
-    .admin h2 {
-      margin: 15px 0 5px;
+    button{
+      padding:14px 22px;
+      font-size:18px;
+      border:none;
+      border-radius:8px;
+      cursor:pointer;
+      margin:8px 0;
+      width:90%;
+      max-width:300px;
     }
-    .admin p {
-      color: #444;
-      font-size: 16px;
+    .gallery-btn{
+      background:#ff6a00;
+      color:white;
     }
-    .section {
-      background: #fff;
-      margin: 15px;
-      padding: 15px;
-      border-radius: 10px;
+    .whatsapp-btn{
+      background:#25D366;
+      color:white;
     }
-    .gallery img {
-      width: 100%;
-      margin-bottom: 10px;
-      border-radius: 8px;
+    .gallery{
+      display:none;
     }
-    footer {
-      text-align: center;
-      padding: 15px;
-      background: #222;
-      color: #fff;
-      font-size: 14px;
+    .gallery img{
+      width:100%;
+      margin-top:10px;
+      border-radius:8px;
     }
-    a {
-      color: #ff6a00;
-      text-decoration: none;
-      font-weight: bold;
+    footer{
+      background:#222;
+      color:white;
+      text-align:center;
+      padding:12px;
+      font-size:14px;
     }
   </style>
 </head>
@@ -69,40 +72,57 @@
   <p>जनतेसाठी सेवा • सांगली मिरज कुपवाड महानगरपालिका</p>
 </header>
 
-<div class="admin">
+<div class="box">
   <img src="admin.jpg" alt="Admin Photo">
   <h2>प्रशांत कल्पना राजू कदम</h2>
-  <p><b>गरीब नेतृत्व</b> – जनतेसाठी सदैव उपलब्ध!</p>
+  <p><b>गरीब नेतृत्व</b> – जनतेसाठी सदैव उपलब्ध</p>
   <p>📞 8484087016</p>
 </div>
 
-<div class="section">
-  <h2>आजचा संदेश</h2>
-  <p>जनतेच्या हक्कासाठी नेहमीच तत्पर!</p>
+<div class="box">
+  <button class="gallery-btn" onclick="toggleGallery()">📸 गॅलरी पहा</button>
+  <br>
+  <button class="whatsapp-btn" onclick="sendWhatsApp()">💬 WhatsApp संदेश पाठवा</button>
 </div>
 
-<div class="section gallery">
-  <h2>फोटो गॅलरी</h2>
+<div class="box gallery" id="gallery">
+  <h3>फोटो गॅलरी</h3>
   <img src="pic1.jpg">
   <img src="pic2.jpg">
-</div>
-
-<div class="section">
-  <h2>व्हिडिओ</h2>
-  <iframe width="100%" height="215"
-    src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-    frameborder="0" allowfullscreen></iframe>
-</div>
-
-<div class="section">
-  <h2>Social Media</h2>
-  <a href="https://www.facebook.com/share/17ajVkgqU3/" target="_blank">Facebook</a> |
-  <a href="https://www.instagram.com/dadakadam1" target="_blank">Instagram</a>
+  <img src="banner1.jpg">
+  <img src="banner2.jpg">
 </div>
 
 <footer>
   © Prashant Public
 </footer>
+
+<script>
+  function toggleGallery(){
+    let g = document.getElementById("gallery");
+    g.style.display = (g.style.display === "none" || g.style.display === "")
+      ? "block" : "none";
+  }
+
+  function sendWhatsApp(){
+    let message =
+`नमस्कार 🙏
+मी प्रशांत पब्लिक वेबसाइटवरून संपर्क करत आहे.
+
+👤 प्रशांत कल्पना राजू कदम
+📍 भारत नगर, प्रभाग क्रमांक 3
+🏛️ सांगली मिरज आणि कुपवाड महानगरपालिका
+
+⭐ गरीब नेतृत्व – जनतेसाठी सदैव उपलब्ध
+
+📞 संपर्क: 8484087016
+कृपया मला मार्गदर्शन करा.`;
+
+    let phone = "918484078016"; // 91 + नंबर
+    let url = "https://wa.me/" + phone + "?text=" + encodeURIComponent(message);
+    window.open(url, "_blank");
+  }
+</script>
 
 </body>
 </html>
