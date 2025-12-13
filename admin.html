@@ -1,93 +1,29 @@
 <!DOCTYPE html>
 <html lang="mr">
 <head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Admin — Prashant Public</title>
+<meta charset="UTF-8">
+<title>Admin – Prashant Public</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
- body{font-family:Arial;padding:12px;background:#fff8ef}
- .box{background:#fff;padding:12px;border-radius:8px;margin-bottom:10px;box-shadow:0 1px 6px rgba(0,0,0,0.06)}
- input,textarea{width:100%;padding:8px;margin-top:6px;border:1px solid #ddd;border-radius:6px}
- button{background:#ff6f00;color:#fff;padding:10px;border:none;border-radius:6px;margin-top:8px}
+body{font-family:Arial;background:#f4f4f4;padding:20px}
+textarea{width:100%;height:120px;font-size:16px}
+button{padding:12px;font-size:18px;background:#ff6a00;color:white;border:none;border-radius:8px;width:100%}
 </style>
 </head>
+
 <body>
-  <h2>Admin Panel</h2>
-  <div class="box">
-    <label>नाव</label><input id="name" />
-    <label>टायटल</label><input id="title" />
-    <label>मोबाईल</label><input id="mobile" />
-    <label>पत्ता</label><input id="address" />
-    <label>आजचा संदेश</label><textarea id="message"></textarea>
-    <label>Facebook URL</label><input id="facebook"/>
-    <label>Instagram URL</label><input id="instagram"/>
-  </div>
 
-  <div class="box">
-    <label>Banners (एक-एक URL) — newline separated</label>
-    <textarea id="banners"></textarea>
-    <label>Posts (newline separated)</label>
-    <textarea id="posts"></textarea>
-    <label>Gallery image URLs (newline separated)</label>
-    <textarea id="gallery"></textarea>
-    <label>Videos (YouTube embed links, newline)</label>
-    <textarea id="videos"></textarea>
-  </div>
+<h2>Admin – आजचा संदेश बदला</h2>
 
-  <button id="save">Save to Firebase</button>
-  <p id="status"></p>
+<textarea id="post" placeholder="आजचा संदेश लिहा..."></textarea><br><br>
+<button onclick="save()">Save</button>
 
-  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+<script>
+function save(){
+localStorage.setItem("dailyPost",document.getElementById("post").value);
+alert("संदेश सेव झाला");
+}
+</script>
 
-  <script>
-    // same firebaseConfig as app.js
-    var firebaseConfig = {
-      apiKey: "AIzaSyDW9Au99PFKyMz7kBKypIKPIOex_ZkJ3uY",
-      authDomain: "public-working.firebaseapp.com",
-      databaseURL: "https://public-working-default-rtdb.firebaseio.com",
-      projectId: "public-working",
-      storageBucket: "public-working.firebasestorage.app",
-      messagingSenderId: "266169229854",
-      appId: "1:266169229854:web:87218d1d726fb50714840f",
-      measurementId: "G-YC65VGDQTE"
-    };
-    firebase.initializeApp(firebaseConfig);
-    const root = firebase.database().ref("site");
-
-    // load existing
-    root.once('value').then(snap=>{
-      const d=snap.val()||{};
-      document.getElementById('name').value = d.name||'';
-      document.getElementById('title').value = d.title||'';
-      document.getElementById('mobile').value = d.mobile||'';
-      document.getElementById('address').value = d.address||'';
-      document.getElementById('message').value = d.message||'';
-      document.getElementById('facebook').value = d.facebook||'';
-      document.getElementById('instagram').value = d.instagram||'';
-      document.getElementById('banners').value = (d.banners||[]).join('\\n');
-      document.getElementById('posts').value = (d.posts||[]).join('\\n');
-      document.getElementById('gallery').value = (d.gallery||[]).join('\\n');
-      document.getElementById('videos').value = (d.videos||[]).join('\\n');
-    });
-
-    document.getElementById('save').addEventListener('click',()=>{
-      const data = {
-        name: document.getElementById('name').value.trim(),
-        title: document.getElementById('title').value.trim(),
-        mobile: document.getElementById('mobile').value.trim(),
-        address: document.getElementById('address').value.trim(),
-        message: document.getElementById('message').value.trim(),
-        facebook: document.getElementById('facebook').value.trim(),
-        instagram: document.getElementById('instagram').value.trim(),
-        banners: document.getElementById('banners').value.split('\\n').map(s=>s.trim()).filter(Boolean),
-        posts: document.getElementById('posts').value.split('\\n').map(s=>s.trim()).filter(Boolean),
-        gallery: document.getElementById('gallery').value.split('\\n').map(s=>s.trim()).filter(Boolean),
-        videos: document.getElementById('videos').value.split('\\n').map(s=>s.trim()).filter(Boolean)
-      };
-      root.set(data).then(()=> { document.getElementById('status').innerText='Saved ✅'; })
-      .catch(e=> { document.getElementById('status').innerText='Error: '+e.message; });
-    });
-  </script>
 </body>
 </html>
