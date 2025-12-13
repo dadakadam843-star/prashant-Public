@@ -5,81 +5,88 @@
 <title>Prashant Public</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
-body{font-family:Arial;margin:0;background:#fff3e0}
-header{background:#ff6a00;color:white;padding:15px;text-align:center}
-.section{padding:15px}
-button{padding:12px 18px;font-size:16px;border:none;border-radius:8px;margin:5px}
-.whatsapp{background:#25D366;color:white}
-.gallery-btn{background:#ff6a00;color:white}
-.box{background:white;padding:15px;border-radius:10px;margin-bottom:15px}
-img{width:100%;border-radius:8px;margin-top:10px}
-textarea{width:100%;height:100px}
+body{
+  font-family: Arial, sans-serif;
+  margin:0;
+  background:#fff3e0;
+}
+.container{
+  text-align:center;
+  padding:20px;
+}
+.profile{
+  width:140px;
+  height:140px;
+  border-radius:50%;
+  border:4px solid #ff6a00;
+}
+h2{margin:10px 0 5px}
+p{margin:5px 0;color:#333}
+.btn{
+  display:inline-block;
+  margin:10px;
+  padding:14px 26px;
+  font-size:18px;
+  color:#fff;
+  border:none;
+  border-radius:30px;
+  cursor:pointer;
+}
+.group{background:#25D366}
+.community{background:#128C7E}
+.box{
+  background:#fff;
+  margin:15px;
+  padding:15px;
+  border-radius:12px;
+}
 </style>
 </head>
 
 <body>
 
-<header>
-<h2>प्रशांत पब्लिक</h2>
-<p>गरीब नेतृत्व – जनतेसाठी</p>
-</header>
+<div class="container">
 
-<div class="section">
+  <!-- Profile -->
+  <img src="profile.jpg" class="profile">
+  <h2>प्रशांत कल्पना राजू कदम</h2>
+  <p>
+    गरीब नेतृत्व<br>
+    भारत नगर प्रभाग क्रमांक 3<br>
+    सांगली मिरज आणि कुपवाड महानगरपालिका
+  </p>
 
-<!-- Daily Post -->
-<div class="box">
-<h3>आजचा संदेश</h3>
-<p id="dailyPost">जनतेच्या हक्कासाठी सदैव तत्पर!</p>
+  <!-- WhatsApp Buttons -->
+  <button class="btn group" onclick="joinGroup()">
+    📢 WhatsApp Updates (Group)
+  </button><br>
+
+  <button class="btn community" onclick="joinCommunity()">
+    🌐 WhatsApp Community
+  </button>
+
 </div>
 
-<!-- Gallery -->
 <div class="box">
-<button class="gallery-btn" onclick="toggleGallery()">📷 गॅलरी पहा</button>
-<div id="gallery" style="display:none"></div>
-</div>
-
-<!-- Complaint -->
-<div class="box">
-<h3>तक्रार / समस्या</h3>
-<textarea id="complaint" placeholder="आपली तक्रार लिहा..."></textarea><br>
-<button class="whatsapp" onclick="sendComplaint()">📩 WhatsApp वर पाठवा</button>
-</div>
-
-<!-- WhatsApp Contact -->
-<div class="box">
-<button class="whatsapp" onclick="sendWhatsApp()">💬 संपर्क WhatsApp</button>
-</div>
-
+  <h3>आमचा उद्देश</h3>
+  <p>जनतेच्या हक्कासाठी सदैव तत्पर.</p>
 </div>
 
 <script>
-/* Daily Post */
-document.getElementById("dailyPost").innerText =
-localStorage.getItem("dailyPost") || "जनतेच्या हक्कासाठी सदैव तत्पर!";
-
-/* Gallery */
-const images = ["pic1.jpg","pic2.jpg","banner1.jpg","banner2.jpg"];
-const g = document.getElementById("gallery");
-images.forEach(i=>{ g.innerHTML += `<img src="${i}">`; });
-function toggleGallery(){
-g.style.display = g.style.display==="none"?"block":"none";
+function joinGroup(){
+  // 👉 इथे तुमची WhatsApp Group Invite Link टाका
+  window.open(
+    "https://chat.whatsapp.com/YOUR_GROUP_LINK",
+    "_blank"
+  );
 }
 
-/* WhatsApp Contact */
-function sendWhatsApp(){
-let msg=`नमस्कार 🙏
-मी प्रशांत पब्लिक वेबसाइटवरून संपर्क करत आहे.
-📞 8484087016`;
-window.open("https://wa.me/918484078016?text="+encodeURIComponent(msg));
-}
-
-/* Complaint */
-function sendComplaint(){
-let text=document.getElementById("complaint").value;
-let msg=`तक्रार:
-${text}
-— Prashant Public`;
-window.open("https://wa.me/918484078016?text="+encodeURIComponent(msg));
+function joinCommunity(){
+  // 👉 इथे तुमची WhatsApp Community Invite Link टाका
+  window.open(
+    "https://chat.whatsapp.com/YOUR_COMMUNITY_LINK",
+    "_blank"
+  );
 }
 </script>
 
