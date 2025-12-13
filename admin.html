@@ -1,51 +1,24 @@
-
 <!DOCTYPE html>
 <html>
 <head>
-<title>Admin Panel</title>
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<style>
-body{font-family:Arial;background:#f4f4f4;padding:20px}
-.box{background:#fff;padding:20px;border-radius:12px}
-input,textarea,button{width:100%;padding:12px;margin-top:10px}
-button{background:#ff6a00;color:#fff;border:none;font-size:18px}
-</style>
+  <title>Admin Panel</title>
 </head>
-
 <body>
 
-<div id="login" class="box">
-  <h2>Admin Login</h2>
-  <input id="user" placeholder="Username">
-  <input id="pass" type="password" placeholder="Password">
-  <button onclick="login()">Login</button>
-</div>
+<h2>Admin – Daily Message</h2>
 
-<div id="panel" class="box" style="display:none">
-  <h2>Daily Update</h2>
-  <textarea id="msg" placeholder="आजचा राजकीय संदेश"></textarea>
-  <input id="imgs" placeholder="Photo names (comma separated)">
-  <button onclick="save()">Save Update</button>
-</div>
+<textarea id="msg" rows="5" cols="40"></textarea><br><br>
+<button onclick="save()">Save Message</button>
 
 <script>
-function login(){
-  if(user.value=="Prashant" && pass.value=="Prashant@27"){
-    login.style.display="none";
-    panel.style.display="block";
-  } else alert("Wrong Login");
+const pass = prompt("Password:");
+if(pass !== "Prashant@27"){
+  alert("Access Denied");
+  document.body.innerHTML="";
 }
 
 function save(){
-  let data={
-    message:msg.value,
-    images:imgs.value.split(",")
-  };
-  let blob=new Blob([JSON.stringify(data,null,2)],{type:"application/json"});
-  let a=document.createElement("a");
-  a.href=URL.createObjectURL(blob);
-  a.download="data.json";
-  a.click();
+  alert("Message GitHub वर बदलण्यासाठी data.json edit करा");
 }
 </script>
 
