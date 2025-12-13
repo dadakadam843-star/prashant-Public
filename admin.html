@@ -1,27 +1,51 @@
+
 <!DOCTYPE html>
-<html lang="mr">
+<html>
 <head>
-<meta charset="UTF-8">
-<title>Admin – Prashant Public</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Panel</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <style>
 body{font-family:Arial;background:#f4f4f4;padding:20px}
-textarea{width:100%;height:120px;font-size:16px}
-button{padding:12px;font-size:18px;background:#ff6a00;color:white;border:none;border-radius:8px;width:100%}
+.box{background:#fff;padding:20px;border-radius:12px}
+input,textarea,button{width:100%;padding:12px;margin-top:10px}
+button{background:#ff6a00;color:#fff;border:none;font-size:18px}
 </style>
 </head>
 
 <body>
 
-<h2>Admin – आजचा संदेश बदला</h2>
+<div id="login" class="box">
+  <h2>Admin Login</h2>
+  <input id="user" placeholder="Username">
+  <input id="pass" type="password" placeholder="Password">
+  <button onclick="login()">Login</button>
+</div>
 
-<textarea id="post" placeholder="आजचा संदेश लिहा..."></textarea><br><br>
-<button onclick="save()">Save</button>
+<div id="panel" class="box" style="display:none">
+  <h2>Daily Update</h2>
+  <textarea id="msg" placeholder="आजचा राजकीय संदेश"></textarea>
+  <input id="imgs" placeholder="Photo names (comma separated)">
+  <button onclick="save()">Save Update</button>
+</div>
 
 <script>
+function login(){
+  if(user.value=="Prashant" && pass.value=="Prashant@27"){
+    login.style.display="none";
+    panel.style.display="block";
+  } else alert("Wrong Login");
+}
+
 function save(){
-localStorage.setItem("dailyPost",document.getElementById("post").value);
-alert("संदेश सेव झाला");
+  let data={
+    message:msg.value,
+    images:imgs.value.split(",")
+  };
+  let blob=new Blob([JSON.stringify(data,null,2)],{type:"application/json"});
+  let a=document.createElement("a");
+  a.href=URL.createObjectURL(blob);
+  a.download="data.json";
+  a.click();
 }
 </script>
 
