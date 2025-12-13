@@ -1,62 +1,52 @@
 <!DOCTYPE html>
 <html lang="mr">
 <head>
-<meta charset="UTF-8">
-<title>Prashant Public</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<style>
-body{margin:0;font-family:Arial;background:#fff}
-.header{text-align:center;padding:20px;background:#ff6a00;color:#fff}
-.profile{width:140px;height:140px;border-radius:50%;border:4px solid #fff}
-.section{padding:15px}
-.gallery img{width:100%;margin-top:10px;border-radius:10px}
-.btn{padding:14px 24px;border:none;border-radius:30px;
-font-size:17px;color:#fff;margin:10px}
-.group{background:#25D366}
-.community{background:#128C7E}
-.box{background:#f9f9f9;padding:15px;border-radius:12px;margin-top:15px}
-</style>
+  <meta charset="UTF-8">
+  <title>Prashant Public</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<div class="header">
-  <img src="profile.jpg" class="profile">
-  <h2>प्रशांत राजू कदम</h2>
-  <p>गरीब नेतृत्व | प्रभाग क्रमांक 3<br>
-  सांगली मिरज आणि कुपवाड महानगरपालिका</p>
+<header>
+  <h1 id="name"></h1>
+  <p id="area"></p>
+  <p id="designation"></p>
+</header>
 
-  <button class="btn group" onclick="joinGroup()">WhatsApp Updates</button>
-  <button class="btn community" onclick="joinCommunity()">WhatsApp Community</button>
-</div>
+<section id="banner"></section>
 
-<div class="section box">
-  <h3>आजचा संदेश</h3>
-  <p id="dailyMsg">लोड होत आहे...</p>
-</div>
+<section class="message">
+  <h2>आजचा संदेश</h2>
+  <p id="dailyMessage"></p>
+  <a id="whatsappBtn" class="btn">WhatsApp Message</a>
+</section>
 
-<div class="section box">
-  <h3>कामाचे फोटो</h3>
-  <div class="gallery" id="gallery"></div>
-</div>
+<section>
+  <h2>कामाचे फोटो</h2>
+  <div id="gallery" class="gallery"></div>
+</section>
 
 <script>
 fetch("data.json")
-.then(res=>res.json())
-.then(data=>{
-  document.getElementById("dailyMsg").innerText = data.message;
-  let g=document.getElementById("gallery");
-  data.images.forEach(img=>{
-    g.innerHTML+=`<img src="${img}">`;
-  });
-});
+.then(res => res.json())
+.then(data => {
+  document.getElementById("name").innerText = data.profile.name;
+  document.getElementById("area").innerText = data.profile.area;
+  document.getElementById("designation").innerText = data.profile.designation;
+  document.getElementById("dailyMessage").innerText = data.dailyMessage;
 
-function joinGroup(){
-  window.open("https://chat.whatsapp.com/YOUR_GROUP_LINK","_blank");
-}
-function joinCommunity(){
-  window.open("https://chat.whatsapp.com/YOUR_COMMUNITY_LINK","_blank");
-}
+  const banner = document.getElementById("banner");
+  banner.innerHTML = `<img src="${data.banners[0]}">`;
+
+  const gallery = document.getElementById("gallery");
+  data.gallery.forEach(img => {
+    gallery.innerHTML += `<img src="${img}">`;
+  });
+
+  const msg = encodeURIComponent(data.dailyMessage);
+  document.getElementById("whatsappBtn").href =
+    `https://wa.me/${data.profile.whatsapp}?text=${msg}`;
+});
 </script>
 
 </body>
