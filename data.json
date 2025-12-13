@@ -1,25 +1,4 @@
-
 {
-    "gallery": [
-        "images/pic1.jpg",
-        "images/pic2.jpg",
-        "images/pic3.jpg",
-        "images/pic4.jpg"
-    ],
-
-    "posts": [
-        {
-            "text": "जनतेच्या हक्कासाठी सतत लढत राहू!",
-            "date": "2025-01-10"
-        },
-        {
-            "text": "गरीब नेतृत्व – जनतेचा आवाज!",
-            "date": "2025-01-08"
-        }
-    ],
-
-    "videos": [
-        "https://www.youtube.com/embed/FTEtRZpRw7E",
-        "https://www.youtube.com/embed/0O2aH4XLbto"
-    ]
+  "message": "मी प्रशांत राजू कदम, प्रभाग क्रमांक 3 मधून निवडणूक लढत आहे. मला मतदान करा.",
+  "images": ["work1.jpg","work2.jpg","work3.jpg"]
 }
