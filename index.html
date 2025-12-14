@@ -1,102 +1,68 @@
 <!DOCTYPE html>
 <html lang="mr">
 <head>
-  <meta charset="UTF-8">
-  <title>Prashant Public</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<title>Prashant Public</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body { font-family: Arial; margin:0; background:#f5f5f5; }
+header { background:#ff9933; color:#000; padding:15px; text-align:center; }
+.btn { display:inline-block; padding:12px 18px; background:#25D366; color:#fff;
+       text-decoration:none; border-radius:6px; margin:5px; }
+.gallery img { width:150px; margin:5px; border-radius:8px; }
+.box { background:#fff; margin:15px; padding:15px; border-radius:8px; }
+</style>
 </head>
+
 <body>
 
 <header>
-  <h1 id="name"></h1>
-  <p id="area"></p>
-  <p id="designation"></p>
+<h1>प्रशांत राजू कदम</h1>
+<p>प्रभाग क्रमांक 3 (SC)</p>
+<p>गरीब नेतृत्व</p>
 </header>
 
 <!-- Banner -->
-<section id="banner"></section>
+<img src="banner1.jpg" style="width:100%;max-height:280px;object-fit:cover;">
 
-<!-- Daily Message -->
-<section class="message">
-  <h2>आजचा संदेश</h2>
-  <p id="dailyMessage"></p>
-
-  <!-- WhatsApp Dynamic Share Button -->
-  <a id="whatsappBtn" class="btn" target="_blank">
-    📲 WhatsApp वर शेअर करा
-  </a>
-</section>
-
-<!-- Share Box -->
 <div class="box">
-  <h2>माझा संदेश शेअर करा</h2>
+<h2>आजचा संदेश</h2>
+<p>
+मी प्रशांत राजू कदम, प्रभाग क्रमांक 3 (SC) मधून निवडणूक लढवत आहे.<br><br>
 
-  <!-- Facebook Share -->
-  <a class="btn" target="_blank"
-     href="https://www.facebook.com/sharer/sharer.php?u=https://prashant-public.vercel.app">
-     👍 Facebook वर शेअर
-  </a>
-  <br><br>
+आज मी तुमच्यासमोर एक वेगळेच पण मनापासूनचे आवाहन करतो —
+<b>कृपया मला मतदान करू नका.</b><br><br>
 
-  <!-- Instagram -->
-  <a class="btn" target="_blank"
-     href="https://www.instagram.com/dadakadam1">
-     📸 Instagram Profile
-  </a>
-  <br><br>
+कारण मला सत्ता नको, पद नको. मला फक्त तुमचा विश्वास आणि समाजाचा सन्मान हवा आहे.<br><br>
 
-  <!-- YouTube -->
-  <a class="btn" target="_blank"
-     href="https://www.youtube.com">
-     ▶️ YouTube Channel
-  </a>
+राजकारणात येताना स्वतःसाठी नाही तर समाजासाठी काहीतरी करण्याची तळमळ मनात होती.<br><br>
+
+जर तुम्हाला वाटत असेल की मी तुमच्या अपेक्षांना न्याय देऊ शकणार नाही,
+तर कृपया मला मत देऊ नका.<br><br>
+
+आज नाही तर उद्या, तुमच्या प्रेमाने आणि विश्वासाने
+मी पुन्हा तुमच्यासमोर उभा राहीन.<br><br>
+
+धन्यवाद<br>
+<b>प्रशांत राजू कदम</b>
+</p>
+
+<a class="btn" target="_blank"
+href="https://wa.me/?text=मी%20प्रशांत%20राजू%20कदम%20प्रभाग%20क्रमांक%203%20मधून%20निवडणूक%20लढवत%20आहे.%20माझी%20माहिती%20पहा%20https://prashant-public.vercel.app">
+📲 WhatsApp वर शेअर करा
+</a>
 </div>
 
-<!-- Gallery -->
-<section>
-  <h2 style="text-align:center;">कामाचे फोटो</h2>
-  <div id="gallery" class="gallery"></div>
-</section>
-
-<script>
-fetch("data.json")
-  .then(response => response.json())
-  .then(data => {
-
-    // Profile details
-    document.getElementById("name").innerText = data.profile.name;
-    document.getElementById("area").innerText = data.profile.area;
-    document.getElementById("designation").innerText = data.profile.designation;
-    document.getElementById("dailyMessage").innerText = data.dailyMessage;
-
-    // Banner
-    const banner = document.getElementById("banner");
-    banner.innerHTML = `<img src="${data.banners[0]}" style="width:100%;max-height:300px;object-fit:cover;">`;
-
-    // Gallery
-    const gallery = document.getElementById("gallery");
-    gallery.innerHTML = "";
-    data.gallery.forEach(photo => {
-      const img = document.createElement("img");
-      img.src = photo;
-      img.style.width = "150px";
-      img.style.margin = "5px";
-      img.style.borderRadius = "8px";
-      gallery.appendChild(img);
-    });
-
-    // ✅ FINAL WhatsApp PUBLIC SHARE (100 लोकांना forward करता येईल)
-    const message = encodeURIComponent(
-      data.dailyMessage +
-      "\n\nमाझी संपूर्ण माहिती पाहा:\nhttps://prashant-public.vercel.app"
-    );
-
-    const whatsappURL = `https://wa.me/?text=${message}`;
-    document.getElementById("whatsappBtn").href = whatsappURL;
-  })
-  .catch(err => console.error("Error:", err));
-</script>
+<div class="box">
+<h2>कामाचे फोटो</h2>
+<div class="gallery">
+<img src="work1.jpg">
+<img src="work2.jpg">
+<img src="work3.jpg">
+<img src="work4.jpg">
+<img src="work5.jpg">
+</div>
+</div>
 
 </body>
 </html>
