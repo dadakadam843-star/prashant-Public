@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Prashant Public</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -13,40 +14,62 @@
   <p id="designation"></p>
 </header>
 
+<!-- Banner -->
 <section id="banner"></section>
 
+<!-- Daily Message -->
 <section class="message">
   <h2>आजचा संदेश</h2>
   <p id="dailyMessage"></p>
-  <a id="whatsappBtn" class="btn">WhatsApp Message</a>
+  <a id="whatsappBtn" class="btn" target="_blank">
+    WhatsApp Message
+  </a>
 </section>
 
+<!-- Gallery -->
 <section>
-  <h2>कामाचे फोटो</h2>
+  <h2 style="text-align:center;">कामाचे फोटो</h2>
   <div id="gallery" class="gallery"></div>
 </section>
 
 <script>
 fetch("data.json")
-.then(res => res.json())
-.then(data => {
-  document.getElementById("name").innerText = data.profile.name;
-  document.getElementById("area").innerText = data.profile.area;
-  document.getElementById("designation").innerText = data.profile.designation;
-  document.getElementById("dailyMessage").innerText = data.dailyMessage;
+  .then(response => response.json())
+  .then(data => {
 
-  const banner = document.getElementById("banner");
-  banner.innerHTML = `<img src="${data.banners[0]}">`;
+    // Profile details
+    document.getElementById("name").innerText = data.profile.name;
+    document.getElementById("area").innerText = data.profile.area;
+    document.getElementById("designation").innerText = data.profile.designation;
+    document.getElementById("dailyMessage").innerText = data.dailyMessage;
 
-  const gallery = document.getElementById("gallery");
-  data.gallery.forEach(img => {
-    gallery.innerHTML += `<img src="${img}">`;
+    // Banner (first image)
+    const banner = document.getElementById("banner");
+    banner.innerHTML = `<img src="${data.banners[0]}" style="width:100%;max-height:300px;object-fit:cover;">`;
+
+    // Gallery images
+    const gallery = document.getElementById("gallery");
+    gallery.innerHTML = "";
+    data.gallery.forEach(photo => {
+      const img = document.createElement("img");
+      img.src = photo;
+      img.style.width = "150px";
+      img.style.margin = "5px";
+      img.style.borderRadius = "8px";
+      gallery.appendChild(img);
+    });
+
+    // ✅ FINAL WhatsApp Logic (100% Working)
+    const phone = data.profile.whatsapp; // example: 9184840xxxx
+    const message = encodeURIComponent(data.dailyMessage);
+    const whatsappURL = `https://wa.me/${phone}?text=${message}`;
+
+    const btn = document.getElementById("whatsappBtn");
+    btn.href = whatsappURL;
+  })
+  .catch(err => {
+    console.error("Error loading data.json", err);
   });
-
-  const msg = encodeURIComponent(data.dailyMessage);
-  document.getElementById("whatsappBtn").href =
-    `https://wa.me/${data.profile.whatsapp}?text=${msg}`;
-});
 </script>
 
 </body>
