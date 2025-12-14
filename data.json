@@ -6,12 +6,12 @@
     "whatsapp": "918484078016"
   },
   "dailyMessage": "मी प्रशांत राजू कदम प्रभाग क्रमांक ३ मधून निवडणूक लढत आहे. मला तुमच्या पाठिंब्याची गरज आहे.",
-  "banners": ["images/banner1.jpg"],
+  "banners": ["banner1.jpg"],
   "gallery": [
-    "images/work1.jpg",
-    "images/work2.jpg",
-    "images/work3.jpg",
-    "images/work4.jpg",
-    "images/work5.jpg"
+    "work1.jpg",
+    "work2.jpg",
+    "work3.jpg",
+    "work4.jpg",
+    "work5.jpg"
   ]
 }
