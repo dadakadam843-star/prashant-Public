@@ -21,10 +21,37 @@
 <section class="message">
   <h2>आजचा संदेश</h2>
   <p id="dailyMessage"></p>
+
+  <!-- WhatsApp Dynamic Share Button -->
   <a id="whatsappBtn" class="btn" target="_blank">
-    WhatsApp Message
+    📲 WhatsApp वर शेअर करा
   </a>
 </section>
+
+<!-- Share Box -->
+<div class="box">
+  <h2>माझा संदेश शेअर करा</h2>
+
+  <!-- Facebook Share -->
+  <a class="btn" target="_blank"
+     href="https://www.facebook.com/sharer/sharer.php?u=https://prashant-public.vercel.app">
+     👍 Facebook वर शेअर
+  </a>
+  <br><br>
+
+  <!-- Instagram -->
+  <a class="btn" target="_blank"
+     href="https://www.instagram.com/dadakadam1">
+     📸 Instagram Profile
+  </a>
+  <br><br>
+
+  <!-- YouTube -->
+  <a class="btn" target="_blank"
+     href="https://www.youtube.com">
+     ▶️ YouTube Channel
+  </a>
+</div>
 
 <!-- Gallery -->
 <section>
@@ -43,11 +70,11 @@ fetch("data.json")
     document.getElementById("designation").innerText = data.profile.designation;
     document.getElementById("dailyMessage").innerText = data.dailyMessage;
 
-    // Banner (first image)
+    // Banner
     const banner = document.getElementById("banner");
     banner.innerHTML = `<img src="${data.banners[0]}" style="width:100%;max-height:300px;object-fit:cover;">`;
 
-    // Gallery images
+    // Gallery
     const gallery = document.getElementById("gallery");
     gallery.innerHTML = "";
     data.gallery.forEach(photo => {
@@ -59,17 +86,16 @@ fetch("data.json")
       gallery.appendChild(img);
     });
 
-    // ✅ FINAL WhatsApp Logic (100% Working)
-    const phone = data.profile.whatsapp; // example: 9184840xxxx
-    const message = encodeURIComponent(data.dailyMessage);
-    const whatsappURL = `https://wa.me/${phone}?text=${message}`;
+    // ✅ FINAL WhatsApp PUBLIC SHARE (100 लोकांना forward करता येईल)
+    const message = encodeURIComponent(
+      data.dailyMessage +
+      "\n\nमाझी संपूर्ण माहिती पाहा:\nhttps://prashant-public.vercel.app"
+    );
 
-    const btn = document.getElementById("whatsappBtn");
-    btn.href = whatsappURL;
+    const whatsappURL = `https://wa.me/?text=${message}`;
+    document.getElementById("whatsappBtn").href = whatsappURL;
   })
-  .catch(err => {
-    console.error("Error loading data.json", err);
-  });
+  .catch(err => console.error("Error:", err));
 </script>
 
 </body>
