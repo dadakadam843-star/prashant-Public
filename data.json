@@ -1,20 +1,17 @@
 {
   "profile": {
     "name": "प्रशांत राजू कदम",
-    "area": "प्रभाग क्रमांक 3",
+    "area": "प्रभाग क्रमांक 3, सांगली मिरज कुपवाड",
     "designation": "गरीब नेतृत्व",
     "whatsapp": "918484078016"
   },
-  "dailyMessage": "मी प्रशांत राजू कदम, प्रभाग क्रमांक 3 मधून निवडणूक लढत आहे. माझ्या कामाची माहिती पाहण्यासाठी ही वेबसाइट पहा.",
-  "banners": [
-    "work1.jpg",
-    "work2.jpg"
-  ],
+  "dailyMessage": "मी प्रशांत राजू कदम प्रभाग क्रमांक ३ मधून निवडणूक लढत आहे. मला तुमच्या पाठिंब्याची गरज आहे.",
+  "banners": ["images/banner1.jpg"],
   "gallery": [
-    "work1.jpg",
-    "work2.jpg",
-    "work3.jpg",
-    "work4.jpg",
-    "work5.jpg"
+    "images/work1.jpg",
+    "images/work2.jpg",
+    "images/work3.jpg",
+    "images/work4.jpg",
+    "images/work5.jpg"
   ]
 }
