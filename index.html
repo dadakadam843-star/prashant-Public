@@ -4,73 +4,46 @@
   <meta charset="UTF-8">
   <title>Prashant Public</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+  <style>
+    body { font-family: Arial, sans-serif; margin:0; background:#fff7e6; }
+    header { background:#ff9933; color:white; padding:15px; text-align:center; }
+    .btn {
+      display:inline-block;
+      background:#25D366;
+      color:white;
+      padding:12px 20px;
+      text-decoration:none;
+      font-size:18px;
+      border-radius:6px;
+      margin-top:10px;
+    }
+    .box { padding:15px; text-align:center; }
+  </style>
 </head>
 <body>
 
 <header>
-  <h1 id="name"></h1>
-  <p id="area"></p>
-  <p id="designation"></p>
+  <h1>प्रशांत राजू कदम</h1>
+  <p>प्रभाग क्रमांक 3</p>
+  <p>गरीब नेतृत्व</p>
 </header>
 
-<!-- Banner -->
-<section id="banner"></section>
-
-<!-- Daily Message -->
-<section class="message">
+<div class="box">
   <h2>आजचा संदेश</h2>
-  <p id="dailyMessage"></p>
-  <a id="whatsappBtn" class="btn" target="_blank">
-    WhatsApp Message
+  <p>
+    मी प्रशांत राजू कदम, प्रभाग क्रमांक 3 मधून निवडणूक लढत आहे.
+    माझ्या कामाची माहिती पाहण्यासाठी ही वेबसाइट पहा.
+  </p>
+
+  <!-- ✅ GUARANTEED WORKING WHATSAPP BUTTON -->
+  <a
+    class="btn"
+    target="_blank"
+    href="https://wa.me/918484078016?text=%E0%A4%AE%E0%A5%80%20%E0%A4%AA%E0%A5%8D%E0%A4%B0%E0%A4%B6%E0%A4%BE%E0%A4%82%E0%A4%A4%20%E0%A4%B0%E0%A4%BE%E0%A4%9C%E0%A5%82%20%E0%A4%95%E0%A4%A6%E0%A4%AE%2C%20%E0%A4%AA%E0%A5%8D%E0%A4%B0%E0%A4%AD%E0%A4%BE%E0%A4%97%20%E0%A4%95%E0%A5%8D%E0%A4%B0%E0%A4%AE%E0%A4%BE%E0%A4%82%E0%A4%95%203%20%E0%A4%AE%E0%A4%A7%E0%A5%82%E0%A4%A8%20%E0%A4%A8%E0%A4%BF%E0%A4%B5%E0%A4%A1%E0%A4%A3%E0%A5%82%E0%A4%95%20%E0%A4%B2%E0%A4%A2%E0%A4%A4%20%E0%A4%86%E0%A4%B9%E0%A5%87.%20%E0%A4%AE%E0%A4%BE%E0%A4%9D%E0%A5%8D%E0%A4%AF%E0%A4%BE%20%E0%A4%95%E0%A4%BE%E0%A4%AE%E0%A4%BE%E0%A4%9A%E0%A5%80%20%E0%A4%AE%E0%A4%BE%E0%A4%B9%E0%A4%BF%E0%A4%A4%E0%A5%80%20%E0%A4%AA%E0%A4%BE%E0%A4%B9%E0%A4%A3%E0%A5%8D%E0%A4%AF%E0%A4%BE%E0%A4%B8%E0%A4%BE%E0%A4%A0%E0%A5%80%20%E0%A4%B9%E0%A5%80%20%E0%A4%B5%E0%A5%87%E0%A4%AC%E0%A4%B8%E0%A4%BE%E0%A4%87%E0%A4%9F%20%E0%A4%AA%E0%A4%B9%E0%A4%BE."
+  >
+    WhatsApp वर मेसेज पाठवा
   </a>
-</section>
-
-<!-- Gallery -->
-<section>
-  <h2 style="text-align:center;">कामाचे फोटो</h2>
-  <div id="gallery" class="gallery"></div>
-</section>
-
-<script>
-fetch("data.json")
-  .then(response => response.json())
-  .then(data => {
-
-    // Profile details
-    document.getElementById("name").innerText = data.profile.name;
-    document.getElementById("area").innerText = data.profile.area;
-    document.getElementById("designation").innerText = data.profile.designation;
-    document.getElementById("dailyMessage").innerText = data.dailyMessage;
-
-    // Banner (first image)
-    const banner = document.getElementById("banner");
-    banner.innerHTML = `<img src="${data.banners[0]}" style="width:100%;max-height:300px;object-fit:cover;">`;
-
-    // Gallery images
-    const gallery = document.getElementById("gallery");
-    gallery.innerHTML = "";
-    data.gallery.forEach(photo => {
-      const img = document.createElement("img");
-      img.src = photo;
-      img.style.width = "150px";
-      img.style.margin = "5px";
-      img.style.borderRadius = "8px";
-      gallery.appendChild(img);
-    });
-
-    // ✅ FINAL WhatsApp Logic (100% Working)
-    const phone = data.profile.whatsapp; // example: 9184840xxxx
-    const message = encodeURIComponent(data.dailyMessage);
-    const whatsappURL = `https://wa.me/${phone}?text=${message}`;
-
-    const btn = document.getElementById("whatsappBtn");
-    btn.href = whatsappURL;
-  })
-  .catch(err => {
-    console.error("Error loading data.json", err);
-  });
-</script>
+</div>
 
 </body>
 </html>
