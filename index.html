@@ -1,66 +1,63 @@
 <!DOCTYPE html>
 <html lang="mr">
 <head>
-<meta charset="UTF-8">
-<title>Prashant Public</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <title>Prashant Public</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<style>
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #f5f5f5;
-}
-header {
-  background: #ff9933;
-  padding: 15px;
-  text-align: center;
-}
-header h1 {
-  margin: 5px 0;
-}
-header p {
-  margin: 2px 0;
-  font-weight: bold;
-}
-.banner img {
-  width: 100%;
-  max-height: 300px;
-  object-fit: cover;
-}
-.box {
-  background: #fff;
-  margin: 15px;
-  padding: 15px;
-  border-radius: 8px;
-}
-.btn {
-  display: inline-block;
-  padding: 12px 18px;
-  background: #25D366;
-  color: #fff;
-  text-decoration: none;
-  border-radius: 6px;
-  margin-top: 10px;
-}
-.gallery {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-.gallery img {
-  width: 150px;
-  height: auto;
-  margin: 5px;
-  border-radius: 8px;
-}
-.social a {
-  display: block;
-  margin: 8px 0;
-  text-decoration: none;
-  font-weight: bold;
-}
-</style>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f6f8;
+      color: #222;
+    }
+    header {
+      background: #ff7a00;
+      color: white;
+      padding: 15px;
+      text-align: center;
+    }
+    header h1 { margin: 5px 0; }
+    section {
+      padding: 15px;
+      margin: 10px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    .btn {
+      display: inline-block;
+      background: #25D366;
+      color: white;
+      padding: 12px 18px;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+      text-align: center;
+    }
+    .share-btn {
+      background: #1877f2;
+    }
+    #banner img {
+      width: 100%;
+      max-height: 280px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+    }
+    .gallery img {
+      width: 150px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+  </style>
 </head>
 
 <body>
@@ -68,81 +65,78 @@ header p {
 <header>
   <h1>प्रशांत राजू कदम</h1>
   <p>प्रभाग क्रमांक 3 (SC)</p>
-  <p>गरीब नेतृत्व</p>
+  <p>जनतेसाठी सामान्य सेवक</p>
 </header>
 
 <!-- Banner -->
-<div class="banner">
-  <img src="banner1.jpg" alt="Banner">
-</div>
+<section id="banner">
+  <img src="https://drive.google.com/uc?id=PASTE_BANNER_FILE_ID_HERE">
+</section>
 
 <!-- Daily Message -->
-<div class="box">
+<section>
   <h2>आजचा संदेश</h2>
-  <p id="dailyMessage">लोड होत आहे...</p>
+  <p id="dailyMessage">
+    मी प्रशांत राजू कदम, प्रभाग क्रमांक 3 (SC) मधून निवडणूक लढवत आहे.
+  </p>
 
+  <br>
   <a id="whatsappBtn" class="btn" target="_blank">
     📲 WhatsApp वर शेअर करा
   </a>
-</div>
+</section>
 
 <!-- Gallery -->
-<div class="box">
-  <h2>कामाचे फोटो</h2>
-  <div id="gallery" class="gallery"></div>
-</div>
+<section>
+  <h2 style="text-align:center;">कामाचे फोटो</h2>
+  <div id="gallery" class="gallery">
+    <img src="https://drive.google.com/uc?id=PASTE_PHOTO1_FILE_ID">
+    <img src="https://drive.google.com/uc?id=PASTE_PHOTO2_FILE_ID">
+    <img src="https://drive.google.com/uc?id=PASTE_PHOTO3_FILE_ID">
+  </div>
+</section>
 
-<!-- Social Links -->
-<div class="box social">
-  <h2>सोशल मीडिया</h2>
-  <a href="https://www.facebook.com/PrashantPublic" target="_blank">👍 Facebook Page</a>
-  <a href="https://www.instagram.com/dadakadam1" target="_blank">📸 Instagram</a>
-  <a href="https://www.youtube.com" target="_blank">▶️ YouTube</a>
-</div>
+<!-- Social Share -->
+<section>
+  <h2>माझा प्रचार शेअर करा</h2>
 
-<!-- 🔥 ADMIN GOOGLE SHEET CONNECT -->
+  <a class="btn" target="_blank"
+     href="https://wa.me/?text=मी%20प्रशांत%20राजू%20कदम%2C%20प्रभाग%203%20(SC)%20मधून%20निवडणूक%20लढवत%20आहे.%20माझी%20माहिती%20पहा%3A%20https://prashant-public.vercel.app">
+     📲 WhatsApp Forward
+  </a>
+
+  <br><br>
+
+  <a class="btn share-btn" target="_blank"
+     href="https://www.facebook.com/sharer/sharer.php?u=https://prashant-public.vercel.app">
+     👍 Facebook Share
+  </a>
+</section>
+
 <script>
-/* ====== ADMIN SETTINGS ====== */
+  const finalMessage =
+`मी प्रशांत राजू कदम, प्रभाग क्रमांक 3 (SC) मधून निवडणूक लढवत आहे.
 
-/* तुमचा Google Sheet ID */
-const SHEET_ID = "16tp1bfZmhqKicW5E8uKv5uDd45gh8sx127dynIpzhZw";
+आज मी तुमच्यासमोर एक वेगळेच पण मनापासूनचे आवाहन करतो —
+कृपया मला मतदान करू नका.
 
-/* Sheet Tab नाव */
-const SHEET_NAME = "Form Responses 1";
+कारण मला सत्ता नको, पद नको.
+मला फक्त तुमचा विश्वास आणि समाजाचा सन्मान हवा आहे.
 
-/* OpenSheet API URL */
-const URL = `https://opensheet.elk.sh/${SHEET_ID}/${encodeURIComponent(SHEET_NAME)}`;
+राजकारणात येताना स्वतःसाठी नाही
+तर समाजासाठी काहीतरी करण्याची तळमळ मनात होती.
 
-fetch(URL)
-  .then(res => res.json())
-  .then(data => {
-    if (!data || data.length === 0) return;
+जर तुम्हाला वाटत असेल की
+मी तुमच्या अपेक्षांना न्याय देऊ शकणार नाही,
+तर कृपया मला मत देऊ नका.
 
-    const last = data[data.length - 1];
+धन्यवाद
+– प्रशांत राजू कदम
 
-    /* Message */
-    if (last["आजचा संदेश"]) {
-      document.getElementById("dailyMessage").innerText = last["आजचा संदेश"];
+https://prashant-public.vercel.app`;
 
-      const shareMsg = encodeURIComponent(
-        last["आजचा संदेश"] + "\n\nमाझी संपूर्ण माहिती:\nhttps://prashant-public.vercel.app"
-      );
-      document.getElementById("whatsappBtn").href =
-        "https://wa.me/?text=" + shareMsg;
-    }
-
-    /* Photos */
-    const gallery = document.getElementById("gallery");
-    gallery.innerHTML = "";
-
-    if (last["Photo 1 (Google Drive Link)"]) {
-      gallery.innerHTML += `<img src="${last["Photo 1 (Google Drive Link)"]}">`;
-    }
-    if (last["Photo 2 (Google Drive Link)"]) {
-      gallery.innerHTML += `<img src="${last["Photo 2 (Google Drive Link)"]}">`;
-    }
-  })
-  .catch(err => console.error("Google Sheet Error", err));
+  document.getElementById("whatsappBtn").href =
+    "https://wa.me/?text=" + encodeURIComponent(finalMessage);
 </script>
 
 </body>
