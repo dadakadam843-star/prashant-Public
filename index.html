@@ -4,65 +4,146 @@
 <meta charset="UTF-8">
 <title>Prashant Public</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <style>
-body { font-family: Arial; margin:0; background:#f5f5f5; }
-header { background:#ff9933; color:#000; padding:15px; text-align:center; }
-.btn { display:inline-block; padding:12px 18px; background:#25D366; color:#fff;
-       text-decoration:none; border-radius:6px; margin:5px; }
-.gallery img { width:150px; margin:5px; border-radius:8px; }
-.box { background:#fff; margin:15px; padding:15px; border-radius:8px; }
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f5f5f5;
+}
+header {
+  background: #ff9933;
+  padding: 15px;
+  text-align: center;
+}
+header h1 {
+  margin: 5px 0;
+}
+header p {
+  margin: 2px 0;
+  font-weight: bold;
+}
+.banner img {
+  width: 100%;
+  max-height: 300px;
+  object-fit: cover;
+}
+.box {
+  background: #fff;
+  margin: 15px;
+  padding: 15px;
+  border-radius: 8px;
+}
+.btn {
+  display: inline-block;
+  padding: 12px 18px;
+  background: #25D366;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 6px;
+  margin-top: 10px;
+}
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.gallery img {
+  width: 150px;
+  height: auto;
+  margin: 5px;
+  border-radius: 8px;
+}
+.social a {
+  display: block;
+  margin: 8px 0;
+  text-decoration: none;
+  font-weight: bold;
+}
 </style>
 </head>
 
 <body>
 
 <header>
-<h1>प्रशांत राजू कदम</h1>
-<p>प्रभाग क्रमांक 3 (SC)</p>
-<p>गरीब नेतृत्व</p>
+  <h1>प्रशांत राजू कदम</h1>
+  <p>प्रभाग क्रमांक 3 (SC)</p>
+  <p>गरीब नेतृत्व</p>
 </header>
 
 <!-- Banner -->
-<img src="banner1.jpg" style="width:100%;max-height:280px;object-fit:cover;">
+<div class="banner">
+  <img src="banner1.jpg" alt="Banner">
+</div>
 
+<!-- Daily Message -->
 <div class="box">
-<h2>आजचा संदेश</h2>
-<p>
-मी प्रशांत राजू कदम, प्रभाग क्रमांक 3 (SC) मधून निवडणूक लढवत आहे.<br><br>
+  <h2>आजचा संदेश</h2>
+  <p id="dailyMessage">लोड होत आहे...</p>
 
-आज मी तुमच्यासमोर एक वेगळेच पण मनापासूनचे आवाहन करतो —
-<b>कृपया मला मतदान करू नका.</b><br><br>
-
-कारण मला सत्ता नको, पद नको. मला फक्त तुमचा विश्वास आणि समाजाचा सन्मान हवा आहे.<br><br>
-
-राजकारणात येताना स्वतःसाठी नाही तर समाजासाठी काहीतरी करण्याची तळमळ मनात होती.<br><br>
-
-जर तुम्हाला वाटत असेल की मी तुमच्या अपेक्षांना न्याय देऊ शकणार नाही,
-तर कृपया मला मत देऊ नका.<br><br>
-
-आज नाही तर उद्या, तुमच्या प्रेमाने आणि विश्वासाने
-मी पुन्हा तुमच्यासमोर उभा राहीन.<br><br>
-
-धन्यवाद<br>
-<b>प्रशांत राजू कदम</b>
-</p>
-
-<a class="btn" target="_blank"
-href="https://wa.me/?text=मी%20प्रशांत%20राजू%20कदम%20प्रभाग%20क्रमांक%203%20मधून%20निवडणूक%20लढवत%20आहे.%20माझी%20माहिती%20पहा%20https://prashant-public.vercel.app">
-📲 WhatsApp वर शेअर करा
-</a>
+  <a id="whatsappBtn" class="btn" target="_blank">
+    📲 WhatsApp वर शेअर करा
+  </a>
 </div>
 
+<!-- Gallery -->
 <div class="box">
-<h2>कामाचे फोटो</h2>
-<div class="gallery">
-<img src="work1.jpg">
-<img src="work2.jpg">
-<img src="work3.jpg">
-<img src="work4.jpg">
-<img src="work5.jpg">
+  <h2>कामाचे फोटो</h2>
+  <div id="gallery" class="gallery"></div>
 </div>
+
+<!-- Social Links -->
+<div class="box social">
+  <h2>सोशल मीडिया</h2>
+  <a href="https://www.facebook.com/PrashantPublic" target="_blank">👍 Facebook Page</a>
+  <a href="https://www.instagram.com/dadakadam1" target="_blank">📸 Instagram</a>
+  <a href="https://www.youtube.com" target="_blank">▶️ YouTube</a>
 </div>
+
+<!-- 🔥 ADMIN GOOGLE SHEET CONNECT -->
+<script>
+/* ====== ADMIN SETTINGS ====== */
+
+/* तुमचा Google Sheet ID */
+const SHEET_ID = "16tp1bfZmhqKicW5E8uKv5uDd45gh8sx127dynIpzhZw";
+
+/* Sheet Tab नाव */
+const SHEET_NAME = "Form Responses 1";
+
+/* OpenSheet API URL */
+const URL = `https://opensheet.elk.sh/${SHEET_ID}/${encodeURIComponent(SHEET_NAME)}`;
+
+fetch(URL)
+  .then(res => res.json())
+  .then(data => {
+    if (!data || data.length === 0) return;
+
+    const last = data[data.length - 1];
+
+    /* Message */
+    if (last["आजचा संदेश"]) {
+      document.getElementById("dailyMessage").innerText = last["आजचा संदेश"];
+
+      const shareMsg = encodeURIComponent(
+        last["आजचा संदेश"] + "\n\nमाझी संपूर्ण माहिती:\nhttps://prashant-public.vercel.app"
+      );
+      document.getElementById("whatsappBtn").href =
+        "https://wa.me/?text=" + shareMsg;
+    }
+
+    /* Photos */
+    const gallery = document.getElementById("gallery");
+    gallery.innerHTML = "";
+
+    if (last["Photo 1 (Google Drive Link)"]) {
+      gallery.innerHTML += `<img src="${last["Photo 1 (Google Drive Link)"]}">`;
+    }
+    if (last["Photo 2 (Google Drive Link)"]) {
+      gallery.innerHTML += `<img src="${last["Photo 2 (Google Drive Link)"]}">`;
+    }
+  })
+  .catch(err => console.error("Google Sheet Error", err));
+</script>
 
 </body>
 </html>
