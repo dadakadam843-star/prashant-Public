@@ -1,38 +1,109 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+  <meta charset="UTF-8">
+  <title>Prashant Public</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      text-align: center;
+    }
+
+    header {
+      background: #ff6a00;
+      color: white;
+      padding: 15px;
+    }
+
+    .profile {
+      background: #fff;
+      margin: 15px;
+      padding: 15px;
+      border-radius: 10px;
+    }
+
+    .profile img {
+      width: 220px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+
+    .box {
+      background: #fff;
+      margin: 15px;
+      padding: 15px;
+      border-radius: 10px;
+      line-height: 1.6;
+    }
+
+    .btn {
+      display: block;
+      margin: 12px auto;
+      padding: 12px;
+      width: 90%;
+      max-width: 320px;
+      background: #25D366;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 17px;
+      font-weight: bold;
+    }
+
+    .fb { background: #1877F2; }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h2>Prashant Public</h2>
+  <p>जनतेसाठी सेवा</p>
+</header>
+
+<!-- PROFILE PHOTO -->
+<section class="profile">
+  <img src="work1.jpg" alt="Prashant Raju Kadam">
+  <h3>प्रशांत राजू कदम</h3>
+  <p>प्रभाग क्रमांक 3 (SC)</p>
+</section>
+
+<!-- MESSAGE -->
+<section class="box" id="msgBox">
+  मी प्रशांत राजू कदम, प्रभाग क्रमांक 3 (SC) मधून निवडणूक लढवत आहे.<br><br>
+
+  आज मी तुमच्यासमोर एक वेगळेच पण मनापासूनचे आवाहन करतो —  
+  <b>कृपया मला मतदान करू नका.</b><br><br>
+
+  मला सत्ता नको, पद नको. मला फक्त तुमचा विश्वास आणि समाजाचा सन्मान हवा आहे.
+</section>
+
+<!-- WHATSAPP PUBLIC SHARE -->
+<a id="waBtn" class="btn" target="_blank">📲 WhatsApp वर शेअर करा</a>
+
+<!-- FACEBOOK -->
+<a class="btn fb" target="_blank"
+   href="https://www.facebook.com/PrashantPublic">
+   👍 Facebook Page Like करा
+</a>
+
 <script>
-fetch("data.json")
-  .then(res => res.json())
-  .then(data => {
+  const text =
+`मी प्रशांत राजू कदम, प्रभाग क्रमांक 3 (SC) मधून निवडणूक लढवत आहे.
 
-    document.getElementById("name").innerText = data.profile.name;
-    document.getElementById("area").innerText = data.profile.area;
-    document.getElementById("designation").innerText = data.profile.designation;
-    document.getElementById("dailyMessage").innerText = data.dailyMessage;
+आज मी तुमच्यासमोर एक वेगळेच पण मनापासूनचे आवाहन करतो — कृपया मला मतदान करू नका.
 
-    const profileImg = document.getElementById("profilePhoto");
-    profileImg.src = data.profile.photo;
-    profileImg.onerror = () => {
-      profileImg.style.display = "none";
-    };
+माझी संपूर्ण माहिती पाहण्यासाठी लिंक:
+https://prashant-public.vercel.app`;
 
-    // WhatsApp
-    const msg = encodeURIComponent(
-      data.dailyMessage + "\n\nपूर्ण माहिती:\n" + data.website
-    );
-    document.getElementById("whatsappShare").href =
-      `https://wa.me/?text=${msg}`;
-
-    document.getElementById("facebookLink").href = data.facebookPage;
-
-    // Gallery FIX
-    const gallery = document.getElementById("gallery");
-    gallery.innerHTML = "";
-
-    data.gallery.forEach(path => {
-      const img = document.createElement("img");
-      img.src = path;
-      img.onerror = () => img.remove();
-      gallery.appendChild(img);
-    });
-  })
-  .catch(err => console.log("DATA ERROR", err));
+  document.getElementById("waBtn").href =
+    "https://wa.me/?text=" + encodeURIComponent(text);
 </script>
+
+</body>
+</html>
+
