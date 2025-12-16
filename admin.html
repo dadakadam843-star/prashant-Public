@@ -1,26 +1,35 @@
 <!DOCTYPE html>
-<html>
+<html lang="mr">
 <head>
+  <meta charset="UTF-8">
   <title>Admin Panel</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<h2>Admin – Daily Message</h2>
+<div class="card">
+  <h2>🛠 Admin Control</h2>
 
-<textarea id="msg" rows="5" cols="40"></textarea><br><br>
-<button onclick="save()">Save Message</button>
+  <p><b>रोज मेसेज बदलायचा:</b></p>
+  <ol>
+    <li>index.html उघडा</li>
+    <li>`<p id="msg">` मध्ये मेसेज बदला</li>
+    <li>Save → Commit</li>
+  </ol>
 
-<script>
-const pass = prompt("Password:");
-if(pass !== "Prashant@27"){
-  alert("Access Denied");
-  document.body.innerHTML="";
-}
+  <p><b>रोज फोटो बदलायचा:</b></p>
+  <ol>
+    <li>GitHub → images folder</li>
+    <li>work1.jpg ते work5.jpg replace करा</li>
+    <li>Commit</li>
+  </ol>
 
-function save(){
-  alert("Message GitHub वर बदलण्यासाठी data.json edit करा");
-}
-</script>
+  <p><b>Complaints:</b></p>
+  <a class="btn" target="_blank"
+     href="https://forms.gle/YOUR_FORM_LINK">
+     Google Form Open
+  </a>
+</div>
 
 </body>
 </html>
