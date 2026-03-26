@@ -8,12 +8,11 @@
 <style>
 body {font-family: Arial; margin:0; background:#f5f5f5;}
 header {background:#0d3b66; color:white; padding:15px; text-align:center;}
-header img {width:80px;}
 .banner {background:orange; color:white; text-align:center; padding:20px;}
 .section {padding:20px;}
 .box {background:white; margin:10px 0; padding:15px; border-radius:8px;}
-button {background:green; color:white; padding:10px; border:none; border-radius:5px;}
 input {width:90%; padding:10px; margin:5px 0;}
+button {background:green; color:white; padding:10px; border:none; border-radius:5px; cursor:pointer;}
 .whatsapp {
     position:fixed; bottom:20px; right:20px;
     background:#25D366; color:white;
@@ -26,9 +25,8 @@ input {width:90%; padding:10px; margin:5px 0;}
 <body>
 
 <header>
-<img src="https://i.ibb.co/placeholder-logo.png">
 <h2>Raj Enterprises</h2>
-<p>भारत नगर , दत्ता मंदिर जवळ</p>
+<p>Bharat Nagar, दत्ता मंदिर जवळ</p>
 <p>📞 8484078016 / 9607023105</p>
 </header>
 
@@ -36,7 +34,7 @@ input {width:90%; padding:10px; margin:5px 0;}
 <h3 id="offerText">बांधकाम कामगार योजना नोंदणी सुरू आहे</h3>
 
 <input type="text" id="offerInput" placeholder="नवीन ऑफर लिहा">
-<br>
+<br><br>
 <button onclick="changeOffer()">Update Offer</button>
 </div>
 
@@ -70,28 +68,38 @@ input {width:90%; padding:10px; margin:5px 0;}
 
 <script>
 
-// Offer Change + Save
+// Offer change + save
 function changeOffer() {
-    let newOffer = document.getElementById("offerInput").value;
-    localStorage.setItem("offer", newOffer);
-    document.getElementById("offerText").innerText = newOffer;
+    let val = document.getElementById("offerInput").value.trim();
+    if(val === "") {
+        alert("ऑफर लिहा");
+        return;
+    }
+    localStorage.setItem("offerText", val);
+    document.getElementById("offerText").innerText = val;
+    document.getElementById("offerInput").value = "";
 }
 
-// Load saved offer
+// Page load ला offer load
 window.onload = function() {
-    let saved = localStorage.getItem("offer");
+    let saved = localStorage.getItem("offerText");
     if(saved){
         document.getElementById("offerText").innerText = saved;
     }
 }
 
-// WhatsApp Form
+// WhatsApp form
 function sendWhatsApp() {
     let name = document.getElementById("name").value;
     let mobile = document.getElementById("mobile").value;
 
+    if(name === "" || mobile === ""){
+        alert("माहिती भरा");
+        return;
+    }
+
     let msg = `नाव: ${name}%0Aमोबाईल: ${mobile}`;
-    window.open(`https://wa.me/918484078016?text=${msg}`);
+    window.open(`https://wa.me/918484078016?text=${msg}`, "_blank");
 }
 
 </script>
