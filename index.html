@@ -7,18 +7,64 @@
 
 <style>
 body {font-family: Arial; margin:0; background:#f5f5f5;}
-header {background:#0d3b66; color:white; padding:15px; text-align:center;}
-header img {width:80px;}
-.banner {background:orange; color:white; text-align:center; padding:20px;}
-.section {padding:20px;}
-.box {background:white; margin:10px 0; padding:15px; border-radius:8px;}
-input {width:90%; padding:10px; margin:5px 0;}
-button {background:green; color:white; padding:10px; border:none; border-radius:5px;}
-.whatsapp {
-position:fixed; bottom:20px; right:20px;
-background:#25D366; color:white;
-padding:15px; border-radius:50%;
+
+header {
+background:#0d3b66;
+color:white;
+padding:15px;
+text-align:center;
 }
+
+header img {
+display:block;
+margin:auto;
+margin-bottom:10px;
+width:220px;
+max-width:90%;
+}
+
+.banner {
+background:orange;
+color:white;
+text-align:center;
+padding:20px;
+}
+
+.section {padding:20px;}
+
+.box {
+background:white;
+margin:10px 0;
+padding:15px;
+border-radius:8px;
+}
+
+input {
+width:90%;
+padding:10px;
+margin:5px 0;
+}
+
+button {
+background:green;
+color:white;
+padding:10px;
+border:none;
+border-radius:5px;
+cursor:pointer;
+}
+
+.whatsapp {
+position:fixed;
+bottom:20px;
+right:20px;
+background:#25D366;
+color:white;
+padding:15px;
+border-radius:50%;
+font-size:20px;
+}
+
 label {display:block; margin:5px 0;}
 </style>
 
@@ -27,7 +73,7 @@ label {display:block; margin:5px 0;}
 <body>
 
 <header>
-<img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png">
+<img src="logo.png">
 <h2>Raj Enterprises</h2>
 <p>Bharat Nagar, दत्ता मंदिर जवळ</p>
 <p>📞 8484078016 / 9607023105</p>
@@ -84,8 +130,12 @@ PM स्वनिधी | PM विश्वकर्मा | PMEGP | CMEGP
 
 <label><input type="checkbox" value="आधार कार्ड नवीन"> आधार कार्ड नवीन</label>
 <label><input type="checkbox" value="आधार दुरुस्ती"> आधार दुरुस्ती</label>
+<label><input type="checkbox" value="आधार पत्ता बदल"> आधार पत्ता बदल</label>
 
 <label><input type="checkbox" value="मतदान कार्ड"> मतदान कार्ड</label>
+<label><input type="checkbox" value="मतदान नाव बदल"> मतदान नाव बदल</label>
+<label><input type="checkbox" value="मतदान पत्ता बदल"> मतदान पत्ता बदल</label>
+
 <label><input type="checkbox" value="पॅन कार्ड"> पॅन कार्ड</label>
 <label><input type="checkbox" value="रेशन कार्ड"> रेशन कार्ड</label>
 
@@ -109,7 +159,7 @@ PM स्वनिधी | PM विश्वकर्मा | PMEGP | CMEGP
 
 <script>
 
-// Offer Save
+// Offer change
 function changeOffer() {
 let val = document.getElementById("offerInput").value;
 if(val===""){alert("ऑफर लिहा");return;}
@@ -117,13 +167,15 @@ localStorage.setItem("offerText", val);
 document.getElementById("offerText").innerText = val;
 }
 
-// Load Offer
+// Load offer
 window.onload = function(){
 let saved = localStorage.getItem("offerText");
-if(saved){document.getElementById("offerText").innerText = saved;}
+if(saved){
+document.getElementById("offerText").innerText = saved;
+}
 }
 
-// WhatsApp Form
+// WhatsApp form
 function sendWhatsApp() {
 
 let name = document.getElementById("name").value;
@@ -132,7 +184,7 @@ let mobile = document.getElementById("mobile").value;
 let selected = [];
 let checkboxes = document.querySelectorAll("input[type=checkbox]:checked");
 
-checkboxes.forEach((cb) => {
+checkboxes.forEach((cb)=>{
 selected.push(cb.value);
 });
 
