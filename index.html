@@ -24,6 +24,9 @@ padding:50px;
 text-align:center;
 }
 
+.hero h1 {font-size:26px;}
+.hero p {font-size:18px;}
+
 .btn {
 background:#25D366;
 padding:15px;
@@ -49,6 +52,11 @@ margin:5px 0;
 border-radius:6px;
 }
 
+label small {
+color:#ccc;
+font-size:13px;
+}
+
 img {
 width:100%;
 border-radius:10px;
@@ -64,7 +72,6 @@ padding:18px;
 border-radius:50%;
 }
 </style>
-
 </head>
 
 <body>
@@ -72,20 +79,26 @@ border-radius:50%;
 <header>
 <img src="logo.png">
 <h2>Raj Enterprises</h2>
-<p>📞 8484078016</p>
+<p>📞 8484078016 / 9607023105</p>
+<p>Bharat Nagar, दत्ता मंदिर जवळ</p>
 </header>
 
+<!-- HERO -->
 <div class="hero">
 <h1>🔥 सर्व ऑनलाइन सेवा येथे उपलब्ध 🔥</h1>
-<p>💳 PVC Card ₹60 | 🏗️ बांधकाम नविन नोंदणी,स्कॉलरशिप</p>
+<p>
+💳 PVC Card – ₹60 <br>
+🏗️ बांधकाम कामगार नोंदणी + Scholarship
+</p>
 
 <a href="https://wa.me/918484078016?text=मला सेवा हवी आहे">
-<button class="btn">📲 WhatsApp करा</button>
+<button class="btn">📲 आत्ताच WhatsApp करा</button>
 </a>
 </div>
 
 <div class="section">
 
+<!-- IMAGES -->
 <div class="box">
 <h3>📸 आमच्या सेवा</h3>
 
@@ -97,7 +110,7 @@ border-radius:50%;
 <a href="https://wa.me/918484078016">
 <img src="construction.jpg">
 </a>
-<p>🏗️ बांधकाम नविन नोंदणी स्कॉलरशिप </p>
+<p>🏗️ बांधकाम नोंदणी + Scholarship</p>
 
 <a href="https://wa.me/918484078016">
 <img src="aadhaar.jpg">
@@ -111,18 +124,34 @@ border-radius:50%;
 
 </div>
 
+<!-- SERVICES -->
 <div class="box">
-<h3>📝 सेवा निवडा</h3>
+<h3>📝 सेवा निवडा (✔️ टिक करा)</h3>
 
-<label><input type="checkbox" value="PVC Card" onclick="highlight(this)"> PVC Card ⭐</label>
+<label><input type="checkbox" value="PVC Card ₹60" onclick="highlight(this)">
+💳 PVC Card – ₹60 ⭐
+<br><small>आधार | पॅन | मतदान कार्ड PVC मध्ये</small>
+</label>
 
-<label><input type="checkbox" value="बांधकाम नोंदणी स्कॉलरशिप भांडी पेटी" onclick="highlight(this)"> बांधकाम + Scholarship ⭐</label>
+<label><input type="checkbox" value="बांधकाम कामगार नोंदणी + Scholarship" onclick="highlight(this)">
+🏗️ बांधकाम कामगार नोंदणी ⭐
+<br><small>नवीन नोंदणी | स्कॉलरशिप | सर्व योजना</small>
+</label>
 
-<label><input type="checkbox" value="आधार"> आधार</label>
-<label><input type="checkbox" value="पॅन"> पॅन</label>
+<label><input type="checkbox" value="आधार कार्ड" onclick="highlight(this)">
+🆔 आधार कार्ड सेवा
+</label>
+
+<label><input type="checkbox" value="पॅन कार्ड" onclick="highlight(this)">
+📄 पॅन कार्ड सेवा
+</label>
+
+<label><input type="checkbox" value="लाईसन्स" onclick="highlight(this)">
+🚗 लाईसन्स (2/4 चाकी)
+</label>
 
 <br>
-<button onclick="sendWhatsApp()" class="btn">Submit</button>
+<button onclick="sendWhatsApp()" class="btn">📲 Submit</button>
 </div>
 
 </div>
@@ -131,6 +160,7 @@ border-radius:50%;
 
 <script>
 
+// Highlight effect
 function highlight(el){
 if(el.checked){
 el.parentElement.style.background="gold";
@@ -141,6 +171,7 @@ el.parentElement.style.color="white";
 }
 }
 
+// WhatsApp message
 function sendWhatsApp(){
 
 let selected=[];
@@ -153,7 +184,13 @@ alert("सेवा निवडा");
 return;
 }
 
-let msg=`मला सेवा हवी आहे:%0A${selected.join(", ")}`;
+// Priority
+let priority="";
+if(selected.includes("PVC Card ₹60") || selected.includes("बांधकाम कामगार नोंदणी + Scholarship")){
+priority="🔥 HIGH PRIORITY 🔥%0A";
+}
+
+let msg=`${priority}मला सेवा हवी आहे:%0A${selected.join(", ")}`;
 
 window.open(`https://wa.me/918484078016?text=${msg}`);
 }
