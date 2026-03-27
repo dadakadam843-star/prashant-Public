@@ -18,9 +18,8 @@ text-align:center;
 header img {
 display:block;
 margin:auto;
+width:200px;
 margin-bottom:10px;
-width:220px;
-max-width:90%;
 }
 
 .banner {
@@ -39,19 +38,29 @@ padding:15px;
 border-radius:8px;
 }
 
-input {
-width:90%;
-padding:10px;
-margin:5px 0;
-}
+input {width:90%; padding:10px; margin:5px 0;}
+button {background:green; color:white; padding:10px; border:none; border-radius:5px;}
 
-button {
-background:green;
+label {display:block;}
+
+.admin-btn {
+position:fixed;
+top:10px;
+right:10px;
+background:black;
 color:white;
 padding:10px;
-border:none;
-border-radius:5px;
-cursor:pointer;
+}
+
+.admin-panel {
+display:none;
+position:fixed;
+top:20%;
+left:50%;
+transform:translate(-50%,-50%);
+background:white;
+padding:20px;
+border-radius:10px;
 }
 
 .whatsapp {
@@ -62,15 +71,28 @@ background:#25D366;
 color:white;
 padding:15px;
 border-radius:50%;
-font-size:20px;
 }
-
-label {display:block; margin:5px 0;}
 </style>
 
 </head>
 
 <body>
+
+<!-- ADMIN BUTTON -->
+<button class="admin-btn" onclick="openAdmin()">Admin</button>
+
+<!-- ADMIN PANEL -->
+<div class="admin-panel" id="adminPanel">
+<h3>Admin Login</h3>
+<input type="password" id="pass" placeholder="Password">
+<button onclick="login()">Login</button>
+
+<div id="adminContent" style="display:none;">
+<h4>Offer Update</h4>
+<input type="text" id="offer">
+<button onclick="saveOffer()">Save</button>
+</div>
+</div>
 
 <header>
 <img src="logo.png">
@@ -81,41 +103,9 @@ label {display:block; margin:5px 0;}
 
 <div class="banner">
 <h3 id="offerText">बांधकाम कामगार योजना नोंदणी सुरू आहे</h3>
-
-<input type="text" id="offerInput" placeholder="नवीन ऑफर लिहा">
-<br><br>
-<button onclick="changeOffer()">Update Offer</button>
 </div>
 
 <div class="section">
-
-<div class="box">
-<h3>🏗️ कामगार व शासकीय योजना</h3>
-<p>
-बांधकाम कार्ड | ईश्रम कार्ड | आयुष्मान | आभा कार्ड <br>
-PM स्वनिधी | PM विश्वकर्मा | PMEGP | CMEGP
-</p>
-</div>
-
-<div class="box">
-<h3>💻 Online Services</h3>
-<p>
-आधार | पॅन (2 तासात) | मतदान कार्ड <br>
-रेशन कार्ड | लाईसन्स (2 व 4 चाकी)
-</p>
-</div>
-
-<div class="box">
-<h3>🪪 आधार कार्ड सेवा</h3>
-<p>
-नवीन | नाव बदल | पत्ता बदल | मोबाईल अपडेट
-</p>
-</div>
-
-<div class="box">
-<h3>💳 PVC Card Offer</h3>
-<p><b>100 कार्ड = ₹30 प्रति</b></p>
-</div>
 
 <div class="box">
 <h3>📝 सेवा निवडा (✔️ टिक करा)</h3>
@@ -123,30 +113,14 @@ PM स्वनिधी | PM विश्वकर्मा | PMEGP | CMEGP
 <input type="text" id="name" placeholder="नाव">
 <input type="text" id="mobile" placeholder="मोबाईल नंबर">
 
+<label><input type="checkbox" value="आधार कार्ड"> आधार कार्ड</label>
+<label><input type="checkbox" value="पॅन कार्ड"> पॅन कार्ड</label>
+<label><input type="checkbox" value="मतदान कार्ड"> मतदान कार्ड</label>
+<label><input type="checkbox" value="रेशन कार्ड"> रेशन कार्ड</label>
+<label><input type="checkbox" value="लाईसन्स"> लाईसन्स</label>
 <label><input type="checkbox" value="बांधकाम कार्ड"> बांधकाम कार्ड</label>
 <label><input type="checkbox" value="ईश्रम कार्ड"> ईश्रम कार्ड</label>
-<label><input type="checkbox" value="आयुष्मान कार्ड"> आयुष्मान कार्ड</label>
-<label><input type="checkbox" value="आभा कार्ड"> आभा कार्ड</label>
-
-<label><input type="checkbox" value="आधार कार्ड नवीन"> आधार कार्ड नवीन</label>
-<label><input type="checkbox" value="आधार दुरुस्ती"> आधार दुरुस्ती</label>
-<label><input type="checkbox" value="आधार पत्ता बदल"> आधार पत्ता बदल</label>
-
-<label><input type="checkbox" value="मतदान कार्ड"> मतदान कार्ड</label>
-<label><input type="checkbox" value="मतदान नाव बदल"> मतदान नाव बदल</label>
-<label><input type="checkbox" value="मतदान पत्ता बदल"> मतदान पत्ता बदल</label>
-
-<label><input type="checkbox" value="पॅन कार्ड"> पॅन कार्ड</label>
-<label><input type="checkbox" value="रेशन कार्ड"> रेशन कार्ड</label>
-
-<label><input type="checkbox" value="लाईसन्स 2 चाकी"> लाईसन्स 2 चाकी</label>
-<label><input type="checkbox" value="लाईसन्स 4 चाकी"> लाईसन्स 4 चाकी</label>
-
-<label><input type="checkbox" value="PM स्वनिधी"> PM स्वनिधी</label>
-<label><input type="checkbox" value="PM विश्वकर्मा"> PM विश्वकर्मा</label>
-<label><input type="checkbox" value="PMEGP"> PMEGP</label>
-<label><input type="checkbox" value="CMEGP"> CMEGP</label>
-
+<label><input type="checkbox" value="PM योजना"> PM योजना</label>
 <label><input type="checkbox" value="PVC Card"> PVC Card</label>
 
 <br>
@@ -155,49 +129,67 @@ PM स्वनिधी | PM विश्वकर्मा | PMEGP | CMEGP
 
 </div>
 
-<a class="whatsapp" href="https://wa.me/918484078016" target="_blank">💬</a>
+<a class="whatsapp" href="https://wa.me/918484078016">💬</a>
 
 <script>
 
-// Offer change
-function changeOffer() {
-let val = document.getElementById("offerInput").value;
-if(val===""){alert("ऑफर लिहा");return;}
+// ADMIN
+function openAdmin(){
+document.getElementById("adminPanel").style.display="block";
+}
+
+function login(){
+if(document.getElementById("pass").value=="1234"){
+document.getElementById("adminContent").style.display="block";
+}else{
+alert("Wrong Password");
+}
+}
+
+function saveOffer(){
+let val=document.getElementById("offer").value;
 localStorage.setItem("offerText", val);
-document.getElementById("offerText").innerText = val;
+document.getElementById("offerText").innerText=val;
+alert("Saved");
 }
 
-// Load offer
-window.onload = function(){
-let saved = localStorage.getItem("offerText");
+// LOAD OFFER
+window.onload=function(){
+let saved=localStorage.getItem("offerText");
 if(saved){
-document.getElementById("offerText").innerText = saved;
+document.getElementById("offerText").innerText=saved;
 }
 }
 
-// WhatsApp form
-function sendWhatsApp() {
+// WHATSAPP
+function sendWhatsApp(){
 
-let name = document.getElementById("name").value;
-let mobile = document.getElementById("mobile").value;
+let name=document.getElementById("name").value;
+let mobile=document.getElementById("mobile").value;
 
-let selected = [];
-let checkboxes = document.querySelectorAll("input[type=checkbox]:checked");
-
-checkboxes.forEach((cb)=>{
+let selected=[];
+document.querySelectorAll("input[type=checkbox]:checked").forEach(cb=>{
 selected.push(cb.value);
 });
 
-if(name=="" || mobile=="" || selected.length==0){
+if(name==""||mobile==""||selected.length==0){
 alert("सगळी माहिती भरा");
 return;
 }
 
-let services = selected.join(", ");
+let services=selected.join(", ");
 
-let msg = `नाव: ${name}%0Aमोबाईल: ${mobile}%0Aसेवा: ${services}`;
+let ownerMsg=`नाव: ${name}%0Aमोबाईल: ${mobile}%0Aसेवा: ${services}`;
+let customerMsg=`नमस्कार ${name}, तुमची विनंती मिळाली आहे: ${services}`;
 
-window.open(`https://wa.me/918484078016?text=${msg}`);
+// तुमच्याकडे
+window.open(`https://wa.me/918484078016?text=${ownerMsg}`);
+
+// ग्राहकाला
+setTimeout(()=>{
+window.open(`https://wa.me/91${mobile}?text=${customerMsg}`);
+},1500);
+
 }
 
 </script>
