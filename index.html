@@ -33,14 +33,8 @@ padding:50px 20px;
 text-align:center;
 }
 
-.hero h1 {
-font-size:28px;
-}
-
-.hero p {
-font-size:18px;
-margin:10px 0;
-}
+.hero h1 {font-size:26px;}
+.hero p {font-size:18px;}
 
 /* BUTTON */
 .btn {
@@ -54,9 +48,7 @@ margin-top:15px;
 }
 
 /* SECTION */
-.section {
-padding:15px;
-}
+.section {padding:15px;}
 
 /* BOX */
 .box {
@@ -64,6 +56,14 @@ background:#1e293b;
 padding:15px;
 margin:10px 0;
 border-radius:10px;
+}
+
+/* LABEL */
+label {
+display:block;
+padding:10px;
+margin:5px 0;
+border-radius:6px;
 }
 
 /* FLOAT BUTTON */
@@ -85,67 +85,127 @@ font-size:22px;
 <header>
 <img src="logo.png">
 <h2>Raj Enterprises</h2>
-<p>📞 8484078016</p>
+<p>📞 8484078016 / 9607023105</p>
+<p>Bharat Nagar, दत्ता मंदिर जवळ</p>
 </header>
 
-<!-- HERO SECTION -->
+<!-- HERO -->
 <div class="hero">
 <h1>🔥 सर्व ऑनलाइन सेवा येथे उपलब्ध 🔥</h1>
 
 <p>
-आधार | पॅन | लाईसन्स | बांधकाम योजना <br>
-💳 PVC Card फक्त ₹50
+💳 PVC Card फक्त ₹30 <br>
+🏗️ बांधकाम नोंदणी + Scholarship
 </p>
 
 <a href="https://wa.me/918484078016?text=मला सेवा हवी आहे">
 <button class="btn">📲 आत्ताच WhatsApp करा</button>
 </a>
-
 </div>
 
 <div class="section">
 
+<!-- RATE -->
 <div class="box">
 <h3>💰 Rate List</h3>
 <p>
-PVC Card – ₹50 <br>
-पॅन कार्ड – ₹200 <br>
-आधार अपडेट – 
+PVC Card – ₹30 <br>
+पॅन कार्ड – ₹120 <br>
+आधार अपडेट – ₹50
 </p>
 </div>
 
+<!-- SERVICE -->
+<div class="box">
+<h3>📝 सेवा निवडा (✔️ टिक करा)</h3>
+
+<label><input type="checkbox" value="PVC Card" onclick="highlight(this)"> 💳 PVC Card ⭐</label>
+
+<label><input type="checkbox" value="बांधकाम नोंदणी + Scholarship" onclick="highlight(this)"> 🏗️ बांधकाम नोंदणी + Scholarship ⭐</label>
+
+<label><input type="checkbox" value="आधार कार्ड" onclick="highlight(this)"> आधार कार्ड</label>
+
+<label><input type="checkbox" value="पॅन कार्ड" onclick="highlight(this)"> पॅन कार्ड</label>
+
+<label><input type="checkbox" value="लाईसन्स" onclick="highlight(this)"> लाईसन्स</label>
+
+<br>
+<button onclick="sendWhatsApp()" class="btn">📲 Submit</button>
+</div>
+
+<!-- SERVICES INFO -->
 <div class="box">
 <h3>🚀 आमच्या सेवा</h3>
 <p>
-✔️ आधार कार्ड<br>
-✔️ पॅन कार्ड<br>
-✔️ मतदान कार्ड<br>
-✔️ रेशन कार्ड<br>
-✔️ लाईसन्स<br>
-✔️ बांधकाम योजना
+✔️ आधार कार्ड  
+✔️ पॅन कार्ड  
+✔️ मतदान कार्ड  
+✔️ रेशन कार्ड  
+✔️ लाईसन्स  
+✔️ बांधकाम योजना  
 </p>
 </div>
 
+<!-- REVIEW -->
 <div class="box">
 <h3>⭐ ग्राहक प्रतिक्रिया</h3>
 <p>“खूप जलद सेवा मिळाली”</p>
 <p>“विश्वासार्ह आणि कमी दर”</p>
 </div>
 
-<!-- SECOND CTA -->
+<!-- CTA -->
 <div class="hero" style="margin-top:20px;">
 <h2>🎯 आजच काम करून घ्या</h2>
-<p>📲 WhatsApp वर मेसेज करा</p>
-
 <a href="https://wa.me/918484078016?text=मला माहिती हवी आहे">
-<button class="btn">💬 Chat Now</button>
+<button class="btn">💬 WhatsApp करा</button>
 </a>
-
 </div>
 
 </div>
 
 <a class="whatsapp" href="https://wa.me/918484078016">💬</a>
+
+<script>
+
+// Highlight
+function highlight(el){
+if(el.checked){
+el.parentElement.style.background="gold";
+el.parentElement.style.color="black";
+}else{
+el.parentElement.style.background="none";
+el.parentElement.style.color="white";
+}
+}
+
+// WhatsApp Send
+function sendWhatsApp(){
+
+let selected=[];
+document.querySelectorAll("input[type=checkbox]:checked").forEach(cb=>{
+selected.push(cb.value);
+});
+
+if(selected.length==0){
+alert("सेवा निवडा");
+return;
+}
+
+// Priority
+let priority="";
+if(selected.includes("PVC Card") || selected.includes("बांधकाम नोंदणी + Scholarship")){
+priority="🔥 HIGH PRIORITY 🔥%0A";
+}
+
+let services=selected.join(", ");
+
+let msg=`${priority}मला सेवा हवी आहे:%0A${services}`;
+
+window.open(`https://wa.me/918484078016?text=${msg}`);
+
+}
+
+</script>
 
 </body>
 </html>
