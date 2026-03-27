@@ -7,90 +7,37 @@
 
 <style>
 body {font-family: Arial; margin:0; background:#f5f5f5;}
-
-header {
-background:#0d3b66;
-color:white;
-padding:15px;
-text-align:center;
-}
-
-header img {
-display:block;
-margin:auto;
-width:200px;
-margin-bottom:10px;
-}
-
-.banner {
-background:orange;
-color:white;
-text-align:center;
-padding:20px;
-}
-
+header {background:#0d3b66; color:white; padding:15px; text-align:center;}
+header img {width:200px; display:block; margin:auto;}
+.banner {background:orange; color:white; text-align:center; padding:20px;}
 .section {padding:20px;}
-
-.box {
-background:white;
-margin:10px 0;
-padding:15px;
-border-radius:8px;
-}
-
+.box {background:white; margin:10px 0; padding:15px; border-radius:8px;}
 input {width:90%; padding:10px; margin:5px 0;}
-button {background:green; color:white; padding:10px; border:none; border-radius:5px;}
-
+button {background:green; color:white; padding:10px; border:none; border-radius:5px; margin:5px;}
 label {display:block;}
-
-.admin-btn {
-position:fixed;
-top:10px;
-right:10px;
-background:black;
-color:white;
-padding:10px;
-}
-
-.admin-panel {
-display:none;
-position:fixed;
-top:20%;
-left:50%;
-transform:translate(-50%,-50%);
-background:white;
-padding:20px;
-border-radius:10px;
-}
-
-.whatsapp {
-position:fixed;
-bottom:20px;
-right:20px;
-background:#25D366;
-color:white;
-padding:15px;
-border-radius:50%;
-}
+.whatsapp {position:fixed; bottom:20px; right:20px; background:#25D366; color:white; padding:15px; border-radius:50%;}
+.admin-btn {position:fixed; top:10px; right:10px; background:black; color:white; padding:10px;}
+.admin-panel {display:none; position:fixed; top:30%; left:50%; transform:translate(-50%,-50%); background:white; padding:20px;}
 </style>
 
 </head>
 
 <body>
 
-<!-- ADMIN BUTTON -->
 <button class="admin-btn" onclick="openAdmin()">Admin</button>
 
-<!-- ADMIN PANEL -->
 <div class="admin-panel" id="adminPanel">
 <h3>Admin Login</h3>
-<input type="password" id="pass" placeholder="Password">
+<input type="password" id="pass">
 <button onclick="login()">Login</button>
 
 <div id="adminContent" style="display:none;">
 <h4>Offer Update</h4>
 <input type="text" id="offer">
 <button onclick="saveOffer()">Save</button>
+
+<h4>📥 Customer Data</h4>
+<button onclick="downloadData()">Download Excel</button>
 </div>
 </div>
 
@@ -102,29 +49,27 @@ border-radius:50%;
 </header>
 
 <div class="banner">
-<h3 id="offerText">बांधकाम कामगार योजना नोंदणी सुरू आहे</h3>
+<h3 id="offerText">बांधकाम कामगार योजना सुरू आहे</h3>
 </div>
 
 <div class="section">
 
 <div class="box">
-<h3>📝 सेवा निवडा (✔️ टिक करा)</h3>
+<h3>💰 Rate List</h3>
+<p>PVC Card – ₹30<br>पॅन – ₹120<br>आधार – ₹50</p>
+</div>
+
+<div class="box">
+<h3>📝 सेवा निवडा</h3>
 
 <input type="text" id="name" placeholder="नाव">
-<input type="text" id="mobile" placeholder="मोबाईल नंबर">
+<input type="text" id="mobile" placeholder="मोबाईल">
 
-<label><input type="checkbox" value="आधार कार्ड"> आधार कार्ड</label>
-<label><input type="checkbox" value="पॅन कार्ड"> पॅन कार्ड</label>
-<label><input type="checkbox" value="मतदान कार्ड"> मतदान कार्ड</label>
-<label><input type="checkbox" value="रेशन कार्ड"> रेशन कार्ड</label>
-<label><input type="checkbox" value="लाईसन्स"> लाईसन्स</label>
-<label><input type="checkbox" value="बांधकाम कार्ड"> बांधकाम कार्ड</label>
-<label><input type="checkbox" value="ईश्रम कार्ड"> ईश्रम कार्ड</label>
-<label><input type="checkbox" value="PM योजना"> PM योजना</label>
+<label><input type="checkbox" value="आधार"> आधार</label>
+<label><input type="checkbox" value="पॅन"> पॅन</label>
 <label><input type="checkbox" value="PVC Card"> PVC Card</label>
 
-<br>
-<button onclick="sendWhatsApp()">Submit</button>
+<button onclick="submitForm()">Submit</button>
 </div>
 
 </div>
@@ -133,36 +78,29 @@ border-radius:50%;
 
 <script>
 
-// ADMIN
-function openAdmin(){
-document.getElementById("adminPanel").style.display="block";
-}
-
+// Admin
+function openAdmin(){document.getElementById("adminPanel").style.display="block";}
 function login(){
 if(document.getElementById("pass").value=="1234"){
 document.getElementById("adminContent").style.display="block";
-}else{
-alert("Wrong Password");
-}
+}else{alert("Wrong Password");}
 }
 
+// Offer
 function saveOffer(){
 let val=document.getElementById("offer").value;
 localStorage.setItem("offerText", val);
 document.getElementById("offerText").innerText=val;
-alert("Saved");
 }
 
-// LOAD OFFER
+// Load offer
 window.onload=function(){
 let saved=localStorage.getItem("offerText");
-if(saved){
-document.getElementById("offerText").innerText=saved;
-}
+if(saved){document.getElementById("offerText").innerText=saved;}
 }
 
-// WHATSAPP
-function sendWhatsApp(){
+// Form Submit + Save Data
+function submitForm(){
 
 let name=document.getElementById("name").value;
 let mobile=document.getElementById("mobile").value;
@@ -173,22 +111,39 @@ selected.push(cb.value);
 });
 
 if(name==""||mobile==""||selected.length==0){
-alert("सगळी माहिती भरा");
+alert("माहिती भरा");
 return;
 }
 
+// Save Data
+let data=JSON.parse(localStorage.getItem("customers")||"[]");
+data.push({name,mobile,services:selected});
+localStorage.setItem("customers", JSON.stringify(data));
+
+// WhatsApp
 let services=selected.join(", ");
+let msg=`नाव: ${name}%0Aमोबाईल: ${mobile}%0Aसेवा: ${services}`;
+window.open(`https://wa.me/918484078016?text=${msg}`);
 
-let ownerMsg=`नाव: ${name}%0Aमोबाईल: ${mobile}%0Aसेवा: ${services}`;
-let customerMsg=`नमस्कार ${name}, तुमची विनंती मिळाली आहे: ${services}`;
+alert("Saved Successfully");
+}
 
-// तुमच्याकडे
-window.open(`https://wa.me/918484078016?text=${ownerMsg}`);
+// Download Excel
+function downloadData(){
 
-// ग्राहकाला
-setTimeout(()=>{
-window.open(`https://wa.me/91${mobile}?text=${customerMsg}`);
-},1500);
+let data=JSON.parse(localStorage.getItem("customers")||"[]");
+
+let csv="Name,Mobile,Services\n";
+
+data.forEach(d=>{
+csv+=`${d.name},${d.mobile},${d.services.join("-")}\n`;
+});
+
+let blob=new Blob([csv],{type:"text/csv"});
+let a=document.createElement("a");
+a.href=URL.createObjectURL(blob);
+a.download="customers.csv";
+a.click();
 
 }
 
