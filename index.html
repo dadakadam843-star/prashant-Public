@@ -6,51 +6,35 @@
 <title>Raj Enterprises</title>
 
 <style>
-body {
-margin:0;
-font-family:Arial;
-background:#0f172a;
-color:white;
-}
+body {margin:0; font-family:Arial; background:#0f172a; color:white;}
 
-/* HEADER */
 header {
 background:linear-gradient(135deg,#2563eb,#1e3a8a);
 padding:20px;
 text-align:center;
 }
 
-header img {
-width:180px;
-}
+header img {width:180px;}
 
-/* HERO */
 .hero {
 background:linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)),
 url('https://images.unsplash.com/photo-1601597111158-2fceff292cdc');
 background-size:cover;
-padding:50px 20px;
+padding:50px;
 text-align:center;
 }
 
-.hero h1 {font-size:26px;}
-.hero p {font-size:18px;}
-
-/* BUTTON */
 .btn {
 background:#25D366;
-padding:15px 25px;
+padding:15px;
 border:none;
 border-radius:8px;
 font-size:18px;
 color:white;
-margin-top:15px;
 }
 
-/* SECTION */
 .section {padding:15px;}
 
-/* BOX */
 .box {
 background:#1e293b;
 padding:15px;
@@ -58,7 +42,6 @@ margin:10px 0;
 border-radius:10px;
 }
 
-/* LABEL */
 label {
 display:block;
 padding:10px;
@@ -66,7 +49,12 @@ margin:5px 0;
 border-radius:6px;
 }
 
-/* FLOAT BUTTON */
+img {
+width:100%;
+border-radius:10px;
+margin:5px 0;
+}
+
 .whatsapp {
 position:fixed;
 bottom:20px;
@@ -74,7 +62,6 @@ right:20px;
 background:#25D366;
 padding:18px;
 border-radius:50%;
-font-size:22px;
 }
 </style>
 
@@ -85,80 +72,57 @@ font-size:22px;
 <header>
 <img src="logo.png">
 <h2>Raj Enterprises</h2>
-<p>📞 8484078016 / 9607023105</p>
-<p>Bharat Nagar, दत्ता मंदिर जवळ</p>
+<p>📞 8484078016</p>
 </header>
 
-<!-- HERO -->
 <div class="hero">
 <h1>🔥 सर्व ऑनलाइन सेवा येथे उपलब्ध 🔥</h1>
-
-<p>
-💳 PVC Card फक्त ₹30 <br>
-🏗️ बांधकाम नोंदणी + Scholarship
-</p>
+<p>💳 PVC Card ₹30 | 🏗️ बांधकाम + Scholarship</p>
 
 <a href="https://wa.me/918484078016?text=मला सेवा हवी आहे">
-<button class="btn">📲 आत्ताच WhatsApp करा</button>
+<button class="btn">📲 WhatsApp करा</button>
 </a>
 </div>
 
 <div class="section">
 
-<!-- RATE -->
 <div class="box">
-<h3>💰 Rate List</h3>
-<p>
-PVC Card – ₹30 <br>
-पॅन कार्ड – ₹120 <br>
-आधार अपडेट – ₹50
-</p>
+<h3>📸 आमच्या सेवा</h3>
+
+<a href="https://wa.me/918484078016">
+<img src="pvc.jpg">
+</a>
+<p>💳 PVC Card – ₹30</p>
+
+<a href="https://wa.me/918484078016">
+<img src="construction.jpg">
+</a>
+<p>🏗️ बांधकाम नोंदणी + Scholarship</p>
+
+<a href="https://wa.me/918484078016">
+<img src="aadhaar.jpg">
+</a>
+<p>🆔 आधार कार्ड सेवा</p>
+
+<a href="https://wa.me/918484078016">
+<img src="voter.jpg">
+</a>
+<p>🗳️ मतदान कार्ड सेवा</p>
+
 </div>
 
-<!-- SERVICE -->
 <div class="box">
-<h3>📝 सेवा निवडा (✔️ टिक करा)</h3>
+<h3>📝 सेवा निवडा</h3>
 
-<label><input type="checkbox" value="PVC Card" onclick="highlight(this)"> 💳 PVC Card ⭐</label>
+<label><input type="checkbox" value="PVC Card" onclick="highlight(this)"> PVC Card ⭐</label>
 
-<label><input type="checkbox" value="बांधकाम नोंदणी + Scholarship" onclick="highlight(this)"> 🏗️ बांधकाम नोंदणी + Scholarship ⭐</label>
+<label><input type="checkbox" value="बांधकाम नोंदणी + Scholarship" onclick="highlight(this)"> बांधकाम + Scholarship ⭐</label>
 
-<label><input type="checkbox" value="आधार कार्ड" onclick="highlight(this)"> आधार कार्ड</label>
-
-<label><input type="checkbox" value="पॅन कार्ड" onclick="highlight(this)"> पॅन कार्ड</label>
-
-<label><input type="checkbox" value="लाईसन्स" onclick="highlight(this)"> लाईसन्स</label>
+<label><input type="checkbox" value="आधार"> आधार</label>
+<label><input type="checkbox" value="पॅन"> पॅन</label>
 
 <br>
-<button onclick="sendWhatsApp()" class="btn">📲 Submit</button>
-</div>
-
-<!-- SERVICES INFO -->
-<div class="box">
-<h3>🚀 आमच्या सेवा</h3>
-<p>
-✔️ आधार कार्ड  
-✔️ पॅन कार्ड  
-✔️ मतदान कार्ड  
-✔️ रेशन कार्ड  
-✔️ लाईसन्स  
-✔️ बांधकाम योजना  
-</p>
-</div>
-
-<!-- REVIEW -->
-<div class="box">
-<h3>⭐ ग्राहक प्रतिक्रिया</h3>
-<p>“खूप जलद सेवा मिळाली”</p>
-<p>“विश्वासार्ह आणि कमी दर”</p>
-</div>
-
-<!-- CTA -->
-<div class="hero" style="margin-top:20px;">
-<h2>🎯 आजच काम करून घ्या</h2>
-<a href="https://wa.me/918484078016?text=मला माहिती हवी आहे">
-<button class="btn">💬 WhatsApp करा</button>
-</a>
+<button onclick="sendWhatsApp()" class="btn">Submit</button>
 </div>
 
 </div>
@@ -167,7 +131,6 @@ PVC Card – ₹30 <br>
 
 <script>
 
-// Highlight
 function highlight(el){
 if(el.checked){
 el.parentElement.style.background="gold";
@@ -178,7 +141,6 @@ el.parentElement.style.color="white";
 }
 }
 
-// WhatsApp Send
 function sendWhatsApp(){
 
 let selected=[];
@@ -191,18 +153,9 @@ alert("सेवा निवडा");
 return;
 }
 
-// Priority
-let priority="";
-if(selected.includes("PVC Card") || selected.includes("बांधकाम नोंदणी + Scholarship")){
-priority="🔥 HIGH PRIORITY 🔥%0A";
-}
-
-let services=selected.join(", ");
-
-let msg=`${priority}मला सेवा हवी आहे:%0A${services}`;
+let msg=`मला सेवा हवी आहे:%0A${selected.join(", ")}`;
 
 window.open(`https://wa.me/918484078016?text=${msg}`);
-
 }
 
 </script>
