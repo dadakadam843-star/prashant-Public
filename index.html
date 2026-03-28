@@ -14,25 +14,22 @@ padding:20px;
 text-align:center;
 }
 
-header img {width:180px;}
+header img {width:160px;}
 
 .hero {
 background:linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)),
 url('https://images.unsplash.com/photo-1601597111158-2fceff292cdc');
 background-size:cover;
-padding:50px;
+padding:40px;
 text-align:center;
 }
 
-.hero h1 {font-size:26px;}
-.hero p {font-size:18px;}
-
 .btn {
 background:#25D366;
-padding:15px;
+padding:12px;
 border:none;
 border-radius:8px;
-font-size:18px;
+font-size:16px;
 color:white;
 }
 
@@ -52,10 +49,7 @@ margin:5px 0;
 border-radius:6px;
 }
 
-label small {
-color:#ccc;
-font-size:13px;
-}
+label small {color:#ccc;}
 
 img {
 width:100%;
@@ -71,6 +65,7 @@ background:#25D366;
 padding:18px;
 border-radius:50%;
 }
+
 </style>
 </head>
 
@@ -80,19 +75,23 @@ border-radius:50%;
 <img src="logo.png">
 <h2>Raj Enterprises</h2>
 <p>📞 8484078016 / 9607023105</p>
-<p>Bharat Nagar, दत्ता मंदिर जवळ</p>
+<p>भारत नगर , दत्ता मंदिर जवळ</p>
 </header>
+
+<!-- SCROLLING -->
+<div style="background:red;color:white;padding:10px;font-weight:bold;">
+<marquee>
+🔥 PVC Card ₹60 | 🏗️ बांधकाम कामगार नोंदणी  | 📄 सर्व सेवा उपलब्ध | 📲 Call: 8484078016
+</marquee>
+</div>
 
 <!-- HERO -->
 <div class="hero">
 <h1>🔥 सर्व ऑनलाइन सेवा येथे उपलब्ध 🔥</h1>
-<p>
-💳 PVC Card – ₹60 <br>
-🏗️ बांधकाम कामगार नोंदणी + Scholarship
-</p>
+<p>💳 PVC Card ₹60 | 🏗️ बांधकाम + Scholarship</p>
 
 <a href="https://wa.me/918484078016?text=मला सेवा हवी आहे">
-<button class="btn">📲 आत्ताच WhatsApp करा</button>
+<button class="btn">📲 WhatsApp करा</button>
 </a>
 </div>
 
@@ -110,57 +109,70 @@ border-radius:50%;
 <a href="https://wa.me/918484078016">
 <img src="construction.jpg">
 </a>
-<p>🏗️ बांधकाम नोंदणी + Scholarship</p>
+<p>🏗️ बांधकाम कामगार नोंदणी + Scholarship</p>
 
 <a href="https://wa.me/918484078016">
 <img src="aadhaar.jpg">
 </a>
-<p>🆔 आधार कार्ड सेवा</p>
+<p>🆔 आधार सेवा</p>
 
 <a href="https://wa.me/918484078016">
 <img src="voter.jpg">
 </a>
-<p>🗳️ मतदान कार्ड सेवा</p>
+<p>🗳️ मतदान सेवा</p>
 
 </div>
 
 <!-- SERVICES -->
 <div class="box">
-<h3>📝 सेवा निवडा (✔️ टिक करा)</h3>
+<h3>📝 सेवा निवडा</h3>
 
 <label><input type="checkbox" value="PVC Card ₹60" onclick="highlight(this)">
 💳 PVC Card – ₹60 ⭐
-<br><small>आधार | पॅन | मतदान कार्ड PVC मध्ये</small>
+<br><small>आधार | पॅन | मतदान कार्ड</small>
 </label>
 
 <label><input type="checkbox" value="बांधकाम कामगार नोंदणी + Scholarship" onclick="highlight(this)">
 🏗️ बांधकाम कामगार नोंदणी ⭐
-<br><small>नवीन नोंदणी | स्कॉलरशिप | सर्व योजना</small>
+<br><small>नवीन | Scholarship | योजना</small>
 </label>
 
-<label><input type="checkbox" value="आधार कार्ड" onclick="highlight(this)">
-🆔 आधार कार्ड सेवा
-</label>
-
-<label><input type="checkbox" value="पॅन कार्ड" onclick="highlight(this)">
-📄 पॅन कार्ड सेवा
-</label>
-
-<label><input type="checkbox" value="लाईसन्स" onclick="highlight(this)">
-🚗 लाईसन्स (2/4 चाकी)
-</label>
+<label><input type="checkbox" value="आधार"> आधार</label>
+<label><input type="checkbox" value="पॅन"> पॅन</label>
 
 <br>
-<button onclick="sendWhatsApp()" class="btn">📲 Submit</button>
+<button onclick="sendWhatsApp()" class="btn">Submit</button>
 </div>
 
 </div>
 
 <a class="whatsapp" href="https://wa.me/918484078016">💬</a>
 
+<!-- POPUP -->
+<div id="popup" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);">
+
+<div style="background:white;color:black;width:90%;max-width:300px;margin:120px auto;padding:20px;border-radius:10px;text-align:center;">
+
+<h2>🔥 Offer 🔥</h2>
+<p>💳 PVC Card ₹60</p>
+<p>🏗️ बांधकाम कामगार नोंदणी + Scholarship</p>
+
+<a href="https://wa.me/918484078016">
+<button style="background:#25D366;color:white;padding:10px;border:none;border-radius:8px;">
+WhatsApp करा
+</button>
+</a>
+
+<br><br>
+<button onclick="closePopup()" style="background:red;color:white;border:none;padding:5px 10px;">
+बंद
+</button>
+
+</div>
+</div>
+
 <script>
 
-// Highlight effect
 function highlight(el){
 if(el.checked){
 el.parentElement.style.background="gold";
@@ -171,28 +183,24 @@ el.parentElement.style.color="white";
 }
 }
 
-// WhatsApp message
 function sendWhatsApp(){
-
 let selected=[];
 document.querySelectorAll("input[type=checkbox]:checked").forEach(cb=>{
 selected.push(cb.value);
 });
-
-if(selected.length==0){
-alert("सेवा निवडा");
-return;
-}
-
-// Priority
-let priority="";
-if(selected.includes("PVC Card ₹60") || selected.includes("बांधकाम कामगार नोंदणी + Scholarship")){
-priority="🔥 HIGH PRIORITY 🔥%0A";
-}
-
-let msg=`${priority}मला सेवा हवी आहे:%0A${selected.join(", ")}`;
-
+if(selected.length==0){alert("सेवा निवडा");return;}
+let msg=`मला सेवा हवी आहे:%0A${selected.join(", ")}`;
 window.open(`https://wa.me/918484078016?text=${msg}`);
+}
+
+window.onload=function(){
+setTimeout(()=>{
+document.getElementById("popup").style.display="block";
+},2000);
+}
+
+function closePopup(){
+document.getElementById("popup").style.display="none";
 }
 
 </script>
