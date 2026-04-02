@@ -3,50 +3,126 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Raj Enterprises</title>
+<title>Rajratna Online Hub</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
 <style>
-body{margin:0;font-family:'Poppins',sans-serif;background:#020617;color:white;}
-header{text-align:center;padding:20px;background:#1e3a8a;}
-.btn{background:#25D366;padding:12px;border:none;border-radius:8px;color:white;}
-.box{background:#111;padding:15px;margin:10px;border-radius:10px;}
-input,select{width:100%;padding:10px;margin:5px 0;}
+body{
+margin:0;
+font-family:'Poppins',sans-serif;
+background:#020617;
+color:white;
+}
+
+header{
+text-align:center;
+padding:20px;
+background:#1e3a8a;
+}
+
+h1{color:yellow;}
+
+.box{
+background:#111;
+padding:15px;
+margin:10px;
+border-radius:10px;
+}
+
+.btn{
+background:#25D366;
+padding:12px;
+border:none;
+border-radius:8px;
+color:white;
+width:100%;
+font-size:16px;
+}
+
+input,select{
+width:100%;
+padding:10px;
+margin:5px 0;
+border-radius:5px;
+border:none;
+}
+
+label{
+display:block;
+padding:10px;
+margin:5px 0;
+background:#1e293b;
+border-radius:6px;
+}
+
+.whatsapp{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#25D366;
+padding:18px;
+border-radius:50%;
+}
 </style>
 </head>
 
 <body>
 
 <header>
-<h2>Raj Enterprises</h2>
+<h1>🚩 राजरत्न ऑनलाईन हब 💼</h1>
 <p>📞 8484078016 / 9607023105</p>
 </header>
 
+<!-- HEAVY SECTION -->
 <div class="box">
-<h2>⚠️ तुमचं काम राहिलं आहे का?</h2>
+<h2 style="color:red;">👉 तुमचं काम राहिलं आहे का?</h2>
 
-<label><input type="checkbox" value="PVC Card ₹60"> PVC Card ₹60</label>
-<label><input type="checkbox" value="बांधकाम नोंदणी + Scholarship"> बांधकाम + Scholarship</label>
-<label><input type="checkbox" value="आधार"> आधार</label>
-<label><input type="checkbox" value="पॅन"> पॅन</label>
+<label><input type="checkbox" value="बांधकाम नोंदणी + Scholarship"> 🏗️ बांधकाम नोंदणी (₹2500-₹5000 Scholarship)</label>
 
-<button onclick="sendWhatsApp()" class="btn">📲 माझं काम पूर्ण करा</button>
+<label><input type="checkbox" value="PVC Card ₹60"> 💳 PVC Card ₹60</label>
+
+<label><input type="checkbox" value="आधार / पॅन / मतदान"> 🆔 आधार / पॅन / मतदान</label>
+
+<label><input type="checkbox" value="लायसन्स"> 🚗 2 / 4 चाकी लायसन्स</label>
+
+<label><input type="checkbox" value="सरकारी योजना"> 💰 PM Vishwakarma / Svanidhi / Mudra</label>
+
+<button onclick="sendWhatsApp()" class="btn">🔥 माझं काम पूर्ण करा</button>
 </div>
 
+<!-- FORM -->
 <div class="box">
 <h3>📋 तुमची माहिती भरा</h3>
 
-<input type="text" id="name" placeholder="नाव">
-<input type="tel" id="mobile" placeholder="मोबाइल">
+<input type="text" id="name" placeholder="तुमचं नाव">
+<input type="tel" id="mobile" placeholder="मोबाइल नंबर">
 
 <select id="service">
 <option>PVC Card</option>
 <option>बांधकाम नोंदणी</option>
+<option>आधार</option>
+<option>पॅन</option>
 </select>
 
 <button onclick="sendForm()" class="btn">Submit</button>
 </div>
+
+<!-- SERVICES LIST -->
+<div class="box">
+<h3>📌 उपलब्ध सेवा</h3>
+
+<p>🏗️ बांधकाम कामगार नोंदणी + Scholarship</p>
+<p>💳 आधार PVC कार्ड – ₹60</p>
+<p>🗳️ मतदान | 🆔 आभा | 🏥 आयुष्मान</p>
+<p>📄 रहिवासी | उत्पन्न | जात | डोमिसाईल</p>
+<p>🚗 2 / 4 चाकी लायसन्स</p>
+<p>💰 PM Vishwakarma | PMEGP | Mudra</p>
+
+</div>
+
+<!-- FLOAT BUTTON -->
+<a class="whatsapp" href="https://wa.me/919607023105">💬</a>
 
 <script>
 
@@ -56,9 +132,14 @@ document.querySelectorAll("input[type=checkbox]:checked").forEach(cb=>{
 selected.push(cb.value);
 });
 
-let msg="मला सेवा हवी आहे: "+selected.join(", ");
+if(selected.length==0){
+alert("कृपया सेवा निवडा");
+return;
+}
 
-window.open("https://wa.me/919607023105?text="+encodeURIComponent(msg));
+let msg="नमस्कार 🙏%0Aमला खालील सेवा हवी आहे:%0A👉 "+selected.join("%0A👉 ");
+
+window.open("https://wa.me/919607023105?text="+msg);
 }
 
 function sendForm(){
@@ -66,9 +147,14 @@ let name=document.getElementById("name").value;
 let mobile=document.getElementById("mobile").value;
 let service=document.getElementById("service").value;
 
-let msg=`नाव: ${name}\nमोबाइल: ${mobile}\nसेवा: ${service}`;
+if(name=="" || mobile==""){
+alert("माहिती भरा");
+return;
+}
 
-window.open("https://wa.me/919607023105?text="+encodeURIComponent(msg));
+let msg=`नमस्कार 🙏%0Aनाव: ${name}%0Aमोबाइल: ${mobile}%0Aसेवा: ${service}`;
+
+window.open("https://wa.me/919607023105?text="+msg);
 }
 
 </script>
