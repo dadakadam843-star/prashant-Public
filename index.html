@@ -5,92 +5,98 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Rajratna Online Hub</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
 body{
 margin:0;
 font-family:'Poppins',sans-serif;
-background:linear-gradient(135deg,#020617,#0f172a);
-color:white;
+background:#f1f5f9;
+color:#0f172a;
 }
 
 /* HEADER */
 header{
+background:white;
+padding:15px;
 text-align:center;
-padding:20px;
-background:#1e3a8a;
-box-shadow:0 2px 10px rgba(0,0,0,0.5);
+box-shadow:0 2px 10px rgba(0,0,0,0.1);
 }
 
 header img{
-width:110px;
+width:90px;
+}
+
+header h2{
+margin:5px 0;
+}
+
+/* SECTION */
+.container{
+padding:15px;
+}
+
+/* CARD */
+.card{
+background:white;
+padding:15px;
+margin-bottom:15px;
+border-radius:12px;
+box-shadow:0 4px 10px rgba(0,0,0,0.08);
+}
+
+/* TITLE */
+.title{
+font-size:18px;
+font-weight:600;
 margin-bottom:10px;
 }
 
-h1{color:yellow;margin:5px 0;}
-
-/* BOX */
-.box{
-background:rgba(255,255,255,0.05);
-backdrop-filter:blur(10px);
-padding:15px;
-margin:15px;
-border-radius:15px;
-box-shadow:0 0 15px rgba(0,0,0,0.4);
+/* LIST */
+.list p{
+margin:8px 0;
 }
 
-/* BUTTON */
-.btn{
-background:#25D366;
-padding:12px;
-border:none;
-border-radius:10px;
-color:white;
+/* IMAGE */
+.img-box img{
 width:100%;
-font-size:16px;
-margin-top:10px;
-}
-
-/* INPUT */
-input,select{
-width:100%;
-padding:10px;
-margin:5px 0;
-border-radius:8px;
-border:none;
-}
-
-/* CHECKBOX */
-label{
-display:block;
-padding:10px;
-margin:5px 0;
-background:#1e293b;
-border-radius:8px;
-}
-
-/* IMAGE CARD */
-.card{
-margin-bottom:15px;
-}
-
-.card img{
-width:100%;
-height:200px;
+height:180px;
 object-fit:cover;
 border-radius:10px;
 }
 
-/* FLOAT BUTTON */
-.whatsapp{
+/* BUTTON */
+.btn{
+display:block;
+text-align:center;
+background:#2563eb;
+color:white;
+padding:12px;
+border-radius:8px;
+text-decoration:none;
+margin-top:10px;
+}
+
+/* FORM */
+input,select{
+width:100%;
+padding:10px;
+margin-top:8px;
+border:1px solid #ccc;
+border-radius:6px;
+}
+
+/* FLOAT */
+.float{
 position:fixed;
 bottom:20px;
 right:20px;
 background:#25D366;
-padding:18px;
+color:white;
+padding:15px;
 border-radius:50%;
 font-size:20px;
+text-decoration:none;
 }
 </style>
 </head>
@@ -99,28 +105,56 @@ font-size:20px;
 
 <header>
 <img src="logo.png">
-<h1>राजरत्न ऑनलाईन हब</h1>
-<p>📞 8484078016 / 9607023105</p>
+<h2>राजरत्न ऑनलाईन हब</h2>
+<p>8484078016 / 9607023105</p>
 </header>
 
-<!-- HEAVY SECTION -->
-<div class="box">
-<h2 style="color:yellow;">👉 तुमचं काम राहिलं आहे का?</h2>
+<div class="container">
 
-<label><input type="checkbox" value="बांधकाम नोंदणी"> 🏗️ बांधकाम नोंदणी (₹2500-₹5000)</label>
+<!-- SERVICES -->
+<div class="card">
+<div class="title">उपलब्ध सेवा</div>
 
-<label><input type="checkbox" value="PVC Card ₹60"> 💳 PVC Card ₹60</label>
+<div class="list">
+<p>बांधकाम कामगार नोंदणी (Scholarship)</p>
+<p>PVC कार्ड – ₹60</p>
+<p>आधार / पॅन / मतदान</p>
+<p>ड्रायव्हिंग लायसन्स</p>
+<p>सरकारी योजना व कागदपत्रे</p>
+</div>
 
-<label><input type="checkbox" value="आधार / पॅन"> 🆔 आधार / पॅन</label>
+<a href="https://wa.me/919607023105" class="btn">WhatsApp संपर्क</a>
+</div>
 
-<label><input type="checkbox" value="लायसन्स"> 🚗 लायसन्स</label>
+<!-- IMAGES -->
+<div class="card">
+<div class="title">आमच्या सेवा</div>
 
-<button onclick="sendWhatsApp()" class="btn">🔥 माझं काम पूर्ण करा</button>
+<div class="img-box">
+<img src="pvc.jpg">
+<p>PVC Card</p>
+</div>
+
+<div class="img-box">
+<img src="construction.jpg">
+<p>बांधकाम नोंदणी</p>
+</div>
+
+<div class="img-box">
+<img src="aadhaar.jpg">
+<p>आधार सेवा</p>
+</div>
+
+<div class="img-box">
+<img src="voter.jpg">
+<p>मतदान कार्ड</p>
+</div>
+
 </div>
 
 <!-- FORM -->
-<div class="box">
-<h3>📋 तुमची माहिती भरा</h3>
+<div class="card">
+<div class="title">माहिती भरा</div>
 
 <input type="text" id="name" placeholder="नाव">
 <input type="tel" id="mobile" placeholder="मोबाइल">
@@ -129,86 +163,25 @@ font-size:20px;
 <option>PVC Card</option>
 <option>बांधकाम</option>
 <option>आधार</option>
-<option>पॅन</option>
 </select>
 
-<button onclick="sendForm()" class="btn">Submit</button>
-</div>
-
-<!-- IMAGES -->
-<div class="box">
-<h3>📸 आमच्या सेवा</h3>
-
-<div class="card">
-<img src="pvc.jpg">
-<p>💳 PVC Card ₹60</p>
-</div>
-
-<div class="card">
-<img src="construction.jpg">
-<p>🏗️ बांधकाम नोंदणी + Scholarship</p>
-</div>
-
-<div class="card">
-<img src="aadhaar.jpg">
-<p>🆔 आधार सेवा</p>
-</div>
-
-<div class="card">
-<img src="voter.jpg">
-<p>🗳️ मतदान कार्ड</p>
+<a href="#" onclick="sendForm()" class="btn">Submit</a>
 </div>
 
 </div>
 
-<!-- SERVICES -->
-<div class="box">
-<h3>📌 उपलब्ध सेवा</h3>
-
-<p>🏗️ बांधकाम कामगार नोंदणी</p>
-<p>💳 PVC कार्ड – ₹60</p>
-<p>📄 सर्व कागदपत्रे</p>
-<p>🚗 2 / 4 चाकी लायसन्स</p>
-<p>💰 सरकारी योजना</p>
-
-</div>
-
-<!-- FLOAT -->
-<a class="whatsapp" href="https://wa.me/919607023105">💬</a>
+<a class="float" href="https://wa.me/919607023105">💬</a>
 
 <script>
-
-function sendWhatsApp(){
-let selected=[];
-document.querySelectorAll("input[type=checkbox]:checked").forEach(cb=>{
-selected.push(cb.value);
-});
-
-if(selected.length==0){
-alert("कृपया सेवा निवडा");
-return;
-}
-
-let msg="नमस्कार 🙏%0Aमला सेवा हवी आहे:%0A👉 "+selected.join("%0A👉 ");
-
-window.open("https://wa.me/919607023105?text="+msg);
-}
-
 function sendForm(){
 let name=document.getElementById("name").value;
 let mobile=document.getElementById("mobile").value;
 let service=document.getElementById("service").value;
 
-if(name=="" || mobile==""){
-alert("माहिती भरा");
-return;
-}
-
-let msg=`नमस्कार 🙏%0Aनाव: ${name}%0Aमोबाइल: ${mobile}%0Aसेवा: ${service}`;
+let msg=`नाव: ${name}%0Aमोबाइल: ${mobile}%0Aसेवा: ${service}`;
 
 window.open("https://wa.me/919607023105?text="+msg);
 }
-
 </script>
 
 </body>
