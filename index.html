@@ -11,56 +11,78 @@
 body{
 margin:0;
 font-family:'Poppins',sans-serif;
-background:#020617;
+background:linear-gradient(135deg,#020617,#0f172a);
 color:white;
 }
 
+/* HEADER */
 header{
 text-align:center;
 padding:20px;
 background:#1e3a8a;
+box-shadow:0 2px 10px rgba(0,0,0,0.5);
 }
 
 header img{
-width:120px;
+width:110px;
 margin-bottom:10px;
 }
 
-h1{color:yellow;}
+h1{color:yellow;margin:5px 0;}
 
+/* BOX */
 .box{
-background:#111;
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(10px);
 padding:15px;
-margin:10px;
-border-radius:10px;
+margin:15px;
+border-radius:15px;
+box-shadow:0 0 15px rgba(0,0,0,0.4);
 }
 
+/* BUTTON */
 .btn{
 background:#25D366;
 padding:12px;
 border:none;
-border-radius:8px;
+border-radius:10px;
 color:white;
 width:100%;
 font-size:16px;
+margin-top:10px;
 }
 
+/* INPUT */
 input,select{
 width:100%;
 padding:10px;
 margin:5px 0;
-border-radius:5px;
+border-radius:8px;
 border:none;
 }
 
+/* CHECKBOX */
 label{
 display:block;
 padding:10px;
 margin:5px 0;
 background:#1e293b;
-border-radius:6px;
+border-radius:8px;
 }
 
+/* IMAGE CARD */
+.card{
+margin-bottom:15px;
+}
+
+.card img{
+width:100%;
+height:200px;
+object-fit:cover;
+border-radius:10px;
+}
+
+/* FLOAT BUTTON */
 .whatsapp{
 position:fixed;
 bottom:20px;
@@ -68,6 +90,7 @@ right:20px;
 background:#25D366;
 padding:18px;
 border-radius:50%;
+font-size:20px;
 }
 </style>
 </head>
@@ -75,8 +98,8 @@ border-radius:50%;
 <body>
 
 <header>
-<img src="logo.png" alt="Logo">
-<h2>राजरत्न ऑनलाईन हब</h2>
+<img src="logo.png">
+<h1>राजरत्न ऑनलाईन हब</h1>
 <p>📞 8484078016 / 9607023105</p>
 </header>
 
@@ -84,15 +107,13 @@ border-radius:50%;
 <div class="box">
 <h2 style="color:yellow;">👉 तुमचं काम राहिलं आहे का?</h2>
 
-<label><input type="checkbox" value="बांधकाम नोंदणी + Scholarship"> 🏗️ बांधकाम नोंदणी (₹2500-₹5000)</label>
+<label><input type="checkbox" value="बांधकाम नोंदणी"> 🏗️ बांधकाम नोंदणी (₹2500-₹5000)</label>
 
 <label><input type="checkbox" value="PVC Card ₹60"> 💳 PVC Card ₹60</label>
 
-<label><input type="checkbox" value="आधार / पॅन / मतदान"> 🆔 आधार / पॅन / मतदान</label>
+<label><input type="checkbox" value="आधार / पॅन"> 🆔 आधार / पॅन</label>
 
-<label><input type="checkbox" value="लायसन्स"> 🚗 2 / 4 चाकी लायसन्स</label>
-
-<label><input type="checkbox" value="सरकारी योजना"> 💰 PM Vishwakarma / Svanidhi / Mudra</label>
+<label><input type="checkbox" value="लायसन्स"> 🚗 लायसन्स</label>
 
 <button onclick="sendWhatsApp()" class="btn">🔥 माझं काम पूर्ण करा</button>
 </div>
@@ -101,12 +122,12 @@ border-radius:50%;
 <div class="box">
 <h3>📋 तुमची माहिती भरा</h3>
 
-<input type="text" id="name" placeholder="तुमचं नाव">
-<input type="tel" id="mobile" placeholder="मोबाइल नंबर">
+<input type="text" id="name" placeholder="नाव">
+<input type="tel" id="mobile" placeholder="मोबाइल">
 
 <select id="service">
 <option>PVC Card</option>
-<option>बांधकाम नोंदणी</option>
+<option>बांधकाम</option>
 <option>आधार</option>
 <option>पॅन</option>
 </select>
@@ -114,16 +135,41 @@ border-radius:50%;
 <button onclick="sendForm()" class="btn">Submit</button>
 </div>
 
+<!-- IMAGES -->
+<div class="box">
+<h3>📸 आमच्या सेवा</h3>
+
+<div class="card">
+<img src="pvc.jpg">
+<p>💳 PVC Card ₹60</p>
+</div>
+
+<div class="card">
+<img src="construction.jpg">
+<p>🏗️ बांधकाम नोंदणी + Scholarship</p>
+</div>
+
+<div class="card">
+<img src="aadhaar.jpg">
+<p>🆔 आधार सेवा</p>
+</div>
+
+<div class="card">
+<img src="voter.jpg">
+<p>🗳️ मतदान कार्ड</p>
+</div>
+
+</div>
+
 <!-- SERVICES -->
 <div class="box">
 <h3>📌 उपलब्ध सेवा</h3>
 
-<p>🏗️ बांधकाम कामगार नोंदणी + Scholarship</p>
-<p>💳 आधार PVC कार्ड – ₹60</p>
-<p>🗳️ मतदान | 🆔 आभा | 🏥 आयुष्मान</p>
-<p>📄 रहिवासी | उत्पन्न | जात | डोमिसाईल</p>
+<p>🏗️ बांधकाम कामगार नोंदणी</p>
+<p>💳 PVC कार्ड – ₹60</p>
+<p>📄 सर्व कागदपत्रे</p>
 <p>🚗 2 / 4 चाकी लायसन्स</p>
-<p>💰 PM Vishwakarma | PMEGP | Mudra</p>
+<p>💰 सरकारी योजना</p>
 
 </div>
 
@@ -143,7 +189,7 @@ alert("कृपया सेवा निवडा");
 return;
 }
 
-let msg="नमस्कार 🙏%0Aमला खालील सेवा हवी आहे:%0A👉 "+selected.join("%0A👉 ");
+let msg="नमस्कार 🙏%0Aमला सेवा हवी आहे:%0A👉 "+selected.join("%0A👉 ");
 
 window.open("https://wa.me/919607023105?text="+msg);
 }
