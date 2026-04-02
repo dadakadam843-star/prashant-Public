@@ -19,39 +19,27 @@ color:white;
 .hero{
 background:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.8)), url('pvc.jpg');
 background-size:cover;
-background-position:center;
 text-align:center;
-padding:60px 20px;
+padding:50px 20px;
 }
 
 .hero img{
 width:90px;
 }
 
-.hero h1{
-font-size:26px;
-margin:10px 0;
-}
-
-.hero p{
-color:#cbd5f5;
-}
-
 .btn{
 background:#22c55e;
-padding:12px 20px;
+padding:12px;
 border:none;
 border-radius:8px;
 color:white;
-font-size:16px;
-margin-top:15px;
-display:inline-block;
-text-decoration:none;
+width:100%;
+margin-top:10px;
 }
 
-/* SECTION */
+/* CARD */
 .section{
-padding:20px;
+padding:15px;
 }
 
 .card{
@@ -61,7 +49,12 @@ margin-bottom:15px;
 border-radius:10px;
 }
 
-/* GRID */
+label{
+display:block;
+margin:6px 0;
+}
+
+/* IMAGES */
 .grid{
 display:grid;
 grid-template-columns:1fr 1fr;
@@ -75,15 +68,6 @@ object-fit:cover;
 border-radius:8px;
 }
 
-/* FORM */
-input,select{
-width:100%;
-padding:10px;
-margin:8px 0;
-border-radius:6px;
-border:none;
-}
-
 /* FLOAT */
 .float{
 position:fixed;
@@ -92,7 +76,6 @@ right:20px;
 background:#25D366;
 padding:15px;
 border-radius:50%;
-text-decoration:none;
 }
 </style>
 </head>
@@ -102,27 +85,58 @@ text-decoration:none;
 <!-- HERO -->
 <div class="hero">
 <img src="logo.png">
-<h1>राजरत्न ऑनलाईन हब</h1>
+<h2>राजरत्न ऑनलाईन हब</h2>
 <p>सर्व सरकारी सेवा एकाच ठिकाणी</p>
-
 <a href="https://wa.me/919607023105" class="btn">WhatsApp करा</a>
 </div>
 
-<!-- SERVICES -->
 <div class="section">
 
+<!-- CHECKLIST -->
 <div class="card">
-<h3>आमच्या सेवा</h3>
-<p>बांधकाम नोंदणी (Scholarship)</p>
-<p>PVC Card – ₹60</p>
-<p>आधार / पॅन / मतदान</p>
-<p>लायसन्स</p>
-<p>सरकारी योजना</p>
+<h3>👉 तुमचं काम निवडा</h3>
+
+<form id="serviceForm">
+
+<label><input type="checkbox" value="बांधकाम कामगार नोंदणी"> बांधकाम नोंदणी</label>
+<label><input type="checkbox" value="मतदान कार्ड"> मतदान कार्ड</label>
+<label><input type="checkbox" value="आभा कार्ड"> आभा कार्ड</label>
+<label><input type="checkbox" value="आयुष्मान कार्ड"> आयुष्मान कार्ड</label>
+<label><input type="checkbox" value="आधार PVC कार्ड ₹60"> PVC कार्ड</label>
+<label><input type="checkbox" value="रेशन कार्ड"> रेशन कार्ड</label>
+<label><input type="checkbox" value="निर्धार योजना"> निर्धार योजना</label>
+<label><input type="checkbox" value="संजय गांधी योजना"> संजय गांधी योजना</label>
+
+<hr>
+
+<label><input type="checkbox" value="रहिवासी दाखला"> रहिवासी दाखला</label>
+<label><input type="checkbox" value="उत्पन्न दाखला"> उत्पन्न दाखला</label>
+<label><input type="checkbox" value="डोमिसाईल"> डोमिसाईल</label>
+<label><input type="checkbox" value="जात प्रमाणपत्र"> जात प्रमाणपत्र</label>
+
+<hr>
+
+<label><input type="checkbox" value="2 चाकी लायसन्स"> 2 चाकी लायसन्स</label>
+<label><input type="checkbox" value="4 चाकी लायसन्स"> 4 चाकी लायसन्स</label>
+
+<hr>
+
+<label><input type="checkbox" value="PM Vishwakarma"> PM Vishwakarma</label>
+<label><input type="checkbox" value="PM Svanidhi"> PM Svanidhi</label>
+<label><input type="checkbox" value="PMEGP"> PMEGP</label>
+<label><input type="checkbox" value="CMEGP"> CMEGP</label>
+<label><input type="checkbox" value="MUDRA Loan"> MUDRA Loan</label>
+
+<button type="button" onclick="sendServices()" class="btn">
+👉 WhatsApp करा
+</button>
+
+</form>
 </div>
 
 <!-- IMAGES -->
 <div class="card">
-<h3>कामाचे फोटो</h3>
+<h3>📸 सेवा फोटो</h3>
 
 <div class="grid">
 <img src="pvc.jpg">
@@ -133,33 +147,29 @@ text-decoration:none;
 
 </div>
 
-<!-- FORM -->
-<div class="card">
-<h3>माहिती भरा</h3>
-
-<input type="text" id="name" placeholder="नाव">
-<input type="tel" id="mobile" placeholder="मोबाइल">
-
-<select id="service">
-<option>PVC Card</option>
-<option>बांधकाम</option>
-<option>आधार</option>
-</select>
-
-<button onclick="sendForm()" class="btn">Submit</button>
-</div>
-
 </div>
 
 <a class="float" href="https://wa.me/919607023105">💬</a>
 
 <script>
-function sendForm(){
-let name=document.getElementById("name").value;
-let mobile=document.getElementById("mobile").value;
-let service=document.getElementById("service").value;
+function sendServices(){
 
-let msg=`नाव: ${name}%0Aमोबाइल: ${mobile}%0Aसेवा: ${service}`;
+let selected=[];
+
+document.querySelectorAll('#serviceForm input:checked').forEach(el=>{
+selected.push(el.value);
+});
+
+if(selected.length==0){
+alert("कृपया सेवा निवडा");
+return;
+}
+
+let msg="नमस्कार 🙏%0Aमला खालील सेवा हवी आहे:%0A";
+
+selected.forEach(item=>{
+msg += "👉 " + item + "%0A";
+});
 
 window.open("https://wa.me/919607023105?text="+msg);
 }
