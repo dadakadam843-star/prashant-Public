@@ -5,151 +5,73 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Raj Enterprises</title>
 
-<!-- FONT -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
-<!-- ICON -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
 <style>
-body {
-margin:0;
-font-family:'Poppins',sans-serif;
-background:#020617;
-color:white;
-}
-
-/* HEADER */
-header {
-background:linear-gradient(135deg,#0f172a,#1e3a8a);
-padding:20px;
-text-align:center;
-}
-
-header img {width:140px;}
-
-/* SCROLL */
-.scroll {
-background:red;
-padding:10px;
-font-weight:bold;
-}
-
-/* HERO */
-.hero {
-text-align:center;
-padding:40px;
-}
-
-.hero h1 {
-color:#00ffcc;
-font-size:30px;
-}
-
-.btn {
-background:#25D366;
-padding:12px;
-border:none;
-border-radius:10px;
-color:white;
-font-size:16px;
-margin:5px;
-transition:0.3s;
-}
-
-.btn:hover {
-transform:scale(1.05);
-background:#16a34a;
-}
-
-/* BOX */
-.box {
-background:rgba(255,255,255,0.05);
-backdrop-filter:blur(10px);
-border:1px solid rgba(255,255,255,0.1);
-border-radius:15px;
-padding:15px;
-margin:10px;
-}
-
-img {
-width:100%;
-border-radius:10px;
-}
-
-/* FLOAT */
-.whatsapp {
-position:fixed;
-bottom:20px;
-right:20px;
-background:#25D366;
-padding:18px;
-border-radius:50%;
-}
-
+body{margin:0;font-family:'Poppins',sans-serif;background:#020617;color:white;}
+header{text-align:center;padding:20px;background:#1e3a8a;}
+.btn{background:#25D366;padding:12px;border:none;border-radius:8px;color:white;}
+.box{background:#111;padding:15px;margin:10px;border-radius:10px;}
+input,select{width:100%;padding:10px;margin:5px 0;}
 </style>
 </head>
 
 <body>
 
 <header>
-<img src="logo.png">
 <h2>Raj Enterprises</h2>
-<p>📞 8484078016</p>
+<p>📞 8484078016 / 9607023105</p>
 </header>
 
-<!-- SCROLL -->
-<div class="scroll">
-<marquee>🔥 PVC ₹60 | 🎓 Scholarship ₹2500 ते ₹5000 | 🏗️ बांधकाम नोंदणी सुरू</marquee>
-</div>
-
-<!-- HERO -->
-<div class="hero">
-<h1>🔥 Premium Online Services 🔥</h1>
-<p>💳 PVC Card ₹60 | 🏗️ Scholarship Available</p>
-
-<a href="https://wa.me/919607023105">
-<button class="btn"><i class="fa-brands fa-whatsapp"></i> WhatsApp</button>
-</a>
-
-<a href="tel:8484078016">
-<button class="btn"><i class="fa-solid fa-phone"></i> Call</button>
-</a>
-</div>
-
-<!-- SERVICES -->
 <div class="box">
-<h3>📋 Services</h3>
+<h2>⚠️ तुमचं काम राहिलं आहे का?</h2>
 
-<p><i class="fa-solid fa-id-card"></i> PVC Card ₹60</p>
-<p><i class="fa-solid fa-building"></i> बांधकाम नोंदणी + Scholarship</p>
-<p><i class="fa-solid fa-user"></i> आधार कार्ड</p>
-<p><i class="fa-solid fa-file"></i> पॅन कार्ड</p>
-<p><i class="fa-solid fa-car"></i> लाईसन्स</p>
+<label><input type="checkbox" value="PVC Card ₹60"> PVC Card ₹60</label>
+<label><input type="checkbox" value="बांधकाम नोंदणी + Scholarship"> बांधकाम + Scholarship</label>
+<label><input type="checkbox" value="आधार"> आधार</label>
+<label><input type="checkbox" value="पॅन"> पॅन</label>
 
+<button onclick="sendWhatsApp()" class="btn">📲 माझं काम पूर्ण करा</button>
 </div>
 
-<!-- IMAGES -->
 <div class="box">
-<h3>📸 Our Work</h3>
+<h3>📋 तुमची माहिती भरा</h3>
 
-<img src="pvc.jpg">
-<img src="construction.jpg">
-<img src="aadhaar.jpg">
+<input type="text" id="name" placeholder="नाव">
+<input type="tel" id="mobile" placeholder="मोबाइल">
 
+<select id="service">
+<option>PVC Card</option>
+<option>बांधकाम नोंदणी</option>
+</select>
+
+<button onclick="sendForm()" class="btn">Submit</button>
 </div>
 
-<!-- TRUST -->
-<div class="box">
-<h3>⭐ Trust</h3>
-<p>✔️ 100+ Customers</p>
-<p>✔️ Fast Service</p>
-<p>✔️ Low Price</p>
-</div>
+<script>
 
-<a class="whatsapp" href="https://wa.me/918484078016">
-<i class="fa-brands fa-whatsapp"></i>
-</a>
+function sendWhatsApp(){
+let selected=[];
+document.querySelectorAll("input[type=checkbox]:checked").forEach(cb=>{
+selected.push(cb.value);
+});
+
+let msg="मला सेवा हवी आहे: "+selected.join(", ");
+
+window.open("https://wa.me/919607023105?text="+encodeURIComponent(msg));
+}
+
+function sendForm(){
+let name=document.getElementById("name").value;
+let mobile=document.getElementById("mobile").value;
+let service=document.getElementById("service").value;
+
+let msg=`नाव: ${name}\nमोबाइल: ${mobile}\nसेवा: ${service}`;
+
+window.open("https://wa.me/919607023105?text="+encodeURIComponent(msg));
+}
+
+</script>
 
 </body>
 </html>
