@@ -5,6 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Rajratna Online Hub</title>
 
+<!-- ✅ GOOGLE ANALYTICS FINAL -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y9TWMD9R5E"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-Y9TWMD9R5E');
+</script>
+
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 
 <style>
@@ -24,9 +33,7 @@ text-align:center;
 padding:50px 20px;
 }
 
-.hero img{
-width:90px;
-}
+.hero img{width:90px;}
 
 .btn{
 background:#22c55e;
@@ -38,10 +45,7 @@ width:100%;
 margin-top:10px;
 }
 
-/* SECTION */
-.section{
-padding:15px;
-}
+.section{padding:15px;}
 
 .card{
 background:#1e293b;
@@ -50,48 +54,36 @@ margin-bottom:15px;
 border-radius:10px;
 }
 
-/* CHECKBOX */
-label{
-display:block;
-margin:6px 0;
-}
+label{display:block;margin:6px 0;}
 
-/* IMAGE GRID */
 .grid{
 display:grid;
 grid-template-columns:1fr 1fr;
 gap:10px;
 }
 
-/* IMAGE BOX */
-.img-box{
-position:relative;
-}
+.img-box{position:relative;}
 
-/* 🔥 FIXED IMAGE */
 .img-box img{
 width:100%;
-height:auto; /* full image */
+height:auto;
 object-fit:contain;
 background:#000;
 border-radius:10px;
 }
 
-/* TEXT OVER IMAGE */
 .overlay{
 position:absolute;
 bottom:0;
 left:0;
 right:0;
 background:rgba(0,0,0,0.7);
-color:white;
 text-align:center;
 padding:5px;
 font-size:13px;
 border-radius:0 0 10px 10px;
 }
 
-/* FLOAT */
 .float{
 position:fixed;
 bottom:20px;
@@ -105,7 +97,6 @@ border-radius:50%;
 
 <body>
 
-<!-- HERO -->
 <div class="hero">
 <img src="logo.png">
 <h2>राजरत्न ऑनलाईन हब</h2>
@@ -115,7 +106,6 @@ border-radius:50%;
 
 <div class="section">
 
-<!-- CHECKLIST -->
 <div class="card">
 <h3>👉 तुमचं काम निवडा</h3>
 
@@ -157,7 +147,6 @@ border-radius:50%;
 </form>
 </div>
 
-<!-- IMAGES -->
 <div class="card">
 <h3>📸 आमच्या सेवा</h3>
 
@@ -193,9 +182,7 @@ border-radius:50%;
 
 <script>
 function sendServices(){
-
 let selected=[];
-
 document.querySelectorAll('#serviceForm input:checked').forEach(el=>{
 selected.push(el.value);
 });
