@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Rajratna Online Hub</title>
 
-<!-- ✅ Google Analytics -->
+<!-- 🔥 GOOGLE ANALYTICS -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y9TWMD9R5E"></script>
 <script>
 window.dataLayer = window.dataLayer || [];
@@ -14,38 +14,76 @@ gtag('js', new Date());
 gtag('config', 'G-Y9TWMD9R5E');
 </script>
 
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
 <style>
 body{
 margin:0;
-font-family:sans-serif;
+font-family:'Poppins',sans-serif;
 background:#0f172a;
 color:white;
 }
 
 .hero{
+background:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.8)), url('pvc.jpg');
+background-size:cover;
+background-position:center;
 text-align:center;
-padding:40px;
-background:#111827;
+padding:50px 20px;
 }
+
+.hero img{width:90px;}
 
 .btn{
 background:#22c55e;
 padding:12px;
+border:none;
 border-radius:8px;
 color:white;
-display:block;
+width:100%;
 margin-top:10px;
 text-decoration:none;
+display:block;
 }
+
+.section{padding:15px;}
 
 .card{
 background:#1e293b;
 padding:15px;
-margin:10px;
+margin-bottom:15px;
 border-radius:10px;
 }
 
-label{display:block;margin:5px 0;}
+label{display:block;margin:6px 0;}
+
+.grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:10px;
+}
+
+.img-box{position:relative;}
+
+.img-box img{
+width:100%;
+height:auto;
+object-fit:contain;
+background:#000;
+border-radius:10px;
+}
+
+.overlay{
+position:absolute;
+bottom:0;
+left:0;
+right:0;
+background:rgba(0,0,0,0.7);
+text-align:center;
+padding:5px;
+font-size:13px;
+border-radius:0 0 10px 10px;
+}
 
 .float{
 position:fixed;
@@ -62,68 +100,145 @@ border-radius:50%;
 
 <!-- 🔥 POPUP -->
 <div id="offerPopup" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); justify-content:center; align-items:center; z-index:9999;">
-  <div style="background:#fff; color:#000; padding:20px; border-radius:10px; text-align:center; width:80%;">
-    <h2>🔥 आजचा Offer 🔥</h2>
-    <p>PVC कार्ड ₹60</p>
-    <p>बांधकाम नोंदणी सुरू</p>
-    <a href="https://wa.me/919607023105?text=मला ऑफर हवी आहे" class="btn">WhatsApp करा</a>
-    <button onclick="closePopup()" style="margin-top:10px; background:red; color:white; border:none; padding:8px;">Close</button>
+  
+  <div id="popupBox" style="background:#fff; color:#000; padding:20px; border-radius:12px; text-align:center; width:85%; max-width:350px; transform:scale(0.7); transition:0.3s;">
+    
+    <h2 style="color:#16a34a;">🔥 आजचा Special Offer 🔥</h2>
+    
+    <p>✔️ PVC कार्ड फक्त ₹60</p>
+    <p>✔️ बांधकाम कामगार नोंदणी सुरू</p>
+    <p>✔️ सर्व प्रकारचे PVC कार्ड उपलब्ध</p>
+    
+    <p style="color:red; font-weight:bold;">👉 आजच अर्ज करा</p>
+    
+    <a href="https://wa.me/919607023105?text=मला ऑफर बद्दल माहिती हवी आहे" class="btn">
+       📲 WhatsApp करा
+    </a>
+
+    <button onclick="closePopup()" style="margin-top:10px; background:#ef4444; color:white; border:none; padding:8px 12px; border-radius:6px;">
+      Close
+    </button>
+
   </div>
 </div>
 
+<!-- HERO -->
 <div class="hero">
+<img src="logo.png">
 <h2>राजरत्न ऑनलाईन हब</h2>
 <p>सर्व सरकारी सेवा एकाच ठिकाणी</p>
 <a href="https://wa.me/919607023105" class="btn">WhatsApp करा</a>
 </div>
 
+<div class="section">
+
 <div class="card">
 <h3>👉 तुमचं काम निवडा</h3>
 
-<form id="form">
+<form id="serviceForm">
 
-<label><input type="checkbox" value="PVC कार्ड"> PVC कार्ड</label>
-<label><input type="checkbox" value="बांधकाम नोंदणी"> बांधकाम नोंदणी</label>
-<label><input type="checkbox" value="आधार सेवा"> आधार सेवा</label>
-<label><input type="checkbox" value="लायसन्स"> लायसन्स</label>
+<label><input type="checkbox" value="बांधकाम कामगार नोंदणी"> बांधकाम नोंदणी</label>
+<label><input type="checkbox" value="मतदान कार्ड"> मतदान कार्ड</label>
+<label><input type="checkbox" value="आभा कार्ड"> आभा कार्ड</label>
+<label><input type="checkbox" value="आयुष्मान कार्ड"> आयुष्मान कार्ड</label>
+<label><input type="checkbox" value="आधार PVC कार्ड ₹60"> PVC कार्ड ₹60</label>
+<label><input type="checkbox" value="रेशन कार्ड"> रेशन कार्ड</label>
+<label><input type="checkbox" value="निर्धार योजना"> निर्धार योजना</label>
+<label><input type="checkbox" value="संजय गांधी योजना"> संजय गांधी योजना</label>
 
-<button type="button" onclick="send()">👉 WhatsApp करा</button>
+<hr>
+
+<label><input type="checkbox" value="रहिवासी दाखला"> रहिवासी दाखला</label>
+<label><input type="checkbox" value="उत्पन्न दाखला"> उत्पन्न दाखला</label>
+<label><input type="checkbox" value="डोमिसाईल"> डोमिसाईल</label>
+<label><input type="checkbox" value="जात प्रमाणपत्र"> जात प्रमाणपत्र</label>
+
+<hr>
+
+<label><input type="checkbox" value="2 चाकी लायसन्स"> 2 चाकी लायसन्स</label>
+<label><input type="checkbox" value="4 चाकी लायसन्स"> 4 चाकी लायसन्स</label>
+
+<hr>
+
+<label><input type="checkbox" value="PM Vishwakarma"> PM Vishwakarma</label>
+<label><input type="checkbox" value="PM Svanidhi"> PM Svanidhi</label>
+<label><input type="checkbox" value="PMEGP"> PMEGP</label>
+<label><input type="checkbox" value="CMEGP"> CMEGP</label>
+<label><input type="checkbox" value="MUDRA Loan"> MUDRA Loan</label>
+
+<button type="button" onclick="sendServices()" class="btn">
+👉 WhatsApp करा
+</button>
 
 </form>
+</div>
+
+<div class="card">
+<h3>📸 आमच्या सेवा</h3>
+
+<div class="grid">
+
+<div class="img-box">
+<img src="pvc.jpg">
+<div class="overlay">PVC Card ₹60</div>
+</div>
+
+<div class="img-box">
+<img src="construction.jpg">
+<div class="overlay">बांधकाम नोंदणी + Scholarship</div>
+</div>
+
+<div class="img-box">
+<img src="aadhaar.jpg">
+<div class="overlay">आधार / पॅन सेवा</div>
+</div>
+
+<div class="img-box">
+<img src="voter.jpg">
+<div class="overlay">मतदान कार्ड</div>
+</div>
+
+</div>
+
+</div>
+
 </div>
 
 <a class="float" href="https://wa.me/919607023105">💬</a>
 
 <script>
-// popup
-window.onload = function(){
-setTimeout(function(){
+// WhatsApp selection
+function sendServices(){
+let selected=[];
+document.querySelectorAll('#serviceForm input:checked').forEach(el=>{
+selected.push(el.value);
+});
+
+if(selected.length==0){
+alert("कृपया सेवा निवडा");
+return;
+}
+
+let msg="नमस्कार 🙏%0Aमला खालील सेवा हवी आहे:%0A";
+selected.forEach(item=>{
+msg += "👉 " + item + "%0A";
+});
+
+window.open("https://wa.me/919607023105?text="+msg);
+}
+
+// Popup control
+if(!localStorage.getItem("popupShown")){
+setTimeout(()=>{
 document.getElementById("offerPopup").style.display="flex";
+document.getElementById("popupBox").style.transform="scale(1)";
+setTimeout(closePopup,5000);
+localStorage.setItem("popupShown","yes");
 },2000);
 }
 
 function closePopup(){
 document.getElementById("offerPopup").style.display="none";
-}
-
-// whatsapp
-function send(){
-let selected=[];
-document.querySelectorAll('#form input:checked').forEach(el=>{
-selected.push(el.value);
-});
-
-if(selected.length==0){
-alert("कृपया निवडा");
-return;
-}
-
-let msg="मला सेवा हवी आहे:%0A";
-selected.forEach(i=>{
-msg += "👉 "+i+"%0A";
-});
-
-window.open("https://wa.me/919607023105?text="+msg);
 }
 </script>
 
