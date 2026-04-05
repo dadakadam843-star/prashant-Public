@@ -24,7 +24,9 @@ text-align:center;
 padding:50px 20px;
 }
 
-.hero img{width:90px;}
+.hero img{
+width:90px;
+}
 
 .btn{
 background:#22c55e;
@@ -38,7 +40,9 @@ text-decoration:none;
 display:block;
 }
 
-.section{padding:15px;}
+.section{
+padding:15px;
+}
 
 .card{
 background:#1e293b;
@@ -47,7 +51,10 @@ margin-bottom:15px;
 border-radius:10px;
 }
 
-label{display:block;margin:6px 0;}
+label{
+display:block;
+margin:6px 0;
+}
 
 .grid{
 display:grid;
@@ -55,7 +62,9 @@ grid-template-columns:1fr 1fr;
 gap:10px;
 }
 
-.img-box{position:relative;}
+.img-box{
+position:relative;
+}
 
 .img-box img{
 width:100%;
@@ -71,6 +80,7 @@ bottom:0;
 left:0;
 right:0;
 background:rgba(0,0,0,0.7);
+color:white;
 text-align:center;
 padding:5px;
 font-size:13px;
@@ -96,7 +106,7 @@ border-radius:50%;
 
 <body>
 
-<!-- 🔥 ROTATING POPUP -->
+<!-- 🔥 POPUP -->
 <div id="offerPopup" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); justify-content:center; align-items:center; z-index:9999;">
 
   <div style="background:#fff; color:#000; padding:20px; border-radius:15px; text-align:center; width:85%; max-width:350px; animation:spinIn 0.8s ease;">
@@ -112,11 +122,13 @@ border-radius:50%;
 
     <p style="color:red; font-weight:bold;">👉 आजच संपर्क करा</p>
 
-    <a href="https://wa.me/919607023105?text=मला कॅम्प बद्दल माहिती हवी आहे" class="btn">
+    <a href="https://wa.me/919607023105?text=मला कॅम्प बद्दल माहिती हवी आहे" 
+       style="display:block; background:#25D366; color:white; padding:10px; border-radius:8px; margin-top:10px; text-decoration:none;">
        📲 WhatsApp करा
     </a>
 
-    <button onclick="closePopup()" style="margin-top:10px; background:red; color:white; border:none; padding:8px;">
+    <button onclick="closePopup()" 
+      style="margin-top:10px; background:red; color:white; border:none; padding:8px;">
       Close
     </button>
 
@@ -143,12 +155,41 @@ border-radius:50%;
 <label><input type="checkbox" value="आभा कार्ड"> आभा कार्ड</label>
 <label><input type="checkbox" value="आयुष्मान कार्ड"> आयुष्मान कार्ड</label>
 <label><input type="checkbox" value="आधार PVC कार्ड ₹60"> PVC कार्ड ₹60</label>
+<label><input type="checkbox" value="रेशन कार्ड"> रेशन कार्ड</label>
 
 <button type="button" onclick="sendServices()" class="btn">
 👉 WhatsApp करा
 </button>
 
 </form>
+</div>
+
+<div class="card">
+<h3>📸 आमच्या सेवा</h3>
+
+<div class="grid">
+
+<div class="img-box">
+<img src="pvc.jpg">
+<div class="overlay">PVC Card ₹60</div>
+</div>
+
+<div class="img-box">
+<img src="construction.jpg">
+<div class="overlay">बांधकाम नोंदणी</div>
+</div>
+
+<div class="img-box">
+<img src="aadhaar.jpg">
+<div class="overlay">आधार सेवा</div>
+</div>
+
+<div class="img-box">
+<img src="voter.jpg">
+<div class="overlay">मतदान कार्ड</div>
+</div>
+
+</div>
 </div>
 
 </div>
