@@ -10,13 +10,12 @@
 <style>
 body{
 margin:0;
-padding-top:45px; /* 🔥 bar साठी space */
+padding-top:45px;
 font-family:'Poppins',sans-serif;
 background:#0f172a;
 color:white;
 }
 
-/* 🔥 TOP BAR */
 .top-bar{
 position:fixed;
 top:0;
@@ -36,7 +35,6 @@ font-weight:bold;
 text-decoration:none;
 }
 
-/* HERO */
 .hero{
 background:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.8)), url('pvc.jpg');
 background-size:cover;
@@ -111,13 +109,11 @@ border-radius:50%;
 
 <body>
 
-<!-- 🔥 OFFER BAR -->
 <div class="top-bar">
-  🔥 PVC कार्ड ₹60 | बांधकाम नोंदणी सुरू 👉 
-  <a href="https://wa.me/919607023105?text=मला ऑफर हवी आहे">WhatsApp करा</a>
+🔥 PVC कार्ड ₹60 | बांधकाम नोंदणी सुरू 👉 
+<a href="https://wa.me/919607023105?text=मला ऑफर हवी आहे">WhatsApp करा</a>
 </div>
 
-<!-- HERO -->
 <div class="hero">
 <img src="logo.png">
 <h2>राजरत्न ऑनलाईन हब</h2>
@@ -137,4 +133,89 @@ border-radius:50%;
 <label><input type="checkbox" value="आभा कार्ड"> आभा कार्ड</label>
 <label><input type="checkbox" value="आयुष्मान कार्ड"> आयुष्मान कार्ड</label>
 <label><input type="checkbox" value="आधार PVC कार्ड ₹60"> PVC कार्ड ₹60</label>
-<label><input type="checkbox" value
+<label><input type="checkbox" value="रेशन कार्ड"> रेशन कार्ड</label>
+<label><input type="checkbox" value="निर्धार योजना"> निर्धार योजना</label>
+<label><input type="checkbox" value="संजय गांधी योजना"> संजय गांधी योजना</label>
+
+<hr>
+
+<label><input type="checkbox" value="रहिवासी दाखला"> रहिवासी दाखला</label>
+<label><input type="checkbox" value="उत्पन्न दाखला"> उत्पन्न दाखला</label>
+<label><input type="checkbox" value="डोमिसाईल"> डोमिसाईल</label>
+<label><input type="checkbox" value="जात प्रमाणपत्र"> जात प्रमाणपत्र</label>
+
+<hr>
+
+<label><input type="checkbox" value="2 चाकी लायसन्स"> 2 चाकी लायसन्स</label>
+<label><input type="checkbox" value="4 चाकी लायसन्स"> 4 चाकी लायसन्स</label>
+
+<hr>
+
+<label><input type="checkbox" value="PM Vishwakarma"> PM Vishwakarma</label>
+<label><input type="checkbox" value="PM Svanidhi"> PM Svanidhi</label>
+<label><input type="checkbox" value="PMEGP"> PMEGP</label>
+<label><input type="checkbox" value="CMEGP"> CMEGP</label>
+<label><input type="checkbox" value="MUDRA Loan"> MUDRA Loan</label>
+
+<button type="button" onclick="sendServices()" class="btn">
+👉 WhatsApp करा
+</button>
+
+</form>
+</div>
+
+<div class="card">
+<h3>📸 आमच्या सेवा</h3>
+
+<div class="grid">
+
+<div class="img-box">
+<img src="pvc.jpg">
+<div class="overlay">PVC Card ₹60</div>
+</div>
+
+<div class="img-box">
+<img src="construction.jpg">
+<div class="overlay">बांधकाम नोंदणी</div>
+</div>
+
+<div class="img-box">
+<img src="aadhaar.jpg">
+<div class="overlay">आधार सेवा</div>
+</div>
+
+<div class="img-box">
+<img src="voter.jpg">
+<div class="overlay">मतदान कार्ड</div>
+</div>
+
+</div>
+</div>
+
+</div>
+
+<a class="float" href="https://wa.me/919607023105">💬</a>
+
+<script>
+function sendServices(){
+let selected=[];
+document.querySelectorAll('#serviceForm input:checked').forEach(el=>{
+selected.push(el.value);
+});
+
+if(selected.length==0){
+alert("कृपया सेवा निवडा");
+return;
+}
+
+let msg="नमस्कार 🙏%0Aमला खालील सेवा हवी आहे:%0A";
+selected.forEach(item=>{
+msg += "👉 " + item + "%0A";
+});
+
+window.open("https://wa.me/919607023105?text="+msg);
+}
+</script>
+
+</body>
+</html>
