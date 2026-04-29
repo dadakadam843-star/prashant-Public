@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Rajratna Online Hub</title>
 
-<!-- Marathi Font -->
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
@@ -17,49 +16,66 @@ background-size:400% 400%;
 animation:gradientMove 10s ease infinite;
 color:white;
 font-size:19px;
-line-height:1.6;
 }
 
-@keyframes gradientMove {
+@keyframes gradientMove{
 0%{background-position:0% 50%;}
 50%{background-position:100% 50%;}
 100%{background-position:0% 50%;}
 }
 
-/* HERO */
-.hero{
-background:rgba(0,0,0,0.5);
-text-align:center;
-padding:50px 20px;
+/* TEXT EFFECTS */
+.gradient-text{
+background: linear-gradient(90deg,#38bdf8,#22c55e,#facc15);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+font-weight:bold;
 }
+.outline-text{
+color:transparent;
+-webkit-text-stroke:1px #fff;
+}
+.glow-text{
+color:#fff;
+text-shadow:0 0 5px #22c55e,0 0 15px #22c55e;
+}
+
+/* BLINK */
+@keyframes blink{
+0%{opacity:1;}
+50%{opacity:0.3;}
+100%{opacity:1;}
+}
+.blink{animation:blink 1s infinite;}
+
+/* HERO */
+.hero{text-align:center;padding:50px 20px;}
 .hero img{width:90px;}
 
-h2{font-size:32px;font-weight:700;}
-h3{font-size:26px;font-weight:700;color:#22c55e;}
+h2{font-size:32px;}
+h3{font-size:28px;}
 
 .btn{
 background:#22c55e;
 padding:14px;
 border-radius:8px;
 color:white;
-text-decoration:none;
 display:block;
+text-decoration:none;
 margin-top:10px;
 font-weight:bold;
-font-size:18px;
 }
 
-/* SECTION */
+/* CARD */
 .section{padding:15px;}
-
 .card{
 background:#1e293b;
 padding:18px;
-margin-bottom:15px;
 border-radius:12px;
+margin-bottom:15px;
 }
 
-label{display:block;margin:6px 0;font-size:18px;}
+label{display:block;margin:6px 0;}
 
 .float{
 position:fixed;
@@ -83,43 +99,32 @@ justify-content:center;
 align-items:center;
 z-index:9999;
 }
-
 .popup-box{
 background:#fff;
 color:#000;
 padding:20px;
 border-radius:12px;
+text-align:center;
 width:90%;
 max-width:350px;
-text-align:center;
 }
-
-/* DARK BLINK */
-@keyframes blinkGlow {
-0%{opacity:1;color:#111;}
-50%{opacity:0.4;color:#444;}
-100%{opacity:1;color:#111;}
-}
-.blink-glow{animation:blinkGlow 1s infinite;font-weight:bold;}
-
 </style>
 </head>
 
 <body>
 
-<!-- SOUND -->
 <audio id="alertSound" src="https://www.soundjay.com/buttons/beep-07.mp3"></audio>
 
 <!-- POPUP -->
 <div id="offerPopup">
 <div class="popup-box">
 
-<h2 class="blink-glow">🎉 1 मे स्पेशल ऑफर 🎉</h2>
+<h2 class="gradient-text glow-text">🎉 1 मे ऑफर 🎉</h2>
 
 <p>✔️ बांधकाम नोंदणी मोफत</p>
 <p>✔️ 2 / 4 व्हिलर लायसन्स</p>
 
-<p class="blink-glow">🚨 प्रथम 60 जणांसाठी 🚨</p>
+<p class="outline-text glow-text blink">🚨 प्रथम 60 जणांसाठी 🚨</p>
 
 <a href="https://wa.me/919607023105" class="btn">WhatsApp करा</a>
 <br>
@@ -135,7 +140,7 @@ text-align:center;
 
 <h2>राजरत्न इंटरप्रायझेस</h2>
 
-<p style="color:#facc15;">
+<p class="gradient-text" style="font-size:35px;">
 सेवक संघटित व असंघटित आरोग्य कामगार संघटना, महाराष्ट्र राज्य
 </p>
 
@@ -143,9 +148,9 @@ text-align:center;
 ऑनलाईन सर्व्हिस सेंटर
 </p>
 
-<a href="https://wa.me/919607023105" class="btn">
-📲 WhatsApp करा
-</a>
+<p class="glow-text">आपला विश्वास हीच आमची सेवा</p>
+
+<a href="https://wa.me/919607023105" class="btn">📲 WhatsApp करा</a>
 
 </div>
 
@@ -154,22 +159,16 @@ text-align:center;
 <!-- OFFER -->
 <div class="card">
 
-<h3 class="blink-glow" style="text-align:center;">
-🎉 1 मे कामगार दिन विशेष ऑफर 🎉
-</h3>
+<h3 class="gradient-text glow-text">🎉 1 मे कामगार दिन विशेष ऑफर 🎉</h3>
 
-<h3 id="countdown" style="text-align:center;color:#facc15;"></h3>
+<h3 id="countdown" style="color:#facc15;"></h3>
 
 <p>✔️ बांधकाम कामगार नोंदणी मोफत</p>
-<p>✔️ 2 / 4 व्हिलर लायसन्स कॅम्प</p>
+<p>✔️ लायसन्स कॅम्प</p>
 
-<p>PAN ₹166 | PVC ₹60 | आयुष्मान ₹60 | मतदान ₹160</p>
+<p class="outline-text glow-text blink">🚨 प्रथम 60 जणांसाठी 🚨</p>
 
-<p class="blink-glow">🚨 प्रथम 60 जणांसाठी 🚨</p>
-
-<a href="https://wa.me/919607023105" class="btn">
-📲 लगेच संपर्क करा
-</a>
+<a href="https://wa.me/919607023105" class="btn">📲 संपर्क करा</a>
 
 </div>
 
@@ -179,26 +178,14 @@ text-align:center;
 
 <form id="serviceForm">
 
-<label><input type="checkbox" value="बांधकाम नोंदणी"> बांधकाम नोंदणी</label>
-<label><input type="checkbox" value="रहिवाशी दाखला"> रहिवाशी दाखला</label>
-<label><input type="checkbox" value="उत्पन्न दाखला"> उत्पन्न दाखला</label>
-<label><input type="checkbox" value="रेशन कार्ड"> रेशन कार्ड</label>
-<label><input type="checkbox" value="आधार सेवा"> आधार सेवा</label>
-<label><input type="checkbox" value="जन्म दाखला"> जन्म दाखला</label>
+<label><input type="checkbox" value="बांधकाम"> बांधकाम</label>
+<label><input type="checkbox" value="रहिवाशी"> रहिवाशी</label>
+<label><input type="checkbox" value="उत्पन्न"> उत्पन्न</label>
+<label><input type="checkbox" value="रेशन"> रेशन</label>
+<label><input type="checkbox" value="आधार"> आधार</label>
 
-<label><input type="checkbox" value="संजय गांधी योजना"> संजय गांधी योजना</label>
-<label><input type="checkbox" value="बालसंघोपण"> बालसंघोपण</label>
-<label><input type="checkbox" value="निराधार योजना"> निराधार योजना</label>
-
-<label><input type="checkbox" value="विवाह नोंदणी"> विवाह नोंदणी</label>
-<label><input type="checkbox" value="शॉप ऍक्ट"> शॉप ऍक्ट लायसन</label>
-<label><input type="checkbox" value="उद्यम आधार"> उद्यम आधार</label>
-<label><input type="checkbox" value="फूड लायसन"> फूड लायसन</label>
-
-<label><input type="checkbox" value="PMEGP"> PMEGP</label>
-<label><input type="checkbox" value="CMEGP"> CMEGP</label>
-<label><input type="checkbox" value="MUDRA"> MUDRA</label>
-<label><input type="checkbox" value="स्वनिधी"> स्वनिधी</label>
+<label><input type="checkbox" value="योजना"> सरकारी योजना</label>
+<label><input type="checkbox" value="लोन"> लोन सेवा</label>
 
 <button type="button" onclick="sendServices()" class="btn">
 👉 WhatsApp करा
@@ -212,7 +199,7 @@ text-align:center;
 <a class="float" href="https://wa.me/919607023105">💬</a>
 
 <script>
-// popup + sound
+// popup
 function showPopup(){
 document.getElementById("offerPopup").style.display="flex";
 document.getElementById("alertSound").play();
@@ -228,12 +215,10 @@ var end=new Date("May 1, 2026 10:00:00").getTime();
 setInterval(function(){
 var now=new Date().getTime();
 var d=end-now;
-
 var days=Math.floor(d/(1000*60*60*24));
 var h=Math.floor((d%(1000*60*60*24))/(1000*60*60));
 var m=Math.floor((d%(1000*60*60))/(1000*60));
 var s=Math.floor((d%(1000*60))/1000);
-
 document.getElementById("countdown").innerHTML=
 "⏳ "+days+"दिवस "+h+"तास "+m+"मि "+s+"से";
 },1000);
@@ -244,11 +229,9 @@ let selected=[];
 document.querySelectorAll('#serviceForm input:checked').forEach(el=>{
 selected.push(el.value);
 });
-if(selected.length==0){alert("कृपया सेवा निवडा");return;}
-
-let msg="नमस्कार 🙏%0Aमला खालील सेवा हवी आहे:%0A";
-selected.forEach(i=>{msg+="👉 "+i+"%0A";});
-
+if(selected.length==0){alert("सेवा निवडा");return;}
+let msg="नमस्कार%0A";
+selected.forEach(i=>{msg+=i+"%0A";});
 window.open("https://wa.me/919607023105?text="+msg);
 }
 </script>
