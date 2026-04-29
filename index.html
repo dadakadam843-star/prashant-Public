@@ -80,29 +80,42 @@ width:90%;
 max-width:350px;
 text-align:center;
 }
+
+/* 🔥 BLINK GLOW */
+@keyframes blinkGlow {
+0%{opacity:1;color:#ff0000;text-shadow:0 0 5px #ff0000;}
+50%{opacity:0.4;color:#ffff00;text-shadow:0 0 20px #ffff00;}
+100%{opacity:1;color:#22c55e;text-shadow:0 0 10px #22c55e;}
+}
+.blink-glow{
+animation:blinkGlow 1s infinite;
+font-weight:bold;
+}
 </style>
 </head>
 
 <body>
 
+<!-- 🔊 SOUND -->
+<audio id="alertSound" src="https://www.soundjay.com/buttons/beep-07.mp3"></audio>
+
 <!-- 🔥 POPUP -->
 <div id="offerPopup">
 <div class="popup-box">
 
-<h2>🎉 1 मे स्पेशल ऑफर 🎉</h2>
+<h2 class="blink-glow" style="font-size:26px;">🎉 1 मे स्पेशल ऑफर 🎉</h2>
 
 <p><b>राजरत्न इंटरप्रायझेस</b></p>
-<p>सेवक संघटित व असंघटित आरोग्य कामगार संघटना</p>
 
 <p>✔️ बांधकाम नोंदणी मोफत</p>
 <p>✔️ 2 / 4 व्हिलर लायसन्स कॅम्प</p>
 
-<p style="color:red;">🚨 प्रथम 60 जणांसाठी 🚨</p>
+<p class="blink-glow" style="font-size:22px;">🚨 प्रथम 60 जणांसाठी 🚨</p>
 
 <p>
 🗓 1 मे 2026 <br>
 ⏰ 10 AM ते 6 PM <br>
-📍 भारत नगर, दत्ता मंदिर जवळ, मिरज
+📍 मिरज
 </p>
 
 <a href="https://wa.me/919607023105" class="btn">WhatsApp करा</a>
@@ -119,43 +132,42 @@ text-align:center;
 
 <h2>राजरत्न इंटरप्रायझेस</h2>
 
-<p style="color:#facc15;font-size:14px;">
-सेवक संघटित व असंघटित आरोग्य कामगार संघटना, महाराष्ट्र राज्य
-</p>
+<p style="color:#facc15;">सेवक संघटित व असंघटित आरोग्य कामगार संघटना</p>
 
-<p style="font-size:22px; font-weight:bold; color:#22c55e;">
+<p style="font-size:24px; font-weight:bold; color:#22c55e;">
 ऑनलाईन सर्व्हिस सेंटर
 </p>
 
-<a href="https://wa.me/919607023105" class="btn">
-📲 WhatsApp करा
-</a>
+<a href="https://wa.me/919607023105" class="btn">📲 WhatsApp करा</a>
 
 </div>
 
-<!-- SECTION -->
 <div class="section">
 
 <!-- 🔥 OFFER -->
 <div class="card" style="border:2px solid #22c55e;">
-<h3>🎉 1 मे कामगार दिन विशेष ऑफर 🎉</h3>
 
-<p>✔️ बांधकाम कामगार नोंदणी मोफत</p>
+<h3 class="blink-glow" style="font-size:28px; text-align:center;">
+🎉 1 मे कामगार दिन विशेष ऑफर 🎉
+</h3>
+
+<h3 id="countdown" style="text-align:center; color:#facc15;">
+⏳ Loading...
+</h3>
+
+<p>✔️ बांधकाम नोंदणी मोफत</p>
 <p>✔️ 2 / 4 व्हिलर लायसन्स कॅम्प</p>
 
-<p>PAN ₹166 | PVC ₹60 | आयुष्मान ₹60 | आभा ₹60 | मतदान ₹160</p>
+<p>PAN ₹166 | PVC ₹60 | आयुष्मान ₹60 | मतदान ₹160</p>
 
-<p style="color:red;">🚨 प्रथम 60 जणांसाठी 🚨</p>
-
-<p>
-🗓 1 मे 2026 <br>
-⏰ 10 AM ते 6 PM <br>
-📍 भारत नगर, दत्ता मंदिर जवळ, मिरज
+<p class="blink-glow" style="font-size:22px;">
+🚨 प्रथम 60 जणांसाठी 🚨
 </p>
 
-<a href="https://wa.me/919607023105" class="btn">
+<a href="https://wa.me/919607023105" class="btn blink-glow">
 📲 लगेच संपर्क करा
 </a>
+
 </div>
 
 <!-- SERVICES -->
@@ -164,33 +176,22 @@ text-align:center;
 
 <form id="serviceForm">
 
-<label><input type="checkbox" value="बांधकाम कामगार नोंदणी"> बांधकाम नोंदणी</label>
-
-<hr>
-
+<label><input type="checkbox" value="बांधकाम नोंदणी"> बांधकाम नोंदणी</label>
 <label><input type="checkbox" value="रहिवाशी दाखला"> रहिवाशी दाखला</label>
 <label><input type="checkbox" value="उत्पन्न दाखला"> उत्पन्न दाखला</label>
 <label><input type="checkbox" value="रेशन कार्ड"> रेशन कार्ड</label>
-<label><input type="checkbox" value="आधार कार्ड सेवा"> आधार कार्डचे सर्व कागदपत्रे</label>
+<label><input type="checkbox" value="आधार सेवा"> आधार सेवा</label>
 <label><input type="checkbox" value="जन्म दाखला"> जन्म दाखला</label>
-
-<hr>
 
 <label><input type="checkbox" value="संजय गांधी योजना"> संजय गांधी योजना</label>
 <label><input type="checkbox" value="बालसंघोपण"> बालसंघोपण</label>
 <label><input type="checkbox" value="निराधार योजना"> निराधार योजना</label>
 
-<hr>
-
 <label><input type="checkbox" value="विवाह नोंदणी"> विवाह नोंदणी</label>
-<label><input type="checkbox" value="शॉप ऍक्ट लायसन"> शॉप ऍक्ट लायसन</label>
+<label><input type="checkbox" value="शॉप ऍक्ट"> शॉप ऍक्ट</label>
 <label><input type="checkbox" value="उद्यम आधार"> उद्यम आधार</label>
 <label><input type="checkbox" value="फूड लायसन"> फूड लायसन</label>
-<label><input type="checkbox" value="गॅझेट"> Gazzet</label>
 
-<hr>
-
-<label><input type="checkbox" value="सरकारी लोन"> सरकारी लोन</label>
 <label><input type="checkbox" value="PMEGP"> PMEGP</label>
 <label><input type="checkbox" value="CMEGP"> CMEGP</label>
 <label><input type="checkbox" value="MUDRA"> MUDRA</label>
@@ -208,14 +209,41 @@ text-align:center;
 <a class="float" href="https://wa.me/919607023105">💬</a>
 
 <script>
+// 🔊 sound
+function playSound(){
+document.getElementById("alertSound").play();
+}
+
 // popup
-window.onload = function(){
+function showPopup(){
 document.getElementById("offerPopup").style.display="flex";
+playSound();
 }
 
 function closePopup(){
 document.getElementById("offerPopup").style.display="none";
 }
+
+// first + repeat
+setTimeout(showPopup,2000);
+setInterval(showPopup,30000);
+
+// countdown
+var countDownDate = new Date("May 1, 2026 10:00:00").getTime();
+
+setInterval(function(){
+var now = new Date().getTime();
+var distance = countDownDate - now;
+
+var d = Math.floor(distance/(1000*60*60*24));
+var h = Math.floor((distance%(1000*60*60*24))/(1000*60*60));
+var m = Math.floor((distance%(1000*60*60))/(1000*60));
+var s = Math.floor((distance%(1000*60))/1000);
+
+document.getElementById("countdown").innerHTML =
+"⏳ सुरू होईल: "+d+"d "+h+"h "+m+"m "+s+"s";
+
+},1000);
 
 // whatsapp
 function sendServices(){
@@ -225,13 +253,13 @@ selected.push(el.value);
 });
 
 if(selected.length==0){
-alert("कृपया सेवा निवडा");
+alert("सेवा निवडा");
 return;
 }
 
-let msg="नमस्कार 🙏%0Aमला खालील सेवा हवी आहे:%0A";
+let msg="मला सेवा हवी:%0A";
 selected.forEach(item=>{
-msg += "👉 "+item+"%0A";
+msg+=item+"%0A";
 });
 
 window.open("https://wa.me/919607023105?text="+msg);
