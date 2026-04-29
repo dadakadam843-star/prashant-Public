@@ -24,36 +24,27 @@ font-size:19px;
 100%{background-position:0% 50%;}
 }
 
-/* TEXT EFFECTS */
-.gradient-text{
-background: linear-gradient(90deg,#38bdf8,#22c55e,#facc15);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-font-weight:bold;
-}
-.outline-text{
-color:transparent;
--webkit-text-stroke:1px #fff;
-}
-.glow-text{
-color:#fff;
-text-shadow:0 0 5px #22c55e,0 0 15px #22c55e;
+/* 🔵 BLUE SHADOW */
+.blue-shadow{
+color:#0ea5e9;
+text-shadow:
+0 0 5px #ffffff,
+0 0 10px #ffffff,
+0 0 20px #0ea5e9,
+0 0 30px #0ea5e9;
+font-weight:700;
 }
 
-/* BLINK */
-@keyframes blink{
-0%{opacity:1;}
-50%{opacity:0.3;}
-100%{opacity:1;}
+/* 🔵 BLINK */
+@keyframes blueBlink{
+0%{opacity:1;color:#0ea5e9;}
+50%{opacity:0.5;color:#38bdf8;}
+100%{opacity:1;color:#0ea5e9;}
 }
-.blink{animation:blink 1s infinite;}
+.blue-blink{animation:blueBlink 1s infinite;}
 
-/* HERO */
 .hero{text-align:center;padding:50px 20px;}
 .hero img{width:90px;}
-
-h2{font-size:32px;}
-h3{font-size:28px;}
 
 .btn{
 background:#22c55e;
@@ -66,7 +57,6 @@ margin-top:10px;
 font-weight:bold;
 }
 
-/* CARD */
 .section{padding:15px;}
 .card{
 background:#1e293b;
@@ -119,12 +109,12 @@ max-width:350px;
 <div id="offerPopup">
 <div class="popup-box">
 
-<h2 class="gradient-text glow-text">🎉 1 मे ऑफर 🎉</h2>
+<h2 class="blue-shadow blue-blink">🎉 1 मे ऑफर 🎉</h2>
 
 <p>✔️ बांधकाम नोंदणी मोफत</p>
 <p>✔️ 2 / 4 व्हिलर लायसन्स</p>
 
-<p class="outline-text glow-text blink">🚨 प्रथम 60 जणांसाठी 🚨</p>
+<p class="blue-shadow blue-blink">🚨 प्रथम 60 जणांसाठी 🚨</p>
 
 <a href="https://wa.me/919607023105" class="btn">WhatsApp करा</a>
 <br>
@@ -140,15 +130,15 @@ max-width:350px;
 
 <h2>राजरत्न इंटरप्रायझेस</h2>
 
-<p class="gradient-text" style="font-size:35px;">
+<p style="font-size:35px; font-weight:700; color:#facc15;">
 सेवक संघटित व असंघटित आरोग्य कामगार संघटना, महाराष्ट्र राज्य
 </p>
 
-<p style="font-size:24px; font-weight:bold; color:#22c55e;">
+<p class="blue-shadow" style="font-size:26px;">
 ऑनलाईन सर्व्हिस सेंटर
 </p>
 
-<p class="glow-text">आपला विश्वास हीच आमची सेवा</p>
+<p style="color:#ccc;">आपला विश्वास हीच आमची सेवा</p>
 
 <a href="https://wa.me/919607023105" class="btn">📲 WhatsApp करा</a>
 
@@ -159,14 +149,18 @@ max-width:350px;
 <!-- OFFER -->
 <div class="card">
 
-<h3 class="gradient-text glow-text">🎉 1 मे कामगार दिन विशेष ऑफर 🎉</h3>
+<h3 class="blue-shadow blue-blink" style="text-align:center; font-size:30px;">
+🎉 1 मे कामगार दिनानिमित्त ऑफर 🎉
+</h3>
 
 <h3 id="countdown" style="color:#facc15;"></h3>
 
 <p>✔️ बांधकाम कामगार नोंदणी मोफत</p>
-<p>✔️ लायसन्स कॅम्प</p>
+<p>✔️ 2 / 4 व्हिलर लायसन्स कॅम्प</p>
 
-<p class="outline-text glow-text blink">🚨 प्रथम 60 जणांसाठी 🚨</p>
+<p class="blue-shadow blue-blink" style="text-align:center;">
+🚨 प्रथम 60 जणांसाठी 🚨
+</p>
 
 <a href="https://wa.me/919607023105" class="btn">📲 संपर्क करा</a>
 
@@ -183,9 +177,6 @@ max-width:350px;
 <label><input type="checkbox" value="उत्पन्न"> उत्पन्न</label>
 <label><input type="checkbox" value="रेशन"> रेशन</label>
 <label><input type="checkbox" value="आधार"> आधार</label>
-
-<label><input type="checkbox" value="योजना"> सरकारी योजना</label>
-<label><input type="checkbox" value="लोन"> लोन सेवा</label>
 
 <button type="button" onclick="sendServices()" class="btn">
 👉 WhatsApp करा
