@@ -29,21 +29,19 @@ padding:50px 20px;
 .title{
 font-size:14px;
 color:#facc15;
-margin-top:10px;
 }
 
 .btn{
 background:#22c55e;
 padding:12px;
-border:none;
 border-radius:8px;
 color:white;
-width:100%;
-margin-top:10px;
 text-decoration:none;
 display:block;
+margin-top:10px;
 }
 
+/* SECTION */
 .section{padding:15px;}
 
 .card{
@@ -65,9 +63,27 @@ border-radius:50%;
 }
 
 /* POPUP */
-@keyframes spinIn {
-0% { transform: rotate(-180deg) scale(0.5); opacity:0; }
-100% { transform: rotate(0deg) scale(1); opacity:1; }
+#offerPopup{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.7);
+justify-content:center;
+align-items:center;
+z-index:9999;
+}
+
+.popup-box{
+background:#fff;
+color:#000;
+padding:20px;
+border-radius:12px;
+width:90%;
+max-width:350px;
+text-align:center;
 }
 </style>
 </head>
@@ -75,30 +91,27 @@ border-radius:50%;
 <body>
 
 <!-- 🔥 POPUP -->
-<div id="offerPopup" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); justify-content:center; align-items:center; z-index:9999;">
-<div style="background:#fff; color:#000; padding:20px; border-radius:15px; text-align:center; width:90%; max-width:380px; animation:spinIn 0.8s ease;">
+<div id="offerPopup">
+<div class="popup-box">
 
-<h2 style="color:#2563eb;">🎉 1 मे स्पेशल ऑफर 🎉</h2>
+<h2>🎉 1 मे स्पेशल ऑफर 🎉</h2>
 
-<p><b>सेवक संघटित व असंघटित आरोग्य कामगार संघटना, महाराष्ट्र राज्य</b></p>
 <p><b>राजरत्न इंटरप्रायझेस</b></p>
 
 <p>✔️ बांधकाम नोंदणी मोफत</p>
 <p>✔️ 2 / 4 व्हिलर लायसन्स कॅम्प</p>
 
-<p style="color:red;"><b>🚨 प्रथम 60 जणांसाठी 🚨</b></p>
+<p style="color:red;">🚨 प्रथम 60 जणांसाठी 🚨</p>
 
-<p style="font-size:14px;">
+<p>
 🗓 1 मे 2026 <br>
 ⏰ 10 AM ते 6 PM <br>
-📍 भारत नगर, दत्ता मंदिर जवळ, मिरज
+📍 मिरज
 </p>
 
-<a href="https://wa.me/919607023105?text=मला 1 मे ऑफर बद्दल माहिती हवी आहे" class="btn">
-📲 WhatsApp करा
-</a>
-
-<button onclick="closePopup()" style="margin-top:10px; background:red; color:white; border:none; padding:8px;">Close</button>
+<a href="https://wa.me/919607023105" class="btn">WhatsApp करा</a>
+<br>
+<button onclick="closePopup()">Close</button>
 
 </div>
 </div>
@@ -107,38 +120,31 @@ border-radius:50%;
 <div class="hero">
 <img src="logo.png">
 <h2>राजरत्न इंटरप्रायझेस</h2>
-<p class="title">सेवक संघटित व असंघटित आरोग्य कामगार संघटना, महाराष्ट्र राज्य</p>
-<p>ऑनलाईन सर्व्हिस सेंटर</p>
-
+<p class="title">सेवक संघटित व असंघटित आरोग्य कामगार संघटना</p>
 <a href="https://wa.me/919607023105" class="btn">WhatsApp करा</a>
 </div>
 
+<!-- SECTION -->
 <div class="section">
 
-<!-- 🔥 OFFER BOX -->
+<!-- 🔥 OFFER BOX (PAGE वर दिसेल) -->
 <div class="card" style="border:2px solid #22c55e;">
-<h3>🎉 1 मे कामगार दिन विशेष ऑफर 🎉</h3>
+<h3>🎉 1 मे कामगार दिन ऑफर 🎉</h3>
 
-<p><b>ऑफिस ओपनिंग निमित्त</b></p>
-
-<p>✔️ बांधकाम कामगार नोंदणी मोफत</p>
+<p>✔️ बांधकाम नोंदणी मोफत</p>
 <p>✔️ 2 / 4 व्हिलर लायसन्स कॅम्प</p>
 
-<p style="color:#facc15;"><b>🔥 खास सवलत 🔥</b></p>
+<p>PAN ₹166 | PVC ₹60 | आयुष्मान ₹60</p>
 
-<p>PAN ₹166 | PVC ₹60 | आयुष्मान ₹60 | आभा ₹60 | मतदान ₹160</p>
-
-<p style="color:red;"><b>🚨 प्रथम 60 जणांसाठी 🚨</b></p>
+<p style="color:red;">🚨 प्रथम 60 जणांसाठी 🚨</p>
 
 <p>
 🗓 1 मे 2026 <br>
 ⏰ 10 AM ते 6 PM <br>
-📍 भारत नगर, दत्ता मंदिर जवळ, मिरज
+📍 भारत नगर, मिरज
 </p>
 
-<a href="https://wa.me/919607023105?text=मला 1 मे ऑफर पाहिजे" class="btn">
-📲 लगेच संपर्क करा
-</a>
+<a href="https://wa.me/919607023105" class="btn">संपर्क करा</a>
 </div>
 
 <!-- SERVICES -->
@@ -147,34 +153,11 @@ border-radius:50%;
 
 <form id="serviceForm">
 
-<label><input type="checkbox" value="बांधकाम कामगार नोंदणी"> बांधकाम नोंदणी</label>
-<label><input type="checkbox" value="मतदान कार्ड"> मतदान कार्ड</label>
-<label><input type="checkbox" value="आभा कार्ड"> आभा कार्ड</label>
+<label><input type="checkbox" value="बांधकाम नोंदणी"> बांधकाम नोंदणी</label>
+<label><input type="checkbox" value="PAN कार्ड"> PAN कार्ड</label>
+<label><input type="checkbox" value="PVC आधार"> PVC आधार</label>
 <label><input type="checkbox" value="आयुष्मान कार्ड"> आयुष्मान कार्ड</label>
-<label><input type="checkbox" value="आधार PVC कार्ड ₹60"> PVC कार्ड ₹60</label>
-<label><input type="checkbox" value="रेशन कार्ड"> रेशन कार्ड</label>
-<label><input type="checkbox" value="निर्धार योजना"> निर्धार योजना</label>
-<label><input type="checkbox" value="संजय गांधी योजना"> संजय गांधी योजना</label>
-
-<hr>
-
-<label><input type="checkbox" value="रहिवासी दाखला"> रहिवासी दाखला</label>
-<label><input type="checkbox" value="उत्पन्न दाखला"> उत्पन्न दाखला</label>
-<label><input type="checkbox" value="डोमिसाईल"> डोमिसाईल</label>
-<label><input type="checkbox" value="जात प्रमाणपत्र"> जात प्रमाणपत्र</label>
-
-<hr>
-
-<label><input type="checkbox" value="2 चाकी लायसन्स"> 2 चाकी लायसन्स</label>
-<label><input type="checkbox" value="4 चाकी लायसन्स"> 4 चाकी लायसन्स</label>
-
-<hr>
-
-<label><input type="checkbox" value="PM Vishwakarma"> PM Vishwakarma</label>
-<label><input type="checkbox" value="PM Svanidhi"> PM Svanidhi</label>
-<label><input type="checkbox" value="PMEGP"> PMEGP</label>
-<label><input type="checkbox" value="CMEGP"> CMEGP</label>
-<label><input type="checkbox" value="MUDRA Loan"> MUDRA Loan</label>
+<label><input type="checkbox" value="लायसन्स"> लायसन्स</label>
 
 <button type="button" onclick="sendServices()" class="btn">
 👉 WhatsApp करा
@@ -188,16 +171,16 @@ border-radius:50%;
 <a class="float" href="https://wa.me/919607023105">💬</a>
 
 <script>
+// POPUP show
 window.onload = function(){
-setTimeout(function(){
 document.getElementById("offerPopup").style.display="flex";
-},2000);
 }
 
 function closePopup(){
 document.getElementById("offerPopup").style.display="none";
 }
 
+// WhatsApp
 function sendServices(){
 let selected=[];
 document.querySelectorAll('#serviceForm input:checked').forEach(el=>{
@@ -205,13 +188,13 @@ selected.push(el.value);
 });
 
 if(selected.length==0){
-alert("कृपया सेवा निवडा");
+alert("सेवा निवडा");
 return;
 }
 
-let msg="नमस्कार 🙏%0Aमला खालील सेवा हवी आहे:%0A";
+let msg="मला सेवा हवी:%0A";
 selected.forEach(item=>{
-msg += "👉 "+item+"%0A";
+msg += item + "%0A";
 });
 
 window.open("https://wa.me/919607023105?text="+msg);
