@@ -26,11 +26,6 @@ padding:50px 20px;
 
 .hero img{width:90px;}
 
-.title{
-font-size:14px;
-color:#facc15;
-}
-
 .btn{
 background:#22c55e;
 padding:12px;
@@ -97,6 +92,7 @@ text-align:center;
 <h2>🎉 1 मे स्पेशल ऑफर 🎉</h2>
 
 <p><b>राजरत्न इंटरप्रायझेस</b></p>
+<p>सेवक संघटित व असंघटित आरोग्य कामगार संघटना</p>
 
 <p>✔️ बांधकाम नोंदणी मोफत</p>
 <p>✔️ 2 / 4 व्हिलर लायसन्स कॅम्प</p>
@@ -106,7 +102,7 @@ text-align:center;
 <p>
 🗓 1 मे 2026 <br>
 ⏰ 10 AM ते 6 PM <br>
-📍 मिरज
+📍 भारत नगर, दत्ता मंदिर जवळ, मिरज
 </p>
 
 <a href="https://wa.me/919607023105" class="btn">WhatsApp करा</a>
@@ -116,35 +112,50 @@ text-align:center;
 </div>
 </div>
 
-<!-- HERO -->
+<!-- HERO (मायना FIX) -->
 <div class="hero">
+
 <img src="logo.png">
+
 <h2>राजरत्न इंटरप्रायझेस</h2>
-<p class="title">सेवक संघटित व असंघटित आरोग्य कामगार संघटना</p>
-<a href="https://wa.me/919607023105" class="btn">WhatsApp करा</a>
+
+<p style="color:#facc15;font-size:14px;">
+सेवक संघटित व असंघटित आरोग्य कामगार संघटना, महाराष्ट्र राज्य
+</p>
+
+<p style="font-size:13px;">
+ऑनलाईन सर्व्हिस सेंटर
+</p>
+
+<a href="https://wa.me/919607023105" class="btn">
+📲 WhatsApp करा
+</a>
+
 </div>
 
 <!-- SECTION -->
 <div class="section">
 
-<!-- 🔥 OFFER BOX (PAGE वर दिसेल) -->
+<!-- 🔥 PAGE OFFER -->
 <div class="card" style="border:2px solid #22c55e;">
-<h3>🎉 1 मे कामगार दिन ऑफर 🎉</h3>
+<h3>🎉 1 मे कामगार दिन विशेष ऑफर 🎉</h3>
 
-<p>✔️ बांधकाम नोंदणी मोफत</p>
+<p>✔️ बांधकाम कामगार नोंदणी मोफत</p>
 <p>✔️ 2 / 4 व्हिलर लायसन्स कॅम्प</p>
 
-<p>PAN ₹166 | PVC ₹60 | आयुष्मान ₹60</p>
+<p>PAN ₹166 | PVC ₹60 | आयुष्मान ₹60 | आभा ₹60 | मतदान ₹160</p>
 
 <p style="color:red;">🚨 प्रथम 60 जणांसाठी 🚨</p>
 
 <p>
 🗓 1 मे 2026 <br>
 ⏰ 10 AM ते 6 PM <br>
-📍 भारत नगर, मिरज
+📍 भारत नगर, दत्ता मंदिर जवळ, मिरज
 </p>
 
-<a href="https://wa.me/919607023105" class="btn">संपर्क करा</a>
+<a href="https://wa.me/919607023105" class="btn">
+📲 लगेच संपर्क करा
+</a>
 </div>
 
 <!-- SERVICES -->
@@ -153,11 +164,16 @@ text-align:center;
 
 <form id="serviceForm">
 
-<label><input type="checkbox" value="बांधकाम नोंदणी"> बांधकाम नोंदणी</label>
-<label><input type="checkbox" value="PAN कार्ड"> PAN कार्ड</label>
-<label><input type="checkbox" value="PVC आधार"> PVC आधार</label>
+<label><input type="checkbox" value="बांधकाम कामगार नोंदणी"> बांधकाम नोंदणी</label>
+<label><input type="checkbox" value="मतदान कार्ड"> मतदान कार्ड</label>
+<label><input type="checkbox" value="आभा कार्ड"> आभा कार्ड</label>
 <label><input type="checkbox" value="आयुष्मान कार्ड"> आयुष्मान कार्ड</label>
-<label><input type="checkbox" value="लायसन्स"> लायसन्स</label>
+<label><input type="checkbox" value="PVC आधार कार्ड"> PVC कार्ड</label>
+
+<hr>
+
+<label><input type="checkbox" value="2 चाकी लायसन्स"> 2 चाकी लायसन्स</label>
+<label><input type="checkbox" value="4 चाकी लायसन्स"> 4 चाकी लायसन्स</label>
 
 <button type="button" onclick="sendServices()" class="btn">
 👉 WhatsApp करा
@@ -171,7 +187,7 @@ text-align:center;
 <a class="float" href="https://wa.me/919607023105">💬</a>
 
 <script>
-// POPUP show
+// popup show
 window.onload = function(){
 document.getElementById("offerPopup").style.display="flex";
 }
@@ -180,7 +196,7 @@ function closePopup(){
 document.getElementById("offerPopup").style.display="none";
 }
 
-// WhatsApp
+// whatsapp
 function sendServices(){
 let selected=[];
 document.querySelectorAll('#serviceForm input:checked').forEach(el=>{
@@ -188,13 +204,13 @@ selected.push(el.value);
 });
 
 if(selected.length==0){
-alert("सेवा निवडा");
+alert("कृपया सेवा निवडा");
 return;
 }
 
-let msg="मला सेवा हवी:%0A";
+let msg="नमस्कार 🙏%0Aमला खालील सेवा हवी आहे:%0A";
 selected.forEach(item=>{
-msg += item + "%0A";
+msg += "👉 "+item+"%0A";
 });
 
 window.open("https://wa.me/919607023105?text="+msg);
