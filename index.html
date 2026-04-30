@@ -20,7 +20,6 @@ color:#e0f2fe;
 text-align:center;
 padding:40px 15px;
 }
-
 .hero img{width:80px;}
 
 .title{
@@ -33,12 +32,10 @@ text-shadow:0 0 8px #38bdf8;
 .office{
 font-size:26px;
 color:#38bdf8;
-text-shadow:0 0 10px #38bdf8;
+text-shadow:0 0 6px #38bdf8;
 }
 
-.tagline{
-color:#ccc;
-}
+.tagline{color:#ccc;}
 
 /* CARD */
 .card{
@@ -46,25 +43,37 @@ margin:15px;
 padding:15px;
 border-radius:12px;
 border:1px solid #38bdf8;
-box-shadow:0 0 15px #0ea5e9;
+animation:glow 2s infinite alternate;
+}
+
+@keyframes glow{
+0%{box-shadow:0 0 5px #38bdf8;}
+100%{box-shadow:0 0 15px #38bdf8;}
 }
 
 /* OFFER */
 .offer-title{
-font-size:26px;
+font-size:30px;
 text-align:center;
-color:#38bdf8;
-text-shadow:0 0 10px #38bdf8;
+color:#fff;
+text-shadow:0 0 8px #38bdf8;
+}
+
+.center-big{
+text-align:center;
+font-size:22px;
+font-weight:bold;
+margin:8px 0;
 }
 
 .limit{
 text-align:center;
 font-size:22px;
 color:#38bdf8;
-text-shadow:0 0 8px #38bdf8;
+text-shadow:0 0 6px #38bdf8;
 }
 
-/* COUNTDOWN */
+/* TIMER */
 .timer{
 display:flex;
 justify-content:center;
@@ -91,7 +100,13 @@ display:block;
 text-align:center;
 text-decoration:none;
 margin-top:10px;
-box-shadow:0 0 10px #38bdf8;
+animation:pulse 1.5s infinite;
+}
+
+@keyframes pulse{
+0%{transform:scale(1);}
+50%{transform:scale(1.05);}
+100%{transform:scale(1);}
 }
 
 /* GRID */
@@ -104,6 +119,17 @@ gap:10px;
 label{
 display:block;
 margin:5px 0;
+}
+
+/* FLOAT */
+.float{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#25D366;
+padding:15px;
+border-radius:50%;
+box-shadow:0 0 10px #25D366,0 0 20px #25D366;
 }
 </style>
 </head>
@@ -126,7 +152,9 @@ margin:5px 0;
 
 <p class="tagline">आपला विश्वास हीच आमची सेवा</p>
 
-<a href="https://wa.me/919607023105" class="btn">WhatsApp करा</a>
+<a href="javascript:void(0)" onclick="sendAutoWhatsApp()" class="btn">
+📲 WhatsApp करा
+</a>
 
 </div>
 
@@ -142,8 +170,8 @@ margin:5px 0;
 <div class="box"><span id="s">00</span><br>से</div>
 </div>
 
-<p>✔️ बांधकाम कामगार नोंदणी मोफत</p>
-<p>✔️ 2 / 4 व्हिलर लायसन्स कॅम्प</p>
+<p class="center-big">🏗️ बांधकाम कामगार नोंदणी मोफत</p>
+<p class="center-big">🚗 2 व्हिलर / 4 व्हिलर लायसन्स कॅम्प</p>
 
 <p class="limit">>> प्रथम 60 कामगारांना <<</p>
 
@@ -151,7 +179,9 @@ margin:5px 0;
 PAN ₹166 | PVC ₹60 | आयुष्मान ₹60 | मतदान ₹160
 </p>
 
-<a href="https://wa.me/919607023105" class="btn">लगेच संपर्क करा</a>
+<a href="javascript:void(0)" onclick="sendAutoWhatsApp()" class="btn">
+लगेच संपर्क करा
+</a>
 
 </div>
 
@@ -163,35 +193,61 @@ PAN ₹166 | PVC ₹60 | आयुष्मान ₹60 | मतदान ₹160
 <div class="grid">
 
 <div>
-<label><input type="checkbox"> बांधकाम नोंदणी</label>
-<label><input type="checkbox"> रहिवाशी दाखला</label>
-<label><input type="checkbox"> उत्पन्न दाखला</label>
-<label><input type="checkbox"> रेशन कार्ड</label>
-<label><input type="checkbox"> आधार सेवा</label>
-<label><input type="checkbox"> जन्म दाखला</label>
+<label>🏗️ <input type="checkbox"> बांधकाम नोंदणी</label>
+<label>📄 <input type="checkbox"> रहिवाशी दाखला</label>
+<label>💰 <input type="checkbox"> उत्पन्न दाखला</label>
+<label>🧾 <input type="checkbox"> रेशन कार्ड</label>
+<label>🪪 <input type="checkbox"> आधार सेवा</label>
+<label>👶 <input type="checkbox"> जन्म दाखला</label>
 </div>
 
 <div>
-<label><input type="checkbox"> संजय गांधी योजना</label>
-<label><input type="checkbox"> बालसंघोपण</label>
-<label><input type="checkbox"> निराधार योजना</label>
-<label><input type="checkbox"> विवाह नोंदणी</label>
-<label><input type="checkbox"> शॉप ऍक्ट</label>
-<label><input type="checkbox"> उद्यम आधार</label>
+<label>👴 <input type="checkbox"> संजय गांधी योजना</label>
+<label>👶 <input type="checkbox"> बालसंघोपण</label>
+<label>🏠 <input type="checkbox"> निराधार योजना</label>
+<label>💍 <input type="checkbox"> विवाह नोंदणी</label>
+<label>🏪 <input type="checkbox"> शॉप ऍक्ट</label>
+<label>🏢 <input type="checkbox"> उद्यम आधार</label>
 </div>
 
 </div>
 
-<a href="https://wa.me/919607023105" class="btn">
+<a href="javascript:void(0)" onclick="sendServices()" class="btn">
 निवडलेल्या सेवा WhatsApp करा
 </a>
 
 </div>
 
-<script>
-// countdown
-var end=new Date("May 1, 2026 10:00:00").getTime();
+<a class="float" href="https://wa.me/919607023105">💬</a>
 
+<script>
+// AUTO MESSAGE
+function sendAutoWhatsApp(){
+let msg="नमस्कार 🙏%0Aमला 1 मे ऑफर बद्दल माहिती हवी आहे.%0A"+
+"✔️ बांधकाम नोंदणी%0A✔️ लायसन्स कॅम्प";
+window.open("https://wa.me/919607023105?text="+msg);
+}
+
+// SELECT SERVICES
+function sendServices(){
+let selected=[];
+document.querySelectorAll('input[type=checkbox]:checked').forEach(el=>{
+selected.push(el.parentTextContent);
+});
+
+if(selected.length==0){
+alert("सेवा निवडा");
+return;
+}
+
+let msg="नमस्कार 🙏%0Aमला खालील सेवा हवी आहे:%0A";
+selected.forEach(i=>{msg+="👉 "+i+"%0A";});
+
+window.open("https://wa.me/919607023105?text="+msg);
+}
+
+// COUNTDOWN
+var end=new Date("May 1, 2026 10:00:00").getTime();
 setInterval(()=>{
 var now=new Date().getTime();
 var t=end-now;
