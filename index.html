@@ -16,78 +16,39 @@ color:#e0f2fe;
 }
 
 /* HERO */
-.hero{
-text-align:center;
-padding:40px 15px;
-}
+.hero{text-align:center;padding:35px 15px;}
 .hero img{width:80px;}
 
-.title{
-font-size:34px;
-font-weight:bold;
-color:#38bdf8;
-text-shadow:0 0 8px #38bdf8;
-}
-
-.office{
-font-size:26px;
-color:#38bdf8;
-text-shadow:0 0 6px #38bdf8;
-}
-
+.title{font-size:30px;font-weight:bold;color:#38bdf8;}
+.office{font-size:22px;color:#38bdf8;}
 .tagline{color:#ccc;}
 
 /* CARD */
 .card{
 margin:15px;
 padding:15px;
-border-radius:12px;
+border-radius:10px;
 border:1px solid #38bdf8;
-animation:glow 2s infinite alternate;
-}
-
-@keyframes glow{
-0%{box-shadow:0 0 5px #38bdf8;}
-100%{box-shadow:0 0 15px #38bdf8;}
 }
 
 /* OFFER */
 .offer-title{
-font-size:30px;
+font-size:26px;
 text-align:center;
 color:#fff;
-text-shadow:0 0 8px #38bdf8;
 }
 
-.center-big{
+.center{
 text-align:center;
-font-size:22px;
+font-size:20px;
 font-weight:bold;
-margin:8px 0;
+margin:6px 0;
 }
 
 .limit{
 text-align:center;
-font-size:22px;
-color:#38bdf8;
-text-shadow:0 0 6px #38bdf8;
-}
-
-/* TIMER */
-.timer{
-display:flex;
-justify-content:center;
-gap:10px;
-margin:10px 0;
-}
-
-.box{
-padding:10px;
-border:1px solid #38bdf8;
-border-radius:8px;
-text-align:center;
-min-width:60px;
-box-shadow:0 0 10px #38bdf8;
+font-size:20px;
+color:#f97316;
 }
 
 /* BUTTON */
@@ -100,13 +61,14 @@ display:block;
 text-align:center;
 text-decoration:none;
 margin-top:10px;
-animation:pulse 1.5s infinite;
 }
 
-@keyframes pulse{
-0%{transform:scale(1);}
-50%{transform:scale(1.05);}
-100%{transform:scale(1);}
+/* URGENT */
+.urgent{
+background:#dc2626;
+padding:8px;
+text-align:center;
+font-weight:bold;
 }
 
 /* GRID */
@@ -115,26 +77,16 @@ display:grid;
 grid-template-columns:1fr 1fr;
 gap:10px;
 }
-
-label{
-display:block;
-margin:5px 0;
-}
-
-/* FLOAT */
-.float{
-position:fixed;
-bottom:20px;
-right:20px;
-background:#25D366;
-padding:15px;
-border-radius:50%;
-box-shadow:0 0 10px #25D366,0 0 20px #25D366;
-}
+label{display:block;margin:5px 0;}
 </style>
 </head>
 
 <body>
+
+<!-- 🔥 URGENT LINE -->
+<div class="urgent">
+🚨 आजच नोंदणी करा – मर्यादित जागा!
+</div>
 
 <!-- HERO -->
 <div class="hero">
@@ -144,8 +96,7 @@ box-shadow:0 0 10px #25D366,0 0 20px #25D366;
 <h2>राजरत्न इंटरप्रायझेस</h2>
 
 <p class="title">
-सेवक संघटित व असंघटित<br>
-आरोग्य कामगार संघटना, महाराष्ट्र राज्य
+सेवक संघटित व असंघटित आरोग्य कामगार संघटना
 </p>
 
 <p class="office">ऑनलाईन सर्व्हिस सेंटर</p>
@@ -163,17 +114,10 @@ box-shadow:0 0 10px #25D366,0 0 20px #25D366;
 
 <h3 class="offer-title">🎉 1 मे कामगार दिनानिमित्त ऑफर 🎉</h3>
 
-<div class="timer">
-<div class="box"><span id="d">00</span><br>दिवस</div>
-<div class="box"><span id="h">00</span><br>तास</div>
-<div class="box"><span id="m">00</span><br>मि</div>
-<div class="box"><span id="s">00</span><br>से</div>
-</div>
+<p class="center">🏗️ बांधकाम कामगार नोंदणी मोफत</p>
+<p class="center">🚗 2 / 4 व्हिलर लायसन्स कॅम्प</p>
 
-<p class="center-big">🏗️ बांधकाम कामगार नोंदणी मोफत</p>
-<p class="center-big">🚗 2 व्हिलर / 4 व्हिलर लायसन्स कॅम्प</p>
-
-<p class="limit">>> प्रथम 60 कामगारांना <<</p>
+<p class="limit">🚨 प्रथम 60 कामगारांना विशेष सवलत 🚨</p>
 
 <p style="text-align:center;">
 PAN ₹166 | PVC ₹60 | आयुष्मान ₹60 | मतदान ₹160
@@ -185,6 +129,30 @@ PAN ₹166 | PVC ₹60 | आयुष्मान ₹60 | मतदान ₹160
 
 </div>
 
+<!-- TRUST -->
+<div class="card">
+<h3>⭐ आमची वैशिष्ट्ये</h3>
+<p>✔️ 500+ कामगार नोंदणी पूर्ण</p>
+<p>✔️ जलद व खात्रीशीर सेवा</p>
+<p>✔️ अनुभवी टीम</p>
+</div>
+
+<!-- DOCUMENTS -->
+<div class="card">
+<h3>📄 आवश्यक कागदपत्रे</h3>
+<p>✔️ आधार कार्ड</p>
+<p>✔️ 2 फोटो</p>
+<p>✔️ मोबाईल नंबर</p>
+<p>✔️ इंजिनिअर प्रमाणपत्र (90 दिवस)</p>
+</div>
+
+<!-- COMBO -->
+<div class="card">
+<h3>🎁 विशेष ऑफर</h3>
+<p>✔️ PAN + PVC = ₹200</p>
+<p>✔️ लायसन्स + नोंदणी = Discount</p>
+</div>
+
 <!-- SERVICES -->
 <div class="card">
 
@@ -193,21 +161,17 @@ PAN ₹166 | PVC ₹60 | आयुष्मान ₹60 | मतदान ₹160
 <div class="grid">
 
 <div>
-<label>🏗️ <input type="checkbox"> बांधकाम नोंदणी</label>
-<label>📄 <input type="checkbox"> रहिवाशी दाखला</label>
-<label>💰 <input type="checkbox"> उत्पन्न दाखला</label>
-<label>🧾 <input type="checkbox"> रेशन कार्ड</label>
-<label>🪪 <input type="checkbox"> आधार सेवा</label>
-<label>👶 <input type="checkbox"> जन्म दाखला</label>
+<label><input type="checkbox"> बांधकाम नोंदणी</label>
+<label><input type="checkbox"> रहिवाशी दाखला</label>
+<label><input type="checkbox"> उत्पन्न दाखला</label>
+<label><input type="checkbox"> रेशन कार्ड</label>
 </div>
 
 <div>
-<label>👴 <input type="checkbox"> संजय गांधी योजना</label>
-<label>👶 <input type="checkbox"> बालसंघोपण</label>
-<label>🏠 <input type="checkbox"> निराधार योजना</label>
-<label>💍 <input type="checkbox"> विवाह नोंदणी</label>
-<label>🏪 <input type="checkbox"> शॉप ऍक्ट</label>
-<label>🏢 <input type="checkbox"> उद्यम आधार</label>
+<label><input type="checkbox"> आधार सेवा</label>
+<label><input type="checkbox"> जन्म दाखला</label>
+<label><input type="checkbox"> विवाह नोंदणी</label>
+<label><input type="checkbox"> उद्यम आधार</label>
 </div>
 
 </div>
@@ -218,13 +182,10 @@ PAN ₹166 | PVC ₹60 | आयुष्मान ₹60 | मतदान ₹160
 
 </div>
 
-<a class="float" href="https://wa.me/919607023105">💬</a>
-
 <script>
 // AUTO MESSAGE
 function sendAutoWhatsApp(){
-let msg="नमस्कार 🙏%0Aमला 1 मे ऑफर बद्दल माहिती हवी आहे.%0A"+
-"✔️ बांधकाम नोंदणी%0A✔️ लायसन्स कॅम्प";
+let msg="नमस्कार 🙏%0Aमला 1 मे ऑफर बद्दल माहिती हवी आहे.";
 window.open("https://wa.me/919607023105?text="+msg);
 }
 
@@ -234,29 +195,13 @@ let selected=[];
 document.querySelectorAll('input[type=checkbox]:checked').forEach(el=>{
 selected.push(el.parentTextContent);
 });
-
-if(selected.length==0){
-alert("सेवा निवडा");
-return;
-}
+if(selected.length==0){alert("सेवा निवडा");return;}
 
 let msg="नमस्कार 🙏%0Aमला खालील सेवा हवी आहे:%0A";
 selected.forEach(i=>{msg+="👉 "+i+"%0A";});
 
 window.open("https://wa.me/919607023105?text="+msg);
 }
-
-// COUNTDOWN
-var end=new Date("May 1, 2026 10:00:00").getTime();
-setInterval(()=>{
-var now=new Date().getTime();
-var t=end-now;
-
-document.getElementById("d").innerHTML=Math.floor(t/(1000*60*60*24));
-document.getElementById("h").innerHTML=Math.floor((t%(1000*60*60*24))/(1000*60*60));
-document.getElementById("m").innerHTML=Math.floor((t%(1000*60*60))/(1000*60));
-document.getElementById("s").innerHTML=Math.floor((t%(1000*60))/1000);
-},1000);
 </script>
 
 </body>
