@@ -4,13 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Rajratna Online Service</title>
+<title>Rajratna Services</title>
 
 <style>
 body{
   margin:0;
   font-family:sans-serif;
-  background:#f5f5f5;
+  background:#f0f4ff;
 }
 
 /* HEADER */
@@ -18,28 +18,31 @@ body{
   background:linear-gradient(90deg,#0d47a1,#1976d2);
   color:#fff;
   text-align:center;
-  padding:15px;
-  font-size:22px;
+  padding:20px;
+  font-size:24px;
   font-weight:bold;
-  text-shadow:1px 1px 2px #000;
+}
+
+/* STICKY BAR */
+.sticky-bar{
+  position:fixed;
+  top:0;
+  width:100%;
+  background:red;
+  color:#fff;
+  text-align:center;
+  padding:10px;
+  z-index:9999;
+  font-weight:bold;
 }
 
 /* CARD */
 .card{
+  margin:80px 15px 15px;
   background:#fff;
-  margin:15px;
   padding:15px;
-  border-radius:10px;
+  border-radius:12px;
   box-shadow:0 0 10px rgba(0,0,0,0.2);
-}
-
-/* TITLE */
-.offer-title{
-  text-align:center;
-  font-size:24px;
-  font-weight:bold;
-  color:#0d47a1;
-  text-shadow:1px 1px 2px #ccc;
 }
 
 /* TEXT */
@@ -48,7 +51,7 @@ body{
   font-size:18px;
 }
 
-/* LIMIT */
+/* BLINK */
 .limit{
   text-align:center;
   font-size:20px;
@@ -57,7 +60,6 @@ body{
   animation:blink 1s infinite;
 }
 
-/* BLINK */
 @keyframes blink{
   50%{opacity:0;}
 }
@@ -65,123 +67,147 @@ body{
 /* BUTTON */
 .btn{
   display:block;
-  margin:15px auto;
+  margin:10px auto;
   padding:12px;
   background:#25D366;
   color:#fff;
   text-align:center;
   border-radius:8px;
   text-decoration:none;
-  font-size:18px;
 }
 
-/* FOOTER */
-.footer{
+/* FLOAT WA */
+.float-wa{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:#25D366;
+  color:#fff;
+  font-size:28px;
+  padding:15px;
+  border-radius:50%;
+}
+
+/* POPUP */
+.popup{
+  position:fixed;
+  top:30%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  background:#fff;
+  padding:20px;
+  border-radius:10px;
+  z-index:999;
+  box-shadow:0 0 15px #000;
   text-align:center;
+}
+
+/* LIVE BOX */
+.live-box{
+  position:fixed;
+  bottom:90px;
+  left:10px;
+  background:#000;
+  color:#fff;
   padding:10px;
+  border-radius:8px;
   font-size:14px;
+}
+
+/* TIMER */
+.timer{
+  text-align:center;
+  font-size:22px;
+  color:#d32f2f;
+  font-weight:bold;
 }
 </style>
 </head>
 
 <body>
 
+<div class="sticky-bar">
+🔥 PAN + PVC अर्जंट ₹257 – 3 तासात 🔥
+</div>
+
 <div class="header">
-सेवक संघटित व असंघटित आरोग्य कामगार संघटना, महाराष्ट्र राज्य  
-<br>राजरत्न इंटरप्राइजेस
+राजरत्न इंटरप्राइजेस
 </div>
 
-<div class="card" id="offerBox"></div>
-
-<div class="footer">
-📍 भारत नगर, दत्ता मंदिर जवळ, मिरज  
-<br>📲 WhatsApp: 9607023105
+<!-- POPUP -->
+<div class="popup" id="popup">
+<h3>🔥 आजची ऑफर 🔥</h3>
+<p>बांधकाम कामगार नोंदणी मोफत</p>
+<p class="limit">🚨 मर्यादित स्लॉट 🚨</p>
+<button onclick="closePopup()">Close</button>
 </div>
+
+<div class="card">
+
+<p class="limit">🏗️ कामगार नोंदणी फ्री</p>
+
+<p class="center">
+PAN + PVC अर्जंट – ₹257<br>
+3 तासात मिळेल
+</p>
+
+<p class="timer" id="countdown"></p>
+
+<a href="https://wa.me/919607023105" class="btn">📲 WhatsApp करा</a>
+
+</div>
+
+<!-- FLOAT BUTTON -->
+<a href="https://wa.me/919607023105" class="float-wa">💬</a>
+
+<!-- LIVE ACTIVITY -->
+<div id="liveActivity" class="live-box"></div>
+
+<!-- SOUND -->
+<audio id="sound" src="https://www.soundjay.com/buttons/sounds/button-3.mp3"></audio>
 
 <script>
 
-// WEEKLY AUTO OFFER
-function loadOffer(){
-
-let day = new Date().getDay();
-let offer = "";
-
-switch(day){
-
-case 1:
-offer = `
-<h3 class="offer-title">🎉 सोमवार विशेष ऑफर 🎉</h3>
-<p class="center">✔️ PAN + PVC Combo ₹199</p>
-<p class="center">✔️ फॉर्म तपासणी मोफत</p>
-<p class="limit">🚨 फक्त 20 जणांसाठी 🚨</p>
-<p class="center" style="color:green;">💰 10% सवलत</p>
-`;
-break;
-
-case 2:
-offer = `
-<h3 class="offer-title">🎉 मंगळवार ऑफर 🎉</h3>
-<p class="center">✔️ बांधकाम नोंदणी सवलतीत</p>
-<p class="limit">🚨 मर्यादित स्लॉट 🚨</p>
-`;
-break;
-
-case 3:
-offer = `
-<h3 class="offer-title">🎉 बुधवार ऑफर 🎉</h3>
-<p class="center">✔️ लायसन्स कॅम्प Special</p>
-<p class="limit">🚨 आजच अर्ज करा 🚨</p>
-`;
-break;
-
-case 4:
-offer = `
-<h3 class="offer-title">🎉 गुरुवार ऑफर 🎉</h3>
-<p class="center">✔️ PAN / PVC Discount</p>
-`;
-break;
-
-case 5:
-offer = `
-<h3 class="offer-title">🎉 शुक्रवार ऑफर 🎉</h3>
-<p class="center">✔️ आयुष्मान कार्ड ₹60</p>
-`;
-break;
-
-case 6:
-offer = `
-<h3 class="offer-title">🎉 शनिवार मेगा ऑफर 🎉</h3>
-<p class="center">✔️ Combo + Family Offer</p>
-<p class="limit">🚨 जास्त गर्दी – लवकर या 🚨</p>
-`;
-break;
-
-default:
-offer = `
-<h3 class="offer-title">🎉 रविवार स्पेशल 🎉</h3>
-<p class="center">✔️ सर्व सेवांवर Discount</p>
-<p class="center">✔️ Free Document Check</p>
-`;
+// SOUND
+window.onload = function(){
+  document.getElementById("sound").play();
 }
 
-// BUTTON
-offer += `
-<a href="javascript:void(0)" onclick="sendWA()" class="btn">
-📲 WhatsApp करा
-</a>
-`;
-
-document.getElementById("offerBox").innerHTML = offer;
+// POPUP
+function closePopup(){
+  document.getElementById("popup").style.display="none";
 }
 
-// WHATSAPP
-function sendWA(){
-let msg="नमस्कार 🙏 मला आजच्या ऑफर बद्दल माहिती हवी आहे";
-window.open("https://wa.me/919607023105?text="+encodeURIComponent(msg));
-}
+// POPUP REPEAT
+setInterval(()=>{
+  document.getElementById("popup").style.display="block";
+  document.getElementById("sound").play();
+},15000);
 
-// LOAD
-loadOffer();
+// COUNTDOWN
+let time = 3*60*60;
+setInterval(()=>{
+let h=Math.floor(time/3600);
+let m=Math.floor((time%3600)/60);
+let s=time%60;
+
+document.getElementById("countdown").innerHTML =
+"⏳ वेळ उरलेली: "+h+":"+m+":"+s;
+
+time--;
+},1000);
+
+// LIVE ACTIVITY
+let names=["Rahul","Amit","Suresh","Vikas"];
+let services=["PAN","PVC","लायसन्स","आधार"];
+
+setInterval(()=>{
+let n=names[Math.floor(Math.random()*names.length)];
+let s=services[Math.floor(Math.random()*services.length)];
+
+document.getElementById("liveActivity").innerHTML =
+"✅ "+n+" यांनी "+s+" सेवा घेतली";
+},5000);
 
 </script>
 
