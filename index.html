@@ -46,6 +46,13 @@ background:#25D366;color:#fff;text-align:center;
 border-radius:8px;text-decoration:none;
 }
 
+/* LIKE */
+.like-btn{
+display:block;margin:10px auto;padding:12px;
+background:#0d47a1;color:#fff;border:none;
+border-radius:8px;font-size:18px;
+}
+
 /* FLOAT */
 .float-wa{
 position:fixed;bottom:20px;right:20px;
@@ -95,56 +102,40 @@ color:#d32f2f;font-weight:bold;
 <button onclick="closePopup()">Close</button>
 </div>
 
-<!-- MAIN CONTENT -->
+<!-- MAIN -->
 <div class="card">
 
 <p class="limit">🏗️ बांधकाम कामगार नोंदणी – पूर्ण मोफत</p>
 
 <p class="center">
-✔️ गवंडी | लाईट फिटिंग | फॅब्रिकेशन<br>
-✔️ AC रिपेरिंग | फारशी फिटिंग | कलर काम<br>
-✔️ सुतार कामगार – सर्वांसाठी मोफत नोंदणी<br>
-👉 पूर्ण माहिती साठी आजच ऑफिस ला भेट द्या
+✔️ गवंडी | लाईट | AC | फॅब्रिकेशन<br>
+✔️ फारशी | कलर | सुतार कामगार<br>
+👉 आजच ऑफिस ला भेट द्या
 </p>
 
 <hr>
 
-<p class="center"><b>🗳️ मतदान कार्ड सेवा</b></p>
-<p class="center">
-✔️ नाव बदल | पत्ता बदल | फोटो बदल<br>
-✔️ जन्म तारीख सुधारणा<br>
-✔️ नवीन नोंदणी<br>
-👉 15 दिवसात कार्ड मिळेल
-</p>
+<p class="center"><b>🗳️ मतदान कार्ड</b></p>
+<p class="center">15 दिवसात मिळेल</p>
 
 <hr>
 
-<p class="center"><b>🪪 आधार कार्ड</b></p>
-<p class="center">✔️ पत्ता बदल – 24 तासात</p>
+<p class="center"><b>🪪 आधार</b></p>
+<p class="center">24 तासात पत्ता बदल</p>
 
 <hr>
 
 <p class="center"><b>📕 रेशन कार्ड</b></p>
-<p class="center">
-✔️ नाव लावणे | नाव कमी करणे<br>
-✔️ पत्ता बदलणे | 1/2 युनिट<br>
-✔️ नवीन कार्ड (Online/Offline)
-</p>
+<p class="center">नवीन / बदल सेवा</p>
 
 <hr>
 
-<p class="limit">💊 आयुष्मान कार्ड – ₹5 लाख लाभ</p>
-
-<hr>
-
-<p class="center"><b>👷 ई-श्रम कार्ड</b></p>
+<p class="limit">💊 आयुष्मान – 5 लाख</p>
 
 <hr>
 
 <p class="center"><b>🏢 व्यवसाय लायसन्स</b></p>
-<p class="center">
-✔️ उद्यम आधार | शॉप ऍक्ट | फूड लायसन्स
-</p>
+<p class="center">उद्यम | शॉप ऍक्ट | फूड लायसन्स</p>
 
 <hr>
 
@@ -152,12 +143,18 @@ color:#d32f2f;font-weight:bold;
 
 <p class="timer" id="countdown"></p>
 
-<a href="https://wa.me/918484078016" class="btn">📲 WhatsApp 1</a>
-<a href="https://wa.me/919607023105" class="btn">📲 WhatsApp 2</a>
+<!-- LIKE -->
+<button onclick="likeService()" class="like-btn">
+👍 मला हे काम करायचं आहे
+</button>
+
+<p id="likeCount" class="center"></p>
+
+<a href="https://wa.me/919607023105" class="btn">📲 WhatsApp करा</a>
 
 </div>
 
-<!-- FLOAT BUTTON -->
+<!-- FLOAT -->
 <a href="https://wa.me/919607023105" class="float-wa">💬</a>
 
 <!-- LIVE -->
@@ -186,7 +183,7 @@ setInterval(()=>{
 let h=Math.floor(time/3600);
 let m=Math.floor((time%3600)/60);
 let s=time%60;
-document.getElementById("countdown").innerHTML="⏳ वेळ उरलेली: "+h+":"+m+":"+s;
+document.getElementById("countdown").innerHTML="⏳ वेळ: "+h+":"+m+":"+s;
 time--;
 },1000);
 
@@ -198,6 +195,19 @@ let n=names[Math.floor(Math.random()*names.length)];
 let s=services[Math.floor(Math.random()*services.length)];
 document.getElementById("liveActivity").innerHTML="✅ "+n+" यांनी "+s+" सेवा घेतली";
 },5000);
+
+// LIKE
+let count=localStorage.getItem("likes")||0;
+document.getElementById("likeCount").innerHTML="👍 Interested: "+count;
+
+function likeService(){
+count++;
+localStorage.setItem("likes",count);
+document.getElementById("likeCount").innerHTML="👍 Interested: "+count;
+
+let msg="नमस्कार 🙏 मला ही सेवा हवी आहे";
+window.open("https://wa.me/919607023105?text="+encodeURIComponent(msg));
+}
 
 </script>
 
