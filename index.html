@@ -6,20 +6,17 @@
 <title>Rajratna Services</title>
 
 <style>
-body{
-  margin:0;
-  font-family:sans-serif;
-  background:#f5f5f5;
-}
+body{margin:0;font-family:sans-serif;background:#f5f5f5;}
 
 /* HEADER */
 .header{
-  background:#0d47a1;
+  background:linear-gradient(90deg,#0d47a1,#1976d2);
   color:#fff;
   text-align:center;
-  padding:18px;
-  font-size:22px;
+  padding:20px;
+  font-size:24px;
   font-weight:bold;
+  text-shadow:1px 1px 3px #000;
 }
 
 /* CARD */
@@ -31,12 +28,6 @@ body{
   box-shadow:0 0 10px rgba(0,0,0,0.2);
 }
 
-/* TEXT */
-.center{
-  text-align:center;
-  font-size:18px;
-}
-
 /* TITLE */
 .title{
   text-align:center;
@@ -45,12 +36,24 @@ body{
   color:#0d47a1;
 }
 
-/* BLINK */
+/* CLICK ITEM */
+.item{
+  background:#e3f2fd;
+  margin:8px 0;
+  padding:10px;
+  border-radius:8px;
+  cursor:pointer;
+  font-size:17px;
+}
+.item:hover{
+  background:#bbdefb;
+}
+
+/* LIMIT */
 .limit{
   text-align:center;
   color:red;
   font-weight:bold;
-  font-size:19px;
   animation:blink 1s infinite;
 }
 @keyframes blink{50%{opacity:0;}}
@@ -65,7 +68,6 @@ body{
   text-align:center;
   border-radius:8px;
   text-decoration:none;
-  font-size:18px;
 }
 </style>
 </head>
@@ -73,79 +75,53 @@ body{
 <body>
 
 <div class="header">
-सेवक संघटित व असंघटित आरोग्य कामगार संघटना<br>
-राजरत्न इंटरप्राइजेस
+🔥 सेवक संघटना | राजरत्न इंटरप्राइजेस 🔥<br>
+👉 तुमच्या सर्व कामासाठी एकच ठिकाण 👈
 </div>
 
 <div class="card">
 
-<p class="limit">🏗️ बांधकाम कामगार नोंदणी फ्री फ्री फ्री</p>
+<p class="limit">🏗️ बांधकाम कामगार नोंदणी – पूर्ण मोफत</p>
 
-<p class="center">
-✔️ गवंडी काम | लाईट फिटिंग | फॅब्रिकेशन<br>
-✔️ AC रिपेरिंग | फारशी फिटिंग | कलर काम<br>
-✔️ सुतार कामगार – सर्व कामे मोफत<br>
-👉 पूर्ण माहिती साठी आजच ऑफिस ला भेट द्या
-</p>
+<!-- आधार -->
+<p class="title">🪪 आधार कार्ड सेवा</p>
+<div class="item" onclick="sendWA('आधार कार्ड पत्ता बदल')">✔️ पत्ता बदल (24 तासात)</div>
 
-<hr>
-
+<!-- मतदान -->
 <p class="title">🗳️ मतदान कार्ड</p>
-<p class="center">
-✔️ नाव बदल | पत्ता बदल | फोटो बदल<br>
-✔️ जन्म तारीख सुधारणा<br>
-✔️ नवीन मतदान नोंदणी<br>
-👉 15 दिवसात कार्ड मिळेल
-</p>
+<div class="item" onclick="sendWA('मतदान नाव बदल')">✔️ नाव बदल</div>
+<div class="item" onclick="sendWA('मतदान पत्ता बदल')">✔️ पत्ता बदल</div>
+<div class="item" onclick="sendWA('मतदान फोटो बदल')">✔️ फोटो बदल</div>
+<div class="item" onclick="sendWA('नवीन मतदान नोंदणी')">✔️ नवीन नोंदणी</div>
 
-<hr>
-
-<p class="title">🪪 आधार कार्ड</p>
-<p class="center">
-✔️ पत्ता बदल – 24 तासात
-</p>
-
-<hr>
-
+<!-- रेशन -->
 <p class="title">📕 रेशन कार्ड</p>
-<p class="center">
-✔️ नाव लावणे | नाव कमी करणे<br>
-✔️ पत्ता बदलणे | 1/2 युनिट करणे<br>
-✔️ नवीन रेशन कार्ड (Online / Offline)
-</p>
+<div class="item" onclick="sendWA('रेशन नाव लावणे')">✔️ नाव लावणे</div>
+<div class="item" onclick="sendWA('रेशन नाव कमी करणे')">✔️ नाव कमी करणे</div>
+<div class="item" onclick="sendWA('रेशन पत्ता बदल')">✔️ पत्ता बदल</div>
+<div class="item" onclick="sendWA('नवीन रेशन कार्ड')">✔️ नवीन कार्ड</div>
 
-<hr>
-
-<p class="limit">💊 आयुष्मान कार्ड – ₹5 लाख पर्यंत लाभ</p>
-
-<hr>
-
-<p class="title">👷 ई-श्रम कार्ड</p>
-<p class="center">✔️ सर्व कामगारांसाठी उपलब्ध</p>
-
-<hr>
-
+<!-- लायसन्स -->
 <p class="title">🏢 व्यवसाय लायसन्स</p>
-<p class="center">
-✔️ उद्यम आधार<br>
-✔️ शॉप ऍक्ट लायसन्स<br>
-✔️ फूड लायसन्स<br>
-👉 नवीन व्यवसायासाठी पूर्ण मदत
-</p>
+<div class="item" onclick="sendWA('उद्यम आधार')">✔️ उद्यम आधार</div>
+<div class="item" onclick="sendWA('शॉप ऍक्ट लायसन्स')">✔️ शॉप ऍक्ट</div>
+<div class="item" onclick="sendWA('फूड लायसन्स')">✔️ फूड लायसन्स</div>
 
-<hr>
-
-<p class="limit">🚗 घरपोच सेवा उपलब्ध</p>
-
-<p class="center">
-वेळ नाही? टेन्शन घेऊ नका!<br>
-👉 तुमच्या घरी सेवा मिळेल
-</p>
-
-<a href="https://wa.me/918484078016" class="btn">📲 WhatsApp 1</a>
-<a href="https://wa.me/919607023105" class="btn">📲 WhatsApp 2</a>
+<!-- WhatsApp -->
+<a href="#" class="btn" onclick="sendWA('मला माहिती हवी आहे')">
+📲 WhatsApp करा
+</a>
 
 </div>
+
+<script>
+
+function sendWA(service){
+let msg = "नमस्कार 🙏 मला " + service + " बद्दल माहिती हवी आहे";
+window.open("https://wa.me/919607023105?text=" + encodeURIComponent(msg));
+}
+
+</script>
 
 </body>
 </html>
