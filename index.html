@@ -6,210 +6,146 @@
 <title>Rajratna Services</title>
 
 <style>
-body{margin:0;font-family:sans-serif;background:#f0f4ff;}
-
-/* STICKY */
-.sticky-bar{
-position:fixed;top:0;width:100%;
-background:red;color:#fff;text-align:center;
-padding:10px;font-weight:bold;z-index:9999;
+body{
+  margin:0;
+  font-family:sans-serif;
+  background:#f5f5f5;
 }
 
 /* HEADER */
 .header{
-margin-top:50px;
-background:linear-gradient(90deg,#0d47a1,#1976d2);
-color:#fff;text-align:center;padding:20px;
-font-size:24px;font-weight:bold;
+  background:#0d47a1;
+  color:#fff;
+  text-align:center;
+  padding:18px;
+  font-size:22px;
+  font-weight:bold;
 }
 
 /* CARD */
 .card{
-margin:15px;background:#fff;padding:15px;
-border-radius:12px;box-shadow:0 0 10px rgba(0,0,0,0.2);
+  background:#fff;
+  margin:15px;
+  padding:15px;
+  border-radius:10px;
+  box-shadow:0 0 10px rgba(0,0,0,0.2);
 }
 
 /* TEXT */
-.center{text-align:center;font-size:18px;}
+.center{
+  text-align:center;
+  font-size:18px;
+}
+
+/* TITLE */
+.title{
+  text-align:center;
+  font-size:20px;
+  font-weight:bold;
+  color:#0d47a1;
+}
 
 /* BLINK */
 .limit{
-text-align:center;font-size:20px;color:red;
-font-weight:bold;animation:blink 1s infinite;
+  text-align:center;
+  color:red;
+  font-weight:bold;
+  font-size:19px;
+  animation:blink 1s infinite;
 }
 @keyframes blink{50%{opacity:0;}}
 
-/* BTN */
+/* BUTTON */
 .btn{
-display:block;margin:10px auto;padding:12px;
-background:#25D366;color:#fff;text-align:center;
-border-radius:8px;text-decoration:none;
-}
-
-/* LIKE */
-.like-btn{
-display:block;margin:10px auto;padding:12px;
-background:#0d47a1;color:#fff;border:none;
-border-radius:8px;font-size:18px;
-}
-
-/* FLOAT */
-.float-wa{
-position:fixed;bottom:20px;right:20px;
-background:#25D366;color:#fff;
-font-size:28px;padding:15px;border-radius:50%;
-}
-
-/* POPUP */
-.popup{
-position:fixed;top:30%;left:50%;
-transform:translate(-50%,-50%);
-background:#fff;padding:20px;border-radius:10px;
-z-index:999;box-shadow:0 0 15px #000;text-align:center;
-}
-
-/* LIVE */
-.live-box{
-position:fixed;bottom:90px;left:10px;
-background:#000;color:#fff;padding:10px;
-border-radius:8px;font-size:14px;
-}
-
-/* TIMER */
-.timer{
-text-align:center;font-size:22px;
-color:#d32f2f;font-weight:bold;
+  display:block;
+  margin:15px auto;
+  padding:12px;
+  background:#25D366;
+  color:#fff;
+  text-align:center;
+  border-radius:8px;
+  text-decoration:none;
+  font-size:18px;
 }
 </style>
 </head>
 
 <body>
 
-<div class="sticky-bar">
-🔥 PAN + PVC अर्जंट ₹257 – 3 तासात 🔥
-</div>
-
 <div class="header">
 सेवक संघटित व असंघटित आरोग्य कामगार संघटना<br>
 राजरत्न इंटरप्राइजेस
 </div>
 
-<!-- POPUP -->
-<div class="popup" id="popup">
-<h3>🔥 आजची ऑफर 🔥</h3>
-<p>बांधकाम कामगार नोंदणी पूर्ण मोफत</p>
-<p class="limit">🚨 मर्यादित स्लॉट 🚨</p>
-<button onclick="closePopup()">Close</button>
-</div>
-
-<!-- MAIN -->
 <div class="card">
 
-<p class="limit">🏗️ बांधकाम कामगार नोंदणी – पूर्ण मोफत</p>
+<p class="limit">🏗️ बांधकाम कामगार नोंदणी फ्री फ्री फ्री</p>
 
 <p class="center">
-✔️ गवंडी | लाईट | AC | फॅब्रिकेशन<br>
-✔️ फारशी | कलर | सुतार कामगार<br>
-👉 आजच ऑफिस ला भेट द्या
+✔️ गवंडी काम | लाईट फिटिंग | फॅब्रिकेशन<br>
+✔️ AC रिपेरिंग | फारशी फिटिंग | कलर काम<br>
+✔️ सुतार कामगार – सर्व कामे मोफत<br>
+👉 पूर्ण माहिती साठी आजच ऑफिस ला भेट द्या
 </p>
 
 <hr>
 
-<p class="center"><b>🗳️ मतदान कार्ड</b></p>
-<p class="center">15 दिवसात मिळेल</p>
+<p class="title">🗳️ मतदान कार्ड</p>
+<p class="center">
+✔️ नाव बदल | पत्ता बदल | फोटो बदल<br>
+✔️ जन्म तारीख सुधारणा<br>
+✔️ नवीन मतदान नोंदणी<br>
+👉 15 दिवसात कार्ड मिळेल
+</p>
 
 <hr>
 
-<p class="center"><b>🪪 आधार</b></p>
-<p class="center">24 तासात पत्ता बदल</p>
+<p class="title">🪪 आधार कार्ड</p>
+<p class="center">
+✔️ पत्ता बदल – 24 तासात
+</p>
 
 <hr>
 
-<p class="center"><b>📕 रेशन कार्ड</b></p>
-<p class="center">नवीन / बदल सेवा</p>
+<p class="title">📕 रेशन कार्ड</p>
+<p class="center">
+✔️ नाव लावणे | नाव कमी करणे<br>
+✔️ पत्ता बदलणे | 1/2 युनिट करणे<br>
+✔️ नवीन रेशन कार्ड (Online / Offline)
+</p>
 
 <hr>
 
-<p class="limit">💊 आयुष्मान – 5 लाख</p>
+<p class="limit">💊 आयुष्मान कार्ड – ₹5 लाख पर्यंत लाभ</p>
 
 <hr>
 
-<p class="center"><b>🏢 व्यवसाय लायसन्स</b></p>
-<p class="center">उद्यम | शॉप ऍक्ट | फूड लायसन्स</p>
+<p class="title">👷 ई-श्रम कार्ड</p>
+<p class="center">✔️ सर्व कामगारांसाठी उपलब्ध</p>
+
+<hr>
+
+<p class="title">🏢 व्यवसाय लायसन्स</p>
+<p class="center">
+✔️ उद्यम आधार<br>
+✔️ शॉप ऍक्ट लायसन्स<br>
+✔️ फूड लायसन्स<br>
+👉 नवीन व्यवसायासाठी पूर्ण मदत
+</p>
 
 <hr>
 
 <p class="limit">🚗 घरपोच सेवा उपलब्ध</p>
 
-<p class="timer" id="countdown"></p>
+<p class="center">
+वेळ नाही? टेन्शन घेऊ नका!<br>
+👉 तुमच्या घरी सेवा मिळेल
+</p>
 
-<!-- LIKE -->
-<button onclick="likeService()" class="like-btn">
-👍 मला हे काम करायचं आहे
-</button>
-
-<p id="likeCount" class="center"></p>
-
-<a href="https://wa.me/919607023105" class="btn">📲 WhatsApp करा</a>
+<a href="https://wa.me/918484078016" class="btn">📲 WhatsApp 1</a>
+<a href="https://wa.me/919607023105" class="btn">📲 WhatsApp 2</a>
 
 </div>
-
-<!-- FLOAT -->
-<a href="https://wa.me/919607023105" class="float-wa">💬</a>
-
-<!-- LIVE -->
-<div id="liveActivity" class="live-box"></div>
-
-<!-- SOUND -->
-<audio id="sound" src="https://www.soundjay.com/buttons/sounds/button-3.mp3"></audio>
-
-<script>
-
-// SOUND
-window.onload = ()=>{document.getElementById("sound").play();}
-
-// POPUP
-function closePopup(){document.getElementById("popup").style.display="none";}
-
-// POPUP REPEAT
-setInterval(()=>{
-document.getElementById("popup").style.display="block";
-document.getElementById("sound").play();
-},15000);
-
-// TIMER
-let time=3*60*60;
-setInterval(()=>{
-let h=Math.floor(time/3600);
-let m=Math.floor((time%3600)/60);
-let s=time%60;
-document.getElementById("countdown").innerHTML="⏳ वेळ: "+h+":"+m+":"+s;
-time--;
-},1000);
-
-// LIVE
-let names=["Rahul","Amit","Suresh","Vikas"];
-let services=["PAN","PVC","लायसन्स","आधार"];
-setInterval(()=>{
-let n=names[Math.floor(Math.random()*names.length)];
-let s=services[Math.floor(Math.random()*services.length)];
-document.getElementById("liveActivity").innerHTML="✅ "+n+" यांनी "+s+" सेवा घेतली";
-},5000);
-
-// LIKE
-let count=localStorage.getItem("likes")||0;
-document.getElementById("likeCount").innerHTML="👍 Interested: "+count;
-
-function likeService(){
-count++;
-localStorage.setItem("likes",count);
-document.getElementById("likeCount").innerHTML="👍 Interested: "+count;
-
-let msg="नमस्कार 🙏 मला ही सेवा हवी आहे";
-window.open("https://wa.me/919607023105?text="+encodeURIComponent(msg));
-}
-
-</script>
 
 </body>
 </html>
