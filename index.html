@@ -48,6 +48,7 @@ display:block;margin:15px auto;
 padding:12px;background:#25D366;
 color:#fff;text-align:center;
 border-radius:8px;text-decoration:none;
+font-size:18px;
 }
 </style>
 </head>
@@ -60,36 +61,50 @@ border-radius:8px;text-decoration:none;
 
 <div class="card">
 
-<!-- 🔥 OFFER -->
-<div style="background:linear-gradient(90deg,#ff0000,#ff9800);color:#fff;padding:15px;border-radius:10px;text-align:center;">
+<!-- 🔥 BIG OFFER -->
+<div style="background:linear-gradient(90deg,#ff0000,#ff5722);color:#fff;padding:20px;border-radius:12px;text-align:center;">
 
-<h2>🎉 खुशखबर 🎉</h2>
-<p><b>📢 उद्या मंगळवार – अंगारकी संकष्टी खास ऑफर!</b></p>
+<h1 style="font-size:28px;">🎉 खुशखबर 🎉</h1>
 
-<div onclick="sendWA('बांधकाम नोंदणी फ्री')" style="cursor:pointer;">
-✔️ बांधकाम कामगार नोंदणी – मोफत
+<p style="font-size:22px;font-weight:bold;">
+📢 अंगारकी संकष्टी निमित्त खास ऑफर!
+</p>
+
+<div onclick="sendWA('बांधकाम नोंदणी फ्री')" style="cursor:pointer;font-size:20px;">
+✔️ बांधकाम कामगार नोंदणी – पूर्ण मोफत
 </div>
 
-<div onclick="sendWA('PVC ₹60')" style="cursor:pointer;">
+<div onclick="sendWA('PVC ₹60')" style="cursor:pointer;font-size:20px;">
 ✔️ PVC स्मार्ट कार्ड – ₹60
 </div>
 
-<p><b>🗳️ मतदान सेवा:</b></p>
+<p style="font-size:20px;font-weight:bold;">🗳️ मतदान सेवा</p>
 
 <div onclick="sendWA('मतदान नवीन नोंदणी')" style="cursor:pointer;">• नवीन नोंदणी</div>
 <div onclick="sendWA('मतदान नाव बदल')" style="cursor:pointer;">• नाव बदल</div>
 <div onclick="sendWA('मतदान पत्ता बदल')" style="cursor:pointer;">• पत्ता बदल</div>
 
-<p class="limit">⏳ उद्याच या!</p>
+<!-- 📄 DOCUMENTS -->
+<h2 style="font-size:24px;">📄 लागणारे कागदपत्रे</h2>
+
+<p style="font-size:18px;">
+✔️ आधार कार्ड<br>
+✔️ ९० दिवस काम प्रमाणपत्र<br>
+✔️ पासपोर्ट साईज ३ फोटो
+</p>
+
+<!-- PDF BUTTON -->
+<button onclick="downloadPDF()" class="btn">
+📄 कागदपत्रे PDF डाउनलोड करा
+</button>
+
+<p class="limit">⏳ आजच भेट द्या!</p>
 
 </div>
 
 <hr>
 
-<!-- 🔥 OLD FULL SYSTEM -->
-
-<p class="limit">🏗️ बांधकाम कामगार नोंदणी – पूर्ण मोफत</p>
-
+<!-- 🔥 SERVICES -->
 <p class="title">🏗️ बांधकाम कामगार</p>
 <div class="item" onclick="sendWA('बांधकाम नवीन नोंदणी')">✔️ नवीन नोंदणी</div>
 <div class="item" onclick="sendWA('बांधकाम रिन्यूअल')">✔️ रिन्यूअल</div>
@@ -113,13 +128,7 @@ border-radius:8px;text-decoration:none;
 
 <hr>
 
-<p class="title">📕 रेशन</p>
-<div class="item" onclick="sendWA('रेशन नाव लावणे')">✔️ नाव लावणे</div>
-<div class="item" onclick="sendWA('रेशन पत्ता बदल')">✔️ पत्ता बदल</div>
-
-<hr>
-
-<p class="title">💰 लोन</p>
+<p class="title">💰 लोन योजना</p>
 <div class="item" onclick="sendWA('MUDRA लोन')">✔️ MUDRA</div>
 
 <a href="#" class="btn" onclick="sendWA('माहिती हवी आहे')">
@@ -128,11 +137,33 @@ border-radius:8px;text-decoration:none;
 
 </div>
 
+<!-- JS PDF -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
 <script>
+
+// WhatsApp
 function sendWA(service){
 let msg="नमस्कार 🙏 मला "+service+" बद्दल माहिती हवी आहे";
 window.open("https://wa.me/919607023105?text="+encodeURIComponent(msg));
 }
+
+// PDF
+function downloadPDF(){
+const { jsPDF } = window.jspdf;
+const doc = new jsPDF();
+
+doc.setFontSize(16);
+doc.text("लागणारे कागदपत्रे", 20, 20);
+
+doc.setFontSize(12);
+doc.text("• आधार कार्ड", 20, 40);
+doc.text("• 90 दिवस काम प्रमाणपत्र", 20, 50);
+doc.text("• पासपोर्ट साईज 3 फोटो", 20, 60);
+
+doc.save("documents.pdf");
+}
+
 </script>
 
 </body>
