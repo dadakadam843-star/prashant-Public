@@ -23,12 +23,13 @@ body{margin:0;font-family:sans-serif;background:#f5f5f5;}
 .limit{color:red;text-align:center;font-weight:bold;animation:blink 1s infinite;}
 @keyframes blink{50%{opacity:0;}}
 
-.big-banner{background:linear-gradient(90deg,#d50000,#ff9800);color:#fff;text-align:center;padding:25px;font-size:24px;font-weight:bold;border-radius:12px;}
+.big{background:linear-gradient(90deg,#d50000,#ff9800);color:#fff;text-align:center;padding:25px;font-size:24px;font-weight:bold;border-radius:12px;}
 </style>
 </head>
 
 <body>
 
+<!-- HEADER -->
 <div class="header">
 <h1>सेवक कामगार संघटना</h1>
 <h2>Rajratna Enterprises</h2>
@@ -37,52 +38,76 @@ body{margin:0;font-family:sans-serif;background:#f5f5f5;}
 
 <div class="card">
 
-<div class="big-banner" onclick="sendWA('फ्री बांधकाम कामगार नोंदणी')">
+<!-- BANNER -->
+<div class="big" onclick="sendWA('फ्री कामगार नोंदणी')">
 🎉 खुशखबर 🎉<br>🏗️ फ्री फ्री फ्री बांधकाम कामगार नोंदणी
 </div>
 
 <!-- OFFER -->
-<div style="background:linear-gradient(90deg,#ff0000,#ff9800);color:#fff;padding:20px;border-radius:12px;text-align:center;">
+<div style="background:#ff5722;color:#fff;padding:15px;border-radius:10px;margin-top:10px;text-align:center;">
 <h2>📢 खास ऑफर</h2>
 
-<div onclick="sendWA('फ्री कामगार')" style="background:#fff;color:#d32f2f;margin:8px;padding:10px;border-radius:8px;font-weight:bold;">
-✔️ फ्री बांधकाम कामगार नोंदणी
-</div>
+✔️ फ्री बांधकाम कामगार नोंदणी<br>
+✔️ PVC स्मार्ट कार्ड ₹60
 
-<div onclick="sendWA('PVC ₹60')" style="background:#fff;color:#d32f2f;margin:8px;padding:8px;border-radius:8px;">
-✔️ PVC स्मार्ट कार्ड – ₹60
-</div>
-
-<hr style="border:1px solid #fff;">
+<hr>
 
 <h3>📄 लागणारे कागदपत्रे</h3>
-<p>✔️ आधार कार्ड<br>✔️ ९० दिवस काम प्रमाणपत्र<br>✔️ ३ फोटो</p>
+✔️ आधार कार्ड<br>
+✔️ ९० दिवस काम प्रमाणपत्र<br>
+✔️ ३ फोटो
 
-<button onclick="downloadPDF()" class="btn">📄 PDF डाउनलोड</button>
-<p class="limit">⏳ मर्यादित ऑफर</p>
+<p class="limit">⏳ आजच लाभ घ्या</p>
 </div>
 
 <!-- MIDDLE LINE -->
-<div style="background:#fff3e0;padding:15px;border-radius:10px;margin:10px 0;text-align:center;font-weight:bold;">
+<div style="background:#fff3e0;padding:10px;margin:10px;border-radius:10px;text-align:center;font-weight:bold;">
 🏗️ गवंडी, सुतार, फॅब्रिकेशन, लाईट फिटिंग, AC रिपेरिंग, रंगकाम इ. सर्व कामगारांसाठी नोंदणी मोफत
 </div>
 
 <hr>
 
-<!-- SERVICES -->
-<p class="title">🪪 आधार</p>
-<div class="item" onclick="sendWA('आधार पत्ता बदल')">✔️ पत्ता बदल</div>
+<!-- SERVICES FULL -->
+<p class="title">🪪 आधार कार्ड</p>
+<div class="item">✔️ पत्ता बदल 24 तासात</div>
 
-<p class="title">🗳️ मतदान</p>
-<div class="item" onclick="sendWA('नवीन')">✔️ नवीन</div>
-<div class="item" onclick="sendWA('नाव बदल')">✔️ नाव बदल</div>
+<p class="title">🗳️ मतदान कार्ड</p>
+<div class="item">✔️ नवीन नोंदणी</div>
+<div class="item">✔️ नाव बदल</div>
+<div class="item">✔️ पत्ता बदल</div>
 
-<p class="title">💳 PAN</p>
-<div class="item" onclick="sendWA('PAN अर्जंट')">✔️ अर्जंट</div>
+<p class="title">🍚 रेशन कार्ड</p>
+<div class="item">✔️ नाव लावणे</div>
+<div class="item">✔️ पत्ता बदल</div>
+<div class="item">✔️ नाव कमी करणे</div>
+
+<p class="title">💳 PAN कार्ड</p>
+<div class="item">✔️ हरवलेले PAN अर्जंट</div>
+
+<p class="title">🏗️ बांधकाम कामगार</p>
+<div class="item">✔️ नवीन नोंदणी</div>
+<div class="item">✔️ रिन्यूअल</div>
+<div class="item">✔️ स्कॉलरशिप</div>
+<div class="item">✔️ भांडी पेटी योजना</div>
 
 <p class="title">🚗 लायसन</p>
-<div class="item" onclick="sendWA('कच्चा')">✔️ कच्चा</div>
-<div class="item" onclick="sendWA('पक्का')">✔️ पक्का</div>
+<div class="item">✔️ 2 व्हिलर / 4 व्हिलर</div>
+<div class="item">✔️ कच्चा / पक्का</div>
+
+<p class="title">🏥 योजना</p>
+<div class="item">✔️ 5 लाख आयुष्मान कार्ड</div>
+<div class="item">✔️ ई-श्रम कार्ड</div>
+
+<p class="title">🏢 व्यवसाय</p>
+<div class="item">✔️ उद्यम आधार</div>
+<div class="item">✔️ शॉप ऍक्ट</div>
+<div class="item">✔️ फूड लायसन्स</div>
+
+<p class="title">💰 सरकारी लोन</p>
+<div class="item">✔️ CMEGP</div>
+<div class="item">✔️ PMEGP</div>
+<div class="item">✔️ MUDRA</div>
+<div class="item">✔️ स्वनिधी</div>
 
 <hr>
 
@@ -97,7 +122,7 @@ body{margin:0;font-family:sans-serif;background:#f5f5f5;}
 <!-- LOCATION -->
 <h3 style="text-align:center;">📍 लोकेशन</h3>
 <iframe src="https://maps.google.com/maps?q=Miraj&t=&z=13&output=embed" width="100%" height="250"></iframe>
-<a href="https://maps.app.goo.gl/VcpfUaPdMMeKkjEx6" target="_blank" class="btn">Navigate</a>
+<a href="https://maps.app.goo.gl/VcpfUaPdMMeKkjEx6" target="_blank" class="btn">📍 Navigate करा</a>
 
 <hr>
 
@@ -116,15 +141,19 @@ body{margin:0;font-family:sans-serif;background:#f5f5f5;}
 </div>
 
 <!-- POPUP -->
-<div id="popup" style="display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:#fff;padding:20px;">
+<div id="popup" style="display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:#fff;padding:20px;border-radius:10px;text-align:center;">
 <h3>🎉 अंगारकी संकष्टी ऑफर</h3>
+<p>🏗️ फ्री कामगार नोंदणी</p>
 <button onclick="sendWA('फ्री कामगार')" class="btn">WhatsApp</button>
-<button onclick="closePopup()">X</button>
+<button onclick="closePopup()">❌</button>
 </div>
 
 <script>
 
-function sendWA(s){window.open("https://wa.me/919607023105?text="+s);}
+function sendWA(msg){
+window.open("https://wa.me/919607023105?text="+msg);
+}
+
 function sendForm(){
 let n=document.getElementById("name").value;
 let m=document.getElementById("mobile").value;
@@ -137,8 +166,9 @@ function closePopup(){document.getElementById("popup").style.display="none";}
 
 // voice
 function voice(){
-let msg=new SpeechSynthesisUtterance("नमस्कार, फ्री कामगार नोंदणी सुरू आहे");
-speechSynthesis.speak(msg);
+let speech=new SpeechSynthesisUtterance("नमस्कार, फ्री कामगार नोंदणी सुरू आहे, आजच लाभ घ्या");
+speech.lang="mr-IN";
+speechSynthesis.speak(speech);
 }
 setTimeout(voice,3000);
 document.body.addEventListener("click",voice,{once:true});
