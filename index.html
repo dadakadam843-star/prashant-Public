@@ -6,74 +6,48 @@
 <title>Rajratna Services</title>
 
 <style>
-body{
-  margin:0;
-  font-family:sans-serif;
-  background:#f5f5f5;
-}
+body{margin:0;font-family:sans-serif;background:#f5f5f5;}
 
 /* HEADER */
 .header{
-  background:linear-gradient(90deg,#0d47a1,#1976d2);
-  color:#fff;
-  text-align:center;
-  padding:20px;
-  font-size:24px;
-  font-weight:bold;
-  text-shadow:1px 1px 3px #000;
+background:linear-gradient(90deg,#0d47a1,#1976d2);
+color:#fff;text-align:center;padding:20px;
+font-size:24px;font-weight:bold;
 }
 
 /* CARD */
 .card{
-  background:#fff;
-  margin:15px;
-  padding:15px;
-  border-radius:10px;
-  box-shadow:0 0 10px rgba(0,0,0,0.2);
+background:#fff;margin:15px;padding:15px;
+border-radius:10px;box-shadow:0 0 10px rgba(0,0,0,0.2);
 }
 
 /* TITLE */
 .title{
-  text-align:center;
-  font-size:20px;
-  font-weight:bold;
-  color:#0d47a1;
-  margin-top:10px;
+text-align:center;font-size:20px;
+font-weight:bold;color:#0d47a1;
 }
 
-/* CLICK ITEM */
+/* ITEM */
 .item{
-  background:#e3f2fd;
-  margin:8px 0;
-  padding:10px;
-  border-radius:8px;
-  cursor:pointer;
-  font-size:17px;
+background:#e3f2fd;margin:8px 0;
+padding:10px;border-radius:8px;
+cursor:pointer;font-size:17px;
 }
-.item:hover{
-  background:#bbdefb;
-}
+.item:hover{background:#bbdefb;}
 
 /* BLINK */
 .limit{
-  text-align:center;
-  color:red;
-  font-weight:bold;
-  animation:blink 1s infinite;
+text-align:center;color:red;
+font-weight:bold;animation:blink 1s infinite;
 }
 @keyframes blink{50%{opacity:0;}}
 
-/* BUTTON */
+/* BTN */
 .btn{
-  display:block;
-  margin:15px auto;
-  padding:12px;
-  background:#25D366;
-  color:#fff;
-  text-align:center;
-  border-radius:8px;
-  text-decoration:none;
-  font-size:18px;
+display:block;margin:15px auto;
+padding:12px;background:#25D366;
+color:#fff;text-align:center;
+border-radius:8px;text-decoration:none;
 }
 </style>
 </head>
@@ -81,76 +55,74 @@ body{
 <body>
 
 <div class="header">
-🔥 सेवक संघटना | राजरत्न इंटरप्राइजेस 🔥<br>
-👉 तुमच्या सर्व कामासाठी एकच ठिकाण 👈
+🔥 सेवक संघटना | राजरत्न इंटरप्राइजेस 🔥
 </div>
 
 <div class="card">
 
+<!-- 🔥 OFFER -->
+<div style="background:linear-gradient(90deg,#ff0000,#ff9800);color:#fff;padding:15px;border-radius:10px;text-align:center;">
+
+<h2>🎉 खुशखबर 🎉</h2>
+<p><b>📢 उद्या मंगळवार – अंगारकी संकष्टी खास ऑफर!</b></p>
+
+<div onclick="sendWA('बांधकाम नोंदणी फ्री')" style="cursor:pointer;">
+✔️ बांधकाम कामगार नोंदणी – मोफत
+</div>
+
+<div onclick="sendWA('PVC ₹60')" style="cursor:pointer;">
+✔️ PVC स्मार्ट कार्ड – ₹60
+</div>
+
+<p><b>🗳️ मतदान सेवा:</b></p>
+
+<div onclick="sendWA('मतदान नवीन नोंदणी')" style="cursor:pointer;">• नवीन नोंदणी</div>
+<div onclick="sendWA('मतदान नाव बदल')" style="cursor:pointer;">• नाव बदल</div>
+<div onclick="sendWA('मतदान पत्ता बदल')" style="cursor:pointer;">• पत्ता बदल</div>
+
+<p class="limit">⏳ उद्याच या!</p>
+
+</div>
+
+<hr>
+
+<!-- 🔥 OLD FULL SYSTEM -->
+
 <p class="limit">🏗️ बांधकाम कामगार नोंदणी – पूर्ण मोफत</p>
 
-<!-- बांधकाम -->
 <p class="title">🏗️ बांधकाम कामगार</p>
 <div class="item" onclick="sendWA('बांधकाम नवीन नोंदणी')">✔️ नवीन नोंदणी</div>
 <div class="item" onclick="sendWA('बांधकाम रिन्यूअल')">✔️ रिन्यूअल</div>
 <div class="item" onclick="sendWA('बांधकाम स्कॉलरशिप')">✔️ स्कॉलरशिप</div>
-<div class="item" onclick="sendWA('भांडी पेटी योजना')">✔️ भांडी पेटी</div>
-<div class="item" onclick="sendWA('बांधकाम आरोग्य योजना')">✔️ आरोग्य योजना</div>
 
 <hr>
 
-<!-- लायसन -->
-<p class="title">🚗 2 / 4 व्हिलर लायसन</p>
-<div class="item" onclick="sendWA('लायसन कच्चा')">✔️ कच्चा (LL)</div>
-<div class="item" onclick="sendWA('लायसन पक्का')">✔️ पक्का (DL)</div>
+<p class="title">🚗 लायसन</p>
+<div class="item" onclick="sendWA('लायसन कच्चा')">✔️ कच्चा</div>
+<div class="item" onclick="sendWA('लायसन पक्का')">✔️ पक्का</div>
 
 <hr>
 
-<!-- आधार -->
-<p class="title">🪪 आधार कार्ड</p>
+<p class="title">🪪 आधार</p>
 <div class="item" onclick="sendWA('आधार स्मार्ट कार्ड')">✔️ स्मार्ट कार्ड</div>
-<div class="item" onclick="sendWA('आधार 3 मध्ये 1 फ्री')">✔️ 3 मध्ये 1 फ्री ऑफर</div>
 
 <hr>
 
-<!-- PAN -->
-<p class="title">💳 PAN कार्ड</p>
-<div class="item" onclick="sendWA('PAN अर्जंट')">✔️ हरवलेले PAN – अर्जंट सेवा</div>
+<p class="title">💳 PAN</p>
+<div class="item" onclick="sendWA('PAN अर्जंट')">✔️ अर्जंट सेवा</div>
 
 <hr>
 
-<!-- मतदान -->
-<p class="title">🗳️ मतदान कार्ड</p>
-<div class="item" onclick="sendWA('मतदान नाव बदल')">✔️ नाव बदल</div>
-<div class="item" onclick="sendWA('मतदान पत्ता बदल')">✔️ पत्ता बदल</div>
-<div class="item" onclick="sendWA('मतदान फोटो बदल')">✔️ फोटो बदल</div>
-<div class="item" onclick="sendWA('नवीन मतदान नोंदणी')">✔️ नवीन नोंदणी</div>
-
-<hr>
-
-<!-- रेशन -->
-<p class="title">📕 रेशन कार्ड</p>
+<p class="title">📕 रेशन</p>
 <div class="item" onclick="sendWA('रेशन नाव लावणे')">✔️ नाव लावणे</div>
-<div class="item" onclick="sendWA('रेशन नाव कमी करणे')">✔️ नाव कमी करणे</div>
 <div class="item" onclick="sendWA('रेशन पत्ता बदल')">✔️ पत्ता बदल</div>
-<div class="item" onclick="sendWA('नवीन रेशन कार्ड')">✔️ नवीन कार्ड</div>
 
 <hr>
 
-<!-- लोन -->
-<p class="title">💰 सरकारी लोन योजना</p>
-<div class="item" onclick="sendWA('CMEGP लोन')">✔️ CMEGP</div>
-<div class="item" onclick="sendWA('PMEGP लोन')">✔️ PMEGP</div>
+<p class="title">💰 लोन</p>
 <div class="item" onclick="sendWA('MUDRA लोन')">✔️ MUDRA</div>
-<div class="item" onclick="sendWA('स्वनिधी योजना')">✔️ स्वनिधी</div>
 
-<p class="limit">👉 सरकारी लोन मार्गदर्शन मोफत</p>
-
-<hr>
-
-<p class="limit">🚗 घरपोच सेवा उपलब्ध</p>
-
-<a href="#" class="btn" onclick="sendWA('मला माहिती हवी आहे')">
+<a href="#" class="btn" onclick="sendWA('माहिती हवी आहे')">
 📲 WhatsApp करा
 </a>
 
@@ -158,8 +130,8 @@ body{
 
 <script>
 function sendWA(service){
-let msg = "नमस्कार 🙏 मला " + service + " बद्दल माहिती हवी आहे";
-window.open("https://wa.me/919607023105?text=" + encodeURIComponent(msg));
+let msg="नमस्कार 🙏 मला "+service+" बद्दल माहिती हवी आहे";
+window.open("https://wa.me/919607023105?text="+encodeURIComponent(msg));
 }
 </script>
 
