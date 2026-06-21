@@ -1,9 +1,66 @@
-{
-  "id": 1,
-  "name": "प्रशांत कदम",
-  "designation": "समाजसेवक",
-  "mobile": "9607023105",
-  "email": "rajbusinesshubpoint@gmail.com",
-  "photo": "logo.png",
-  "about": "नागरिकांना विविध सरकारी सेवा व मार्गदर्शन पुरवतो."
-}
+[
+  {
+    "id": 1,
+    "username": "prashant",
+    "name": "प्रशांत कदम",
+    "designation": "समाजसेवक",
+    "mobile": "9607023105",
+    "email": "rajbusinesshubpoint@gmail.com",
+    "photo": "logo.png",
+    "address": "मिरज, सांगली, महाराष्ट्र",
+    "website": "https://prashant-public.vercel.app",
+    "whatsapp": "919607023105",
+    "facebook": "",
+    "instagram": "",
+    "youtube": "",
+    "about": "नागरिकांना विविध सरकारी सेवा, योजना व मार्गदर्शन पुरवतो."
+  },
+  {
+    "id": 2,
+    "username": "rajratna",
+    "name": "Rajratna Enterprises",
+    "designation": "ऑनलाईन सर्व्हिस सेंटर",
+    "mobile": "9607023105",
+    "email": "rajbusinesshubpoint@gmail.com",
+    "photo": "logo.png",
+    "address": "मिरज, महाराष्ट्र",
+    "website": "https://prashant-public.vercel.app",
+    "whatsapp": "919607023105",
+    "facebook": "",
+    "instagram": "",
+    "youtube": "",
+    "about": "आधार कार्ड, मतदान कार्ड, पॅन कार्ड, रेशन कार्ड आणि इतर ऑनलाइन सेवा."
+  },
+  {
+    "id": 3,
+    "username": "worker",
+    "name": "बांधकाम कामगार सेवा",
+    "designation": "कामगार नोंदणी केंद्र",
+    "mobile": "9607023105",
+    "email": "rajbusinesshubpoint@gmail.com",
+    "photo": "logo.png",
+    "address": "सांगली, महाराष्ट्र",
+    "website": "",
+    "whatsapp": "919607023105",
+    "facebook": "",
+    "instagram": "",
+    "youtube": "",
+    "about": "फ्री बांधकाम कामगार नोंदणी, स्कॉलरशिप, योजना आणि इतर सेवा."
+  },
+  {
+    "id": 4,
+    "username": "business",
+    "name": "Public Service Hub",
+    "designation": "Digital Service Provider",
+    "mobile": "9607023105",
+    "email": "rajbusinesshubpoint@gmail.com",
+    "photo": "logo.png",
+    "address": "महाराष्ट्र, भारत",
+    "website": "https://prashant-public.vercel.app",
+    "whatsapp": "919607023105",
+    "facebook": "",
+    "instagram": "",
+    "youtube": "",
+    "about": "Public Service Hub – तुमची सेवा, आमची जबाबदारी."
+  }
+]
