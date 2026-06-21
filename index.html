@@ -3,8 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Public Service Hub - Profile</title>
+<title>Public Service Hub</title>
 
 <style>
 body{
@@ -15,13 +14,13 @@ background:#f5f5f5;
 
 .header{
 background:linear-gradient(90deg,#ff6f00,#005eff);
-color:#fff;
+color:white;
 text-align:center;
 padding:30px;
 }
 
-.profile-card{
-background:#fff;
+.card{
+background:white;
 max-width:500px;
 margin:20px auto;
 padding:20px;
@@ -38,57 +37,19 @@ border:5px solid #005eff;
 object-fit:cover;
 }
 
-.name{
-font-size:28px;
-font-weight:bold;
-margin-top:10px;
-color:#005eff;
-}
-
-.designation{
-color:#666;
-margin:5px 0;
-}
-
-.about{
-margin-top:15px;
-line-height:1.6;
-}
-
 .btn{
 display:block;
 text-decoration:none;
 padding:12px;
 margin:10px 0;
 border-radius:10px;
-color:#fff;
+color:white;
 font-weight:bold;
 }
 
 .call{background:#28a745;}
 .whatsapp{background:#25D366;}
 .email{background:#ff6f00;}
-.share{background:#005eff;}
-
-.gallery{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:10px;
-margin-top:20px;
-}
-
-.gallery img{
-width:100%;
-height:100px;
-object-fit:cover;
-border-radius:10px;
-}
-
-.footer{
-text-align:center;
-padding:20px;
-color:#666;
-}
 </style>
 </head>
 
@@ -99,22 +60,15 @@ color:#666;
 <p>तुमची सेवा, आमची जबाबदारी</p>
 </div>
 
-<div class="profile-card">
+<div class="card">
 
 <img src="logo.png" class="profile-img">
 
-<div class="name">प्रशांत कदम</div>
+<h2>प्रशांत कदम</h2>
 
-<div class="designation">
-समाजसेवक | डिजिटल सेवा केंद्र
-</div>
+<p>समाजसेवक | डिजिटल सेवा केंद्र</p>
 
-<div class="about">
-मी नागरिकांना विविध सरकारी सेवा, योजना,
-ऑनलाईन नोंदणी आणि मार्गदर्शन पुरवतो.
-</div>
-
-<a href="tel:+919607023105" class="btn call">
+<a href="tel:919607023105" class="btn call">
 📞 Call Now
 </a>
 
@@ -122,41 +76,11 @@ color:#666;
 💬 WhatsApp
 </a>
 
-<a href="mailto:info@publicservicehub.in" class="btn email">
+<a href="mailto:rajbusinesshubpoint@gmail.com" class="btn email">
 📧 Email
 </a>
 
-<button onclick="shareProfile()" class="btn share">
-🔗 Share Profile
-</button>
-
-<h3>📸 फोटो गॅलरी</h3>
-
-<div class="gallery">
-<img src="aadhaar.jpg">
-<img src="pvc.jpg">
-<img src="voter.jpg">
 </div>
-
-</div>
-
-<div class="footer">
-© 2025 Public Service Hub
-</div>
-
-<script>
-function shareProfile(){
-if(navigator.share){
-navigator.share({
-title:"Public Service Hub",
-text:"माझे प्रोफाइल पहा",
-url:window.location.href
-});
-}else{
-alert("Share feature not supported");
-}
-}
-</script>
 
 </body>
 </html>
