@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Public Service Hub AI</title>
+
+<style>
+body{
+margin:0;
+font-family:Arial,sans-serif;
+background:#f5f5f5;
+}
+
+.header{
+background:linear-gradient(90deg,#ff6f00,#005eff);
+color:white;
+padding:20px;
+text-align:center;
+}
+
+.chat-container{
+max-width:800px;
+margin:20px auto;
+background:white;
+padding:20px;
+border-radius:15px;
+box-shadow:0 0 10px rgba(0,0,0,0.15);
+}
+
+#chatBox{
+height:350px;
+overflow-y:auto;
+border:1px solid #ddd;
+padding:10px;
+border-radius:10px;
+background:#fafafa;
+}
+
+.user{
+background:#e3f2fd;
+padding:10px;
+margin:10px 0;
+border-radius:10px;
+}
+
+.ai{
+background:#fff3e0;
+padding:10px;
+margin:10px 0;
+border-radius:10px;
+}
+
+input{
+width:75%;
+padding:12px;
+border:1px solid #ccc;
+border-radius:10px;
+}
+
+button{
+padding:12px 20px;
+background:#005eff;
+color:white;
+border:none;
+border-radius:10px;
+cursor:pointer;
+}
+
+button:hover{
+background:#003bb5;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+<h1>🤖 Public Service Hub AI</h1>
+<p>तुमची सेवा, आमची जबाबदारी</p>
+</div>
+
+<div class="chat-container">
+
+<div id="chatBox">
+
+<div class="ai">
+नमस्कार! मी Public Service Hub AI आहे.
+मी सरकारी सेवा, आधार, पॅन, मतदान कार्ड,
+कामगार नोंदणी याबद्दल माहिती देऊ शकतो.
+</div>
+
+</div>
+
+<br>
+
+<input
+type="text"
+id="userInput"
+placeholder="तुमचा प्रश्न लिहा...">
+
+<button onclick="sendMessage()">
+Send
+</button>
+
+</div>
+
+<script>
+
+function sendMessage(){
+
+let input =
+document.getElementById("userInput");
+
+let msg = input.value;
+
+if(msg=="") return;
+
+let chat =
+document.getElementById("chatBox");
+
+chat.innerHTML +=
+'<div class="user">👤 '+msg+'</div>';
+
+let reply =
+"धन्यवाद. AI चे Live उत्तर जोडण्यासाठी OpenAI/Gemini API जोडावे लागेल.";
+
+chat.innerHTML +=
+'<div class="ai">🤖 '+reply+'</div>';
+
+input.value="";
+
+chat.scrollTop =
+chat.scrollHeight;
+
+}
+
+</script>
+
+</body>
+</html>
