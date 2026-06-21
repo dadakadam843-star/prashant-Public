@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Public Service Hub - Dashboard</title>
+
+<style>
+body{
+margin:0;
+font-family:Arial,sans-serif;
+background:#f4f6f9;
+}
+
+.header{
+background:linear-gradient(90deg,#ff6f00,#005eff);
+color:white;
+padding:20px;
+text-align:center;
+}
+
+.container{
+padding:20px;
+}
+
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:15px;
+}
+
+.card{
+background:white;
+padding:20px;
+border-radius:15px;
+box-shadow:0 2px 10px rgba(0,0,0,0.15);
+text-align:center;
+}
+
+.card h2{
+margin:0;
+color:#005eff;
+}
+
+.card p{
+font-size:22px;
+font-weight:bold;
+}
+
+.menu{
+margin-top:20px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+gap:15px;
+}
+
+.btn{
+display:block;
+text-decoration:none;
+background:#005eff;
+color:white;
+padding:15px;
+border-radius:10px;
+text-align:center;
+font-weight:bold;
+}
+
+.btn:hover{
+background:#003bb5;
+}
+
+.footer{
+margin-top:30px;
+text-align:center;
+color:#666;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+<h1>🏛️ Public Service Hub</h1>
+<h3>Admin Dashboard</h3>
+</div>
+
+<div class="container">
+
+<div class="cards">
+
+<div class="card">
+<h2>👥 Profiles</h2>
+<p>4</p>
+</div>
+
+<div class="card">
+<h2>👁️ Visitors</h2>
+<p id="views">0</p>
+</div>
+
+<div class="card">
+<h2>📞 Leads</h2>
+<p>35</p>
+</div>
+
+<div class="card">
+<h2>🤖 AI Requests</h2>
+<p>12</p>
+</div>
+
+</div>
+
+<div class="menu">
+
+<a href="profile.html" class="btn">
+👤 View Profiles
+</a>
+
+<a href="admin.html" class="btn">
+➕ Add Profile
+</a>
+
+<a href="profiles.json" class="btn">
+📂 Profiles Data
+</a>
+
+<a href="login.html" class="btn">
+🔐 Login Panel
+</a>
+
+<a href="https://wa.me/919607023105" class="btn">
+💬 WhatsApp
+</a>
+
+<a href="#" onclick="aiPanel()" class="btn">
+🤖 AI Assistant
+</a>
+
+</div>
+
+<div class="footer">
+© 2025 Public Service Hub
+</div>
+
+</div>
+
+<script>
+
+let views =
+localStorage.getItem("psh_views") || 0;
+
+document.getElementById("views")
+.innerText = views;
+
+function aiPanel(){
+alert(
+"🤖 AI Dashboard लवकरच उपलब्ध होईल"
+);
+}
+
+</script>
+
+</body>
+</html>
