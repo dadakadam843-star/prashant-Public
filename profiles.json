@@ -1,66 +1,140 @@
-[
-  {
-    "id": 1,
-    "username": "prashant",
-    "name": "प्रशांत कदम",
-    "designation": "समाजसेवक",
-    "mobile": "9607023105",
-    "email": "rajbusinesshubpoint@gmail.com",
-    "photo": "logo.png",
-    "address": "मिरज, सांगली, महाराष्ट्र",
-    "website": "https://prashant-public.vercel.app",
-    "whatsapp": "919607023105",
-    "facebook": "",
-    "instagram": "",
-    "youtube": "",
-    "about": "नागरिकांना विविध सरकारी सेवा, योजना व मार्गदर्शन पुरवतो."
-  },
-  {
-    "id": 2,
-    "username": "rajratna",
-    "name": "Rajratna Enterprises",
-    "designation": "ऑनलाईन सर्व्हिस सेंटर",
-    "mobile": "9607023105",
-    "email": "rajbusinesshubpoint@gmail.com",
-    "photo": "logo.png",
-    "address": "मिरज, महाराष्ट्र",
-    "website": "https://prashant-public.vercel.app",
-    "whatsapp": "919607023105",
-    "facebook": "",
-    "instagram": "",
-    "youtube": "",
-    "about": "आधार कार्ड, मतदान कार्ड, पॅन कार्ड, रेशन कार्ड आणि इतर ऑनलाइन सेवा."
-  },
-  {
-    "id": 3,
-    "username": "worker",
-    "name": "बांधकाम कामगार सेवा",
-    "designation": "कामगार नोंदणी केंद्र",
-    "mobile": "9607023105",
-    "email": "rajbusinesshubpoint@gmail.com",
-    "photo": "logo.png",
-    "address": "सांगली, महाराष्ट्र",
-    "website": "",
-    "whatsapp": "919607023105",
-    "facebook": "",
-    "instagram": "",
-    "youtube": "",
-    "about": "फ्री बांधकाम कामगार नोंदणी, स्कॉलरशिप, योजना आणि इतर सेवा."
-  },
-  {
-    "id": 4,
-    "username": "business",
-    "name": "Public Service Hub",
-    "designation": "Digital Service Provider",
-    "mobile": "9607023105",
-    "email": "rajbusinesshubpoint@gmail.com",
-    "photo": "logo.png",
-    "address": "महाराष्ट्र, भारत",
-    "website": "https://prashant-public.vercel.app",
-    "whatsapp": "919607023105",
-    "facebook": "",
-    "instagram": "",
-    "youtube": "",
-    "about": "Public Service Hub – तुमची सेवा, आमची जबाबदारी."
-  }
-]
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Profiles - Public Service Hub</title>
+
+<style>
+body{
+font-family:Arial,sans-serif;
+background:#f5f5f5;
+margin:0;
+}
+
+.header{
+background:linear-gradient(90deg,#ff6f00,#005eff);
+color:white;
+padding:20px;
+text-align:center;
+}
+
+.search-box{
+padding:15px;
+text-align:center;
+}
+
+.search-box input{
+width:90%;
+max-width:500px;
+padding:12px;
+border:1px solid #ccc;
+border-radius:10px;
+}
+
+.container{
+max-width:1000px;
+margin:auto;
+padding:15px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:15px;
+}
+
+.card{
+background:white;
+padding:15px;
+border-radius:12px;
+text-align:center;
+box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+
+.card img{
+width:100px;
+height:100px;
+border-radius:50%;
+object-fit:cover;
+}
+
+.btn{
+display:inline-block;
+margin-top:10px;
+padding:10px 15px;
+background:#005eff;
+color:white;
+text-decoration:none;
+border-radius:8px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+<h1>👥 सर्व प्रोफाइल्स</h1>
+<p>Public Service Hub</p>
+</div>
+
+<div class="search-box">
+<input
+type="text"
+id="search"
+placeholder="प्रोफाइल शोधा..."
+onkeyup="searchProfiles()">
+</div>
+
+<div class="container" id="profiles">
+
+<div class="card">
+<img src="logo.png">
+<h3>प्रशांत कदम</h3>
+<p>समाजसेवक</p>
+<a href="index.html" class="btn">View Profile</a>
+</div>
+
+<div class="card">
+<img src="logo.png">
+<h3>Rajratna Enterprises</h3>
+<p>ऑनलाईन सर्व्हिस सेंटर</p>
+<a href="index.html" class="btn">View Profile</a>
+</div>
+
+<div class="card">
+<img src="logo.png">
+<h3>Public Service Hub</h3>
+<p>Digital Service Provider</p>
+<a href="index.html" class="btn">View Profile</a>
+</div>
+
+</div>
+
+<script>
+
+function searchProfiles(){
+
+let input =
+document.getElementById("search")
+.value.toLowerCase();
+
+let cards =
+document.querySelectorAll(".card");
+
+cards.forEach(card=>{
+
+let text =
+card.innerText.toLowerCase();
+
+if(text.includes(input)){
+card.style.display="block";
+}else{
+card.style.display="none";
+}
+
+});
+
+}
+
+</script>
+
+</body>
+</html>
