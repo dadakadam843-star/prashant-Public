@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Public Service Hub - Admin Panel</title>
+<title>Admin Dashboard - Rajratna Enterprises</title>
 
 <style>
 body{
@@ -13,39 +13,42 @@ margin:0;
 }
 
 .header{
-background:linear-gradient(90deg,#ff6f00,#005eff);
+background:#005eff;
 color:white;
 padding:20px;
 text-align:center;
 }
 
+.container{
+max-width:900px;
+margin:auto;
+padding:20px;
+}
+
 .card{
 background:white;
-margin:15px;
-padding:15px;
+padding:20px;
+margin:15px 0;
 border-radius:12px;
-box-shadow:0 2px 10px rgba(0,0,0,0.15);
+box-shadow:0 0 10px rgba(0,0,0,.1);
+}
+
+.btn{
+display:inline-block;
+padding:12px 20px;
+background:#005eff;
+color:white;
+text-decoration:none;
+border-radius:8px;
+margin:5px;
 }
 
 input,textarea{
 width:100%;
 padding:10px;
-margin:5px 0;
+margin:8px 0;
 border:1px solid #ccc;
 border-radius:8px;
-}
-
-button{
-background:#005eff;
-color:white;
-padding:10px 20px;
-border:none;
-border-radius:8px;
-cursor:pointer;
-}
-
-button:hover{
-background:#003bb5;
 }
 </style>
 </head>
@@ -53,36 +56,44 @@ background:#003bb5;
 <body>
 
 <div class="header">
-<h1>🏛️ Public Service Hub</h1>
-<h3>Admin Dashboard</h3>
+<h1>📊 Admin Dashboard</h1>
+<p>Rajratna Enterprises</p>
+</div>
+
+<div class="container">
+
+<div class="card">
+<h2>📢 Live Notice Update</h2>
+<input type="text" placeholder="नवीन Notice लिहा">
+<button class="btn">Save Notice</button>
 </div>
 
 <div class="card">
-<h2>👤 Add Profile</h2>
-
-<input type="text" placeholder="नाव">
-<input type="text" placeholder="पद">
-<input type="text" placeholder="मोबाईल">
-<input type="email" placeholder="Email">
-<textarea placeholder="माहिती"></textarea>
-
-<button>Save Profile</button>
+<h2>🎉 Offer Update</h2>
+<textarea placeholder="ऑफर लिहा"></textarea>
+<button class="btn">Save Offer</button>
 </div>
 
 <div class="card">
-<h2>📊 Dashboard</h2>
-
-<p>👥 Total Profiles : 4</p>
-<p>👁️ Total Views : 1250</p>
-<p>📞 Leads : 35</p>
+<h2>🖼 Photo Upload</h2>
+<input type="file">
+<button class="btn">Upload</button>
 </div>
 
 <div class="card">
-<h2>⚙️ Quick Actions</h2>
+<h2>🤖 AI Tools</h2>
+<a href="ai.html" class="btn">AI Assistant</a>
+<a href="video.html" class="btn">AI Video Generator</a>
+</div>
 
-<button>Add User</button>
-<button>View Profiles</button>
-<button>Export Data</button>
+<div class="card">
+<h2>📞 Contact Info</h2>
+<p>9607023105</p>
+<p>8484078016</p>
+<p>rajbusinesshubpoint@gmail.com</p>
+<p>भारत नगर, दत्त मंदिर रोड, मिरज</p>
+</div>
+
 </div>
 
 </body>
